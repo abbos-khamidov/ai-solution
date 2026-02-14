@@ -1,8 +1,0 @@
-﻿import { createRoot } from 'react-dom/client';
-import App from './App';
-import './index.css';
-import './styles/header-hero.css';
-import './styles/contact-form.css';
-import './styles/theme-overrides.css';
-
-createRoot(document.getElementById('root')!).render(<App />);

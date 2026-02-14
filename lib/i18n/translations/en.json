@@ -1,0 +1,55 @@
+{
+  "header": {
+    "services": "Services",
+    "cases": "Cases",
+    "contacts": "Contacts",
+    "consultation": "Consultation"
+  },
+  "hero": {
+    "badge": "CRM • Chatbots • AI Automation",
+    "headline": "We automate sales and customer support",
+    "subheadline": "AmoCRM • Bitrix24 • WhatsApp • Instagram • Telegram",
+    "description": "We integrate CRM with messengers, create chatbots and AI assistants.",
+    "result": "Result: your managers handle 40% more requests",
+    "ctaPrimary": "Free 15-min consultation",
+    "ctaSecondary": "View cases",
+    "microcopy": "After submitting the form, we'll review your case and propose a solution within 24 hours",
+    "trust1": "E-commerce, SaaS, B2B services",
+    "trust2": "Average ROI 320% in 6 months",
+    "trust3": "24/7 support included",
+    "stat1": "implementations",
+    "stat2": "support",
+    "stat3": "cases in portfolio",
+    "scrollDown": "Scroll down"
+  },
+  "services": {
+    "title": "We automate the work that slows you down",
+    "subtitle": "Your team gets more done. Your customers get faster service.",
+    "service1Title": "Customer conversations run automatically",
+    "service1Desc": "Your customers get instant answers and support 24/7, without hiring more people.",
+    "service1Example": "Example: WhatsApp bot handles order inquiries, appointment booking, and FAQs",
+    "service2Title": "Leads flow into your CRM without manual entry",
+    "service2Desc": "Every customer from Instagram, Telegram, or WhatsApp becomes a tracked lead instantly.",
+    "service2Example": "Example: AmoCRM or Bitrix24 receives leads from all channels, auto-assigns to sales team",
+    "service3Title": "Repetitive tasks disappear from your workflow",
+    "service3Desc": "Data entry, follow-ups, status updates — all handled by systems that never forget.",
+    "service3Example": "Example: Auto-generate invoices, send payment reminders, update project statuses",
+    "service4Title": "Your existing tools work together seamlessly",
+    "service4Desc": "No more switching between 5 different apps. Everything syncs and updates automatically.",
+    "service4Example": "Example: Custom integrations between your CRM, payment system, and messaging platforms"
+  },
+  "footer": {
+    "description": "B2B: automation for education, coworking spaces and services. Telegram bots, CRM, AI implementation. First step — free 15-minute consultation.",
+    "servicesTitle": "Services",
+    "service1": "Telegram bots",
+    "service2": "Automation",
+    "service3": "AI implementation",
+    "service4": "Custom development",
+    "companyTitle": "Company",
+    "company1": "About us",
+    "company2": "Cases",
+    "company3": "Contacts",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy"
+  }
+}
