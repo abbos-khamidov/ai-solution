@@ -1,0 +1,500 @@
+{
+  "nav": {
+    "solutions": "Our Solutions",
+    "process": "How We Work",
+    "about": "About Us",
+    "contact": "Contact",
+    "startProject": "Start a Project"
+  },
+  "hero": {
+    "badge": "Now available — AI-powered automation",
+    "title": "Build the Future with Intelligent AI",
+    "subtitle": "We design and deploy AI systems that transform how businesses operate. From intelligent automation to predictive analytics — built for scale.",
+    "cta": "Get Started",
+    "ctaSecondary": "See Our Work",
+    "trust": {
+      "soc2": "SOC 2 Compliant",
+      "enterprise": "Enterprise Ready",
+      "uptime": "99.9% Uptime"
+    },
+    "callback": {
+      "heading": "Leave your contact — we'll reach out in 9 minutes",
+      "phonePlaceholder": "Your phone number",
+      "phoneRequired": "Phone number is required",
+      "phoneInvalid": "Enter a valid phone number",
+      "submit": "Request a Callback",
+      "submitting": "Sending...",
+      "successTitle": "Request Sent!",
+      "successMessage": "We'll reach out to you within 9 minutes.",
+      "errorMessage": "Something went wrong. Please try again.",
+      "consent": "I agree to the processing of personal data",
+      "consentRequired": "Consent is required to proceed",
+      "privacyLink": "Privacy Policy"
+    }
+  },
+  "stats": {
+    "label": "By the Numbers",
+    "title": "Proven results at scale",
+    "items": {
+      "models": {
+        "label": "AI Models Deployed",
+        "description": "Production-grade models serving millions"
+      },
+      "uptime": {
+        "label": "Uptime SLA",
+        "description": "Enterprise reliability guaranteed"
+      },
+      "growth": {
+        "label": "Revenue Growth",
+        "description": "Average client ROI in first year"
+      },
+      "api": {
+        "label": "API Calls Daily",
+        "description": "Processing at massive scale"
+      }
+    }
+  },
+  "features": {
+    "label": "Solutions",
+    "title": "Everything you need to",
+    "titleHighlight": "scale with AI",
+    "subtitle": "A comprehensive suite of AI-powered tools designed for enterprise needs.",
+    "learnMore": "Learn more",
+    "items": {
+      "neural": {
+        "title": "Neural Processing",
+        "description": "Custom AI models fine-tuned for your industry. Deep learning architectures that understand context and nuance in your data."
+      },
+      "workflow": {
+        "title": "Workflow Automation",
+        "description": "End-to-end process automation that eliminates manual tasks. Intelligent routing, decision trees, and adaptive workflows."
+      },
+      "analytics": {
+        "title": "Predictive Analytics",
+        "description": "Turn historical data into future insights. Demand forecasting, risk assessment, and opportunity scoring."
+      },
+      "security": {
+        "title": "Enterprise Security",
+        "description": "SOC 2 Type II certified infrastructure. End-to-end encryption, role-based access, and audit trails for every action."
+      },
+      "realtime": {
+        "title": "Real-time Processing",
+        "description": "Sub-millisecond inference times at scale. Edge computing capabilities for latency-sensitive applications."
+      },
+      "global": {
+        "title": "Global Deployment",
+        "description": "Multi-region infrastructure with automatic failover. Deploy anywhere with consistent performance and compliance."
+      }
+    }
+  },
+  "process": {
+    "label": "Our Process",
+    "title": "From idea to production",
+    "titleHighlight": "in weeks, not months",
+    "subtitle": "A proven methodology refined across 150+ successful AI deployments.",
+    "steps": {
+      "discovery": {
+        "title": "Discovery & Analysis",
+        "description": "We deep-dive into your business processes, data infrastructure, and goals to identify high-impact AI opportunities.",
+        "duration": "1-2 weeks"
+      },
+      "strategy": {
+        "title": "Strategy & Design",
+        "description": "Custom AI architecture designed for your specific needs. We plan the data pipeline, model selection, and integration approach.",
+        "duration": "2-3 weeks"
+      },
+      "development": {
+        "title": "Development & Training",
+        "description": "Agile development with weekly demos. Models are trained, validated, and optimized against your real-world data.",
+        "duration": "4-8 weeks"
+      },
+      "deployment": {
+        "title": "Deployment & Integration",
+        "description": "Zero-downtime deployment into your existing infrastructure. API integration, monitoring setup, and team training.",
+        "duration": "1-2 weeks"
+      },
+      "optimization": {
+        "title": "Optimization & Scale",
+        "description": "Continuous model improvement based on real performance data. Scale infrastructure as your needs grow.",
+        "duration": "Ongoing"
+      }
+    }
+  },
+  "about": {
+    "label": "About Us",
+    "title": "Building AI that",
+    "titleHighlight": "makes a difference",
+    "subtitle": "We are a team of researchers, engineers, and designers obsessed with making AI practical, powerful, and accessible for every organization.",
+    "values": {
+      "mission": {
+        "title": "Mission-Driven",
+        "description": "We believe AI should augment human capability, not replace it. Every solution we build makes teams more effective."
+      },
+      "human": {
+        "title": "Human-Centered",
+        "description": "Technology serves people. Our AI systems are designed with empathy, transparency, and fairness at their core."
+      },
+      "excellence": {
+        "title": "Excellence First",
+        "description": "We set the standard for AI quality. Rigorous testing, ethical guidelines, and continuous improvement drive everything."
+      },
+      "global": {
+        "title": "Global Impact",
+        "description": "From startups to Fortune 500s across 30+ countries, our AI solutions create meaningful business transformation."
+      }
+    },
+    "quote": "Our mission is to make AI an invisible, indispensable force that empowers every team to achieve what was previously impossible.",
+    "quoteAuthor": "AI Solution Team",
+    "quoteRole": "Founders"
+  },
+  "contact": {
+    "label": "Get in Touch",
+    "title": "Ready to transform",
+    "titleLine2": "your business with",
+    "titleHighlight": "AI",
+    "subtitle": "Tell us about your challenges and goals. We'll show you exactly how AI can drive measurable results for your organization.",
+    "email": "hello@aisolution.uz",
+    "schedule": "Schedule a 30-min call",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email",
+      "emailPlaceholder": "john@company.com",
+      "company": "Company",
+      "companyPlaceholder": "Company Inc.",
+      "message": "How can we help?",
+      "messagePlaceholder": "Tell us about your project, challenges, and goals...",
+      "submit": "Send Message",
+      "submitting": "Sending..."
+    }
+  },
+  "floatingCta": {
+    "title": "Need help?",
+    "description": "Let's discuss how AI can transform your business.",
+    "button": "Start a Conversation"
+  },
+  "footer": {
+    "brand": "Building intelligent AI solutions that transform how businesses operate.",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "links": {
+      "solutions": "Solutions",
+      "process": "Process",
+      "pricing": "Pricing",
+      "enterprise": "Enterprise",
+      "about": "About",
+      "careers": "Careers",
+      "blog": "Blog",
+      "press": "Press",
+      "documentation": "Documentation",
+      "apiReference": "API Reference",
+      "status": "Status",
+      "support": "Support"
+    },
+    "copyright": "aisolution. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "scroll": "Scroll",
+  "valueProp": {
+    "title": "The Problem We Solve",
+    "problem": { "title": "Leads Are Lost", "description": "Slow manager responses — average reply takes 2-4 hours. 30% of leads go to competitors.", "stat": "30%", "statLabel": "lost" },
+    "solution": { "title": "AI Responds Instantly", "description": "Automatic responses in 30 seconds. 24/7 availability, CRM integration.", "stat": "30 sec", "statLabel": "response" },
+    "result": { "title": "3x Conversion Growth", "description": "More closed deals, higher customer satisfaction, routine automation.", "stat": "3x", "statLabel": "growth" }
+  },
+  "servicesGrid": {
+    "title": "Our Solutions",
+    "subtitle": "Full spectrum of AI automation for your business",
+    "learnMore": "Learn More",
+    "items": [
+      { "title": "AI Managers for Messengers", "description": "Telegram, WhatsApp, Instagram — 24/7 auto-responses, CRM integration.", "price": "From $1,500/mo", "href": "/services/ai-managers" },
+      { "title": "Personal AI Assistant", "description": "ChatGPT trained on company knowledge. Save 15 hours per week.", "price": "From $2,000/mo", "href": "/services/ai-assistant" },
+      { "title": "Business Analytics", "description": "Interactive dashboards, real-time KPI tracking.", "price": "From $3,000/mo", "href": "/services/analytics" },
+      { "title": "Software Development", "description": "Web, mobile apps, e-commerce — turnkey solutions.", "price": "From $5,000 per MVP", "href": "/services/software-development" },
+      { "title": "Telegram Bots", "description": "Sales, support, marketing, payment automation.", "price": "From $1,500", "href": "/services/telegram-bots" }
+    ]
+  },
+  "socialProof": {
+    "stats": [
+      { "value": "500+", "label": "Projects Delivered" },
+      { "value": "99.9%", "label": "SLA Guarantee" },
+      { "value": "15+", "label": "Hours Saved Weekly" },
+      { "value": "24/7", "label": "Client Support" }
+    ],
+    "quote": "Implementing the AI manager increased our conversion from 18% to 47% in 2 months. Paid for itself in the first month.",
+    "quoteName": "Alexey Petrov",
+    "quoteCompany": "Retail Group",
+    "quoteRole": "CEO"
+  },
+  "services": {
+    "aiManagers": {
+      "eyebrow": "AI AUTOMATION",
+      "title": "AI Managers for Messengers",
+      "subtitle": "Automated customer service that feels human",
+      "learnMore": "Learn more about AI Managers",
+      "telegram": {
+        "name": "Telegram",
+        "features": [
+          "24/7 instant responses",
+          "FAQ handling from knowledge base",
+          "Contextual dialogues with memory",
+          "Escalation to manager for complex queries",
+          "Up to 10,000 messages/month basic plan",
+          "Full CRM system integration",
+          "Detailed conversation analytics"
+        ]
+      },
+      "whatsapp": {
+        "name": "WhatsApp",
+        "features": [
+          "Business API integration",
+          "Multi-agent dialog routing",
+          "Multimedia support: photos, videos, documents",
+          "Quick reply templates",
+          "Auto-responder outside business hours",
+          "Sales team synchronization"
+        ]
+      },
+      "instagram": {
+        "name": "Instagram",
+        "features": [
+          "Direct Messages automation",
+          "Post comment responses",
+          "Lead qualification and sorting",
+          "Story mention tracking",
+          "Marketing campaign integration",
+          "Engagement analytics"
+        ]
+      },
+      "detail": {
+        "hero": {
+          "breadcrumbHome": "Home",
+          "breadcrumbServices": "Services",
+          "breadcrumbCurrent": "AI Managers",
+          "back": "All Solutions",
+          "title": "AI Managers for Telegram, WhatsApp, Instagram",
+          "subtitle": "Automate customer service with AI. Responses in seconds, CRM integration, 3x conversion growth.",
+          "cta": "Start a Project",
+          "trustClients": "500+ clients",
+          "trustUptime": "99.9% uptime",
+          "trustSupport": "24/7 support"
+        },
+        "features": {
+          "title": "Features & Benefits",
+          "items": [
+            { "title": "24/7 Auto-Responses", "description": "AI analyzes customer questions and provides accurate answers instantly.", "benefits": ["Reduced manager workload", "Faster request processing", "Works 24/7 including holidays"] },
+            { "title": "Knowledge Base", "description": "AI learns from your documentation, FAQ, and dialog history for maximum accuracy.", "benefits": ["Auto-updating knowledge base", "Context-aware search", "Answer prioritization"] },
+            { "title": "Contextual Dialogues", "description": "The bot remembers conversation context and maintains natural dialogue with clients.", "benefits": ["Previous interaction memory", "Personalized responses", "Natural language processing"] },
+            { "title": "Request Escalation", "description": "Automatic routing of complex questions to live managers with full context.", "benefits": ["Smart routing", "Context handoff to manager", "Urgency prioritization"] },
+            { "title": "CRM Integration", "description": "Full sync with AmoCRM, Bitrix24, HubSpot and other systems.", "benefits": ["Auto deal creation", "Status updates", "Client segmentation"] },
+            { "title": "Conversation Analytics", "description": "Detailed reports on service quality, customer satisfaction, and efficiency.", "benefits": ["Real-time dashboard", "Report export", "KPI tracking"] },
+            { "title": "Multi-Channel", "description": "Single AI manager for all messengers with centralized control.", "benefits": ["Telegram, WhatsApp, Instagram", "Unified control panel", "Cross-channel history"] },
+            { "title": "Data Security", "description": "All data encrypted, compliant with international security standards.", "benefits": ["AES-256 encryption", "GDPR compliance", "SOC 2 certification"] }
+          ]
+        },
+        "howItWorks": {
+          "title": "Implementation Process",
+          "steps": [
+            { "title": "Consultation & Analysis", "description": "We study your business, customer support processes, and automation goals.", "duration": "30-60 minutes" },
+            { "title": "Strategy & Design", "description": "Develop AI manager architecture, dialog scenarios, integrations.", "duration": "3-5 days" },
+            { "title": "Model Training", "description": "Train the model on your data, FAQ, knowledge base, dialog examples.", "duration": "1-2 weeks" },
+            { "title": "Integration & Setup", "description": "Connect to Telegram, WhatsApp, Instagram, CRM systems, test.", "duration": "3-7 days" },
+            { "title": "Pilot Launch", "description": "Launch limited version, collect feedback, make adjustments.", "duration": "1-2 weeks" },
+            { "title": "Full Deployment", "description": "Move to production, monitor performance, optimize continuously.", "duration": "Ongoing" }
+          ]
+        },
+        "pricing": {
+          "title": "Pricing Plans",
+          "subtitle": "Choose the plan that fits your business",
+          "monthly": "Monthly",
+          "annual": "Annual",
+          "annualDiscount": "Save 20% with annual billing",
+          "perMonth": "/month",
+          "choosePlan": "Choose",
+          "contactUs": "Contact Us",
+          "popular": "Popular",
+          "basic": { "name": "Basic", "price": "$1,500", "priceAnnual": "$1,200", "features": ["Up to 1,000 users", "Up to 5,000 messages/month", "Simple Q&A responses", "1 messenger", "Basic analytics", "Email support", "1 month free updates", "Team training — 2 hours"] },
+          "advanced": { "name": "Advanced", "price": "$5,000", "priceAnnual": "$4,000", "features": ["Up to 10,000 users", "Up to 50,000 messages/month", "AI-powered contextual responses", "3 messengers: Telegram, WhatsApp, Instagram", "CRM integration", "Full analytics & reports", "Priority support 24/7", "6 months updates", "Training — 8 hours", "Custom scenarios"] },
+          "enterprise": { "name": "Enterprise", "price": "Custom", "priceAnnual": "Custom", "priceNote": "Contact us", "features": ["Unlimited users", "Unlimited messages", "Full NLP customization", "All messengers", "Dedicated account manager", "White label optional", "SLA guarantees 99.9% uptime", "Free updates forever", "Unlimited training", "On-premise deployment option"] }
+        },
+        "caseStudies": {
+          "title": "Case Studies & Results",
+          "case1": {
+            "client": "E-commerce Retail", "industry": "E-commerce", "challengeTitle": "Challenge", "challenge": "Low lead conversion from Instagram Direct — 15% of leads were lost due to slow manager responses. Average response time 2-4 hours.", "solutionTitle": "Solution", "solution": "Deployed AI manager for Instagram, integrated with AmoCRM, trained on 500 typical dialogs, set up auto-escalation for complex queries.", "resultsTitle": "Results",
+            "metrics": [ { "value": 42, "suffix": "%", "label": "Lead Conversion", "change": "+27% growth" }, { "value": 30, "suffix": " sec", "label": "Response Time", "change": "was 2-4 hours" }, { "value": 3, "suffix": "x", "label": "ROI Growth", "change": "in 3 months" }, { "value": 92, "suffix": "%", "label": "CSAT Satisfaction", "change": "+18% growth" } ]
+          },
+          "case2": {
+            "client": "SaaS B2B Company", "industry": "B2B SaaS", "challengeTitle": "Challenge", "challenge": "Support team of 5 couldn't handle request volume. Average response time — 6 hours. 30% lead loss.", "solutionTitle": "Solution", "solution": "Deployed AI manager for Telegram and WhatsApp, integrated with HubSpot CRM, automated lead qualification and FAQ.", "resultsTitle": "Results",
+            "metrics": [ { "value": 78, "suffix": "%", "label": "Request Automation", "change": "without manager involvement" }, { "value": 45, "suffix": " sec", "label": "Avg Response Time", "change": "was 6 hours" }, { "value": 60, "suffix": "%", "label": "Cost Reduction", "change": "on support" }, { "value": 95, "suffix": "%", "label": "NPS Score", "change": "+25 points" } ]
+          }
+        },
+        "faq": {
+          "title": "Frequently Asked Questions",
+          "items": [
+            { "question": "How much does AI manager implementation cost?", "answer": "From $1,500/month for the basic plan to custom Enterprise solutions. Cost depends on message volume, number of messengers, and customization level." },
+            { "question": "What are the implementation timelines?", "answer": "From 2 weeks for basic setup to 6-8 weeks for full customization with CRM integrations and training on your data." },
+            { "question": "Does our team need technical expertise?", "answer": "No, we handle all technical tasks. Your team only provides data, FAQ, and feedback for model training." },
+            { "question": "Which messengers are supported?", "answer": "Telegram, WhatsApp Business, Instagram Direct. We can add other platforms on request: Facebook Messenger, Viber, and others." },
+            { "question": "How is data security ensured?", "answer": "All data is encrypted with AES-256, stored on secure servers. GDPR, SOC 2 compliance available. On-premise deployment possible." },
+            { "question": "Can we change plans later?", "answer": "Yes, you can upgrade or downgrade anytime. When upgrading — proportional recalculation." },
+            { "question": "What support is provided?", "answer": "Email support on all plans, 24/7 chat on Advanced and Enterprise, dedicated account manager on Enterprise." },
+            { "question": "Is there a trial period?", "answer": "Yes, 14 days free on the Advanced plan for testing. No credit card required, full functionality." }
+          ]
+        },
+        "cta": {
+          "title": "Ready to automate customer support?",
+          "subtitle": "Sign up for a free consultation and get a personalized implementation plan",
+          "form": { "name": "Your name", "email": "Email", "phone": "Phone", "message": "Tell us about your project", "submit": "Submit Request", "submitting": "Sending..." },
+          "trustClients": "500+ satisfied clients",
+          "trustQuality": "Quality guarantee",
+          "trustFree": "Free consultation"
+        }
+      }
+    },
+    "aiAssistant": {
+      "eyebrow": "PERSONAL ASSISTANT",
+      "title": "AI Assistant Based on Company Knowledge",
+      "subtitle": "ChatGPT trained on your data and processes",
+      "intro": "Imagine an assistant that knows every document, contract, and email in your company. Instant answers save up to 15 hours per week on information search.",
+      "features": [
+        "Trained on all corporate documents",
+        "Integration with Notion, Slack, Google Workspace",
+        "Instant answers to business questions",
+        "Custom instructions for each department",
+        "Resource and procedure recommendations",
+        "Multilingual support: RU, EN, UZ, ZH",
+        "Routine task automation",
+        "Full encryption and confidentiality"
+      ],
+      "callout": "Save 15+ hours per week on searching for information and answering repetitive questions",
+      "ctaDemo": "Try Demo",
+      "ctaLearnMore": "Learn More",
+      "learnMore": "Learn more about AI Assistant"
+    },
+    "analytics": {
+      "eyebrow": "BUSINESS ANALYTICS",
+      "title": "Interactive Dashboard for Company Management",
+      "subtitle": "Track quarterly performance and KPIs in real time",
+      "mockupLabel": "Analytics Dashboard Preview",
+      "features": [
+        {
+          "title": "Data Visualization",
+          "description": "Chart.js and D3.js charts updated in real time. Custom metrics for your business."
+        },
+        {
+          "title": "Quarterly Reporting",
+          "description": "Automatic report generation by quarter. Export to PDF and Excel with one click."
+        },
+        {
+          "title": "Multi-department Views",
+          "description": "Separate dashboards for sales, marketing, operations. API integration with CRM and accounting."
+        }
+      ],
+      "testimonial": {
+        "quote": "We increased decision-making speed by 40% thanks to aisolution's dashboard.",
+        "name": "Alexey Ivanov",
+        "company": "Retail Group"
+      },
+      "learnMore": "Learn more about analytics"
+    },
+    "softwareDev": {
+      "eyebrow": "SOFTWARE DEVELOPMENT",
+      "title": "Custom Software Development",
+      "subtitle": "From idea to deployment — full development cycle",
+      "items": [
+        {
+          "title": "Web Applications",
+          "description": "React, Next.js, TypeScript. Progressive web apps (PWA) with offline mode."
+        },
+        {
+          "title": "Mobile Applications",
+          "description": "iOS and Android. React Native, Flutter — cross-platform solutions."
+        },
+        {
+          "title": "E-commerce Platforms",
+          "description": "Shopify, custom solutions. Payment systems and logistics integration."
+        },
+        {
+          "title": "Enterprise Software",
+          "description": "CRM, ERP systems. Custom solutions for business process management."
+        }
+      ],
+      "pricing": "From $5,000 per MVP. Development timeline 4-8 weeks.",
+      "ctaPrimary": "Book a Consultation",
+      "ctaSecondary": "Learn More",
+      "learnMore": "Learn more about development",
+      "portfolio": {
+        "alpha": "Project Alpha",
+        "beta": "Project Beta",
+        "gamma": "Project Gamma"
+      }
+    },
+    "telegramBots": {
+      "eyebrow": "TELEGRAM BOTS",
+      "title": "Why Telegram Bots Are a Game-Changer",
+      "subtitle": "Automate sales, support, and marketing with one tool",
+      "benefits": [
+        { "label": "Lead generation 24/7" },
+        { "label": "Built-in payment processing" },
+        { "label": "24/7 customer support" },
+        { "label": "Marketing broadcasts" },
+        { "label": "Employee automation" }
+      ],
+      "stats": [
+        { "value": "800M+", "label": "Telegram Users" },
+        { "value": "65%", "label": "Open rate vs 20% email" },
+        { "value": "90%", "label": "Savings vs call center" }
+      ],
+      "useCases": [
+        {
+          "title": "E-commerce",
+          "description": "Product catalog and order placement right in the chat"
+        },
+        {
+          "title": "Support",
+          "description": "Ticket system with automatic request classification"
+        },
+        {
+          "title": "Booking",
+          "description": "Appointment and service booking with online payment"
+        }
+      ],
+      "pricingTiers": {
+        "basic": {
+          "name": "Basic",
+          "price": "$1,500",
+          "features": [
+            "Simple Q&A responses",
+            "FAQ",
+            "Up to 1,000 users",
+            "1 month support"
+          ]
+        },
+        "advanced": {
+          "name": "Advanced",
+          "price": "$5,000",
+          "popular": "Popular",
+          "features": [
+            "Payments",
+            "CRM integration",
+            "AI responses",
+            "Up to 10,000 users",
+            "6 months support"
+          ]
+        },
+        "enterprise": {
+          "name": "Enterprise",
+          "price": "Custom",
+          "features": [
+            "Full customization",
+            "NLP models",
+            "Unlimited users",
+            "Priority support"
+          ]
+        }
+      },
+      "learnMore": "Learn more about Telegram Bots"
+    }
+  }
+}

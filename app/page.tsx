@@ -1,11 +1,10 @@
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
-import { Footer } from '@/components/layout/Footer';
-import { Services } from '@/components/sections/Services';
-import { ProcessSection } from '@/components/sections/ProcessSection';
-import { CasesSection } from '@/components/domain/cases/CasesSection';
-import { AboutSection } from '@/components/sections/AboutSection';
+import { ValuePropSection } from '@/components/sections/ValuePropSection';
+import { ServicesGridSection } from '@/components/sections/ServicesGridSection';
+import { SocialProofSection } from '@/components/sections/SocialProofSection';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { Footer } from '@/components/layout/Footer';
 
 export default function HomePage() {
   return (
@@ -13,10 +12,9 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <CasesSection />
-        <Services />
-        <ProcessSection />
-        <AboutSection />
+        <ValuePropSection />
+        <ServicesGridSection />
+        <SocialProofSection />
         <ContactSection />
       </main>
       <Footer />

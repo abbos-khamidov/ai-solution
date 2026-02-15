@@ -1,51 +1,43 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Noto_Sans_SC } from 'next/font/google';
 import { Toaster } from 'sonner';
-import { IntroProvider } from '@/components/intro/IntroProvider';
-import { LanguageProvider } from '@/lib/i18n/useLanguage';
-import { ScrollProgress } from '@/components/ui/ScrollProgress';
-import { CustomCursor } from '@/components/ui/CustomCursor';
+import { I18nProvider } from '@/components/providers/I18nProvider';
 import './globals.css';
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin', 'cyrillic'],
   display: 'swap',
   variable: '--font-inter',
 });
 
+const notoSansSC = Noto_Sans_SC({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-noto-sc',
+});
+
 export const metadata: Metadata = {
-  title: 'AI Solution | Автоматизация бизнеса с ИИ',
-  description: 'Telegram боты, CRM интеграции и AI-решения для вашего бизнеса. Увеличьте выручку на 3x с помощью AI-автоматизации.',
-  keywords: 'AI, автоматизация, Telegram боты, CRM, чат-боты, бизнес, AmoCRM, Bitrix24, WhatsApp, Instagram',
-  authors: [{ name: 'AI Solution' }],
+  title: 'AI Solution | Intelligent AI Solutions',
+  description: 'We design and deploy AI systems that transform how businesses operate. From intelligent automation to predictive analytics — built for scale.',
+  keywords: 'AI, artificial intelligence, machine learning, automation, enterprise AI, predictive analytics',
+  authors: [{ name: 'aisolution' }],
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   openGraph: {
-    title: 'AI Solution | Автоматизация бизнеса с ИИ',
-    description: 'Telegram боты, CRM интеграции и AI-решения для вашего бизнеса. Увеличьте выручку на 3x с помощью AI-автоматизации.',
+    title: 'AI Solution | Intelligent AI Solutions',
+    description: 'We design and deploy AI systems that transform how businesses operate.',
     type: 'website',
-    locale: 'ru_RU',
+    locale: 'en_US',
     siteName: 'AI Solution',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Solution | Автоматизация бизнеса с ИИ',
-    description: 'Telegram боты, CRM интеграции и AI-решения для вашего бизнеса.',
+    title: 'AI Solution | Intelligent AI Solutions',
+    description: 'We design and deploy AI systems that transform how businesses operate.',
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    // Add your verification codes when available
-    // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
   },
 };
 
@@ -55,16 +47,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" className={`scroll-smooth ${inter.variable}`}>
-      <body className={inter.className}>
-        <LanguageProvider>
-          <IntroProvider>
-            <CustomCursor />
-            <ScrollProgress />
-            {children}
-          </IntroProvider>
-          <Toaster richColors position="top-center" />
-        </LanguageProvider>
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${notoSansSC.variable}`}>
+      <body className={`${inter.className} bg-[#FAFBFC] text-[#0F1419]`}>
+        <I18nProvider>
+          {children}
+        </I18nProvider>
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );

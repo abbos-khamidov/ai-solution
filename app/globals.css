@@ -2,222 +2,442 @@
 @tailwind components;
 @tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
+/* ============================================
+   DESIGN TOKENS - Premium Light Theme
+   Inspired by Linear/OpenAI aesthetic
+   ============================================ */
 
 :root {
-    --font-size: 16px;
+  /* Core Palette */
+  --background: #FAFBFC;
+  --background-secondary: #F0F2F5;
+  --foreground: #0F1419;
+  --foreground-secondary: #536471;
+  --foreground-muted: #8899A6;
 
-    /* Premium Dark Palette - Gold/Amber accent */
-    --background: #030303;
-    --background-secondary: #0A0A0A;
-    --foreground: #E8E8E8;
+  /* Accent Colors */
+  --accent-blue: #0066FF;
+  --accent-blue-dark: #0052CC;
+  --accent-blue-light: #E6F0FF;
+  --accent-cyan: #00D9FF;
+  --accent-cyan-dark: #00B8D9;
 
-    /* Gold accents - luxury, premium */
-    --primary: #D4A853;
-    --primary-dark: #B8923D;
-    --accent: #E8B86D;
-    --accent-dark: #C9A227;
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #0066FF 0%, #00D9FF 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 217, 255, 0.05) 100%);
+  --gradient-hero: linear-gradient(180deg, #FAFBFC 0%, #F0F2F5 50%, #E8ECF1 100%);
+  --gradient-mesh: radial-gradient(at 20% 30%, rgba(0, 102, 255, 0.07) 0%, transparent 50%),
+    radial-gradient(at 80% 60%, rgba(0, 217, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(0, 102, 255, 0.03) 0%, transparent 70%);
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #D4A853 0%, #E8B86D 50%, #C9A227 100%);
-    --gradient-mesh: radial-gradient(at 20% 30%, rgba(212, 168, 83, 0.12) 0%, transparent 50%),
-        radial-gradient(at 80% 60%, rgba(201, 162, 39, 0.08) 0%, transparent 50%);
+  /* Cards & Surfaces */
+  --card: #FFFFFF;
+  --card-foreground: #0F1419;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.04);
 
-    --card: #141414;
-    --card-foreground: #E8E8E8;
-    --popover: #141414;
-    --popover-foreground: #E8E8E8;
-    --primary-foreground: #030303;
-    --secondary: #1A1A1A;
-    --secondary-foreground: #E8E8E8;
-    --muted: #1A1A1A;
-    --muted-foreground: #888888;
-    --destructive: #EF4444;
-    --destructive-foreground: #ffffff;
-    --border: rgba(255, 255, 255, 0.08);
-    --input: rgba(255, 255, 255, 0.05);
-    --input-background: rgba(255, 255, 255, 0.03);
-    --switch-background: #1A1A1A;
-    --font-weight-medium: 500;
-    --font-weight-normal: 400;
-    --ring: rgba(212, 168, 83, 0.5);
-    --chart-1: #D4A853;
-    --chart-2: #E8B86D;
-    --chart-3: #C9A227;
-    --radius: 1rem;
-    --sidebar: #141414;
-    --sidebar-foreground: #E8E8E8;
-    --sidebar-primary: #D4A853;
-    --sidebar-primary-foreground: #030303;
-    --sidebar-accent: #1A1A1A;
-    --sidebar-accent-foreground: #E8E8E8;
-    --sidebar-border: rgba(255, 255, 255, 0.08);
-    --sidebar-ring: rgba(212, 168, 83, 0.5);
+  /* UI Elements */
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --input: rgba(0, 0, 0, 0.04);
+  --input-background: #FFFFFF;
+  --ring: rgba(0, 102, 255, 0.4);
+  --radius: 0.875rem;
+
+  /* Semantic */
+  --primary: #0066FF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F0F2F5;
+  --secondary-foreground: #0F1419;
+  --muted: #F0F2F5;
+  --muted-foreground: #8899A6;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+  /* Z-Index Scale */
+  --z-background: 0;
+  --z-content: 10;
+  --z-floating-cta: 30;
+  --z-header: 50;
+  --z-modal: 60;
+
+  /* Animation Tokens */
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.8s;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 @layer base {
-    * {
-        outline-color: var(--ring);
-        border-color: var(--border);
-    }
+  * {
+    outline-color: var(--ring);
+    border-color: var(--border);
+  }
 
-    body {
-        background-color: var(--background);
-        color: var(--foreground);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        position: relative;
-    }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
 
-    html {
-        scroll-behavior: smooth;
-        position: relative;
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Reduced motion - respect user preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
+  }
 }
 
-html {
-    font-size: var(--font-size);
-}
+/* ============================================
+   GLASSMORPHISM UTILITIES
+   ============================================ */
 
-/* Glassmorphism utility */
 .glass {
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
 .glass-strong {
-    background: rgba(20, 20, 20, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(212, 168, 83, 0.2);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
-/* Glow effects - gold */
-.glow-gold {
-    box-shadow: 0 0 30px rgba(212, 168, 83, 0.25),
-        0 0 60px rgba(212, 168, 83, 0.15);
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
 }
+
+.glass-card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* ============================================
+   GRADIENT TEXT & EFFECTS
+   ============================================ */
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-subtle {
+  background: linear-gradient(135deg, #0F1419 0%, #536471 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-mesh {
+  background-color: var(--background);
+  background-image: var(--gradient-mesh);
+}
+
+.bg-gradient-hero {
+  background: var(--gradient-hero);
+  background-image: var(--gradient-mesh);
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
 
 .glow-blue {
-    box-shadow: 0 0 20px rgba(212, 168, 83, 0.3),
-        0 0 40px rgba(212, 168, 83, 0.2);
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.15),
+    0 0 60px rgba(0, 102, 255, 0.08);
 }
 
-.glow-purple {
-    box-shadow: 0 0 20px rgba(212, 168, 83, 0.25);
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.15),
+    0 0 60px rgba(0, 217, 255, 0.08);
 }
 
-.glow-emerald {
-    box-shadow: 0 0 20px rgba(212, 168, 83, 0.3);
+.glow-gradient {
+  box-shadow: 0 0 30px rgba(0, 102, 255, 0.12),
+    0 0 60px rgba(0, 217, 255, 0.08),
+    0 0 90px rgba(0, 102, 255, 0.04);
 }
 
-/* Text gradient - gold */
-.text-gradient {
-    background: linear-gradient(135deg, #D4A853 0%, #E8B86D 50%, #C9A227 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 
-/* Mesh gradient background */
-.mesh-gradient {
-    background: #030303;
-    background-image: radial-gradient(at 20% 30%, rgba(212, 168, 83, 0.1) 0%, transparent 50%),
-        radial-gradient(at 80% 60%, rgba(201, 162, 39, 0.06) 0%, transparent 50%);
-}
-
-/* Animations */
 @keyframes float {
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-20px) translateZ(0); }
+}
 
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg) translateZ(0); }
+  33% { transform: translateY(-12px) rotate(1deg) translateZ(0); }
+  66% { transform: translateY(-6px) rotate(-1deg) translateZ(0); }
 }
 
 @keyframes pulse-glow {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 @keyframes gradient-shift {
-
-    0%,
-    100% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-.animate-float {
-    animation: float 6s ease-in-out infinite;
+@keyframes morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%;
+  }
+  75% {
+    border-radius: 40% 60% 50% 40% / 60% 50% 40% 70%;
+  }
 }
 
-.animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateZ(0); }
+  100% { transform: translateX(100%) translateZ(0); }
 }
 
-.animate-rotate {
-    animation: rotate 20s linear infinite;
+@keyframes spin-slow {
+  from { transform: rotate(0deg) translateZ(0); }
+  to { transform: rotate(360deg) translateZ(0); }
 }
 
-.animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 3s ease infinite;
-}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-gradient { background-size: 200% 200%; animation: gradient-shift 4s ease infinite; }
+.animate-morph { animation: morph 8s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 30s linear infinite; }
 
-/* Custom scrollbar */
+/* Animation delay utilities */
+.animation-delay-1000 { animation-delay: 1s; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-3000 { animation-delay: 3s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* ============================================
+   CUSTOM SCROLLBAR - Subtle Light Theme
+   ============================================ */
+
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #D4A853 0%, #C9A227 100%);
-    border-radius: 4px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #E8B86D 0%, #D4A853 100%);
+  background: rgba(0, 0, 0, 0.25);
 }
 
-/* Selection */
+/* ============================================
+   SELECTION
+   ============================================ */
+
 ::selection {
-    background: rgba(212, 168, 83, 0.3);
-    color: #ffffff;
+  background: rgba(0, 102, 255, 0.15);
+  color: #0F1419;
 }
 
 ::-moz-selection {
-    background: rgba(212, 168, 83, 0.3);
-    color: #ffffff;
+  background: rgba(0, 102, 255, 0.15);
+  color: #0F1419;
+}
+
+/* ============================================
+   SECTION LAYOUT STABILITY
+   ============================================ */
+
+.section-container {
+  position: relative;
+  z-index: var(--z-content);
+  overflow: hidden;
+}
+
+.section-container > * {
+  position: relative;
+}
+
+/* Pin spacer stability */
+.pin-spacer {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Horizontal scroll container */
+.horizontal-scroll-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   GPU ACCELERATION HELPERS
+   ============================================ */
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   RUSSIAN TEXT OVERFLOW FIXES
+   ============================================ */
+
+p, span, li, td, th, blockquote, label {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+@media (max-width: 640px) {
+  .text-xl { font-size: 1.125rem; line-height: 1.6; }
+  .text-lg { font-size: 1rem; line-height: 1.6; }
+  .text-4xl { font-size: 1.875rem; line-height: 1.2; }
+  .text-5xl { font-size: 2.25rem; line-height: 1.15; }
+  .text-6xl { font-size: 2.75rem; line-height: 1.1; }
+}
+
+/* ============================================
+   HERO PHONE INPUT (react-phone-number-input)
+   ============================================ */
+
+.hero-phone-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  padding: 0 16px;
+  background: #FAFBFC;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-phone-input:focus-within {
+  border-color: #0066FF;
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.12);
+  background: #FFFFFF;
+}
+
+.hero-phone-input .PhoneInputCountry {
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+
+.hero-phone-input .PhoneInputCountrySelect {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.hero-phone-input .PhoneInputCountrySelect:focus {
+  outline: none;
+}
+
+.hero-phone-input .PhoneInputCountryIcon {
+  width: 24px;
+  height: 18px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.hero-phone-input .PhoneInputCountryIconImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-phone-input .PhoneInputInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 14px 0;
+  color: #0F1419;
+}
+
+.hero-phone-input .PhoneInputInput::placeholder {
+  color: #8899A6;
+}
+
+/* ============================================
+   LANGUAGE-SPECIFIC FONT OVERRIDES
+   ============================================ */
+
+.lang-zh body,
+.lang-zh h1,
+.lang-zh h2,
+.lang-zh h3,
+.lang-zh h4,
+.lang-zh h5,
+.lang-zh h6,
+.lang-zh p,
+.lang-zh span,
+.lang-zh a,
+.lang-zh button,
+.lang-zh input,
+.lang-zh textarea,
+.lang-zh select {
+  font-family: var(--font-noto-sc), var(--font-inter), "Inter", "Noto Sans SC", system-ui, sans-serif;
 }
