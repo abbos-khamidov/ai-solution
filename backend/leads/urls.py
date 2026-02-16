@@ -9,4 +9,5 @@ urlpatterns = [
     path("api/contact", contact, name="contact"),
     path("api/contact/", contact, name="contact-slash"),
     path("api/health", health, name="health"),
+    path("api/health/", health, name="health-slash"),
 ]
