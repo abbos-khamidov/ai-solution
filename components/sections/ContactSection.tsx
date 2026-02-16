@@ -9,6 +9,7 @@ import { ArrowRight, Mail, MessageSquare, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { MagneticButton } from '@/components/animations/MagneticButton';
+import { toast } from 'sonner';
 
 export function ContactSection() {
   const { t } = useTranslation();
@@ -39,6 +40,11 @@ export function ContactSection() {
         throw new Error('Request failed');
       }
       setFormData({ name: '', email: '', company: '', message: '' });
+      toast.success(t('hero.callback.successTitle'), {
+        description: t('hero.callback.successMessage'),
+      });
+    } catch {
+      toast.error(t('hero.callback.errorMessage'));
     } finally {
       setIsSubmitting(false);
     }

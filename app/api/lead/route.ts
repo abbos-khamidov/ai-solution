@@ -9,7 +9,11 @@ export async function POST(request: Request) {
   const backendUrl = getBackendUrl();
   if (!backendUrl) {
     return NextResponse.json(
-      { error: 'Backend not configured', code: 'BACKEND_MISSING' },
+      {
+        error: 'Backend not configured',
+        code: 'BACKEND_MISSING',
+        details: 'Set DJANGO_API_BASE_URL in environment variables',
+      },
       { status: 503 }
     );
   }

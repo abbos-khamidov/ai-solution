@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     const apiKey = (process.env.OPENAI_API_KEY || '').trim().replace(/\s+/g, '');
     if (!apiKey) {
       return NextResponse.json(
-        { error: 'Chat is not configured. Missing OPENAI_API_KEY.' },
+        { error: 'Ассистент временно недоступен. Оставьте заявку в форме на сайте — мы ответим вам.' },
         { status: 503 }
       );
     }
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
       });
     }
     const errorText = isKeyError
-      ? 'Неверный или недействительный ключ OpenAI. Проверьте OPENAI_API_KEY в .env и перезапустите сервер.'
+      ? 'Ассистент временно недоступен. Оставьте заявку в форме на сайте — мы ответим вам.'
       : 'Не удалось получить ответ. Попробуйте позже.';
     return NextResponse.json({ error: errorText }, { status: 500 });
   }

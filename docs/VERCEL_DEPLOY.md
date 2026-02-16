@@ -1,5 +1,22 @@
 # Деплой на Vercel
 
+## Срочно: чат-ассистент не работает (Missing OPENAI_API_KEY)
+
+Если в деплое видите «Ассистент временно недоступен» или «Missing OPENAI_API_KEY»:
+
+1. Зайдите в [Vercel Dashboard](https://vercel.com) → ваш проект (например **ai-solution-amber**).
+2. **Settings** → **Environment Variables**.
+3. Добавьте переменную:
+   - **Name:** `OPENAI_API_KEY`
+   - **Value:** ваш ключ OpenAI (начинается с `sk-proj-...`), без пробелов и кавычек.
+   - **Environment:** отметьте **Production** (и при необходимости **Preview**).
+4. Сохраните (**Save**).
+5. **Redeploy:** вкладка **Deployments** → у последнего деплоя три точки **⋯** → **Redeploy** (без кэша). Или сделайте новый коммит и пуш — Vercel задеплоит сам.
+
+После редеплоя чат на сайте начнёт работать.
+
+---
+
 ## Переменные окружения (Environment Variables)
 
 В **Vercel** → проект → **Settings** → **Environment Variables** задайте:

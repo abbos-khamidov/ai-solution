@@ -23,3 +23,12 @@ Thumbs.db
 # logs
 *.log
 npm-debug.log*
+
+# python / django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+backend/.env
+backend/db.sqlite3
