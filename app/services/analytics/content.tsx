@@ -289,7 +289,7 @@ export default function AnalyticsContent() {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, service: 'analytics' }),
+        body: JSON.stringify({ ...data, consent: true, source: 'analytics-page', service: 'analytics', website: '' }),
       });
       if (!res.ok) throw new Error();
       toast.success('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');

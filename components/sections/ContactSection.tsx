@@ -23,10 +23,25 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1500));
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', company: '', message: '' });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          consent: true,
+          service: 'contact',
+          source: 'contact-section',
+          website: '',
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+      setFormData({ name: '', email: '', company: '', message: '' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

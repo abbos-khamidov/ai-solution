@@ -80,7 +80,7 @@ export default function AIAssistantContent() {
   const { register, handleSubmit, formState: { isSubmitting }, reset } = useForm<FormData>({ resolver: zodResolver(formSchema) });
   const onSubmit = async (data: FormData) => {
     try {
-      const res = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, service: 'ai-assistant', language: i18n.language }) });
+      const res = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, consent: true, source: 'ai-assistant-page', service: 'ai-assistant', language: i18n.language, website: '' }) });
       if (!res.ok) throw new Error();
       toast.success('Заявка отправлена!');
       reset();

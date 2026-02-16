@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Noto_Sans_SC } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { I18nProvider } from '@/components/providers/I18nProvider';
+import { ChatAssistant } from '@/components/assistant/ChatAssistant';
 import './globals.css';
 
 const inter = Inter({
@@ -53,6 +54,7 @@ export default function RootLayout({
           {children}
         </I18nProvider>
         <Toaster richColors position="top-center" />
+        <ChatAssistant />
       </body>
     </html>
   );

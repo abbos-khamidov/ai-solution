@@ -80,7 +80,11 @@ export function Hero() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           phone: data.phone,
+          consent: data.consent,
+          source: 'hero',
+          service: 'hero',
           language: i18n.language,
+          website: '',
         }),
       });
 

@@ -1,43 +1,39 @@
 import { NextResponse } from "next/server";
-import { contactSchema } from "@/lib/schema/contact";
-import { sendToTelegram } from "@/lib/integrations/telegram";
-import { sendWithResend } from "@/lib/integrations/email";
+
+function getBackendUrl(): string | null {
+  const url = process.env.DJANGO_API_BASE_URL?.trim();
+  return url ? url.replace(/\/+$/, '') : null;
+}
 
 export async function POST(request: Request) {
+  const backendUrl = getBackendUrl();
+  if (!backendUrl) {
+    return NextResponse.json(
+      { error: 'Backend not configured', code: 'BACKEND_MISSING' },
+      { status: 503 }
+    );
+  }
+
   try {
-    const body = await request.json();
-    if (body.website && String(body.website).trim() !== '') {
-      return NextResponse.json({ ok: true });
+    const body = await request.text();
+    const response = await fetch(`${backendUrl}/api/contact`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Forwarded-For": request.headers.get("x-forwarded-for") ?? "",
+        "User-Agent": request.headers.get("user-agent") ?? "",
+      },
+      body,
+      cache: "no-store",
+    });
+
+    const text = await response.text();
+    try {
+      return NextResponse.json(JSON.parse(text), { status: response.status });
+    } catch {
+      return NextResponse.json({ error: text || "Bad backend response" }, { status: response.status });
     }
-    const parsed = contactSchema.safeParse(body);
-    if (!parsed.success) {
-      return NextResponse.json({ error: "Invalid data", issues: parsed.error.issues }, { status: 400 });
-    }
-
-    const data = parsed.data;
-    const [telegramResult, emailResult] = await Promise.allSettled([
-      sendToTelegram(data),
-      sendWithResend({
-        to: process.env.LEADS_EMAIL_TO || data.email,
-        subject: "New contact form submission",
-        html: `
-          <h2>New Contact</h2>
-          <p><strong>Name:</strong> ${data.name}</p>
-          <p><strong>Email:</strong> ${data.email}</p>
-          ${data.message ? `<p><strong>Message:</strong> ${data.message}</p>` : ''}
-        `
-      })
-    ]);
-
-    const telegramOk = telegramResult.status === "fulfilled" && telegramResult.value.ok;
-    const emailOk = emailResult.status === "fulfilled" && emailResult.value.ok;
-
-    if (!telegramOk && !emailOk) {
-      return NextResponse.json({ error: "Delivery failed" }, { status: 502 });
-    }
-
-    return NextResponse.json({ ok: true });
   } catch {
-    return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
+    return NextResponse.json({ error: "Backend unavailable" }, { status: 502 });
   }
 }

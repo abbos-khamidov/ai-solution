@@ -113,7 +113,7 @@ export default function AIManagersContent() {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, service: 'ai-managers', language: i18n.language }),
+        body: JSON.stringify({ ...data, consent: true, source: 'ai-managers-page', service: 'ai-managers', language: i18n.language, website: '' }),
       });
       if (!res.ok) throw new Error();
       toast.success(t(`${T}.cta.form.submit`));

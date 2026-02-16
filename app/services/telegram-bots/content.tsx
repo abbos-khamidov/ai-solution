@@ -295,7 +295,7 @@ export default function TelegramBotsContent() {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, service: 'telegram-bots', language: i18n.language }),
+        body: JSON.stringify({ ...data, consent: true, source: 'telegram-bots-page', service: 'telegram-bots', language: i18n.language, website: '' }),
       });
       if (!res.ok) throw new Error();
       toast.success('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
