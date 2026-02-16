@@ -295,13 +295,13 @@ export function Hero() {
               stagger={0.06}
               delay={0.4}
               ease="power3.out"
-              className="text-display-xl md:text-[5.5rem] leading-[1.05] tracking-tight font-bold text-[#0F1419] mb-6 max-w-3xl"
+              className="text-display-xl md:text-[5.5rem] leading-[1.08] tracking-tight font-bold text-[#0F1419] mb-6 max-w-3xl"
             />
 
             {/* Subtitle */}
             <p
               ref={subtitleRef}
-              className="text-body-lg md:text-xl text-[#536471] max-w-xl mb-10 opacity-0 leading-relaxed"
+              className="text-body-lg md:text-xl text-[#536471] max-w-2xl mb-10 opacity-0 leading-relaxed"
             >
               {t('hero.subtitle')}
             </p>
@@ -317,17 +317,17 @@ export function Hero() {
                   className="relative inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-white rounded-xl bg-gradient-to-r from-[#0066FF] to-[#00D9FF] shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-[#0066FF] focus:ring-offset-2"
                 >
                   {t('hero.cta')}
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-5 h-5 shrink-0" />
                 </a>
               </MagneticButton>
 
               <MagneticButton strength={0.2} radius={100} className="opacity-0">
                 <a
-                  href="#features"
+                  href="#solutions"
                   className="inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold text-[#0F1419] rounded-xl bg-white border border-black/[0.08] shadow-card hover:shadow-card-hover transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0066FF] focus:ring-offset-2"
                 >
                   {t('hero.ctaSecondary')}
-                  <Sparkles className="w-5 h-5 text-[#0066FF]" />
+                  <Sparkles className="w-5 h-5 shrink-0 text-[#0066FF]" />
                 </a>
               </MagneticButton>
             </div>

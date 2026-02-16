@@ -7,11 +7,11 @@
     "startProject": "开始项目"
   },
   "hero": {
-    "badge": "现已推出 — AI驱动的自动化",
-    "title": "用智能AI构建未来",
-    "subtitle": "我们设计和部署改变企业运营方式的AI系统。从智能自动化到预测分析——专为规模化而构建。",
-    "cta": "立即开始",
-    "ctaSecondary": "查看案例",
+    "badge": "AI在销售个人账号中运行 — 线索零流失",
+    "title": "高达30%的线索在首次回复前流失。我们把他们拉回成交流程。",
+    "subtitle": "基于Telethon的AI助手在您的账号中24/7运行：筛选线索（冷/温/热）并抢先回复。非脚本 — 一套可靠业务工具，结果可预期。",
+    "cta": "测算收益",
+    "ctaSecondary": "查看解决方案",
     "trust": {
       "soc2": "SOC 2 合规认证",
       "enterprise": "企业级就绪",
@@ -207,13 +207,24 @@
     "title": "我们的解决方案",
     "subtitle": "为您的企业提供全方位AI自动化",
     "learnMore": "了解更多",
+    "hoverHint": "点击了解更多 →",
+    "deploymentPrice": "+ $300 部署",
+    "poweredBy": "Powered by Telethon & LLM Fine-tuning",
     "items": [
-      { "title": "即时通讯AI管理器", "description": "Telegram、WhatsApp、Instagram——24/7自动回复，CRM集成。", "price": "$1,500/月起", "href": "/services/ai-managers" },
-      { "title": "个人AI助手", "description": "基于企业知识训练的ChatGPT。每周节省15小时。", "price": "$2,000/月起", "href": "/services/ai-assistant" },
-      { "title": "商业分析", "description": "互动仪表板，实时KPI追踪。", "price": "$3,000/月起", "href": "/services/analytics" },
-      { "title": "软件开发", "description": "Web、移动应用、电商——交钥匙方案。", "price": "MVP $5,000起", "href": "/services/software-development" },
-      { "title": "Telegram机器人", "description": "销售、支持、营销、支付自动化。", "price": "$1,500起", "href": "/services/telegram-bots" }
+      { "title": "AI-Sales Agent", "description": "Telegram 用户机器人、线索挽回、24/7 分级。集成数据库与自定义管理后台。", "price": "$99/月起", "href": "/services/ai-managers", "poweredBy": true },
+      { "title": "AI-Business Assistant", "description": "内部知识库与训练好的 FAQ 模型。集成数据库与自定义管理后台。", "price": "$99/月起", "href": "/services/ai-assistant" },
+      { "title": "Smart Booking System", "description": "预约、日历同步。数据库集成与自定义管理后台。", "price": "$99/月起", "href": "/services/telegram-bots" },
+      { "title": "Lead Analytics Dashboard", "description": "实时 KPI 与线索评分（冷/温/热）。集成数据库与自定义管理后台。", "price": "$99/月起", "href": "/services/analytics" },
+      { "title": "Custom Software Development", "description": "高端 MVP 与复杂机器人逻辑。集成数据库与自定义管理后台。", "price": "$5,000 MVP", "href": "/services/software-development" }
     ]
+  },
+  "leadQualificationShowcase": {
+    "title": "AI如何识别您的客户",
+    "subtitle": "实时自动客户分层",
+    "cold": { "label": "冷", "message": "你好，什么价格？", "action": "已发送价目表", "status": "在邮件列表中" },
+    "warm": { "label": "温", "message": "这套房能按揭吗？条件怎样？", "action": "已回复银行条件", "status": "内容培育中" },
+    "hot": { "label": "热", "message": "明天10点看房。定金付到哪里？", "action": "已即时推送给销售", "status": "紧急跟进", "notification": "通知销售" },
+    "footnote": "实时线索分级界面示例"
   },
   "socialProof": {
     "stats": [

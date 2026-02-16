@@ -24,7 +24,7 @@ export function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const navLinks = [
-    { label: t('nav.solutions'), href: '#services' },
+    { label: t('nav.solutions'), href: '#solutions' },
     { label: t('nav.process'), href: '#process' },
     { label: t('nav.about'), href: '#about' },
     { label: t('nav.contact'), href: '#contact' },

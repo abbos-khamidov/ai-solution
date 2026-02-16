@@ -369,7 +369,7 @@ export default function TelegramBotsContent() {
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 py-24 w-full">
           {/* Back button */}
           <BackButton
-            href="/#telegram-bots"
+            href="/#solutions"
             label="← Назад к услугам"
             className="text-white/90 hover:text-white mb-8"
           />

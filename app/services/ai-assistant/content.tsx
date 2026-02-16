@@ -96,7 +96,7 @@ export default function AIAssistantContent() {
         <div className="absolute top-10 right-10 w-72 h-72 bg-white/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
         <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 py-24 w-full">
-          <BackButton href="/#services" label="Ко всем решениям" className="text-white/90 hover:text-white mb-8" />
+          <BackButton href="/#solutions" label="Ко всем решениям" className="text-white/90 hover:text-white mb-8" />
           <Breadcrumb className="text-white/80 mb-8" items={[{ label: 'Главная', href: '/' }, { label: 'Услуги' }, { label: 'ИИ-ассистент' }]} />
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl leading-tight">Персональный ИИ-ассистент на базе знаний компании</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-8 leading-relaxed">ChatGPT, обученный на ваших данных. Мгновенные ответы на любые вопросы о компании. Экономия 15+ часов в неделю.</p>

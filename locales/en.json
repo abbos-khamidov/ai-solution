@@ -7,11 +7,11 @@
     "startProject": "Start a Project"
   },
   "hero": {
-    "badge": "Now available — AI-powered automation",
-    "title": "Build the Future with Intelligent AI",
-    "subtitle": "We design and deploy AI systems that transform how businesses operate. From intelligent automation to predictive analytics — built for scale.",
-    "cta": "Get Started",
-    "ctaSecondary": "See Our Work",
+    "badge": "AI in your managers' accounts — zero lead leakage",
+    "title": "Up to 30% of leads are lost before the first reply. We bring them back into the pipeline.",
+    "subtitle": "Telethon-based AI assistant runs in your accounts 24/7: qualifies leads (Cold / Warm / Hot) and replies first. No scripts — one reliable business tool with predictable results.",
+    "cta": "Calculate ROI",
+    "ctaSecondary": "View solutions",
     "trust": {
       "soc2": "SOC 2 Compliant",
       "enterprise": "Enterprise Ready",
@@ -207,13 +207,40 @@
     "title": "Our Solutions",
     "subtitle": "Full spectrum of AI automation for your business",
     "learnMore": "Learn More",
+    "hoverHint": "Click to learn more →",
+    "deploymentPrice": "+ $300 setup",
+    "poweredBy": "Powered by Telethon & LLM Fine-tuning",
     "items": [
-      { "title": "AI Managers for Messengers", "description": "Telegram, WhatsApp, Instagram — 24/7 auto-responses, CRM integration.", "price": "From $1,500/mo", "href": "/services/ai-managers" },
-      { "title": "Personal AI Assistant", "description": "ChatGPT trained on company knowledge. Save 15 hours per week.", "price": "From $2,000/mo", "href": "/services/ai-assistant" },
-      { "title": "Business Analytics", "description": "Interactive dashboards, real-time KPI tracking.", "price": "From $3,000/mo", "href": "/services/analytics" },
-      { "title": "Software Development", "description": "Web, mobile apps, e-commerce — turnkey solutions.", "price": "From $5,000 per MVP", "href": "/services/software-development" },
-      { "title": "Telegram Bots", "description": "Sales, support, marketing, payment automation.", "price": "From $1,500", "href": "/services/telegram-bots" }
+      { "title": "AI-Sales Agent", "description": "Telegram userbots, lead recovery, 24/7 qualification. Integrated database and custom admin panel.", "price": "From $99/mo", "href": "/services/ai-managers", "poweredBy": true },
+      { "title": "AI-Business Assistant", "description": "Internal knowledge bases and trained FAQ models. Integrated database and custom admin panel.", "price": "From $99/mo", "href": "/services/ai-assistant" },
+      { "title": "Smart Booking System", "description": "Appointments, calendar sync. DB integration and custom admin panel.", "price": "From $99/mo", "href": "/services/telegram-bots" },
+      { "title": "Lead Analytics Dashboard", "description": "Real-time KPI tracking and lead scoring (Cold/Warm/Hot). Integrated database and custom admin panel.", "price": "From $99/mo", "href": "/services/analytics" },
+      { "title": "Custom Software Development", "description": "High-end MVP development and complex bot logic. Integrated database and custom admin panel.", "price": "$5,000 MVP", "href": "/services/software-development" }
     ]
+  },
+  "leadQualificationShowcase": {
+    "title": "How AI sees your clients",
+    "subtitle": "Real-time automatic segmentation of your base",
+    "cold": {
+      "label": "Cold",
+      "message": "Hi, what's the price?",
+      "action": "Price list sent",
+      "status": "In mailing list"
+    },
+    "warm": {
+      "label": "Warm",
+      "message": "Is this property available on mortgage? What are the terms?",
+      "action": "Answered with bank conditions",
+      "status": "Nurturing with content"
+    },
+    "hot": {
+      "label": "Hot",
+      "message": "Ready to view tomorrow at 10:00. Where do I pay the deposit?",
+      "action": "Instant push to manager",
+      "status": "URGENT — TO SALES",
+      "notification": "Notify manager"
+    },
+    "footnote": "Example of real-time lead qualification interface"
   },
   "socialProof": {
     "stats": [

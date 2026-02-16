@@ -7,11 +7,11 @@
     "startProject": "Loyihani boshlash"
   },
   "hero": {
-    "badge": "Hozir mavjud — Sun'iy intellektga asoslangan avtomatlashtirish",
-    "title": "Sun'iy intellekt bilan kelajakni yarating",
-    "subtitle": "Biz biznes ishlashini o'zgartiradigan sun'iy intellekt tizimlarini loyihalaymiz va joylashtiramiz. Aqlli avtomatlashtirishdan bashoratli tahlilgacha — kengaytirish uchun yaratilgan.",
-    "cta": "Boshlash",
-    "ctaSecondary": "Ishlarimizni ko'ring",
+    "badge": "Menejerlar hisoblarida AI — lidersiz yo'qotishsiz",
+    "title": "Birinchi javobgacha lidalarning 30% gacha yo'qoladi. Biz ularni sotuvga qaytaramiz.",
+    "subtitle": "Telethon asosidagi AI yordamchi hisoblaringizda 24/7 ishlaydi: lidalarni saralaydi (Cold / Warm / Hot) va birinchi javob beradi. Skriptsiz — bitta ishonchli biznes vositasi.",
+    "cta": "Foyda hisoblash",
+    "ctaSecondary": "Yechimlarni ko'rish",
     "trust": {
       "soc2": "SOC 2 Sertifikatlangan",
       "enterprise": "Korporativ tayyor",
@@ -207,13 +207,24 @@
     "title": "Bizning yechimlar",
     "subtitle": "Biznesingiz uchun SI avtomatlashtirish to'liq spektri",
     "learnMore": "Batafsil",
+    "hoverHint": "Batafsil bilish uchun bosing →",
+    "deploymentPrice": "+ $300 joylashtirish",
+    "poweredBy": "Telethon va LLM Fine-tuning",
     "items": [
-      { "title": "Messenjerlar uchun SI-menejerlar", "description": "Telegram, WhatsApp, Instagram — 24/7 avtojavoblar, CRM integratsiya.", "price": "$1,500/oy dan", "href": "/services/ai-managers" },
-      { "title": "Shaxsiy SI-assistent", "description": "Kompaniya bilimlarida o'qitilgan ChatGPT. Haftasiga 15 soat tejash.", "price": "$2,000/oy dan", "href": "/services/ai-assistant" },
-      { "title": "Biznes-tahlil", "description": "Interaktiv dashboardlar, real vaqtda KPI kuzatish.", "price": "$3,000/oy dan", "href": "/services/analytics" },
-      { "title": "Dasturiy ta'minot", "description": "Veb, mobil ilovalar, e-commerce — kalit topshiriq.", "price": "MVP uchun $5,000 dan", "href": "/services/software-development" },
-      { "title": "Telegram botlar", "description": "Sotuvlar, qo'llab-quvvatlash, marketing, to'lov avtomatlashtirish.", "price": "$1,500 dan", "href": "/services/telegram-bots" }
+      { "title": "AI-Sales Agent", "description": "Telegram userbotlar, lidalarni qayta tiklash, 24/7 saralash. Integratsiyalangan baza va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/ai-managers", "poweredBy": true },
+      { "title": "AI-Business Assistant", "description": "Ichki bilim bazalari va o'qitilgan FAQ modellari. Integratsiyalangan baza va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/ai-assistant" },
+      { "title": "Smart Booking System", "description": "Uchrashuvlar, kalendar sinxronizatsiyasi. DB integratsiya va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/telegram-bots" },
+      { "title": "Lead Analytics Dashboard", "description": "Real vaqtda KPI va lead scoring (Cold/Warm/Hot). Integratsiyalangan baza va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/analytics" },
+      { "title": "Custom Software Development", "description": "Premium MVP va murakkab bot logikasi. Integratsiyalangan baza va maxsus admin panel.", "price": "$5,000 MVP", "href": "/services/software-development" }
     ]
+  },
+  "leadQualificationShowcase": {
+    "title": "SI mijozlaringizni qanday ko'radi",
+    "subtitle": "Bazani real vaqtda avtomatik segmentatsiya",
+    "cold": { "label": "Sovuq", "message": "Salom, narxi qancha?", "action": "Narxlar yuborildi", "status": "Yuborishlar bazasida" },
+    "warm": { "label": "Iliq", "message": "Uy ipotekada bormi? Qanday shartlar?", "action": "Bank shartlari bo'yicha javob", "status": "Kontent bilan isitilmoqda" },
+    "hot": { "label": "Issiq", "message": "Ertaga 10:00 da ko'rishga tayyorman. Bron uchun qayerga to'layman?", "action": "Menejerga darhol push", "status": "SHOSHLI — ISHGA", "notification": "Menejerga bildirishnoma" },
+    "footnote": "Lidalarni real vaqtda saralash interfeysi namunasi"
   },
   "socialProof": {
     "stats": [
