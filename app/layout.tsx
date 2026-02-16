@@ -48,13 +48,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" className={`scroll-smooth ${inter.variable} ${notoSansSC.variable}`}>
-      <body className={`${inter.className} bg-[#FAFBFC] text-[#0F1419]`}>
+    <html lang="ru" suppressHydrationWarning className={`scroll-smooth ${inter.variable} ${notoSansSC.variable}`}>
+      <body suppressHydrationWarning className={`${inter.className} bg-[#FAFBFC] text-[#0F1419]`}>
         <I18nProvider>
           {children}
+          <Toaster richColors position="top-center" />
+          <ChatAssistant />
         </I18nProvider>
-        <Toaster richColors position="top-center" />
-        <ChatAssistant />
       </body>
     </html>
   );
