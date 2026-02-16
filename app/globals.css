@@ -347,12 +347,21 @@ h1, h2, h3, h4, h5, h6 {
   hyphens: auto;
 }
 
+/* Mobile: slightly smaller headings to prevent overflow */
 @media (max-width: 640px) {
   .text-xl { font-size: 1.125rem; line-height: 1.6; }
   .text-lg { font-size: 1rem; line-height: 1.6; }
   .text-4xl { font-size: 1.875rem; line-height: 1.2; }
   .text-5xl { font-size: 2.25rem; line-height: 1.15; }
   .text-6xl { font-size: 2.75rem; line-height: 1.1; }
+}
+
+/* Laptop (1024px+): slightly larger body text for readability */
+@media (min-width: 1024px) {
+  .section-container .text-sm {
+    font-size: 0.9375rem; /* 15px */
+    line-height: 1.6;
+  }
 }
 
 /* ============================================
@@ -413,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
   font-size: 1rem;
   line-height: 1;
-  padding: 14px 0;
+  padding: 10px 0;
   color: #0F1419;
 }
 
