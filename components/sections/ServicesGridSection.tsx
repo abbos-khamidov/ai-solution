@@ -2,24 +2,37 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { MessageCircle, Brain, Calendar, BarChart3, Code, ArrowRight } from 'lucide-react';
+import { MessageCircle, Send, Brain, BarChart3, Code, ArrowRight, Check, TrendingUp, Calendar } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-const cardIcons = [MessageCircle, Brain, Calendar, BarChart3, Code] as const;
-const cardColors = [
-  { text: 'text-blue-400', bg: 'bg-blue-500/10', badge: 'bg-blue-500/20 text-blue-300' },
-  { text: 'text-purple-400', bg: 'bg-purple-500/10', badge: 'bg-purple-500/20 text-purple-300' },
-  { text: 'text-emerald-400', bg: 'bg-emerald-500/10', badge: 'bg-emerald-500/20 text-emerald-300' },
-  { text: 'text-amber-400', bg: 'bg-amber-500/10', badge: 'bg-amber-500/20 text-amber-300' },
-  { text: 'text-cyan-400', bg: 'bg-cyan-500/10', badge: 'bg-cyan-500/20 text-cyan-300' },
-] as const;
+const cardIcons = [MessageCircle, Send, Brain, BarChart3, Code] as const;
+
+type PricingShape = {
+  monthly?: string | null;
+  setup?: string;
+  period?: string;
+  minContract?: string;
+  note?: string;
+};
+
+type RoiShape = {
+  payback: string;
+  savings: string;
+};
 
 type ServiceItem = {
+  id?: string;
+  tier?: string;
+  badge?: string;
   title: string;
   description: string;
-  price: string;
   href: string;
-  poweredBy?: boolean;
+  pricing?: PricingShape;
+  roi?: RoiShape;
+  features?: string[];
+  cta?: string;
+  price?: string;
+  setupFee?: string;
 };
 
 export function ServicesGridSection() {
@@ -43,52 +56,122 @@ export function ServicesGridSection() {
           {Array.isArray(items) &&
             items.map((item, idx) => {
               const Icon = cardIcons[idx] ?? MessageCircle;
-              const color = cardColors[idx] ?? cardColors[0];
+              const pricing = item.pricing;
+              const isNewShape = pricing && typeof pricing === 'object';
+              const monthly = isNewShape ? pricing.monthly : null;
+              const setup = isNewShape ? pricing.setup : item.setupFee;
+              const period = isNewShape ? pricing.period : null;
+              const minContract = isNewShape ? pricing.minContract : undefined;
+              const note = isNewShape ? pricing.note : undefined;
+              const priceDisplay = isNewShape
+                ? (monthly || setup || '')
+                : (item.pricing as string) ?? item.price ?? '';
+              const features = Array.isArray(item.features) ? item.features : [];
+              const roi = item.roi;
+              const ctaText = item.cta ?? t('servicesGrid.learnMore');
+              const href = item.href || '#';
+
               return (
-                <Link
+                <div
                   key={idx}
-                  href={item.href}
-                  className="group block bg-slate-800/60 backdrop-blur-sm border border-slate-700/80 rounded-xl p-5 md:p-6 hover:bg-slate-800/80 hover:border-slate-600 hover:shadow-lg hover:shadow-black/20 hover:-translate-y-0.5 hover:scale-[1.02] transition-all duration-300 flex flex-col relative focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 focus:rounded-xl"
+                  className={`
+                    service-card relative rounded-2xl p-6 md:p-8 border-2 transition-all duration-300 flex flex-col min-h-[620px]
+                    bg-slate-800/60 backdrop-blur-sm border-slate-700/80
+                    hover:bg-slate-800/80 hover:border-slate-600 hover:shadow-xl hover:shadow-black/20 hover:-translate-y-2
+                    ${item.badge ? 'border-blue-500 scale-105 shadow-xl' : ''}
+                  `}
                 >
-                  {/* Corner: setup fee badge */}
-                  <div className="absolute top-4 right-4 text-xs font-medium text-slate-400 bg-slate-700/80 border border-slate-600/80 px-2.5 py-1 rounded-md transition-colors group-hover:border-slate-500/50">
-                    {t('servicesGrid.deploymentPrice')}
+                  {item.badge && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                      {item.badge}
+                    </div>
+                  )}
+
+                  {item.tier && (
+                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">
+                      {item.tier}
+                    </div>
+                  )}
+
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4 border border-slate-600/50">
+                    <Icon className="w-7 h-7 text-blue-400" />
                   </div>
 
-                  <div
-                    className={`w-12 h-12 rounded-lg ${color.bg} flex items-center justify-center mb-4 border border-slate-600/50`}
-                  >
-                    <Icon className={`w-6 h-6 ${color.text}`} />
-                  </div>
-
-                  <h3 className="text-lg md:text-xl font-semibold text-white mb-1 leading-snug pr-24">
+                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 min-h-[64px] leading-snug">
                     {item.title}
                   </h3>
 
-                  {/* Powered by — Sales Agent card only */}
-                  {item.poweredBy && (
-                    <p className="text-xs font-medium text-blue-400/90 mb-2">
-                      {t('servicesGrid.poweredBy')}
-                    </p>
-                  )}
-
-                  <p className="text-slate-400 text-sm mb-4 leading-relaxed flex-1 break-words">
+                  <p className="text-slate-400 text-sm mb-6 min-h-[80px] leading-relaxed">
                     {item.description}
                   </p>
 
-                  {/* Bottom: price badge + hover hint */}
-                  <div className="mt-auto pt-4 border-t border-slate-700 flex items-center justify-between gap-3">
-                    <span
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-full ${color.badge} border border-slate-600/50`}
-                    >
-                      {item.price}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-400 opacity-0 group-hover:opacity-100 translate-x-1 group-hover:translate-x-0 transition-all duration-200 ease-out">
-                      {t('servicesGrid.hoverHint')}
-                      <ArrowRight className="w-4 h-4 shrink-0" />
-                    </span>
+                  <div className="mb-6 pb-6 border-b border-slate-700">
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <span className="text-3xl md:text-4xl font-bold text-white">
+                        {isNewShape ? (monthly || setup) : priceDisplay}
+                      </span>
+                      {period && (
+                        <span className="text-slate-400 text-lg">{period}</span>
+                      )}
+                    </div>
+
+                    {setup && monthly && (
+                      <div className="text-sm text-slate-500 mt-2">
+                        + {setup} настройка
+                      </div>
+                    )}
+
+                    {note && (
+                      <div className="text-sm text-slate-400 mt-2">{note}</div>
+                    )}
+
+                    {roi && (
+                      <div className="mt-4 p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                        <div className="flex items-center gap-2 text-sm">
+                          <TrendingUp className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          <span className="font-semibold text-emerald-300">
+                            {roi.payback}
+                          </span>
+                        </div>
+                        <div className="text-xs text-emerald-400/90 mt-1">
+                          {roi.savings}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </Link>
+
+                  <ul className="space-y-3 mb-6 flex-1">
+                    {features.map((feature, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm text-slate-300"
+                      >
+                        <Check className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {minContract && (
+                    <div className="text-xs text-slate-500 mb-4 flex items-center gap-2">
+                      <Calendar className="w-4 h-4 flex-shrink-0" />
+                      {minContract}
+                    </div>
+                  )}
+
+                  <Link
+                    href={href}
+                    className={`
+                      block w-full py-3 rounded-lg font-semibold text-center transition-all mt-auto
+                      ${item.badge
+                        ? 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg hover:shadow-xl'
+                        : 'border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white'
+                      }
+                    `}
+                  >
+                    {ctaText} →
+                  </Link>
+                </div>
               );
             })}
         </div>

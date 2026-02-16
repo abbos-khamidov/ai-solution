@@ -236,7 +236,8 @@
     "quote": "SI-menejer joriy etish konversiyamizni 2 oyda 18% dan 47% ga oshirdi. Birinchi oyda o'zini oqladi.",
     "quoteName": "Aleksey Petrov",
     "quoteCompany": "Retail Group",
-    "quoteRole": "CEO"
+    "quoteRole": "CEO",
+    "quoteInitials": "AP"
   },
   "services": {
     "aiManagers": {

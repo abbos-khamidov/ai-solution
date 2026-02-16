@@ -18,22 +18,22 @@ const notoSansSC = Noto_Sans_SC({
 });
 
 export const metadata: Metadata = {
-  title: 'AI Solution | Intelligent AI Solutions',
-  description: 'We design and deploy AI systems that transform how businesses operate. From intelligent automation to predictive analytics — built for scale.',
-  keywords: 'AI, artificial intelligence, machine learning, automation, enterprise AI, predictive analytics',
+  title: 'AI Solution | ИИ-решения для автоматизации бизнеса',
+  description: 'ИИ-помощники для Telegram, автоматизация продаж и поддержки. Квалификация лидов 24/7, интеграция с CRM. От 490,000 сум/мес.',
+  keywords: 'ИИ, автоматизация, Telegram боты, CRM, продажи, лиды, Узбекистан',
   authors: [{ name: 'aisolution' }],
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   openGraph: {
-    title: 'AI Solution | Intelligent AI Solutions',
-    description: 'We design and deploy AI systems that transform how businesses operate.',
+    title: 'AI Solution | ИИ-решения для автоматизации бизнеса',
+    description: 'ИИ-помощники для Telegram, автоматизация продаж и поддержки. Квалификация лидов 24/7.',
     type: 'website',
-    locale: 'en_US',
+    locale: 'ru_RU',
     siteName: 'AI Solution',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Solution | Intelligent AI Solutions',
-    description: 'We design and deploy AI systems that transform how businesses operate.',
+    title: 'AI Solution | ИИ-решения для автоматизации бизнеса',
+    description: 'ИИ-помощники для Telegram, автоматизация продаж и поддержки.',
   },
   robots: {
     index: true,
@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`scroll-smooth ${inter.variable} ${notoSansSC.variable}`}>
+    <html lang="ru" className={`scroll-smooth ${inter.variable} ${notoSansSC.variable}`}>
       <body className={`${inter.className} bg-[#FAFBFC] text-[#0F1419]`}>
         <I18nProvider>
           {children}

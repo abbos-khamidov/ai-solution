@@ -236,7 +236,8 @@
     "quote": "部署AI管理器后，2个月内转化率从18%提升到47%。第一个月就收回成本。",
     "quoteName": "阿列克谢·彼得罗夫",
     "quoteCompany": "Retail Group",
-    "quoteRole": "CEO"
+    "quoteRole": "CEO",
+    "quoteInitials": "AP"
   },
   "services": {
     "aiManagers": {

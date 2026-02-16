@@ -26,7 +26,8 @@ import {
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
-import { PricingToggle } from '@/components/shared/PricingToggle';
+import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
+import { X } from 'lucide-react';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
@@ -187,51 +188,6 @@ const steps = [
   },
 ];
 
-const pricingPlans = {
-  basic: {
-    name: 'Basic',
-    price: '$1,500',
-    priceAnnual: '$1,200',
-    features: [
-      'До 5 диалоговых сценариев',
-      'Каталог до 100 товаров',
-      'FAQ автоответы',
-      'Базовая аналитика',
-      'Email уведомления',
-      '1 месяц поддержки',
-    ],
-  },
-  advanced: {
-    name: 'Advanced',
-    price: '$5,000',
-    priceAnnual: '$4,000',
-    features: [
-      'Неограниченные сценарии',
-      'Полный каталог с корзиной',
-      'Интеграция платежей',
-      'CRM интеграция',
-      'Маркетинговые рассылки',
-      'Бронирование и календарь',
-      'Продвинутая аналитика',
-      '3 месяца поддержки',
-    ],
-  },
-  enterprise: {
-    name: 'Enterprise',
-    price: 'Custom',
-    priceNote: 'Индивидуальный расчёт',
-    features: [
-      'Всё из Advanced',
-      'Мультиботовая архитектура',
-      'Кастомные интеграции',
-      'Выделенный сервер',
-      'SLA 99.9%',
-      'Приоритетная поддержка 24/7',
-      'Персональный менеджер',
-    ],
-  },
-};
-
 const caseStudies = [
   {
     client: 'E-commerce Store',
@@ -325,7 +281,6 @@ type FormData = z.infer<typeof formSchema>;
 // ─── Component ───────────────────────────────────────────────
 export default function TelegramBotsContent() {
   const { i18n } = useTranslation();
-  const [isAnnual, setIsAnnual] = useState(false);
 
   // Form
   const {
@@ -353,7 +308,6 @@ export default function TelegramBotsContent() {
   // Scroll reveals
   const featuresReveal = useScrollReveal(0.1);
   const timelineReveal = useScrollReveal(0.1);
-  const pricingReveal = useScrollReveal(0.1);
   const casesReveal = useScrollReveal(0.1);
 
   return (
@@ -539,128 +493,26 @@ export default function TelegramBotsContent() {
       {/* ════════════════════════════════════════════════════════
           SECTION 4 — PRICING
           ════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-            Тарифы и цены
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-8">
-            Выберите подходящий тариф для вашего бизнеса
-          </p>
-
-          <PricingToggle
-            isAnnual={isAnnual}
-            onToggle={() => setIsAnnual(!isAnnual)}
-            monthlyLabel="Разовая оплата"
-            annualLabel="С поддержкой"
-            discountText="Скидка 20%"
-          />
-
-          <div
-            ref={pricingReveal.ref}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-          >
-            {/* Basic */}
-            <div
-              className="bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '0ms',
-              }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.basic.name}
-              </h3>
-              <p className="text-5xl font-bold text-cyan-600 mb-1">
-                {isAnnual ? pricingPlans.basic.priceAnnual : pricingPlans.basic.price}
-              </p>
-              <p className="text-gray-600 mb-6">единоразово</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.basic.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 border-2 border-cyan-600 text-cyan-600 rounded-lg font-semibold hover:bg-cyan-600 hover:text-white transition-all duration-300"
-              >
-                Выбрать Basic
-              </Link>
-            </div>
-
-            {/* Advanced (highlighted) */}
-            <div
-              className="relative bg-white border-4 border-cyan-600 rounded-2xl p-8 shadow-xl transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '150ms',
-              }}
-            >
-              <span className="absolute top-4 right-4 bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                Популярный
-              </span>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.advanced.name}
-              </h3>
-              <p className="text-5xl md:text-6xl font-bold text-cyan-600 mb-1">
-                {isAnnual ? pricingPlans.advanced.priceAnnual : pricingPlans.advanced.price}
-              </p>
-              <p className="text-gray-600 mb-6">единоразово</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.advanced.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 bg-gradient-to-r from-cyan-600 to-blue-500 text-white rounded-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                Выбрать Advanced
-              </Link>
-            </div>
-
-            {/* Enterprise */}
-            <div
-              className="bg-white border-2 border-gray-300 rounded-2xl p-8 transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '300ms',
-              }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.enterprise.name}
-              </h3>
-              <p className="text-5xl font-bold text-cyan-600 mb-1">
-                {pricingPlans.enterprise.price}
-              </p>
-              <p className="text-gray-600 mb-6">{pricingPlans.enterprise.priceNote}</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.enterprise.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 border-2 border-gray-400 text-gray-700 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300"
-              >
-                Связаться с нами
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DetailPricingSection
+        title="Тарифные планы"
+        subtitle="Выберите план, который подходит вашему бизнесу. Все планы включают базу данных, админ-панель и техподдержку."
+        tiers={[
+          { name: 'БАЗОВЫЙ', price: '$49', period: '/месяц', setupNote: '+ $297 настройка', roi: { payback: 'Окупается за 7 дней', savings: 'Экономия ~$400/мес' }, features: ['До 500 сообщений/мес', '1 Telegram бот', 'Базовые Q&A ответы', 'Админ-панель', 'Поддержка в Telegram'], minContract: 'Минимум 3 месяца' },
+          { name: 'РОСТ', price: '$97', period: '/месяц', setupNote: '+ $497 настройка', popular: true, roi: { payback: 'Окупается за 4 дня', savings: 'Экономия ~$800/мес' }, features: ['До 3,000 сообщений/мес', '3 канала (TG/WA/IG)', 'ИИ-квалификация лидов', 'CRM интеграция', 'Приоритетная поддержка'], minContract: 'Минимум 6 месяцев' },
+          { name: 'БИЗНЕС', price: '$197', period: '/месяц', setupNote: '+ $997 настройка', tier3Label: 'Для растущих компаний', tier3Sub: 'Все возможности + кастом', features: ['Безлимитные сообщения', 'Все каналы + кастом', 'Продвинутая ИИ-логика', 'API доступ', '24/7 поддержка + менеджер'], minContract: 'Минимум 6 месяцев' },
+        ]}
+        contactHref="#cta-form"
+        comparisonTable={{
+          headers: ['Базовый', 'Рост ⭐', 'Бизнес'],
+          rows: [
+            { label: 'Сообщений в месяц', values: ['500', <strong key="r1">3,000</strong>, 'Безлимит'] },
+            { label: 'Каналы', values: ['1 (TG)', <strong key="r2">3 (TG/WA/IG)</strong>, 'Все + кастом'] },
+            { label: 'ИИ-квалификация', values: [<X key="x1" className="w-5 h-5 text-red-500 mx-auto" />, <Check key="c1" className="w-5 h-5 text-green-600 mx-auto" />, <Check key="c2" className="w-5 h-5 text-green-600 mx-auto" />] },
+            { label: 'CRM интеграция', values: [<X key="x2" className="w-5 h-5 text-red-500 mx-auto" />, <Check key="c3" className="w-5 h-5 text-green-600 mx-auto" />, <Check key="c4" className="w-5 h-5 text-green-600 mx-auto" />] },
+            { label: 'Поддержка', values: ['Email', 'Приоритетная', '24/7 + менеджер'] },
+          ],
+        }}
+      />
 
       {/* ════════════════════════════════════════════════════════
           SECTION 5 — CASE STUDIES

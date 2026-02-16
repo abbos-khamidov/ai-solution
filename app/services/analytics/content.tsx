@@ -26,7 +26,7 @@ import {
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
-import { PricingToggle } from '@/components/shared/PricingToggle';
+import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
@@ -184,52 +184,6 @@ const timelineSteps = [
   },
 ];
 
-const pricingPlans = {
-  basic: {
-    name: 'Basic',
-    price: '$3,000',
-    priceAnnual: '$2,500',
-    features: [
-      'До 5 дашбордов',
-      '3 источника данных',
-      'Ежедневное обновление',
-      'Email-отчёты',
-      'Базовые визуализации',
-      'Email поддержка',
-    ],
-  },
-  advanced: {
-    name: 'Advanced',
-    price: '$8,000',
-    priceAnnual: '$6,500',
-    features: [
-      'До 20 дашбордов',
-      'Неограниченные источники данных',
-      'Real-time обновление',
-      'Power BI интеграция',
-      'Прогнозная аналитика',
-      'Кастомные визуализации',
-      'Приоритетная поддержка 24/7',
-      'SSO и 2FA',
-    ],
-  },
-  enterprise: {
-    name: 'Enterprise',
-    price: 'Custom',
-    priceNote: 'Индивидуальный расчёт',
-    features: [
-      'Неограниченные дашборды',
-      'Выделенная инфраструктура',
-      'White-label решение',
-      'On-premise установка',
-      'SLA 99.99%',
-      'Персональный менеджер',
-      'Кастомные ML-модели',
-      'Полный аудит и compliance',
-    ],
-  },
-};
-
 const caseStudies = [
   {
     client: 'RetailChain Co.',
@@ -322,8 +276,6 @@ type FormData = z.infer<typeof formSchema>;
 
 // ─── Component ───────────────────────────────────────────────
 export default function AnalyticsContent() {
-  const [isAnnual, setIsAnnual] = useState(false);
-
   // Form
   const {
     register,
@@ -350,7 +302,6 @@ export default function AnalyticsContent() {
   // Scroll reveals
   const featuresReveal = useScrollReveal(0.1);
   const timelineReveal = useScrollReveal(0.1);
-  const pricingReveal = useScrollReveal(0.1);
   const casesReveal = useScrollReveal(0.1);
 
   return (
@@ -642,128 +593,25 @@ export default function AnalyticsContent() {
       {/* ════════════════════════════════════════════════════════
           SECTION 4 — PRICING
           ════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-            Тарифные планы
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-8">
-            Выберите план, который подходит вашему бизнесу
-          </p>
-
-          <PricingToggle
-            isAnnual={isAnnual}
-            onToggle={() => setIsAnnual(!isAnnual)}
-            monthlyLabel="Ежемесячно"
-            annualLabel="Ежегодно"
-            discountText="Экономия до 20%"
-          />
-
-          <div
-            ref={pricingReveal.ref}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-          >
-            {/* Basic */}
-            <div
-              className="bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '0ms',
-              }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.basic.name}
-              </h3>
-              <p className="text-5xl font-bold text-green-600 mb-1">
-                {isAnnual ? pricingPlans.basic.priceAnnual : pricingPlans.basic.price}
-              </p>
-              <p className="text-gray-600 mb-6">в месяц</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.basic.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 border-2 border-green-600 text-green-600 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition-all duration-300"
-              >
-                Выбрать Basic
-              </Link>
-            </div>
-
-            {/* Advanced (highlighted) */}
-            <div
-              className="relative bg-white border-4 border-green-600 rounded-2xl p-8 shadow-xl transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '150ms',
-              }}
-            >
-              <span className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                Популярный
-              </span>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.advanced.name}
-              </h3>
-              <p className="text-5xl md:text-6xl font-bold text-green-600 mb-1">
-                {isAnnual ? pricingPlans.advanced.priceAnnual : pricingPlans.advanced.price}
-              </p>
-              <p className="text-gray-600 mb-6">в месяц</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.advanced.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 bg-gradient-to-r from-green-600 to-teal-500 text-white rounded-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                Выбрать Advanced
-              </Link>
-            </div>
-
-            {/* Enterprise */}
-            <div
-              className="bg-white border-2 border-gray-300 rounded-2xl p-8 transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '300ms',
-              }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.enterprise.name}
-              </h3>
-              <p className="text-5xl font-bold text-green-600 mb-1">
-                {pricingPlans.enterprise.price}
-              </p>
-              <p className="text-gray-600 mb-6">{pricingPlans.enterprise.priceNote}</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.enterprise.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 border-2 border-gray-400 text-gray-700 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300"
-              >
-                Связаться с нами
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DetailPricingSection
+        title="Тарифные планы"
+        subtitle="Выберите план, который подходит вашему бизнесу. Все планы включают базу данных, админ-панель и техподдержку."
+        tiers={[
+          { name: 'БАЗОВЫЙ', price: '$397', period: '/месяц', setupNote: '+ $1,497 настройка', roi: { payback: 'Окупается за 10 дней', savings: 'Экономия ~$2,000/мес' }, features: ['Real-time дашборды', 'Автоматические отчёты', 'Экспорт PDF/Excel', 'API интеграции', 'Email поддержка'], minContract: 'Минимум 12 месяцев' },
+          { name: 'БИЗНЕС', price: '$797', period: '/месяц', setupNote: '+ $2,497 настройка', popular: true, roi: { payback: 'Окупается за 14 дней', savings: 'Экономия ~$3,000/мес' }, features: ['Всё из Базового', 'Прогнозная аналитика', 'KPI скоринг', 'Dedicated менеджер', 'Приоритетная поддержка'], minContract: 'Минимум 12 месяцев' },
+          { name: 'ENTERPRISE', price: 'Custom', period: '', setupNote: 'По запросу', tier3Label: 'Для крупных компаний', tier3Sub: 'On-premise и White-label', features: ['Неограниченные дашборды', 'On-premise', 'White-label', 'SLA 99.99%', 'Персональный менеджер'], minContract: 'По запросу' },
+        ]}
+        contactHref="#cta-form"
+        comparisonTable={{
+          headers: ['Базовый', 'Бизнес ⭐', 'Enterprise'],
+          rows: [
+            { label: 'Дашборды', values: ['До 5', <strong key="r1">До 20</strong>, 'Безлимит'] },
+            { label: 'Обновление', values: ['Ежедневно', 'Real-time', 'Real-time'] },
+            { label: 'Прогнозная аналитика', values: ['—', 'Да', 'Да'] },
+            { label: 'Поддержка', values: ['Email', 'Приоритетная', '24/7 + менеджер'] },
+          ],
+        }}
+      />
 
       {/* ════════════════════════════════════════════════════════
           SECTION 5 — CASE STUDIES

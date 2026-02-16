@@ -26,6 +26,7 @@ import {
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
+import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
@@ -177,52 +178,6 @@ const timelineSteps = [
   },
 ];
 
-const pricingPlans = {
-  mvp: {
-    name: 'MVP',
-    price: '$5,000',
-    priceNote: 'единоразово',
-    features: [
-      'До 5 основных экранов',
-      'Адаптивный дизайн',
-      'Базовая админ-панель',
-      'Деплой на хостинг',
-      '1 месяц бесплатной поддержки',
-      'Исходный код в собственность',
-    ],
-  },
-  full: {
-    name: 'Full Product',
-    price: '$15,000',
-    priceNote: 'единоразово',
-    features: [
-      'До 20 экранов и функций',
-      'UI/UX дизайн с нуля',
-      'API интеграции (до 5)',
-      'Панель аналитики',
-      'CI/CD и DevOps настройка',
-      'Автоматизированные тесты',
-      '3 месяца бесплатной поддержки',
-      'Полная документация',
-    ],
-  },
-  enterprise: {
-    name: 'Enterprise',
-    price: 'Custom',
-    priceNote: 'индивидуально',
-    features: [
-      'Неограниченный функционал',
-      'Выделенная команда разработки',
-      'SLA и приоритетная поддержка',
-      'Микросервисная архитектура',
-      'Аудит безопасности',
-      'Обучение вашей команды',
-      'Круглосуточная поддержка 24/7',
-      'Масштабирование по запросу',
-    ],
-  },
-};
-
 const caseStudies = [
   {
     client: 'Fashion Brand',
@@ -347,7 +302,6 @@ export default function SoftwareDevContent() {
   // Scroll reveals
   const featuresReveal = useScrollReveal(0.1);
   const timelineReveal = useScrollReveal(0.1);
-  const pricingReveal = useScrollReveal(0.1);
   const casesReveal = useScrollReveal(0.1);
 
   return (
@@ -532,120 +486,25 @@ export default function SoftwareDevContent() {
       {/* ════════════════════════════════════════════════════════
           SECTION 4 — PRICING
           ════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-            Тарифы и стоимость
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-12">
-            Прозрачное ценообразование. Без скрытых платежей.
-          </p>
-
-          <div
-            ref={pricingReveal.ref}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-          >
-            {/* MVP */}
-            <div
-              className="bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '0ms',
-              }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.mvp.name}
-              </h3>
-              <p className="text-5xl font-bold text-orange-600 mb-1">
-                {pricingPlans.mvp.price}
-              </p>
-              <p className="text-gray-600 mb-6">{pricingPlans.mvp.priceNote}</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.mvp.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 border-2 border-orange-600 text-orange-600 rounded-lg font-semibold hover:bg-orange-600 hover:text-white transition-all duration-300"
-              >
-                Заказать MVP
-              </Link>
-            </div>
-
-            {/* Full Product (highlighted) */}
-            <div
-              className="relative bg-white border-4 border-orange-600 rounded-2xl p-8 shadow-xl transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '150ms',
-              }}
-            >
-              <span className="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                Популярный
-              </span>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.full.name}
-              </h3>
-              <p className="text-5xl md:text-6xl font-bold text-orange-600 mb-1">
-                {pricingPlans.full.price}
-              </p>
-              <p className="text-gray-600 mb-6">{pricingPlans.full.priceNote}</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.full.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 bg-gradient-to-r from-orange-600 to-amber-500 text-white rounded-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                Заказать Full Product
-              </Link>
-            </div>
-
-            {/* Enterprise */}
-            <div
-              className="bg-white border-2 border-gray-300 rounded-2xl p-8 transition-all duration-500"
-              style={{
-                opacity: pricingReveal.isVisible ? 1 : 0,
-                transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                transitionDelay: '300ms',
-              }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                {pricingPlans.enterprise.name}
-              </h3>
-              <p className="text-5xl font-bold text-orange-600 mb-1">
-                {pricingPlans.enterprise.price}
-              </p>
-              <p className="text-gray-600 mb-6">{pricingPlans.enterprise.priceNote}</p>
-              <ul className="space-y-3 mb-8">
-                {pricingPlans.enterprise.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="#cta-form"
-                className="block text-center w-full py-3 border-2 border-gray-400 text-gray-700 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300"
-              >
-                Связаться с нами
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DetailPricingSection
+        title="Тарифы и стоимость"
+        subtitle="Прозрачное ценообразование. Без скрытых платежей. 50% аванс / 50% при сдаче."
+        tiers={[
+          { name: 'MVP', price: '$3,500', period: 'за проект', setupNote: '50% аванс / 50% при сдаче', features: ['Веб (React/Next.js)', 'До 5 основных экранов', 'Адаптивный дизайн', 'Базовая админ-панель', 'Исходный код в собственность'], minContract: '4-8 недель' },
+          { name: 'FULL PRODUCT', price: '$7,000', period: 'за проект', setupNote: '50% аванс / 50% при сдаче', popular: true, roi: { payback: 'Готовность за 8-12 недель', savings: 'Веб + мобильные + поддержка' }, features: ['Всё из MVP', 'Мобильные (iOS/Android)', 'E-commerce платформы', 'API интеграции', '3 мес поддержки'], minContract: '8-12 недель' },
+          { name: 'ENTERPRISE', price: '$15,000+', period: 'за проект', setupNote: 'Индивидуальный расчёт', tier3Label: 'Корпоративные системы', tier3Sub: 'Выделенная команда', features: ['Корпоративные системы', 'Выделенная команда', 'SLA и 24/7 поддержка', 'Масштабирование', 'Индивидуальный расчёт'], minContract: 'По запросу' },
+        ]}
+        contactHref="#cta-form"
+        comparisonTable={{
+          headers: ['MVP', 'Full Product ⭐', 'Enterprise'],
+          rows: [
+            { label: 'Экраны', values: ['До 5', <strong key="r1">До 20</strong>, 'Безлимит'] },
+            { label: 'Платформы', values: ['Веб', 'Веб + мобильные', 'Все + кастом'] },
+            { label: 'Срок', values: ['4-8 нед', '8-12 нед', 'По запросу'] },
+            { label: 'Поддержка', values: ['1 мес', '3 мес', '24/7'] },
+          ],
+        }}
+      />
 
       {/* ════════════════════════════════════════════════════════
           SECTION 5 — CASE STUDIES

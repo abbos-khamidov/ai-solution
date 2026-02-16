@@ -19,7 +19,7 @@ export function Footer() {
 
   const footerLinks = {
     [t('footer.product')]: [
-      { label: t('footer.links.solutions'), href: '#features' },
+      { label: t('footer.links.solutions'), href: '#solutions' },
       { label: t('footer.links.process'), href: '#process' },
       { label: t('footer.links.pricing'), href: '#' },
       { label: t('footer.links.enterprise'), href: '#' },

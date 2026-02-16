@@ -16,7 +16,7 @@ import {
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
-import { PricingToggle } from '@/components/shared/PricingToggle';
+import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
 
 function useScrollReveal(threshold = 0.15) {
@@ -73,10 +73,8 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function AIAssistantContent() {
   const { i18n } = useTranslation();
-  const [isAnnual, setIsAnnual] = useState(false);
   const featuresReveal = useScrollReveal(0.1);
   const timelineReveal = useScrollReveal(0.1);
-  const pricingReveal = useScrollReveal(0.1);
   const casesReveal = useScrollReveal(0.1);
 
   const { register, handleSubmit, formState: { isSubmitting }, reset } = useForm<FormData>({ resolver: zodResolver(formSchema) });
@@ -156,31 +154,25 @@ export default function AIAssistantContent() {
       </section>
 
       {/* SECTION 4 - PRICING */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">Тарифные планы</h2>
-          <p className="text-xl text-gray-600 text-center mb-8">Выберите план, который подходит вашей компании</p>
-          <PricingToggle isAnnual={isAnnual} onToggle={() => setIsAnnual(!isAnnual)} monthlyLabel="Месяц" annualLabel="Год" discountText="Скидка 20% при годовой оплате" />
-          <div ref={pricingReveal.ref} className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              { name: 'Basic', price: '$2,000', priceAnnual: '$1,600', features: ['До 50 пользователей', 'До 10,000 запросов/месяц', 'Базовая база знаний', '1 интеграция', 'Email поддержка', '1 месяц обновлений', 'Обучение — 2 часа'], highlighted: false, delay: '0ms' },
-              { name: 'Advanced', price: '$6,000', priceAnnual: '$4,800', features: ['До 500 пользователей', 'До 100,000 запросов/месяц', 'Полная база знаний', 'Все интеграции', 'Кастомизация по отделам', 'Приоритетная поддержка 24/7', '6 месяцев обновлений', 'Обучение — 8 часов', 'Аналитика использования'], highlighted: true, delay: '150ms' },
-              { name: 'Enterprise', price: 'Custom', priceAnnual: 'Custom', priceNote: 'Свяжитесь с нами', features: ['Неограниченные пользователи', 'Неограниченные запросы', 'On-premise deployment', 'Полная кастомизация NLP', 'Dedicated manager', 'SLA 99.9%', 'Бесплатные обновления навсегда', 'Неограниченное обучение'], highlighted: false, delay: '300ms' },
-            ].map((tier) => (
-              <div key={tier.name} className={`relative rounded-2xl p-8 transition-all duration-500 ${tier.highlighted ? 'bg-white border-4 border-purple-600 shadow-xl' : 'bg-white border-2 border-gray-200'}`} style={{ opacity: pricingReveal.isVisible ? 1 : 0, transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)', transitionDelay: tier.delay }}>
-                {tier.highlighted && <span className="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold">Популярный</span>}
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{tier.name}</h3>
-                <p className={`${tier.highlighted ? 'text-5xl md:text-6xl' : 'text-5xl'} font-bold text-purple-600 mb-1`}>{isAnnual ? tier.priceAnnual : tier.price}</p>
-                <p className="text-gray-600 mb-6">{tier.priceNote || '/месяц'}</p>
-                <ul className="space-y-3 mb-8">{tier.features.map((f, i) => (<li key={i} className="flex items-start gap-2 text-sm text-gray-600"><Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />{f}</li>))}</ul>
-                <Link href="#cta-form" className={`block text-center w-full py-3 rounded-lg font-semibold transition-all duration-300 ${tier.highlighted ? 'bg-gradient-to-r from-purple-600 to-blue-500 text-white shadow-xl hover:shadow-2xl' : 'border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white'}`}>
-                  {tier.price === 'Custom' ? 'Связаться с нами' : `Выбрать ${tier.name}`}
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <DetailPricingSection
+        title="Тарифные планы"
+        subtitle="Выберите план, который подходит вашей компании. Все планы включают базу данных, админ-панель и техподдержку."
+        tiers={[
+          { name: 'ПРОФЕССИОНАЛ', price: '$197', period: '/месяц', setupNote: '+ $997 настройка', roi: { payback: 'Окупается за 5 дней', savings: 'Экономия 15+ часов/неделю' }, features: ['Обучен на ваших данных', 'Безлимитные запросы', 'Интеграция Notion/Slack', 'Кастомная логика', '24/7 поддержка'], minContract: 'Минимум 6 месяцев' },
+          { name: 'БИЗНЕС', price: '$397', period: '/месяц', setupNote: '+ $1,497 настройка', popular: true, roi: { payback: 'Окупается за 7 дней', savings: 'Экономия 20+ часов/неделю' }, features: ['Всё из Профессионал', 'Мультиотделы', 'API доступ', 'Dedicated менеджер', 'Приоритетная поддержка'], minContract: 'Минимум 6 месяцев' },
+          { name: 'ENTERPRISE', price: 'Custom', period: '', setupNote: 'По запросу', tier3Label: 'Для крупных компаний', tier3Sub: 'On-premise и полная кастомизация', features: ['Неограниченные пользователи', 'On-premise', 'Полная кастомизация', 'SLA 99.9%', 'Персональный менеджер'], minContract: 'По запросу' },
+        ]}
+        contactHref="#cta-form"
+        comparisonTable={{
+          headers: ['Профессионал', 'Бизнес ⭐', 'Enterprise'],
+          rows: [
+            { label: 'Пользователи', values: ['До 50', <strong key="r1">До 500</strong>, 'Безлимит'] },
+            { label: 'Запросы', values: ['Безлимит', 'Безлимит', 'Безлимит'] },
+            { label: 'Интеграции', values: ['Notion/Slack', 'Все + API', 'On-premise'] },
+            { label: 'Поддержка', values: ['24/7', 'Приоритетная', 'Dedicated менеджер'] },
+          ],
+        }}
+      />
 
       {/* SECTION 5 - CASE STUDIES */}
       <section className="bg-gray-50 py-16 md:py-20">

@@ -37,8 +37,8 @@ export function SocialProofSection() {
               &ldquo;{t('socialProof.quote')}&rdquo;
             </blockquote>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-lg">
-                {(t('socialProof.quoteName') as string).charAt(0)}
+<div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-lg">
+              {t('socialProof.quoteInitials') || (t('socialProof.quoteName') as string).charAt(0)}
               </div>
               <div>
                 <p className="font-semibold text-white">

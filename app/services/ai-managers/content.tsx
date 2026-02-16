@@ -26,7 +26,8 @@ import {
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
-import { PricingToggle } from '@/components/shared/PricingToggle';
+import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
+import { Check as CheckIcon } from 'lucide-react';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
@@ -80,7 +81,6 @@ type FormData = z.infer<typeof formSchema>;
 // ─── Component ───────────────────────────────────────────────
 export default function AIManagersContent() {
   const { t, i18n } = useTranslation();
-  const [isAnnual, setIsAnnual] = useState(false);
 
   // i18n data
   const features = t(`${T}.features.items`, { returnObjects: true }) as {
@@ -99,9 +99,6 @@ export default function AIManagersContent() {
     question: string;
     answer: string;
   }[];
-  const pBasic = t(`${T}.pricing.basic`, { returnObjects: true }) as Record<string, unknown>;
-  const pAdv = t(`${T}.pricing.advanced`, { returnObjects: true }) as Record<string, unknown>;
-  const pEnt = t(`${T}.pricing.enterprise`, { returnObjects: true }) as Record<string, unknown>;
 
   // Form
   const {
@@ -129,7 +126,6 @@ export default function AIManagersContent() {
   // Scroll reveals
   const featuresReveal = useScrollReveal(0.1);
   const timelineReveal = useScrollReveal(0.1);
-  const pricingReveal = useScrollReveal(0.1);
   const casesReveal = useScrollReveal(0.1);
 
   return (
@@ -317,137 +313,25 @@ export default function AIManagersContent() {
       {/* ════════════════════════════════════════════════════════
           SECTION 4 — PRICING
           ════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-            {t(`${T}.pricing.title`)}
-          </h2>
-          <p className="text-xl text-gray-600 text-center mb-8">
-            {t(`${T}.pricing.subtitle`)}
-          </p>
-
-          <PricingToggle
-            isAnnual={isAnnual}
-            onToggle={() => setIsAnnual(!isAnnual)}
-            monthlyLabel={t(`${T}.pricing.monthly`)}
-            annualLabel={t(`${T}.pricing.annual`)}
-            discountText={t(`${T}.pricing.annualDiscount`)}
-          />
-
-          <div
-            ref={pricingReveal.ref}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
-          >
-            {/* Basic */}
-            {pBasic && typeof pBasic === 'object' && (
-              <div
-                className="bg-white border-2 border-gray-200 rounded-2xl p-8 transition-all duration-500"
-                style={{
-                  opacity: pricingReveal.isVisible ? 1 : 0,
-                  transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                  transitionDelay: '0ms',
-                }}
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {pBasic.name as string}
-                </h3>
-                <p className="text-5xl font-bold text-blue-600 mb-1">
-                  {isAnnual ? (pBasic.priceAnnual as string) : (pBasic.price as string)}
-                </p>
-                <p className="text-gray-600 mb-6">{t(`${T}.pricing.perMonth`)}</p>
-                <ul className="space-y-3 mb-8">
-                  {Array.isArray(pBasic.features) &&
-                    (pBasic.features as string[]).map((f, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                        <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                </ul>
-                <Link
-                  href="#cta-form"
-                  className="block text-center w-full py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
-                >
-                  {t(`${T}.pricing.choosePlan`)} Basic
-                </Link>
-              </div>
-            )}
-
-            {/* Advanced (highlighted) */}
-            {pAdv && typeof pAdv === 'object' && (
-              <div
-                className="relative bg-white border-4 border-blue-600 rounded-2xl p-8 shadow-xl transition-all duration-500"
-                style={{
-                  opacity: pricingReveal.isVisible ? 1 : 0,
-                  transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                  transitionDelay: '150ms',
-                }}
-              >
-                <span className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                  {t(`${T}.pricing.popular`)}
-                </span>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {pAdv.name as string}
-                </h3>
-                <p className="text-5xl md:text-6xl font-bold text-blue-600 mb-1">
-                  {isAnnual ? (pAdv.priceAnnual as string) : (pAdv.price as string)}
-                </p>
-                <p className="text-gray-600 mb-6">{t(`${T}.pricing.perMonth`)}</p>
-                <ul className="space-y-3 mb-8">
-                  {Array.isArray(pAdv.features) &&
-                    (pAdv.features as string[]).map((f, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                        <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                </ul>
-                <Link
-                  href="#cta-form"
-                  className="block text-center w-full py-3 bg-gradient-to-r from-[#0066FF] to-[#00D9FF] text-white rounded-lg font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"
-                >
-                  {t(`${T}.pricing.choosePlan`)} Advanced
-                </Link>
-              </div>
-            )}
-
-            {/* Enterprise */}
-            {pEnt && typeof pEnt === 'object' && (
-              <div
-                className="bg-white border-2 border-gray-300 rounded-2xl p-8 transition-all duration-500"
-                style={{
-                  opacity: pricingReveal.isVisible ? 1 : 0,
-                  transform: pricingReveal.isVisible ? 'scale(1)' : 'scale(0.95)',
-                  transitionDelay: '300ms',
-                }}
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {pEnt.name as string}
-                </h3>
-                <p className="text-5xl font-bold text-blue-600 mb-1">
-                  {pEnt.price as string}
-                </p>
-                <p className="text-gray-600 mb-6">{pEnt.priceNote as string}</p>
-                <ul className="space-y-3 mb-8">
-                  {Array.isArray(pEnt.features) &&
-                    (pEnt.features as string[]).map((f, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                        <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                </ul>
-                <Link
-                  href="#cta-form"
-                  className="block text-center w-full py-3 border-2 border-gray-400 text-gray-700 rounded-lg font-semibold hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300"
-                >
-                  {t(`${T}.pricing.contactUs`)}
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <DetailPricingSection
+        title={t(`${T}.pricing.title`)}
+        subtitle="Выберите план, который подходит вашему бизнесу. Все планы включают базу данных, админ-панель и техподдержку."
+        tiers={[
+          { name: 'БАЗОВЫЙ', price: '$97', period: '/месяц', setupNote: '+ $497 настройка', roi: { payback: 'Окупается за 4 дня', savings: 'Экономия ~$800/мес' }, features: ['До 3,000 сообщений/мес', '3 канала (TG/WA/IG)', 'ИИ-квалификация лидов', 'CRM интеграция', 'Приоритетная поддержка'], minContract: 'Минимум 6 месяцев' },
+          { name: 'РОСТ', price: '$197', period: '/месяц', setupNote: '+ $997 настройка', popular: true, roi: { payback: 'Окупается за 5 дней', savings: 'Экономия ~$1,200/мес' }, features: ['До 15,000 сообщений/мес', 'Все каналы', 'Продвинутая квалификация', 'Интеграции + API', '24/7 поддержка'], minContract: 'Минимум 6 месяцев' },
+          { name: 'БИЗНЕС', price: '$397', period: '/месяц', setupNote: '+ $1,497 настройка', tier3Label: 'Для растущих компаний', tier3Sub: 'Все возможности + кастом', features: ['Безлимитные сообщения', 'Кастомные каналы', 'Dedicated менеджер', 'SLA 99.9%', 'Персональная настройка'], minContract: 'Минимум 12 месяцев' },
+        ]}
+        contactHref="#cta-form"
+        comparisonTable={{
+          headers: ['Базовый', 'Рост ⭐', 'Бизнес'],
+          rows: [
+            { label: 'Сообщений в месяц', values: ['3,000', <strong key="r1">15,000</strong>, 'Безлимит'] },
+            { label: 'Каналы', values: ['3 (TG/WA/IG)', <strong key="r2">Все</strong>, 'Все + кастом'] },
+            { label: 'ИИ-квалификация', values: [<CheckIcon key="c1" className="w-5 h-5 text-green-600 mx-auto" />, <CheckIcon key="c2" className="w-5 h-5 text-green-600 mx-auto" />, <CheckIcon key="c3" className="w-5 h-5 text-green-600 mx-auto" />] },
+            { label: 'Поддержка', values: ['Приоритетная', '24/7', '24/7 + менеджер'] },
+          ],
+        }}
+      />
 
       {/* ════════════════════════════════════════════════════════
           SECTION 5 — CASE STUDIES

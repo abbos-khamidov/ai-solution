@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    async redirects() {
+        return [{ source: '/privacy', destination: '/confidential', permanent: false }];
+    },
     experimental: {
         optimizePackageImports: ["lucide-react", "motion/react"]
     },

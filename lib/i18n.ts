@@ -15,7 +15,7 @@ export const languages = [
 
 export type LanguageCode = (typeof languages)[number]['code'];
 
-// Get saved language or default to 'en'
+// Get saved language or default to 'ru' (target: Uzbekistan/Russia B2B)
 function getSavedLanguage(): LanguageCode {
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem('aisolution-lang') as LanguageCode;
@@ -23,7 +23,7 @@ function getSavedLanguage(): LanguageCode {
       return saved;
     }
   }
-  return 'en';
+  return 'ru';
 }
 
 i18n.use(initReactI18next).init({
@@ -33,8 +33,8 @@ i18n.use(initReactI18next).init({
     uz: { translation: uz },
     zh: { translation: zh },
   },
-  lng: 'en', // Always init with 'en' for SSR/hydration consistency; I18nProvider switches to saved on mount
-  fallbackLng: 'en',
+  lng: 'ru',
+  fallbackLng: 'ru',
   interpolation: {
     escapeValue: false, // React already escapes
   },

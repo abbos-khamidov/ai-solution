@@ -206,17 +206,50 @@
   "servicesGrid": {
     "title": "Our Solutions",
     "subtitle": "Full spectrum of AI automation for your business",
-    "learnMore": "Learn More",
+    "learnMore": "Learn more →",
     "hoverHint": "Click to learn more →",
     "deploymentPrice": "+ $300 setup",
-    "poweredBy": "Powered by Telethon & LLM Fine-tuning",
     "items": [
-      { "title": "AI-Sales Agent", "description": "Telegram userbots, lead recovery, 24/7 qualification. Integrated database and custom admin panel.", "price": "From $99/mo", "href": "/services/ai-managers", "poweredBy": true },
-      { "title": "AI-Business Assistant", "description": "Internal knowledge bases and trained FAQ models. Integrated database and custom admin panel.", "price": "From $99/mo", "href": "/services/ai-assistant" },
-      { "title": "Smart Booking System", "description": "Appointments, calendar sync. DB integration and custom admin panel.", "price": "From $99/mo", "href": "/services/telegram-bots" },
-      { "title": "Lead Analytics Dashboard", "description": "Real-time KPI tracking and lead scoring (Cold/Warm/Hot). Integrated database and custom admin panel.", "price": "From $99/mo", "href": "/services/analytics" },
-      { "title": "Custom Software Development", "description": "High-end MVP development and complex bot logic. Integrated database and custom admin panel.", "price": "$5,000 MVP", "href": "/services/software-development" }
+      { "title": "Telegram Bot for Business", "description": "Basic bot for leads and FAQ. 24/7 auto-replies, admin panel.", "pricing": "From $49/mo", "setupFee": "+ $300 setup", "href": "/services/telegram-bots", "features": ["Up to 1,000 msgs/mo", "Basic Q&A", "1 Telegram bot", "Admin panel", "Email support"] },
+      { "title": "AI Manager for Messengers", "description": "Smart assistant for Telegram, WhatsApp, Instagram. Lead qualification (Cold/Warm/Hot).", "pricing": "From $59/mo", "setupFee": "+ $300 setup", "href": "/services/ai-managers", "features": ["Up to 5,000 msgs/mo", "3 channels (TG/WA/IG)", "AI lead qualification", "CRM integration", "Priority support"] },
+      { "title": "Personal AI Assistant", "description": "ChatGPT trained on your company knowledge. Notion, Slack, Google Drive. Save 15+ hrs/week.", "pricing": "From $98/mo", "setupFee": "+ $300 setup", "href": "/services/ai-assistant", "features": ["Trained on your data", "Unlimited queries", "Notion/Slack integration", "Custom instructions", "24/7 support"] },
+      { "title": "Business Analytics Dashboard", "description": "Real-time dashboards, KPI tracking, lead scoring. Trend forecasting and quarterly reports.", "pricing": "From $196/mo", "setupFee": "+ $300 setup", "href": "/services/analytics", "features": ["Real-time dashboards", "Auto reports", "PDF/Excel export", "API integrations", "Dedicated manager"] },
+      { "title": "Custom Software Development", "description": "MVP development: web, mobile, e-commerce. From idea to launch in 4-8 weeks.", "pricing": "From $2,500 per MVP", "setupFee": "", "href": "/services/software-development", "features": ["Web (React/Next.js)", "Mobile (iOS/Android)", "E-commerce", "Enterprise systems", "4-8 weeks"] }
     ]
+  },
+  "pricingCallout": {
+    "title": "Transparent pricing",
+    "description": "All plans include: database, admin panel, API integrations and support. Setup is paid once at project start.",
+    "noHidden": "No hidden fees",
+    "noHiddenSub": "Fixed price",
+    "cancelAnytime": "Cancel anytime",
+    "cancelAnytimeSub": "No penalties",
+    "upgradeFree": "Upgrade at no extra cost",
+    "upgradeFreeSub": "Flexible plans",
+    "support247": "24/7 support",
+    "support247Sub": "In Uzbek/Russian",
+    "setupIncludedTitle": "What's included in setup",
+    "setupItem1": "API integration and configuration",
+    "setupItem2": "Database deployment",
+    "setupItem3": "AI model training",
+    "setupItem4": "Custom admin panel",
+    "setupItem5": "Testing and debugging",
+    "setupItem6": "Onboarding and training",
+    "setupNote": "Important: Setup cost covers 20-30 hours of engineer work. Real value you get for the initial payment."
+  },
+  "roiCalculator": {
+    "title": "Calculate your ROI",
+    "subtitle": "See how much you save with AI automation",
+    "leadsLabel": "How many leads do you lose per month?",
+    "leadsPlaceholder": "50",
+    "checkLabel": "Average deal size ($)",
+    "checkPlaceholder": "200",
+    "lostPerMonth": "Lost per month:",
+    "aiCost": "AI manager cost:",
+    "savingsPerMonth": "Savings per month:",
+    "payback": "Payback:",
+    "paybackWeek": "within the first week",
+    "cta": "Get a personal quote"
   },
   "leadQualificationShowcase": {
     "title": "How AI sees your clients",
@@ -252,7 +285,8 @@
     "quote": "Implementing the AI manager increased our conversion from 18% to 47% in 2 months. Paid for itself in the first month.",
     "quoteName": "Alexey Petrov",
     "quoteCompany": "Retail Group",
-    "quoteRole": "CEO"
+    "quoteRole": "CEO",
+    "quoteInitials": "AP"
   },
   "services": {
     "aiManagers": {
