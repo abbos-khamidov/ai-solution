@@ -1,15 +1,11 @@
 from __future__ import annotations
 
-import asyncio
 import html
 import os
 from datetime import datetime, timezone
 from typing import Any
 
 import requests
-from aiogram import Bot
-from aiogram.client.default import DefaultBotProperties
-from aiogram.enums import ParseMode
 
 
 def _format_message(payload: dict[str, Any]) -> str:
@@ -33,13 +29,14 @@ def _format_message(payload: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-async def _send_telegram_message(token: str, chat_id: str, text: str) -> bool:
-    bot = Bot(token=token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    try:
-        await bot.send_message(chat_id=chat_id, text=text)
-        return True
-    finally:
-        await bot.session.close()
+def _send_telegram_message(token: str, chat_id: str, text: str) -> bool:
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    resp = requests.post(
+        url,
+        json={"chat_id": chat_id, "text": text, "parse_mode": "HTML"},
+        timeout=10,
+    )
+    return resp.status_code == 200 and resp.json().get("ok", False)
 
 
 def send_to_telegram(payload: dict[str, Any]) -> tuple[bool, bool, str]:
@@ -52,13 +49,9 @@ def send_to_telegram(payload: dict[str, Any]) -> tuple[bool, bool, str]:
 
     text = _format_message(payload)
 
-    async def runner() -> tuple[bool, bool]:
-        personal_ok = await _send_telegram_message(token, personal_chat_id, text)
-        group_ok = await _send_telegram_message(token, group_chat_id, text)
-        return personal_ok, group_ok
-
     try:
-        personal_ok, group_ok = asyncio.run(runner())
+        personal_ok = _send_telegram_message(token, personal_chat_id, text)
+        group_ok = _send_telegram_message(token, group_chat_id, text)
         return personal_ok, group_ok, ""
     except Exception as exc:  # noqa: BLE001
         return False, False, str(exc)
