@@ -75,7 +75,7 @@ export function Header() {
                 href="/"
                 className="text-[20px] font-semibold text-gray-900 tracking-tight select-none focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-sm"
               >
-                aisolution
+                AI Solution
               </Link>
             </motion.div>
 
@@ -156,7 +156,7 @@ export function Header() {
                 className="text-[20px] font-semibold text-gray-900 tracking-tight"
                 onClick={() => setIsMobileOpen(false)}
               >
-                aisolution
+                AI Solution
               </Link>
               <button
                 className="p-2 -mr-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2"

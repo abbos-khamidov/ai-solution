@@ -1,11 +1,9 @@
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
-import { ValuePropSection } from '@/components/sections/ValuePropSection';
-import { ServicesGridSection } from '@/components/sections/ServicesGridSection';
-import { PricingCalloutSection } from '@/components/sections/PricingCalloutSection';
-import { ROICalculatorSection } from '@/components/sections/ROICalculatorSection';
-import { LeadQualificationShowcase } from '@/components/sections/LeadQualificationShowcase';
-import { SocialProofSection } from '@/components/sections/SocialProofSection';
+import { WeAreSection } from '@/components/sections/WeAreSection';
+import { ProblemSection } from '@/components/sections/ProblemSection';
+import { SolutionSection } from '@/components/sections/SolutionSection';
+import { SimplePricingSection } from '@/components/sections/SimplePricingSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/layout/Footer';
 
@@ -15,12 +13,10 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <ValuePropSection />
-        <ServicesGridSection />
-        <PricingCalloutSection />
-        <ROICalculatorSection />
-        <LeadQualificationShowcase />
-        <SocialProofSection />
+        <WeAreSection />
+        <ProblemSection />
+        <SolutionSection />
+        <SimplePricingSection />
         <ContactSection />
       </main>
       <Footer />
