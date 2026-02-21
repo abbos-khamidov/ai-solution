@@ -48,7 +48,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" suppressHydrationWarning className={`scroll-smooth ${inter.variable} ${notoSansSC.variable}`}>
-      <body suppressHydrationWarning className={`${inter.className} bg-[#FAFBFC] text-[#0F1419]`}>
+      <body suppressHydrationWarning className={`${inter.className} bg-[#05050A] text-[#F8FAFC]`}>
         <I18nProvider>
           {children}
           <Toaster richColors position="top-center" />

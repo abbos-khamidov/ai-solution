@@ -4,7 +4,28 @@
     "process": "How We Work",
     "about": "About Us",
     "contact": "Contact",
-    "startProject": "Start a Project"
+    "startProject": "Start a Project",
+    "home": "Home",
+    "products": "Products",
+    "discuss": "Discuss"
+  },
+  "heroNew": {
+    "titleLine1": "Your managers sleep.",
+    "titleLine2": "Your AI —",
+    "titleAccent": "doesn't",
+    "subtitle": "30% of clients leave without getting a reply.\nOur AI responds in 30 seconds — day and night.",
+    "cta": "Choose a plan",
+    "stats": {
+      "speed": "Response time",
+      "nonstop": "Always on",
+      "conversion": "More conversions",
+      "clients": "Clients"
+    }
+  },
+  "pricing": {
+    "setupLabel": "Launch (one-time)",
+    "monthlyLabel": "Support / mo",
+    "forWhom": "Best for:"
   },
   "hero": {
     "badge": "AI in your managers' accounts — zero lead leakage",

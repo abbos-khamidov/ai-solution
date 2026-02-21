@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
+import { sendTelegram, fmtChatMessage } from '@/lib/telegram';
 
 function getTimeOfDay() {
   const hour = new Date().getHours();
@@ -9,38 +10,53 @@ function getTimeOfDay() {
   return 'night';
 }
 
-function getGreeting(timeOfDay: string) {
-  const greetings = {
-    morning: 'Доброе утро',
-    afternoon: 'Добрый день',
-    evening: 'Добрый вечер',
-    night: 'Доброй ночи',
-  };
-  return greetings[timeOfDay as keyof typeof greetings] || 'Здравствуйте';
+// Greetings by time of day in all supported languages
+const GREETINGS: Record<string, Record<string, string>> = {
+  morning:   { ru: 'Доброе утро',   uz: 'Xayrli tong',   en: 'Good morning',  zh: '早上好' },
+  afternoon: { ru: 'Добрый день',   uz: 'Xayrli kun',    en: 'Good afternoon',zh: '下午好' },
+  evening:   { ru: 'Добрый вечер',  uz: 'Xayrli kech',   en: 'Good evening',  zh: '晚上好' },
+  night:     { ru: 'Доброй ночи',   uz: 'Yaxshi kechlar',en: 'Good evening',  zh: '晚上好' },
+};
+
+function getGreetings(timeOfDay: string) {
+  return GREETINGS[timeOfDay] ?? GREETINGS.afternoon;
 }
 
-const DEMO_SYSTEM_PROMPT = (greeting: string) => `Ты Александр — AI-ассистент компании AI Solution.
+const DEMO_SYSTEM_PROMPT = (greetings: Record<string, string>) => `Ты Александр — AI-ассистент компании AI Solution.
 Стиль: короткие сообщения как в мессенджере. Максимум 2-3 предложения + 1 вопрос. Никаких маркированных списков.
 
 О компании: AI Solution делает AI-ассистентов для продаж. Отвечают клиентам за 30 сек в Telegram/Instagram/WhatsApp, квалифицируют лиды (Cold/Warm/Hot), передают горячих менеджеру. Возвращаем 30% потерянных клиентов.
 Тарифы: Starter $199/мес (1 канал), Professional $399/мес (3 канала + CRM), Enterprise — индивидуально.
 
-━━━ ГЛАВНОЕ ПРАВИЛО — СНАЧАЛА ИМЯ ━━━
-Проверь историю диалога. Называл ли клиент своё имя?
+━━━ ЯЗЫК ОБЩЕНИЯ — КРИТИЧЕСКИ ВАЖНО ━━━
+Определи язык по ПЕРВОМУ сообщению пользователя и общайся ТОЛЬКО на нём:
+- Узбекский → отвечай по-узбекски (латиница: O'zbek tilida yoz)
+- Русский → отвечай по-русски
+- Английский → отвечай по-английски
+- Другой → отвечай на том же языке
+НЕЛЬЗЯ переключаться на другой язык в середине диалога.
 
-ЕСЛИ ИМЯ НЕИЗВЕСТНО → твой ответ ТОЛЬКО:
-"${greeting}! Я Александр из AI Solution. Прежде чем отвечать — как вас зовут?"
-Никакого другого контента. Только это. Пока не знаешь имя — не отвечай на вопрос.
+━━━ ПРИВЕТСТВИЕ ПО ЯЗЫКУ ━━━
+Узбекский: "${greetings.uz}! Men Aleksandr — AI Solution yordamchisi. Ismingiz nima?"
+Русский: "${greetings.ru}! Я Александр из AI Solution. Как вас зовут?"
+Английский: "${greetings.en}! I'm Alexander from AI Solution. What's your name?"
+Другой: адаптируй приветствие под язык пользователя.
 
-ЕСЛИ ИМЯ ИЗВЕСТНО → можешь отвечать на вопрос, обращаясь по имени.
+━━━ ПРАВИЛО ЗНАКОМСТВА ━━━
+Это ПЕРВОЕ сообщение (история пустая)?
+→ Поприветствуй на языке пользователя и спроси имя.
+
+Ты УЖЕ спрашивал имя (в истории есть приветствие)?
+→ ПРИНЯТЬ любой ответ как имя/обращение. НИКОГДА не повторять вопрос об имени.
+→ Сразу переходи к теме.
 
 ━━━ ПРАВИЛО О ЦЕНАХ ━━━
-Не называй цены ($199, $399) пока не знаешь: имя + боль клиента + показал ценность для его ниши.
+Не называй цены пока клиент не рассказал о своей задаче/боли.
 
-━━━ ПОСЛЕ ЗНАКОМСТВА ━━━
-1. Узнай боль: сколько лидов теряет, какой канал использует
-2. Покажи ценность для его конкретной ниши
-3. Только потом — тарифы
+━━━ СТРАТЕГИЯ ДИАЛОГА ━━━
+1. Познакомился → узнай боль: сколько лидов теряет, какой канал использует
+2. Понял боль → покажи ценность конкретно для его ниши
+3. Показал ценность → называй тарифы
 
 ━━━ КВАЛИФИКАЦИЯ ━━━
 Cold: первый контакт, нет конкретики
@@ -48,7 +64,7 @@ Warm: интересуется решением, спрашивает детал
 Hot: готов начать, просит контакты/договор
 
 ━━━ ФОРМАТ ОТВЕТА — только JSON без markdown ━━━
-{"leadType":"Cold|Warm|Hot","intent":"что хочет клиент","action":"что делать менеджеру","response":"твой ответ"}`;
+{"leadType":"Cold|Warm|Hot","intent":"что хочет клиент","action":"что делать менеджеру","response":"твой ответ на языке пользователя"}`;
 
 
 export async function POST(req: NextRequest) {
@@ -71,16 +87,16 @@ export async function POST(req: NextRequest) {
     const conversationHistory = Array.isArray(history) ? history : [];
 
     const timeOfDay = getTimeOfDay();
-    const greeting = getGreeting(timeOfDay);
+    const greetings = getGreetings(timeOfDay);
 
     const openai = new OpenAI({ apiKey });
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: DEMO_SYSTEM_PROMPT(greeting) },
-        ...conversationHistory.slice(-10).map((m: any) => ({
+        { role: 'system', content: DEMO_SYSTEM_PROMPT(greetings) },
+        ...conversationHistory.slice(-10).map((m: { role: string; content: string }) => ({
           role: m.role as 'user' | 'assistant',
-          content: m.content
+          content: m.content,
         })),
       ],
       max_tokens: 300,
@@ -95,6 +111,17 @@ export async function POST(req: NextRequest) {
 
       if (!parsed.leadType || !parsed.intent || !parsed.action || !parsed.response) {
         throw new Error('Invalid response structure');
+      }
+
+      // Notify on new dialogue or Hot lead
+      const isNew = conversationHistory.length === 0;
+      if (isNew || parsed.leadType === 'Hot') {
+        sendTelegram(fmtChatMessage({
+          source: 'demo',
+          userMessage: message,
+          leadType: parsed.leadType,
+          historyLen: conversationHistory.length,
+        }));
       }
 
       return NextResponse.json(parsed);

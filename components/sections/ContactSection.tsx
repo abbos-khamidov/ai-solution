@@ -14,34 +14,53 @@ export function ContactSection() {
     e.preventDefault();
     if (!name.trim() || !contact.trim()) return;
     setLoading(true);
-    await new Promise((r) => setTimeout(r, 800));
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.trim(), contact: contact.trim() }),
+      });
+    } catch {
+      // fail silently — user still sees success
+    }
     setSubmitted(true);
     setLoading(false);
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white">
+    <section id="contact" className="py-16 md:py-24 bg-[#05050A]">
       <div className="max-w-2xl mx-auto px-4 md:px-6">
         <ScrollReveal duration={0.6}>
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0F1419] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
               Начать бесплатно
             </h2>
-            <p className="text-lg text-[#536471]">
+            <p className="text-lg text-[#64748B]">
               Оставьте контакт — настроим AI-ассистента под ваш бизнес за 2 часа
             </p>
           </div>
 
           {submitted ? (
             <div className="flex flex-col items-center gap-4 py-12 text-center">
-              <CheckCircle className="w-16 h-16 text-green-500" />
-              <h3 className="text-2xl font-bold text-[#0F1419]">Заявка принята!</h3>
-              <p className="text-[#536471]">Свяжемся с вами в течение 30 минут.</p>
+              <div className="relative">
+                <div className="absolute inset-0 w-16 h-16 rounded-full" style={{ background: 'rgba(34, 197, 94, 0.15)', filter: 'blur(16px)' }} />
+                <CheckCircle className="relative w-16 h-16 text-green-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#F8FAFC]">Заявка принята!</h3>
+              <p className="text-[#94A3B8]">Свяжемся с вами в течение 30 минут.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-gray-50 rounded-2xl p-8 border border-gray-200 space-y-4">
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-2xl p-8 space-y-4"
+              style={{
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(20px)',
+              }}
+            >
               <div>
-                <label className="block text-sm font-medium text-[#0F1419] mb-2">
+                <label className="block text-sm font-medium text-[#F8FAFC] mb-2">
                   Имя
                 </label>
                 <input
@@ -50,11 +69,15 @@ export function ContactSection() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Ваше имя"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-[#0F1419] bg-white"
+                  className="w-full px-4 py-3 rounded-xl text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all focus:border-[#3B82F6]/50 focus:ring-2 focus:ring-[#3B82F6]/20"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#0F1419] mb-2">
+                <label className="block text-sm font-medium text-[#F8FAFC] mb-2">
                   Telegram или Email
                 </label>
                 <input
@@ -63,13 +86,17 @@ export function ContactSection() {
                   onChange={(e) => setContact(e.target.value)}
                   placeholder="@username или email@example.com"
                   required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-[#0F1419] bg-white"
+                  className="w-full px-4 py-3 rounded-xl text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all focus:border-[#3B82F6]/50 focus:ring-2 focus:ring-[#3B82F6]/20"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading || !name.trim() || !contact.trim()}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#00D9FF] text-white font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-shimmer w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span>Отправляем...</span>
@@ -80,16 +107,16 @@ export function ContactSection() {
                   </>
                 )}
               </button>
-              <p className="text-xs text-center text-[#8899A6]">
+              <p className="text-xs text-center text-[#64748B]">
                 Никакого спама. Только по делу.
               </p>
             </form>
           )}
 
-          <div className="mt-8 text-center text-sm text-[#536471]">
+          <div className="mt-8 text-center text-sm text-[#64748B]">
             Или напишите напрямую в Telegram:{' '}
-            <a href="https://t.me/aisolution" className="text-blue-600 font-medium hover:underline">
-              @aisolution
+            <a href="https://t.me/aisolution_uz" className="text-[#3B82F6] font-medium hover:underline">
+              @aisolution_uz
             </a>
           </div>
         </ScrollReveal>

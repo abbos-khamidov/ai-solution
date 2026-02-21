@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(timeout:*)",
+      "Bash(taskkill:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(dir:*)",
+      "Bash(tasklist:*)",
+      "Bash(ping:*)",
+      "Bash(set PORT=3004)",
+      "Bash(Remove-Item -Recurse -Force \"C:\\\\Users\\\\imabb\\\\OneDrive\\\\Desktop\\\\adams ai\\\\website\\\\.next\" -ErrorAction SilentlyContinue)",
+      "Bash(Write-Host \"Cleared\")",
+      "WebSearch",
+      "Bash(npx tsc:*)",
+      "Bash(cd:*)"
+    ]
+  }
+}

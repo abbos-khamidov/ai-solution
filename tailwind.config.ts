@@ -32,6 +32,7 @@ const config: Config = {
           "blue-light": "var(--accent-blue-light)",
           cyan: "var(--accent-cyan)",
           "cyan-dark": "var(--accent-cyan-dark)",
+          purple: "var(--accent-purple)",
         },
         card: {
           DEFAULT: "var(--card)",
@@ -51,17 +52,18 @@ const config: Config = {
         "3xl": "1.5rem",
       },
       boxShadow: {
-        card: "0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03)",
-        "card-hover": "0 4px 16px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.04)",
-        glass: "0 8px 32px rgba(0, 0, 0, 0.06)",
-        glow: "0 0 30px rgba(0, 102, 255, 0.12), 0 0 60px rgba(0, 217, 255, 0.08)",
-        subtle: "0 1px 2px rgba(0, 0, 0, 0.04)",
+        card: "0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2)",
+        "card-hover": "0 4px 16px rgba(59, 130, 246, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3)",
+        glass: "0 8px 32px rgba(0, 0, 0, 0.4)",
+        glow: "0 0 30px rgba(59, 130, 246, 0.15), 0 0 60px rgba(6, 182, 212, 0.1)",
+        "glow-strong": "0 0 40px rgba(59, 130, 246, 0.25), 0 0 80px rgba(6, 182, 212, 0.15)",
+        subtle: "0 1px 2px rgba(0, 0, 0, 0.3)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display-xl": ["4.5rem", { lineHeight: "1.05", letterSpacing: "-0.03em", fontWeight: "700" }],
+        "display-xl": ["4.5rem", { lineHeight: "1.1", letterSpacing: "-0.03em", fontWeight: "800" }],
         "display-lg": ["3.5rem", { lineHeight: "1.1", letterSpacing: "-0.025em", fontWeight: "700" }],
         "display": ["2.75rem", { lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "600" }],
         "heading": ["2rem", { lineHeight: "1.2", letterSpacing: "-0.015em", fontWeight: "600" }],
@@ -77,11 +79,15 @@ const config: Config = {
       animation: {
         "float": "float 6s ease-in-out infinite",
         "float-slow": "float-slow 8s ease-in-out infinite",
+        "float-badge": "float-badge 4s ease-in-out infinite",
+        "float-badge-alt": "float-badge-alt 5s ease-in-out infinite",
         "morph": "morph 8s ease-in-out infinite",
         "spin-slow": "spin-slow 30s linear infinite",
         "shimmer": "shimmer 2s linear infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        "pulse-online": "pulse-online 2s ease-in-out infinite",
         "gradient": "gradient-shift 4s ease infinite",
+        "fade-up": "fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
       },
       transitionTimingFunction: {
         "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",

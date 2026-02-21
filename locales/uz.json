@@ -4,7 +4,28 @@
     "process": "Qanday ishlaymiz",
     "about": "Biz haqimizda",
     "contact": "Aloqa",
-    "startProject": "Loyihani boshlash"
+    "startProject": "Loyihani boshlash",
+    "home": "Bosh sahifa",
+    "products": "Mahsulotlar",
+    "discuss": "Muhokama qilish"
+  },
+  "heroNew": {
+    "titleLine1": "Menejerlaringiz uxlaydi.",
+    "titleLine2": "Sizning AI —",
+    "titleAccent": "yo'q",
+    "subtitle": "Mijozlarning 30% javob kutmasdan ketadi.\nBizning AI 30 soniyada javob beradi — kunu tun.",
+    "cta": "Tarifni tanlang",
+    "stats": {
+      "speed": "Javob tezligi",
+      "nonstop": "Dam olishsiz",
+      "conversion": "Ko'proq konversiya",
+      "clients": "Mijozlar"
+    }
+  },
+  "pricing": {
+    "setupLabel": "Ishga tushirish (bir martalik)",
+    "monthlyLabel": "Qo'llab-quvvatlash / oy",
+    "forWhom": "Kim uchun:"
   },
   "hero": {
     "badge": "Menejerlar hisoblarida AI — lidersiz yo'qotishsiz",

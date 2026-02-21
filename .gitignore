@@ -1,3 +1,7 @@
+# Windows reserved names
+nul
+nul.*
+
 # dependencies
 node_modules/
 

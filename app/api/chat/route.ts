@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { CHAT_SYSTEM_PROMPT } from '@/lib/chat/systemPrompt';
+import { sendTelegram, fmtChatMessage } from '@/lib/telegram';
 
 function maskApiKey(value: string) {
   const cleaned = value.trim().replace(/\s+/g, '');
@@ -23,6 +24,16 @@ export async function POST(req: NextRequest) {
 
     if (!Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json({ error: 'messages array is required' }, { status: 400 });
+    }
+
+    // Notify on first user message (new conversation)
+    const userMessages = messages.filter((m) => m.role === 'user');
+    if (userMessages.length === 1) {
+      sendTelegram(fmtChatMessage({
+        source: 'widget',
+        userMessage: userMessages[0].content,
+        historyLen: 0,
+      }));
     }
 
     const openai = new OpenAI({ apiKey });

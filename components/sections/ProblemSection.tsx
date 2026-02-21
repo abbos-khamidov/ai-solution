@@ -1,104 +1,103 @@
 'use client';
 
-/**
- * Problem Section - Shows 3 key problems AI sales assistant solves
- */
-
 import React from 'react';
-import { DollarSign, Clock, TrendingDown } from 'lucide-react';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
 const problems = [
   {
-    icon: DollarSign,
     emoji: '💸',
     title: '30% лидов потеряно',
     description: 'Менеджеры отвечают через 2-4 часа. Клиент уже ушёл к конкурентам.',
-    color: 'red',
-    bgColor: 'bg-red-50',
-    textColor: 'text-red-600',
-    borderColor: 'border-red-200',
+    glowColor: 'rgba(239, 68, 68, 0.15)',
+    accentColor: '#EF4444',
   },
   {
-    icon: Clock,
     emoji: '⏰',
     title: 'Работаем только 9-18',
     description: 'Лиды приходят ночью, в выходные. Никто не отвечает.',
-    color: 'orange',
-    bgColor: 'bg-orange-50',
-    textColor: 'text-orange-600',
-    borderColor: 'border-orange-200',
+    glowColor: 'rgba(245, 158, 11, 0.15)',
+    accentColor: '#F59E0B',
   },
   {
-    icon: TrendingDown,
     emoji: '💰',
     title: 'Упущенная прибыль',
     description: 'Каждый потерянный лид = $500-5000 упущенных.',
-    color: 'purple',
-    bgColor: 'bg-purple-50',
-    textColor: 'text-purple-600',
-    borderColor: 'border-purple-200',
+    glowColor: 'rgba(124, 58, 237, 0.15)',
+    accentColor: '#7C3AED',
   },
 ];
 
 export function ProblemSection() {
   return (
-    <section className="py-16 md:py-24 bg-gray-50" id="about">
+    <section className="py-16 md:py-24 bg-[#05050A]" id="about">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <ScrollReveal duration={0.6}>
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F1419] mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
               Знакомая ситуация?
             </h2>
-            <p className="text-lg md:text-xl text-[#536471] max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">
               Пока ваши менеджеры спят, конкуренты забирают клиентов
             </p>
           </div>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {problems.map((problem, idx) => {
-            const Icon = problem.icon;
-            return (
-              <ScrollReveal
-                key={idx}
-                direction="up"
-                duration={0.6}
-                delay={idx * 0.1}
+          {problems.map((problem, idx) => (
+            <ScrollReveal
+              key={idx}
+              direction="up"
+              duration={0.6}
+              delay={idx * 0.1}
+            >
+              <div
+                className="group relative p-6 md:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backdropFilter: 'blur(20px)',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = `${problem.accentColor}40`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                }}
               >
-                <div
-                  className={`relative p-6 md:p-8 rounded-2xl border-2 ${problem.borderColor} ${problem.bgColor} hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
-                >
-                  {/* Emoji badge */}
-                  <div className="text-5xl mb-4">{problem.emoji}</div>
-
-                  {/* Title */}
-                  <h3 className={`text-xl md:text-2xl font-bold ${problem.textColor} mb-3`}>
-                    {problem.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-[#536471] leading-relaxed">
-                    {problem.description}
-                  </p>
-
-                  {/* Decorative corner */}
+                {/* Emoji with glow */}
+                <div className="relative w-16 h-16 flex items-center justify-center mb-5">
                   <div
-                    className={`absolute top-4 right-4 w-12 h-12 rounded-full ${problem.bgColor} opacity-50 blur-xl`}
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: problem.glowColor, filter: 'blur(16px)' }}
                   />
+                  <span className="relative text-4xl">{problem.emoji}</span>
                 </div>
-              </ScrollReveal>
-            );
-          })}
+
+                <h3 className="text-xl md:text-2xl font-bold text-[#F8FAFC] mb-3">
+                  {problem.title}
+                </h3>
+
+                <p className="text-[#94A3B8] leading-relaxed">
+                  {problem.description}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
 
         {/* Bottom stat */}
         <ScrollReveal duration={0.6} delay={0.4}>
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border-2 border-red-200 shadow-lg">
+            <div
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full"
+              style={{
+                background: 'rgba(239, 68, 68, 0.08)',
+                border: '1px solid rgba(239, 68, 68, 0.2)',
+              }}
+            >
               <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-lg md:text-xl font-semibold text-[#0F1419]">
-                В среднем бизнес теряет <span className="text-red-600">30% лидов</span> из-за медленного ответа
+              <span className="text-base md:text-lg font-semibold text-[#F8FAFC]">
+                В среднем бизнес теряет <span className="text-red-400">30% лидов</span> из-за медленного ответа
               </span>
             </div>
           </div>

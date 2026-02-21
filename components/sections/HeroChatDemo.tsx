@@ -1,10 +1,6 @@
 'use client';
 
-/**
- * Hero Chat Demo - Compact version for Hero section
- */
-
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Send, Bot, Target, Loader2 } from 'lucide-react';
 
 interface Message {
@@ -20,11 +16,79 @@ interface Analysis {
   action: string;
 }
 
-const EXAMPLE_PROMPTS = [
-  'Расскажите о компании',
-  'Нужна автоматизация продаж',
-  'Готовы начать завтра',
-];
+type Lang = 'ru' | 'uz' | 'en' | 'zh';
+
+// Detect language by script / common words
+function detectLang(text: string): Lang {
+  if (!text.trim()) return 'ru';
+  // Chinese characters
+  if (/[\u4E00-\u9FFF]/.test(text)) return 'zh';
+  // Cyrillic → Russian
+  if (/[а-яёА-ЯЁ]/.test(text)) return 'ru';
+  // Uzbek Latin heuristics: o', g', sh, ng, common roots
+  const lower = text.toLowerCase();
+  if (
+    /[o'g'ʻ]/.test(lower) ||
+    /\b(salom|kerak|yordam|rahmat|xayrli|nima|nega|qanday|bilan|men|sen|ular|bu|va|uchun|yozmoqda|ishlayman|xohlaydi|qilamiz)\b/.test(lower)
+  ) {
+    return 'uz';
+  }
+  // English default for Latin script
+  if (/[a-zA-Z]/.test(text)) return 'en';
+  return 'ru';
+}
+
+const UI_LABELS: Record<Lang, {
+  title: string;
+  subtitle: string;
+  typing: string;
+  placeholder: string;
+  examplesLabel: string;
+  examples: string[];
+  errorText: string;
+  fallbackText: string;
+}> = {
+  ru: {
+    title: 'AI Продажник',
+    subtitle: 'Онлайн · Тестируй прямо сейчас',
+    typing: 'Александр печатает',
+    placeholder: 'Напиши сообщение...',
+    examplesLabel: 'Примеры:',
+    examples: ['Расскажите о компании', 'Нужна автоматизация продаж', 'Готовы начать завтра'],
+    errorText: 'Извините, произошла ошибка. Попробуйте ещё раз.',
+    fallbackText: 'Спасибо за ваш вопрос!',
+  },
+  uz: {
+    title: 'AI Savdo Yordamchi',
+    subtitle: 'Online · Hozir sinab ko\'ring',
+    typing: 'Aleksandr yozmoqda',
+    placeholder: 'Xabar yozing...',
+    examplesLabel: 'Misollar:',
+    examples: ['Kompaniya haqida ayting', 'Savdoni avtomatlashtirish kerak', 'Ertadan boshlashga tayyormiz'],
+    errorText: 'Kechirasiz, xato yuz berdi. Qayta urinib ko\'ring.',
+    fallbackText: 'Savolingiz uchun rahmat!',
+  },
+  en: {
+    title: 'AI Sales Assistant',
+    subtitle: 'Online · Try it right now',
+    typing: 'Alexander is typing',
+    placeholder: 'Type a message...',
+    examplesLabel: 'Examples:',
+    examples: ['Tell me about your company', 'I need sales automation', 'Ready to start tomorrow'],
+    errorText: 'Sorry, an error occurred. Please try again.',
+    fallbackText: 'Thank you for your question!',
+  },
+  zh: {
+    title: 'AI 销售助手',
+    subtitle: '在线 · 立即体验',
+    typing: 'Alexander 正在输入',
+    placeholder: '输入消息...',
+    examplesLabel: '示例:',
+    examples: ['介绍一下贵公司', '我需要销售自动化', '明天就可以开始'],
+    errorText: '抱歉，发生了错误，请重试。',
+    fallbackText: '感谢您的提问！',
+  },
+};
 
 export function HeroChatDemo() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -32,7 +96,11 @@ export function HeroChatDemo() {
   const [loading, setLoading] = useState(false);
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [mounted, setMounted] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [lang, setLang] = useState<Lang>('ru');
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
+
+  const labels = UI_LABELS[lang];
 
   useEffect(() => {
     setMounted(true);
@@ -44,17 +112,30 @@ export function HeroChatDemo() {
     }]);
   }, []);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollToBottom = useCallback(() => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+    container.scrollTo({
+      top: container.scrollHeight,
+      behavior: isInitialMount.current ? 'instant' : 'smooth',
+    });
+  }, []);
 
   useEffect(() => {
+    if (messages.length === 0) return;
     scrollToBottom();
-  }, [messages]);
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    }
+  }, [messages, scrollToBottom]);
 
   const sendMessage = async (text?: string) => {
     const messageText = (text || input).trim();
     if (!messageText || loading) return;
+
+    // Detect and update UI language from user input
+    const detectedLang = detectLang(messageText);
+    setLang(detectedLang);
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -67,21 +148,17 @@ export function HeroChatDemo() {
     setLoading(true);
 
     try {
-      // Send conversation history (exclude the fake welcome message)
       const conversationHistory = [...messages, userMessage]
         .filter(msg => !msg.isWelcome)
         .map(msg => ({
           role: msg.sender === 'user' ? 'user' : 'assistant',
-          content: msg.text
+          content: msg.text,
         }));
 
       const res = await fetch('/api/chat-demo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: messageText,
-          history: conversationHistory
-        }),
+        body: JSON.stringify({ message: messageText, history: conversationHistory }),
       });
 
       const data = await res.json();
@@ -92,7 +169,7 @@ export function HeroChatDemo() {
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response || 'Спасибо за ваш вопрос!',
+        text: data.response || UI_LABELS[detectedLang].fallbackText,
         sender: 'bot',
       };
 
@@ -104,12 +181,14 @@ export function HeroChatDemo() {
       });
     } catch (error) {
       console.error('Chat demo error:', error);
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: 'Извините, произошла ошибка. Попробуйте ещё раз.',
-        sender: 'bot',
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          text: UI_LABELS[detectedLang].errorText,
+          sender: 'bot',
+        },
+      ]);
     } finally {
       setLoading(false);
     }
@@ -122,14 +201,11 @@ export function HeroChatDemo() {
     }
   };
 
-  const getLeadTypeColor = (type: 'Cold' | 'Warm' | 'Hot') => {
+  const getLeadTypeStyle = (type: 'Cold' | 'Warm' | 'Hot') => {
     switch (type) {
-      case 'Cold':
-        return 'bg-blue-100 text-blue-700 border-blue-300';
-      case 'Warm':
-        return 'bg-orange-100 text-orange-700 border-orange-300';
-      case 'Hot':
-        return 'bg-red-100 text-red-700 border-red-300';
+      case 'Cold': return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+      case 'Warm': return 'bg-orange-500/20 text-orange-300 border-orange-500/30';
+      case 'Hot':  return 'bg-red-500/20 text-red-300 border-red-500/30';
     }
   };
 
@@ -137,20 +213,35 @@ export function HeroChatDemo() {
 
   return (
     <div className="w-full max-w-md">
-      <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col h-[500px]">
+      <div
+        className="rounded-2xl overflow-hidden flex flex-col h-[500px]"
+        style={{
+          background: 'rgba(13, 13, 26, 0.9)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(20px)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(59, 130, 246, 0.05)',
+        }}
+      >
         {/* Chat Header */}
-        <div className="bg-gradient-to-r from-[#0066FF] to-[#00D9FF] px-4 py-3 flex items-center gap-2">
+        <div className="bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] px-4 py-3 flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
             <Bot className="w-4 h-4 text-white" />
           </div>
           <div>
-            <h3 className="text-white font-semibold text-sm">AI Продажник</h3>
-            <p className="text-white/80 text-xs">Онлайн • Тестируй прямо сейчас</p>
+            <h3 className="text-white font-semibold text-sm transition-all duration-300">{labels.title}</h3>
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-online" />
+              <p className="text-white/80 text-xs transition-all duration-300">{labels.subtitle}</p>
+            </div>
           </div>
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
+        <div
+          ref={messagesContainerRef}
+          className="flex-1 overflow-y-auto p-4 space-y-3"
+          style={{ background: 'rgba(5, 5, 10, 0.5)' }}
+        >
           {messages.map((msg) => (
             <div
               key={msg.id}
@@ -159,9 +250,13 @@ export function HeroChatDemo() {
               <div
                 className={`max-w-[80%] rounded-xl px-3 py-2 text-sm ${
                   msg.sender === 'user'
-                    ? 'bg-gradient-to-r from-[#0066FF] to-[#00D9FF] text-white'
-                    : 'bg-white text-gray-800 border border-gray-200'
+                    ? 'bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white'
+                    : 'text-[#F8FAFC]'
                 }`}
+                style={msg.sender === 'bot' ? {
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                } : undefined}
               >
                 {msg.text}
               </div>
@@ -170,59 +265,62 @@ export function HeroChatDemo() {
 
           {loading && (
             <div className="flex justify-start">
-              <div className="bg-white rounded-xl px-3 py-2 border border-gray-200">
-                <div className="flex items-center gap-1.5 text-sm text-gray-500">
-                  <span>Александр печатает</span>
+              <div
+                className="rounded-xl px-3 py-2"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                }}
+              >
+                <div className="flex items-center gap-1.5 text-sm text-[#64748B]">
+                  <span className="transition-all duration-300">{labels.typing}</span>
                   <span className="flex gap-0.5 items-center">
-                    <span className="w-1 h-1 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1 h-1 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1 h-1 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="w-1 h-1 rounded-full bg-[#64748B] animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1 h-1 rounded-full bg-[#64748B] animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1 h-1 rounded-full bg-[#64748B] animate-bounce" style={{ animationDelay: '300ms' }} />
                   </span>
                 </div>
               </div>
             </div>
           )}
-
-          <div ref={messagesEndRef} />
         </div>
 
         {/* Analysis Badge */}
         {analysis && (
-          <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
+          <div
+            className="px-4 py-3"
+            style={{
+              background: 'rgba(5, 5, 10, 0.6)',
+              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            }}
+          >
             <div className="flex flex-col gap-2">
-              {/* Lead Type Badge - Centered */}
               <div className="flex items-center justify-center gap-2">
-                <Target className="w-3 h-3 text-gray-600" />
-                <span
-                  className={`px-3 py-1 rounded-full border font-medium text-xs ${getLeadTypeColor(
-                    analysis.leadType
-                  )}`}
-                >
+                <Target className="w-3 h-3 text-[#64748B]" />
+                <span className={`px-3 py-1 rounded-full border font-medium text-xs ${getLeadTypeStyle(analysis.leadType)}`}>
                   {analysis.leadType === 'Cold' && '❄️ Cold Lead'}
                   {analysis.leadType === 'Warm' && '🔥 Warm Lead'}
-                  {analysis.leadType === 'Hot' && '🚀 Hot Lead'}
+                  {analysis.leadType === 'Hot'  && '🚀 Hot Lead'}
                 </span>
               </div>
-
-              {/* Intent - Multiline */}
-              <div className="text-xs text-gray-600 text-center leading-relaxed">
-                {analysis.intent}
-              </div>
-
-              {/* Action - Subtle */}
-              <div className="text-xs text-gray-500 italic text-center">
-                → {analysis.action}
-              </div>
+              <div className="text-xs text-[#94A3B8] text-center leading-relaxed">{analysis.intent}</div>
+              <div className="text-xs text-[#64748B] italic text-center">→ {analysis.action}</div>
             </div>
           </div>
         )}
 
-        {/* Example Prompts */}
+        {/* Example Prompts — shown before user sends first real message */}
         {messages.length === 1 && !loading && (
-          <div className="px-4 py-2 bg-gray-50 border-t border-gray-200">
-            <p className="text-xs text-gray-500 mb-2">Примеры:</p>
+          <div
+            className="px-4 py-2"
+            style={{
+              background: 'rgba(5, 5, 10, 0.6)',
+              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            }}
+          >
+            <p className="text-xs text-[#64748B] mb-2 transition-all duration-300">{labels.examplesLabel}</p>
             <div className="flex flex-wrap gap-1">
-              {EXAMPLE_PROMPTS.map((prompt, idx) => (
+              {labels.examples.map((prompt, idx) => (
                 <button
                   key={idx}
                   type="button"
@@ -231,7 +329,11 @@ export function HeroChatDemo() {
                     e.stopPropagation();
                     sendMessage(prompt);
                   }}
-                  className="text-xs px-2 py-1 rounded-full bg-white border border-gray-300 text-gray-700 hover:border-blue-400 hover:text-blue-600 transition-colors"
+                  className="text-xs px-2.5 py-1 rounded-full text-[#94A3B8] transition-all duration-200 hover:text-white hover:shadow-[0_0_12px_rgba(59,130,246,0.15)]"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
                 >
                   {prompt}
                 </button>
@@ -241,20 +343,31 @@ export function HeroChatDemo() {
         )}
 
         {/* Input */}
-        <div className="p-3 bg-white border-t border-gray-200">
+        <div
+          className="p-3"
+          style={{
+            background: 'rgba(13, 13, 26, 0.9)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          }}
+        >
           <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="flex gap-2">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Напиши сообщение..."
+              onKeyDown={handleKeyPress}
+              placeholder={labels.placeholder}
               disabled={loading}
-              className="flex-1 px-3 py-2 text-sm rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-3 py-2 text-sm rounded-lg text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:border-[#3B82F6]/50 focus:ring-1 focus:ring-[#3B82F6]/30"
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+              }}
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#0066FF] to-[#00D9FF] text-white font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold hover:shadow-lg hover:shadow-blue-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

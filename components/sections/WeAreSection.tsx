@@ -1,56 +1,35 @@
 'use client';
 
-/**
- * We Are Section - Ultra-concise company intro
- * 6 words: Who we are
- * 12 words: What we do (more detail)
- */
-
 import React from 'react';
 import { Sparkles } from 'lucide-react';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
 export function WeAreSection() {
   return (
-    <section id="solutions" className="py-12 md:py-16 bg-gradient-to-br from-blue-600 to-purple-600 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-40 h-40 bg-white rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-60 h-60 bg-white rounded-full blur-3xl" />
+    <section id="solutions" className="relative py-16 md:py-24 overflow-hidden" style={{ background: '#0D0D1A' }}>
+      {/* Gradient background overlay */}
+      <div className="absolute inset-0 opacity-40" aria-hidden="true">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px]" style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.12), transparent 70%)', filter: 'blur(80px)' }} />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%)', filter: 'blur(60px)' }} />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 md:px-6 text-center relative z-10">
         <ScrollReveal duration={0.6}>
           {/* Icon */}
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm mb-6">
-            <Sparkles className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)' }}>
+            <Sparkles className="w-8 h-8 text-[#3B82F6]" />
           </div>
 
-          {/* Main tagline - ultra simple */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            AI-продажники работают 24/7
+          {/* Main tagline */}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#F8FAFC] mb-6 leading-tight">
+            AI-продажники работают{' '}
+            <span className="text-gradient">24/7</span>
           </h2>
 
-          {/* Description - what we provide */}
-          <p className="text-xl md:text-2xl text-white/90 font-medium leading-relaxed">
+          {/* Description */}
+          <p className="text-xl md:text-2xl text-[#94A3B8] font-medium leading-relaxed max-w-2xl mx-auto">
             Отвечаем клиентам моментально. Квалифицируем лиды. Передаём горячих менеджеру.
           </p>
-
-          {/* Stats row */}
-          <div className="mt-12 grid grid-cols-3 gap-6 md:gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">30 сек</div>
-              <div className="text-sm md:text-base text-white/80">Скорость ответа</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">24/7</div>
-              <div className="text-sm md:text-base text-white/80">Без выходных</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">3x</div>
-              <div className="text-sm md:text-base text-white/80">Больше конверсий</div>
-            </div>
-          </div>
         </ScrollReveal>
       </div>
     </section>

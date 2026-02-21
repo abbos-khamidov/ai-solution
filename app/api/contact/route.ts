@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendTelegram, fmtContact } from "@/lib/telegram";
 
 function getBackendUrl(): string | null {
   const url = process.env.DJANGO_API_BASE_URL?.trim();
@@ -6,20 +7,23 @@ function getBackendUrl(): string | null {
 }
 
 export async function POST(request: Request) {
+  const bodyText = await request.text();
+
+  // Send Telegram notification immediately — don't wait for backend
+  try {
+    const data = JSON.parse(bodyText);
+    await sendTelegram(fmtContact(data));
+  } catch {
+    // ignore parse errors
+  }
+
   const backendUrl = getBackendUrl();
   if (!backendUrl) {
-    return NextResponse.json(
-      {
-        error: 'Backend not configured',
-        code: 'BACKEND_MISSING',
-        details: 'Set DJANGO_API_BASE_URL in environment variables',
-      },
-      { status: 503 }
-    );
+    // Backend not configured but we still got the lead via Telegram
+    return NextResponse.json({ success: true });
   }
 
   try {
-    const body = await request.text();
     const response = await fetch(`${backendUrl}/api/contact`, {
       method: "POST",
       headers: {
@@ -27,7 +31,7 @@ export async function POST(request: Request) {
         "X-Forwarded-For": request.headers.get("x-forwarded-for") ?? "",
         "User-Agent": request.headers.get("user-agent") ?? "",
       },
-      body,
+      body: bodyText,
       cache: "no-store",
     });
 
