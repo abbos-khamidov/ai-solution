@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
+import { FaqSchema } from '@/components/seo/FaqSchema';
 
 const WeAreSection = dynamic(() =>
   import('@/components/sections/WeAreSection').then((m) => m.WeAreSection)
@@ -27,6 +28,7 @@ const Footer = dynamic(() =>
 export default function HomePage() {
   return (
     <>
+      <FaqSchema />
       <Header />
       <main>
         <Hero />
