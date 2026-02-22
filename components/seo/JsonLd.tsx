@@ -29,13 +29,12 @@ const organizationSchema = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      telephone: '+998939492000',
-      contactType: 'sales',
+      email: 'info@aisolution.uz',
+      contactType: 'customer support',
       availableLanguage: ['Russian', 'Uzbek', 'English'],
-      contactOption: 'TollFree',
     },
   ],
-  sameAs: ['https://t.me/aisolution_uz'],
+  sameAs: [],
   knowsAbout: [
     'AI Chatbot', 'Sales Automation', 'Lead Qualification',
     'Telegram Bot', 'WhatsApp Business', 'Instagram Automation',

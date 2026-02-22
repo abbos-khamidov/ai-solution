@@ -4,18 +4,19 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
 import { Globe } from 'lucide-react';
-import { languages, type LanguageCode } from '@/lib/i18n';
+import { languages, normalizeLanguage, type LanguageCode } from '@/lib/i18n';
 
 export function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentLang = languages.find((l) => l.code === i18n.language) || languages[0];
+  const currentCode = normalizeLanguage(i18n.resolvedLanguage || i18n.language);
+  const currentLang = languages.find((l) => l.code === currentCode) || languages[0];
 
   const switchLanguage = useCallback(
     (code: LanguageCode) => {
-      i18n.changeLanguage(code);
+      void i18n.changeLanguage(code);
       localStorage.setItem('aisolution-lang', code);
       setIsOpen(false);
     },
@@ -76,7 +77,7 @@ export function LanguageSwitcher() {
             aria-label="Select language"
           >
             {languages.map((lang) => {
-              const isSelected = lang.code === i18n.language;
+              const isSelected = lang.code === currentCode;
               return (
                 <button
                   key={lang.code}

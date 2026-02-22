@@ -1,18 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
-
-const productLinks = [
-  { emoji: '🤖', label: 'Customer Service Bot', href: '/products/customer-service' },
-  { emoji: '📊', label: 'Management Assistant', href: '/products/management-assistant' },
-  { emoji: '🏢', label: 'Corporate AI (RAG)', href: '/products/corporate-ai' },
-];
 
 export function Header() {
   const { t } = useTranslation();
@@ -22,6 +16,15 @@ export function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const productsRef = useRef<HTMLDivElement>(null);
+
+  const productLinks = useMemo(
+    () => [
+      { emoji: '\u{1F916}', label: t('productsSection.product1Title'), href: '/products/customer-service' },
+      { emoji: '\u{1F4CA}', label: t('productsSection.product2Title'), href: '/products/management-assistant' },
+      { emoji: '\u{1F3E2}', label: t('productsSection.product3Title'), href: '/products/corporate-ai' },
+    ],
+    [t]
+  );
 
   const isHomePage = pathname === '/';
   const isProductPage = pathname?.startsWith('/products/');
@@ -44,10 +47,28 @@ export function Header() {
   const ctaHref = isHomePage ? '#contact' : '/#contact';
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 100);
+    let rafId = 0;
+    let last = false;
+
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        const next = window.scrollY > 100;
+        if (next !== last) {
+          last = next;
+          setIsScrolled(next);
+        }
+      });
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -93,7 +114,7 @@ export function Header() {
                 href="/"
                 className="flex items-center gap-1.5 text-[20px] font-bold text-white tracking-tight select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm"
               >
-                <span className="text-lg">⚡</span>
+                <span className="text-lg">\u26A1</span>
                 AI Solution
               </Link>
             </motion.div>
@@ -258,7 +279,7 @@ export function Header() {
                 className="flex items-center gap-1.5 text-[20px] font-bold text-white tracking-tight"
                 onClick={() => setIsMobileOpen(false)}
               >
-                <span className="text-lg">⚡</span>
+                <span className="text-lg">\u26A1</span>
                 AI Solution
               </Link>
               <button

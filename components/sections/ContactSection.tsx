@@ -5,6 +5,9 @@ import { Send, CheckCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
+const CONTACT_LABEL = 'Связь: infoaisolution.uz';
+const CONTACT_EMAIL = 'info@aisolution.uz';
+
 export function ContactSection() {
   const { t } = useTranslation();
   const [name, setName] = useState('');
@@ -116,9 +119,8 @@ export function ContactSection() {
           )}
 
           <div className="mt-8 text-center text-sm text-[#64748B]">
-            {t('contact.telegramText')}{' '}
-            <a href="https://t.me/aisolution_uz" className="text-[#3B82F6] font-medium hover:underline">
-              @aisolution_uz
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#3B82F6] font-medium hover:underline">
+              {CONTACT_LABEL}
             </a>
           </div>
         </ScrollReveal>

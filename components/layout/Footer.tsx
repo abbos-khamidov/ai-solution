@@ -2,14 +2,11 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Phone } from 'lucide-react';
+import { X, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-const phones = [
-  { number: '+998 93 949 20 00', href: 'tel:+998939492000' },
-  { number: '+998 77 061 22 00', href: 'tel:+998770612200' },
-  { number: '+998 95 000 00 65', href: 'tel:+998950000065' },
-];
+const CONTACT_LABEL = 'Связь: infoaisolution.uz';
+const CONTACT_EMAIL = 'info@aisolution.uz';
 
 export function Footer() {
   const { t } = useTranslation();
@@ -93,9 +90,9 @@ export function Footer() {
             <p className="text-xs text-[#64748B]">
               &copy; {new Date().getFullYear()} AI Solution. {t('footer.rights')}
             </p>
-            <p className="text-xs text-[#64748B]">
-              hello@aisolution.ai
-            </p>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-xs text-[#64748B] hover:text-[#F8FAFC] transition-colors">
+              {CONTACT_LABEL}
+            </a>
           </div>
         </div>
       </footer>
@@ -142,48 +139,21 @@ export function Footer() {
                 </button>
 
                 <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">{t('footer.contactUsTitle')}</h3>
-                <p className="text-sm text-[#64748B] mb-6">{t('footer.contactUsSubtitle')}</p>
+                <p className="text-sm text-[#64748B] mb-6">{CONTACT_LABEL}</p>
 
-                {/* Phone numbers */}
-                <div className="space-y-3">
-                  {phones.map((p) => (
-                    <a
-                      key={p.href}
-                      href={p.href}
-                      className="group flex items-center gap-4 p-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                      style={{
-                        background: 'rgba(255,255,255,0.04)',
-                        border: '1px solid rgba(255,255,255,0.07)',
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.border = '1px solid rgba(59,130,246,0.4)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(59,130,246,0.07)';
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.border = '1px solid rgba(255,255,255,0.07)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)';
-                      }}
-                    >
-                      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-[#F8FAFC] font-medium text-[15px]">{p.number}</span>
-                    </a>
-                  ))}
-                </div>
-
-                {/* Telegram link */}
-                <div className="mt-5 pt-5 text-center text-sm text-[#64748B]" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  {t('footer.orTelegram')}{' '}
-                  <a
-                    href="https://t.me/aisolution_uz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#3B82F6] font-medium hover:underline"
-                  >
-                    @aisolution_uz
-                  </a>
-                </div>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="group flex items-center gap-4 p-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                  }}
+                >
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-[#F8FAFC] font-medium text-[15px]">{CONTACT_EMAIL}</span>
+                </a>
               </div>
             </motion.div>
           </>
