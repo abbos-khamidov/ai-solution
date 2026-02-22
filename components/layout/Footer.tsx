@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Phone } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const phones = [
   { number: '+998 93 949 20 00', href: 'tel:+998939492000' },
@@ -10,20 +11,27 @@ const phones = [
   { number: '+998 95 000 00 65', href: 'tel:+998950000065' },
 ];
 
-const footerLinks = {
-  'Продукт': [
-    { label: 'Как работает', href: '#process', modal: false },
-    { label: 'Продукты',     href: '#products', modal: false },
-    { label: 'Тарифы',       href: '#pricing',  modal: false },
-  ],
-  'Компания': [
-    { label: 'О нас',     href: '#solutions', modal: false },
-    { label: 'Контакты',  href: '#contact',   modal: false, contacts: true },
-  ],
-};
-
 export function Footer() {
+  const { t } = useTranslation();
   const [showContacts, setShowContacts] = useState(false);
+
+  const footerLinks: { categoryKey: string; links: { labelKey: string; href: string; contacts?: boolean }[] }[] = [
+    {
+      categoryKey: 'footer.product',
+      links: [
+        { labelKey: 'footer.howItWorks', href: '#process' },
+        { labelKey: 'footer.products', href: '#products' },
+        { labelKey: 'footer.pricing', href: '#pricing' },
+      ],
+    },
+    {
+      categoryKey: 'footer.company',
+      links: [
+        { labelKey: 'footer.about', href: '#solutions' },
+        { labelKey: 'footer.contacts', href: '#contact', contacts: true },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -44,32 +52,31 @@ export function Footer() {
                 </span>
               </div>
               <p className="text-sm text-[#64748B] leading-relaxed">
-                AI-ассистенты для автоматизации продаж. Отвечаем клиентам за 30 секунд в Telegram, Instagram и WhatsApp.
+                {t('footer.tagline')}
               </p>
             </div>
 
-            {/* Link columns */}
-            {Object.entries(footerLinks).map(([category, links]) => (
-              <div key={category}>
-                <h4 className="text-sm font-semibold text-[#F8FAFC] mb-4">{category}</h4>
+            {footerLinks.map(({ categoryKey, links }) => (
+              <div key={categoryKey}>
+                <h4 className="text-sm font-semibold text-[#F8FAFC] mb-4">{t(categoryKey)}</h4>
                 <ul className="space-y-2.5">
                   {links.map((link) =>
-                    'contacts' in link && link.contacts ? (
-                      <li key={link.label}>
+                    link.contacts ? (
+                      <li key={link.labelKey}>
                         <button
                           onClick={() => setShowContacts(true)}
                           className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200 text-left"
                         >
-                          {link.label}
+                          {t(link.labelKey)}
                         </button>
                       </li>
                     ) : (
-                      <li key={link.label}>
+                      <li key={link.labelKey}>
                         <a
                           href={link.href}
                           className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200"
                         >
-                          {link.label}
+                          {t(link.labelKey)}
                         </a>
                       </li>
                     )
@@ -79,13 +86,12 @@ export function Footer() {
             ))}
           </div>
 
-          {/* Bottom bar */}
           <div
             className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
             style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
           >
             <p className="text-xs text-[#64748B]">
-              &copy; {new Date().getFullYear()} AI Solution. Все права защищены.
+              &copy; {new Date().getFullYear()} AI Solution. {t('footer.rights')}
             </p>
             <p className="text-xs text-[#64748B]">
               hello@aisolution.ai
@@ -135,9 +141,8 @@ export function Footer() {
                   <X className="w-4 h-4" />
                 </button>
 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">Свяжитесь с нами</h3>
-                <p className="text-sm text-[#64748B] mb-6">Позвоните на любой из номеров</p>
+                <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">{t('footer.contactUsTitle')}</h3>
+                <p className="text-sm text-[#64748B] mb-6">{t('footer.contactUsSubtitle')}</p>
 
                 {/* Phone numbers */}
                 <div className="space-y-3">
@@ -169,7 +174,7 @@ export function Footer() {
 
                 {/* Telegram link */}
                 <div className="mt-5 pt-5 text-center text-sm text-[#64748B]" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                  Или в Telegram:{' '}
+                  {t('footer.orTelegram')}{' '}
                   <a
                     href="https://t.me/aisolution_uz"
                     target="_blank"

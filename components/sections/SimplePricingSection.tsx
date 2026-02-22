@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { PricingCards, MAIN_PRICING_PLANS } from '@/components/shared/PricingCards';
 
 export function SimplePricingSection() {
+  const { t } = useTranslation();
   return (
     <section className="relative py-16 md:py-24 overflow-hidden" id="pricing" style={{ background: '#0D0D1A' }}>
-      {/* Background glow */}
       <div className="absolute inset-0" aria-hidden="true">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
@@ -22,17 +23,16 @@ export function SimplePricingSection() {
         <ScrollReveal duration={0.6}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
-              Прозрачные цены
+              {t('pricingSection.title')}
             </h2>
             <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">
-              Выберите пакет под ваши задачи. Без скрытых платежей.
+              {t('pricingSection.subtitle')}
             </p>
           </div>
         </ScrollReveal>
 
-        <PricingCards plans={MAIN_PRICING_PLANS} defaultCtaText="Обсудить" />
+        <PricingCards plans={MAIN_PRICING_PLANS} />
 
-        {/* Bottom note */}
         <ScrollReveal duration={0.6} delay={0.4}>
           <div className="mt-12 text-center max-w-2xl mx-auto">
             <div
@@ -42,8 +42,7 @@ export function SimplePricingSection() {
                 border: '1px solid rgba(59, 130, 246, 0.15)',
               }}
             >
-              💡 Точную стоимость считаем после бесплатного 60-минутного аудита —
-              цена зависит от количества сценариев, каналов и интеграций.
+              💡 {t('pricingSection.auditNote')}
             </div>
           </div>
         </ScrollReveal>

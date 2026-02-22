@@ -1,43 +1,45 @@
 'use client';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
-const problems = [
-  {
-    emoji: '💸',
-    title: '30% лидов потеряно',
-    description: 'Менеджеры отвечают через 2-4 часа. Клиент уже ушёл к конкурентам.',
-    glowColor: 'rgba(239, 68, 68, 0.15)',
-    accentColor: '#EF4444',
-  },
-  {
-    emoji: '⏰',
-    title: 'Работаем только 9-18',
-    description: 'Лиды приходят ночью, в выходные. Никто не отвечает.',
-    glowColor: 'rgba(245, 158, 11, 0.15)',
-    accentColor: '#F59E0B',
-  },
-  {
-    emoji: '💰',
-    title: 'Упущенная прибыль',
-    description: 'Каждый потерянный лид = $500-5000 упущенных.',
-    glowColor: 'rgba(124, 58, 237, 0.15)',
-    accentColor: '#7C3AED',
-  },
-];
-
 export function ProblemSection() {
+  const { t } = useTranslation();
+  const problems = [
+    {
+      emoji: '💸',
+      titleKey: 'problems.item1Title' as const,
+      descKey: 'problems.item1Desc' as const,
+      glowColor: 'rgba(239, 68, 68, 0.15)',
+      accentColor: '#EF4444',
+    },
+    {
+      emoji: '⏰',
+      titleKey: 'problems.item2Title' as const,
+      descKey: 'problems.item2Desc' as const,
+      glowColor: 'rgba(245, 158, 11, 0.15)',
+      accentColor: '#F59E0B',
+    },
+    {
+      emoji: '💰',
+      titleKey: 'problems.item3Title' as const,
+      descKey: 'problems.item3Desc' as const,
+      glowColor: 'rgba(124, 58, 237, 0.15)',
+      accentColor: '#7C3AED',
+    },
+  ];
+
   return (
     <section className="py-16 md:py-24 bg-[#05050A]" id="about">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <ScrollReveal duration={0.6}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
-              Знакомая ситуация?
+              {t('problems.title')}
             </h2>
             <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">
-              Пока ваши менеджеры спят, конкуренты забирают клиентов
+              {t('problems.subtitle')}
             </p>
           </div>
         </ScrollReveal>
@@ -74,11 +76,11 @@ export function ProblemSection() {
                 </div>
 
                 <h3 className="text-xl md:text-2xl font-bold text-[#F8FAFC] mb-3">
-                  {problem.title}
+                  {t(problem.titleKey)}
                 </h3>
 
                 <p className="text-[#94A3B8] leading-relaxed">
-                  {problem.description}
+                  {t(problem.descKey)}
                 </p>
               </div>
             </ScrollReveal>
@@ -97,7 +99,7 @@ export function ProblemSection() {
             >
               <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
               <span className="text-base md:text-lg font-semibold text-[#F8FAFC]">
-                В среднем бизнес теряет <span className="text-red-400">30% лидов</span> из-за медленного ответа
+                {t('problems.stat')}
               </span>
             </div>
           </div>

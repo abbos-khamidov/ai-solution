@@ -2,33 +2,14 @@
 
 import React from 'react';
 import { MessageSquare, Target, Bell, UserCheck, Send, Instagram } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
-const steps = [
-  {
-    number: '1',
-    icon: MessageSquare,
-    title: 'Клиент пишет',
-    description: 'AI отвечает за 30 секунд',
-  },
-  {
-    number: '2',
-    icon: Target,
-    title: 'AI квалифицирует',
-    description: 'Cold / Warm / Hot',
-  },
-  {
-    number: '3',
-    icon: Bell,
-    title: 'Hot lead',
-    description: 'Уведомление менеджеру',
-  },
-  {
-    number: '4',
-    icon: UserCheck,
-    title: 'Менеджер вступает',
-    description: 'В диалог с теплым клиентом',
-  },
+const stepKeys = [
+  { number: '1', icon: MessageSquare, titleKey: 'solution.step1Title' as const, descKey: 'solution.step1Desc' as const },
+  { number: '2', icon: Target, titleKey: 'solution.step2Title' as const, descKey: 'solution.step2Desc' as const },
+  { number: '3', icon: Bell, titleKey: 'solution.step3Title' as const, descKey: 'solution.step3Desc' as const },
+  { number: '4', icon: UserCheck, titleKey: 'solution.step4Title' as const, descKey: 'solution.step4Desc' as const },
 ];
 
 const channels: { name: string; icon: React.ElementType; available: boolean; soon?: boolean }[] = [
@@ -38,6 +19,7 @@ const channels: { name: string; icon: React.ElementType; available: boolean; soo
 ];
 
 export function SolutionSection() {
+  const { t } = useTranslation();
   return (
     <section className="relative py-16 md:py-24 overflow-hidden" id="process" style={{ background: '#0D0D1A' }}>
       {/* Subtle gradient */}
@@ -49,17 +31,16 @@ export function SolutionSection() {
         <ScrollReveal duration={0.6}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
-              Как работает AI-ассистент
+              {t('solution.title')}
             </h2>
             <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">
-              Простая автоматизация, которая возвращает деньги в бизнес
+              {t('solution.subtitle')}
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Steps */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {steps.map((step, idx) => {
+          {stepKeys.map((step, idx) => {
             const Icon = step.icon;
             return (
               <ScrollReveal
@@ -91,18 +72,13 @@ export function SolutionSection() {
                     <Icon className="w-7 h-7 text-[#3B82F6]" />
                   </div>
 
-                  {/* Title */}
                   <h3 className="text-lg font-semibold text-[#F8FAFC] mb-2">
-                    {step.title}
+                    {t(step.titleKey)}
                   </h3>
-
-                  {/* Description */}
                   <p className="text-sm text-[#64748B]">
-                    {step.description}
+                    {t(step.descKey)}
                   </p>
-
-                  {/* Dashed connector line */}
-                  {idx < steps.length - 1 && (
+                  {idx < stepKeys.length - 1 && (
                     <div className="hidden lg:block absolute top-7 -right-3 w-6">
                       <svg width="24" height="2" viewBox="0 0 24 2" className="text-white/10">
                         <line x1="0" y1="1" x2="24" y2="1" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
@@ -126,7 +102,7 @@ export function SolutionSection() {
             }}
           >
             <h3 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-6 text-center">
-              Каналы связи
+              {t('solution.channelsTitle')}
             </h3>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -158,7 +134,7 @@ export function SolutionSection() {
                           border: '1px solid rgba(245, 158, 11, 0.2)',
                         }}
                       >
-                        скоро
+                        {t('solution.soon')}
                       </span>
                     )}
                   </div>
@@ -167,7 +143,7 @@ export function SolutionSection() {
             </div>
 
             <p className="text-center text-sm text-[#64748B] mt-6">
-              Подключаем любой канал связи с клиентами за 1 день
+              {t('solution.channelsNote')}
             </p>
           </div>
         </ScrollReveal>
