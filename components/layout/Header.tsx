@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
@@ -115,7 +114,9 @@ export function Header() {
                 href="/"
                 className="flex items-center gap-2 select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm"
               >
-                <Image src="/logo.png" alt="AI Solution" width={36} height={36} className="w-9 h-9 object-contain" priority />
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-sm">⚡</span>
+                </div>
                 <span className="text-[20px] font-bold text-white tracking-tight">AI Solution</span>
               </Link>
             </motion.div>
@@ -280,7 +281,9 @@ export function Header() {
                 className="flex items-center gap-2"
                 onClick={() => setIsMobileOpen(false)}
               >
-                <Image src="/logo.png" alt="AI Solution" width={36} height={36} className="w-9 h-9 object-contain" />
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-sm">⚡</span>
+                </div>
                 <span className="text-[20px] font-bold text-white tracking-tight">AI Solution</span>
               </Link>
               <button
