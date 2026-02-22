@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { ChevronRight, ArrowDown, AlertTriangle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -8,87 +8,84 @@ import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { PricingCards, PricingPlan } from '@/components/shared/PricingCards';
 
-const features = [
-  {
-    emoji: '👥',
-    title: 'Контроль команды и руководителей',
-    description:
-      'Кто что делает, кто срывает дедлайны, кто не сдал отчёт. Ежедневный срез по каждому сотруднику.',
-    accentColor: '#3B82F6',
-    glow: 'rgba(59,130,246,0.12)',
-  },
-  {
-    emoji: '📈',
-    title: 'Еженедельные сводки для собственника',
-    description:
-      'Каждое воскресенье — отчёт в Telegram: что выполнено, что просрочено, какие риски на следующей неделе.',
-    accentColor: '#06B6D4',
-    glow: 'rgba(6,182,212,0.12)',
-  },
-  {
-    emoji: '💰',
-    title: 'Финансовый трекер приход/расход',
-    description:
-      'Контроль движения денег. Уведомление если расход вышел за рамки бюджета или план не выполняется.',
-    accentColor: '#10B981',
-    glow: 'rgba(16,185,129,0.12)',
-  },
-  {
-    emoji: '🔍',
-    title: 'Аудит отклонений',
-    description:
-      'AI замечает аномалии — резкое падение выручки, рост расходов, нехарактерные паттерны. Сигналит до того как станет критично.',
-    accentColor: '#F59E0B',
-    glow: 'rgba(245,158,11,0.12)',
-  },
-];
-
-const managementPlans: PricingPlan[] = [
-  {
-    name: 'Basic',
-    setupPrice: '$1 000 – $1 500',
-    monthlyPrice: '$500 – $800',
-    description: 'Небольшая команда, базовый контроль',
-    highlighted: false,
-    features: [
-      'Напоминания и базовые задачи',
-      'Простые еженедельные отчёты',
-      'Базовый контроль поручений',
-      'До 10 сотрудников',
-    ],
-  },
-  {
-    name: 'Pro',
-    badge: '⭐ Популярный',
-    setupPrice: '$3 000 – $6 000',
-    monthlyPrice: '$1 200 – $2 500',
-    description: 'Команда 5–50 человек, системный контроль',
-    highlighted: true,
-    features: [
-      'Контроль секретаря и руководителей',
-      'Финансовый трекер приход/расход',
-      'Аудит отклонений и рисков',
-      'Интеграция с Google Sheets / Notion',
-      'До 50 сотрудников',
-    ],
-  },
-  {
-    name: 'Max',
-    setupPrice: '$8 000 – $20 000+',
-    monthlyPrice: '$3 000 – $8 000',
-    description: 'Крупная структура, все отделы',
-    highlighted: false,
-    features: [
-      'Интеграция с 1С / Bitrix24 / amoCRM',
-      'KPI и план-факт дашборды',
-      'SLA и регламенты',
-      'Все отделы, без ограничений',
-    ],
-  },
-];
-
 export default function ManagementAssistantPage() {
   const { t } = useTranslation();
+
+  const features = useMemo(() => [
+    {
+      emoji: '👥',
+      title: t('productPages.ma.f1Title'),
+      description: t('productPages.ma.f1Desc'),
+      accentColor: '#3B82F6',
+      glow: 'rgba(59,130,246,0.12)',
+    },
+    {
+      emoji: '📈',
+      title: t('productPages.ma.f2Title'),
+      description: t('productPages.ma.f2Desc'),
+      accentColor: '#06B6D4',
+      glow: 'rgba(6,182,212,0.12)',
+    },
+    {
+      emoji: '💰',
+      title: t('productPages.ma.f3Title'),
+      description: t('productPages.ma.f3Desc'),
+      accentColor: '#10B981',
+      glow: 'rgba(16,185,129,0.12)',
+    },
+    {
+      emoji: '🔍',
+      title: t('productPages.ma.f4Title'),
+      description: t('productPages.ma.f4Desc'),
+      accentColor: '#F59E0B',
+      glow: 'rgba(245,158,11,0.12)',
+    },
+  ], [t]);
+
+  const managementPlans: PricingPlan[] = useMemo(() => [
+    {
+      name: 'Basic',
+      setupPrice: '$1 000 – $1 500',
+      monthlyPrice: '$500 – $800',
+      description: t('productPages.ma.plan1Desc'),
+      highlighted: false,
+      features: [
+        t('productPages.ma.plan1F1'),
+        t('productPages.ma.plan1F2'),
+        t('productPages.ma.plan1F3'),
+        t('productPages.ma.plan1F4'),
+      ],
+    },
+    {
+      name: 'Pro',
+      badge: t('pricing.popular'),
+      setupPrice: '$3 000 – $6 000',
+      monthlyPrice: '$1 200 – $2 500',
+      description: t('productPages.ma.plan2Desc'),
+      highlighted: true,
+      features: [
+        t('productPages.ma.plan2F1'),
+        t('productPages.ma.plan2F2'),
+        t('productPages.ma.plan2F3'),
+        t('productPages.ma.plan2F4'),
+        t('productPages.ma.plan2F5'),
+      ],
+    },
+    {
+      name: 'Max',
+      setupPrice: '$8 000 – $20 000+',
+      monthlyPrice: '$3 000 – $8 000',
+      description: t('productPages.ma.plan3Desc'),
+      highlighted: false,
+      features: [
+        t('productPages.ma.plan3F1'),
+        t('productPages.ma.plan3F2'),
+        t('productPages.ma.plan3F3'),
+        t('productPages.ma.plan3F4'),
+      ],
+    },
+  ], [t]);
+
   return (
     <main>
       {/* Hero */}
@@ -129,18 +126,18 @@ export default function ManagementAssistantPage() {
           </div>
 
           <h1 className="text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.1] font-extrabold text-[#F8FAFC] tracking-[-0.03em] mb-6 max-w-3xl">
-            Контроль бизнеса в одном окне —<br className="hidden sm:block" /> для собственника
+            {t('productPages.ma.heroTitle')}
           </h1>
 
           <p className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mb-10 leading-relaxed">
-            Не просто чат-бот. Управленческий инструмент: контроль команды, финансов и задач. Еженедельные отчёты прямо в Telegram.
+            {t('productPages.ma.heroSubtitle')}
           </p>
 
           <a
             href="#contact"
             className="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold text-lg shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300"
           >
-            Обсудить Management Assistant
+            {t('productPages.ma.heroCta')}
             <ArrowDown className="w-5 h-5 animate-bounce" />
           </a>
         </div>
@@ -166,11 +163,9 @@ export default function ManagementAssistantPage() {
                   <AlertTriangle className="w-5 h-5 text-[#F59E0B]" />
                 </div>
                 <div>
-                  <h3 className="text-[#F59E0B] font-bold text-lg mb-2">Важно понять до покупки</h3>
+                  <h3 className="text-[#F59E0B] font-bold text-lg mb-2">{t('productPages.ma.warningTitle')}</h3>
                   <p className="text-[#94A3B8] leading-relaxed">
-                    Management Assistant работает эффективно только если в компании уже есть процессы —
-                    задачи ставятся, отчёты сдаются, данные вносятся. AI помогает контролировать и анализировать,
-                    но не создаёт дисциплину с нуля.
+                    {t('productPages.ma.warningText')}
                   </p>
                 </div>
               </div>
@@ -184,7 +179,7 @@ export default function ManagementAssistantPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">Что умеет Management Assistant</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">{t('productPages.ma.featuresTitle')}</h2>
             </div>
           </ScrollReveal>
 
@@ -239,15 +234,15 @@ export default function ManagementAssistantPage() {
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
-                Стоимость Management Assistant
+                {t('productPages.ma.pricingTitle')}
               </h2>
               <p className="text-lg text-[#64748B]">
-                Выберите пакет под размер вашего бизнеса
+                {t('productPages.pricingSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
-          <PricingCards plans={managementPlans} defaultCtaText="Обсудить" />
+          <PricingCards plans={managementPlans} defaultCtaText={t('nav.discuss')} />
 
           <ScrollReveal duration={0.6} delay={0.4}>
             <div className="mt-10 text-center max-w-2xl mx-auto">
@@ -255,7 +250,7 @@ export default function ManagementAssistantPage() {
                 className="rounded-xl p-5 text-sm text-[#94A3B8] leading-relaxed"
                 style={{ background: 'rgba(59, 130, 246, 0.06)', border: '1px solid rgba(59, 130, 246, 0.15)' }}
               >
-                💡 Точную стоимость считаем после бесплатного 60-минутного аудита — цена зависит от количества сценариев, каналов и интеграций.
+                💡 {t('productPages.auditNote')}
               </div>
             </div>
           </ScrollReveal>

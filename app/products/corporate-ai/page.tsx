@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { ChevronRight, ArrowDown, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -8,93 +8,90 @@ import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { PricingCards, PricingPlan } from '@/components/shared/PricingCards';
 
-const ragSteps = [
-  { icon: '📄', label: 'Ваши документы' },
-  { icon: '🔄', label: 'Индексация' },
-  { icon: '🤖', label: 'AI ищет в ваших данных' },
-  { icon: '💬', label: 'Точный ответ' },
-];
-
-const features = [
-  {
-    emoji: '📋',
-    title: 'База знаний для сотрудников',
-    description:
-      'HR-политики, регламенты, инструкции по продуктам. Новый сотрудник задаёт вопросы — AI отвечает как опытный коллега.',
-    accentColor: '#3B82F6',
-    glow: 'rgba(59,130,246,0.12)',
-  },
-  {
-    emoji: '💼',
-    title: 'Помощник для менеджеров по продажам',
-    description:
-      'Прайсы, характеристики, условия сделок. Менеджер спрашивает — AI находит нужное за секунду.',
-    accentColor: '#06B6D4',
-    glow: 'rgba(6,182,212,0.12)',
-  },
-  {
-    emoji: '🔗',
-    title: 'Интеграция с 1С / Bitrix24 / amoCRM',
-    description:
-      'AI работает с актуальными данными из ваших систем в реальном времени.',
-    accentColor: '#7C3AED',
-    glow: 'rgba(124,58,237,0.12)',
-  },
-  {
-    emoji: '🔒',
-    title: 'On-premise — данные остаются у вас',
-    description:
-      'Поднимаем сервер на вашем оборудовании или в вашем облаке. Ни один запрос не уходит к OpenAI или другим внешним сервисам.',
-    accentColor: '#10B981',
-    glow: 'rgba(16,185,129,0.12)',
-  },
-];
-
-const corporatePlans: PricingPlan[] = [
-  {
-    name: 'Basic',
-    setupPrice: '$1 000 – $1 500',
-    monthlyPrice: '$500 – $800',
-    description: 'Небольшая база документов, облако',
-    highlighted: false,
-    features: [
-      'RAG на PDF и Word документах',
-      'До 500 документов',
-      'Веб-интерфейс для сотрудников',
-      'Облачное размещение',
-    ],
-  },
-  {
-    name: 'Pro',
-    badge: '⭐ Популярный',
-    setupPrice: '$3 000 – $6 000',
-    monthlyPrice: '$1 200 – $2 500',
-    description: 'Большая база, интеграции, брендинг',
-    highlighted: true,
-    features: [
-      'До 5 000 документов',
-      'Интеграция с Bitrix24 / amoCRM / Google Drive',
-      'Кастомный интерфейс под ваш бренд',
-      'Аналитика запросов',
-    ],
-  },
-  {
-    name: 'Max',
-    setupPrice: '$8 000 – $20 000+',
-    monthlyPrice: '$3 000 – $8 000',
-    description: 'On-premise, 1С, без ограничений',
-    highlighted: false,
-    features: [
-      'On-premise — полностью на вашем сервере',
-      'Интеграция с 1С',
-      'Неограниченные документы',
-      'Выделенный сервер и поддержка',
-    ],
-  },
-];
-
 export default function CorporateAIPage() {
   const { t } = useTranslation();
+
+  const ragSteps = useMemo(() => [
+    { icon: '📄', label: t('productPages.ca.step1') },
+    { icon: '🔄', label: t('productPages.ca.step2') },
+    { icon: '🤖', label: t('productPages.ca.step3') },
+    { icon: '💬', label: t('productPages.ca.step4') },
+  ], [t]);
+
+  const features = useMemo(() => [
+    {
+      emoji: '📋',
+      title: t('productPages.ca.f1Title'),
+      description: t('productPages.ca.f1Desc'),
+      accentColor: '#3B82F6',
+      glow: 'rgba(59,130,246,0.12)',
+    },
+    {
+      emoji: '💼',
+      title: t('productPages.ca.f2Title'),
+      description: t('productPages.ca.f2Desc'),
+      accentColor: '#06B6D4',
+      glow: 'rgba(6,182,212,0.12)',
+    },
+    {
+      emoji: '🔗',
+      title: t('productPages.ca.f3Title'),
+      description: t('productPages.ca.f3Desc'),
+      accentColor: '#7C3AED',
+      glow: 'rgba(124,58,237,0.12)',
+    },
+    {
+      emoji: '🔒',
+      title: t('productPages.ca.f4Title'),
+      description: t('productPages.ca.f4Desc'),
+      accentColor: '#10B981',
+      glow: 'rgba(16,185,129,0.12)',
+    },
+  ], [t]);
+
+  const corporatePlans: PricingPlan[] = useMemo(() => [
+    {
+      name: 'Basic',
+      setupPrice: '$1 000 – $1 500',
+      monthlyPrice: '$500 – $800',
+      description: t('productPages.ca.plan1Desc'),
+      highlighted: false,
+      features: [
+        t('productPages.ca.plan1F1'),
+        t('productPages.ca.plan1F2'),
+        t('productPages.ca.plan1F3'),
+        t('productPages.ca.plan1F4'),
+      ],
+    },
+    {
+      name: 'Pro',
+      badge: t('pricing.popular'),
+      setupPrice: '$3 000 – $6 000',
+      monthlyPrice: '$1 200 – $2 500',
+      description: t('productPages.ca.plan2Desc'),
+      highlighted: true,
+      features: [
+        t('productPages.ca.plan2F1'),
+        t('productPages.ca.plan2F2'),
+        t('productPages.ca.plan2F3'),
+        t('productPages.ca.plan2F4'),
+      ],
+    },
+    {
+      name: 'Max',
+      setupPrice: '$8 000 – $20 000+',
+      monthlyPrice: '$3 000 – $8 000',
+      description: t('productPages.ca.plan3Desc'),
+      highlighted: false,
+      features: [
+        t('productPages.ca.plan3F1'),
+        t('productPages.ca.plan3F2'),
+        t('productPages.ca.plan3F3'),
+        t('productPages.ca.plan3F4'),
+      ],
+    },
+  ], [t]);
+
   return (
     <main>
       {/* Hero */}
@@ -135,18 +132,18 @@ export default function CorporateAIPage() {
           </div>
 
           <h1 className="text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.1] font-extrabold text-[#F8FAFC] tracking-[-0.03em] mb-6 max-w-3xl">
-            Своя AI-база знаний —<br className="hidden sm:block" /> отвечает только по вашим документам
+            {t('productPages.ca.heroTitle')}
           </h1>
 
           <p className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mb-10 leading-relaxed">
-            Загружаете документы компании — регламенты, прайсы, инструкции. AI отвечает точно по вашим данным. Ничего не выдумывает. Данные не уходят в интернет.
+            {t('productPages.ca.heroSubtitle')}
           </p>
 
           <a
             href="#contact"
             className="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#7C3AED] to-[#3B82F6] text-white font-semibold text-lg shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300"
           >
-            Обсудить Corporate AI
+            {t('productPages.ca.heroCta')}
             <ArrowDown className="w-5 h-5 animate-bounce" />
           </a>
         </div>
@@ -165,10 +162,9 @@ export default function CorporateAIPage() {
               }}
             >
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-8 text-center">
-                Как это работает
+                {t('productPages.ca.howItWorksTitle')}
               </h2>
 
-              {/* RAG Steps */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
                 {ragSteps.map((step, idx) => (
                   <React.Fragment key={idx}>
@@ -194,8 +190,7 @@ export default function CorporateAIPage() {
                 className="rounded-xl p-4 text-sm text-[#94A3B8] leading-relaxed text-center"
                 style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
               >
-                В отличие от обычного ChatGPT — Corporate AI не выдумывает ответы.
-                Если информации нет в ваших документах, он так и скажет.
+                {t('productPages.ca.ragNote')}
               </div>
             </div>
           </ScrollReveal>
@@ -207,7 +202,7 @@ export default function CorporateAIPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">Возможности системы</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">{t('productPages.ca.featuresTitle')}</h2>
             </div>
           </ScrollReveal>
 
@@ -262,15 +257,15 @@ export default function CorporateAIPage() {
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
-                Стоимость Corporate AI (RAG)
+                {t('productPages.ca.pricingTitle')}
               </h2>
               <p className="text-lg text-[#64748B]">
-                Выберите пакет под масштаб вашей организации
+                {t('productPages.ca.pricingSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
-          <PricingCards plans={corporatePlans} defaultCtaText="Обсудить" />
+          <PricingCards plans={corporatePlans} defaultCtaText={t('nav.discuss')} />
 
           <ScrollReveal duration={0.6} delay={0.4}>
             <div className="mt-10 text-center max-w-2xl mx-auto">
@@ -278,7 +273,7 @@ export default function CorporateAIPage() {
                 className="rounded-xl p-5 text-sm text-[#94A3B8] leading-relaxed"
                 style={{ background: 'rgba(59, 130, 246, 0.06)', border: '1px solid rgba(59, 130, 246, 0.15)' }}
               >
-                💡 Точную стоимость считаем после бесплатного 60-минутного аудита — цена зависит от количества сценариев, каналов и интеграций.
+                💡 {t('productPages.auditNote')}
               </div>
             </div>
           </ScrollReveal>

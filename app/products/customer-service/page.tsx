@@ -1,70 +1,117 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { ChevronRight, ArrowDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { ContactSection } from '@/components/sections/ContactSection';
-import { PricingCards, MAIN_PRICING_PLANS } from '@/components/shared/PricingCards';
-
-const stats = [
-  { value: '30 сек', label: 'скорость ответа' },
-  { value: '3 канала', label: 'одновременно' },
-  { value: '24/7', label: 'без выходных' },
-  { value: 'Cold→Hot', label: 'квалификация' },
-];
-
-const features = [
-  {
-    emoji: '📨',
-    title: 'Отвечает в трёх каналах одновременно',
-    description:
-      'Telegram, Instagram Direct, WhatsApp. Один ассистент — все каналы. Клиент пишет где ему удобно.',
-    accentColor: '#3B82F6',
-    glow: 'rgba(59,130,246,0.12)',
-  },
-  {
-    emoji: '🎯',
-    title: 'Квалифицирует лидов автоматически',
-    description:
-      'Задаёт нужные вопросы и помечает: Cold — не готов, Warm — интересуется, Hot — готов купить. Менеджер получает только горячих.',
-    accentColor: '#06B6D4',
-    glow: 'rgba(6,182,212,0.12)',
-  },
-  {
-    emoji: '🛡️',
-    title: 'Фильтрует спам и мошенников',
-    description:
-      'Распознаёт ботов, нетипичные запросы и фрод-паттерны. Защищает от накрутки и спама.',
-    accentColor: '#7C3AED',
-    glow: 'rgba(124,58,237,0.12)',
-  },
-  {
-    emoji: '⚡',
-    title: 'Передаёт диалог менеджеру в нужный момент',
-    description:
-      'Когда клиент горячий — мгновенное уведомление менеджеру с полным контекстом разговора. Не нужно читать переписку с нуля.',
-    accentColor: '#F59E0B',
-    glow: 'rgba(245,158,11,0.12)',
-  },
-];
-
-const whoIsItFor = [
-  'Интернет-магазин или маркетплейс',
-  'Услуги — медицина, образование, недвижимость, юристы',
-  'Менеджеры не успевают отвечать в течение часа',
-  'Много повторяющихся вопросов от клиентов',
-  'Работаете в нескольких мессенджерах одновременно',
-];
+import { PricingCards, PricingPlan } from '@/components/shared/PricingCards';
 
 export default function CustomerServicePage() {
   const { t } = useTranslation();
+
+  const stats = useMemo(() => [
+    { value: t('productPages.cs.stat1Value'), label: t('productPages.cs.stat1Label') },
+    { value: t('productPages.cs.stat2Value'), label: t('productPages.cs.stat2Label') },
+    { value: '24/7', label: t('productPages.cs.stat3Label') },
+    { value: 'Cold→Hot', label: t('productPages.cs.stat4Label') },
+  ], [t]);
+
+  const features = useMemo(() => [
+    {
+      emoji: '📨',
+      title: t('productPages.cs.f1Title'),
+      description: t('productPages.cs.f1Desc'),
+      accentColor: '#3B82F6',
+      glow: 'rgba(59,130,246,0.12)',
+    },
+    {
+      emoji: '🎯',
+      title: t('productPages.cs.f2Title'),
+      description: t('productPages.cs.f2Desc'),
+      accentColor: '#06B6D4',
+      glow: 'rgba(6,182,212,0.12)',
+    },
+    {
+      emoji: '🛡️',
+      title: t('productPages.cs.f3Title'),
+      description: t('productPages.cs.f3Desc'),
+      accentColor: '#7C3AED',
+      glow: 'rgba(124,58,237,0.12)',
+    },
+    {
+      emoji: '⚡',
+      title: t('productPages.cs.f4Title'),
+      description: t('productPages.cs.f4Desc'),
+      accentColor: '#F59E0B',
+      glow: 'rgba(245,158,11,0.12)',
+    },
+  ], [t]);
+
+  const csPricingPlans: PricingPlan[] = useMemo(() => [
+    {
+      name: 'Basic',
+      setupPrice: '$1 000 – $1 500',
+      monthlyPrice: '$500 – $800',
+      description: t('pricing.basic.desc'),
+      highlighted: false,
+      features: [
+        t('pricing.basic.f1'),
+        t('pricing.basic.f2'),
+        t('pricing.basic.f3'),
+        t('pricing.basic.f4'),
+        t('pricing.basic.f5'),
+        t('pricing.basic.f6'),
+      ],
+    },
+    {
+      name: 'Pro',
+      badge: t('pricing.popular'),
+      setupPrice: '$3 000 – $6 000',
+      monthlyPrice: '$1 200 – $2 500',
+      description: t('pricing.pro.desc'),
+      highlighted: true,
+      features: [
+        t('pricing.pro.f1'),
+        t('pricing.pro.f2'),
+        t('pricing.pro.f3'),
+        t('pricing.pro.f4'),
+        t('pricing.pro.f5'),
+        t('pricing.pro.f6'),
+        t('pricing.pro.f7'),
+      ],
+    },
+    {
+      name: 'Max',
+      setupPrice: '$8 000 – $20 000+',
+      monthlyPrice: '$3 000 – $8 000',
+      description: t('pricing.max.desc'),
+      highlighted: false,
+      features: [
+        t('pricing.max.f1'),
+        t('pricing.max.f2'),
+        t('pricing.max.f3'),
+        t('pricing.max.f4'),
+        t('pricing.max.f5'),
+        t('pricing.max.f6'),
+        t('pricing.max.f7'),
+      ],
+    },
+  ], [t]);
+
+  const whoIsItFor = useMemo(() => [
+    t('productPages.cs.fw1'),
+    t('productPages.cs.fw2'),
+    t('productPages.cs.fw3'),
+    t('productPages.cs.fw4'),
+    t('productPages.cs.fw5'),
+  ], [t]);
+
   return (
     <main>
       {/* Hero */}
       <section className="relative min-h-[85vh] pt-28 pb-16 flex items-center overflow-hidden" style={{ background: '#05050A' }}>
-        {/* Grid */}
         <div
           className="absolute inset-0 opacity-40"
           style={{
@@ -73,7 +120,6 @@ export default function CustomerServicePage() {
           }}
           aria-hidden="true"
         />
-        {/* Orb */}
         <div
           className="absolute top-1/3 left-1/3 w-[500px] h-[500px] pointer-events-none"
           style={{
@@ -101,22 +147,19 @@ export default function CustomerServicePage() {
             🤖 Customer Service Bot
           </div>
 
-          {/* H1 */}
           <h1 className="text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.1] font-extrabold text-[#F8FAFC] tracking-[-0.03em] mb-6 max-w-3xl">
-            AI отвечает клиентам за 30 секунд —<br className="hidden sm:block" /> пока менеджеры спят
+            {t('productPages.cs.heroTitle')}
           </h1>
 
-          {/* Sub */}
           <p className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mb-10 leading-relaxed">
-            Подключаем AI-ассистента в Telegram, Instagram и WhatsApp. Квалифицирует лидов, фильтрует спам, передаёт горячих клиентов менеджеру.
+            {t('productPages.cs.heroSubtitle')}
           </p>
 
-          {/* CTA */}
           <a
             href="#contact"
             className="btn-shimmer inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold text-lg shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 mb-14"
           >
-            Обсудить Customer Service Bot
+            {t('productPages.cs.heroCta')}
             <ArrowDown className="w-5 h-5 animate-bounce" />
           </a>
 
@@ -140,7 +183,7 @@ export default function CustomerServicePage() {
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">Что умеет AI-ассистент</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">{t('productPages.cs.featuresTitle')}</h2>
             </div>
           </ScrollReveal>
 
@@ -199,7 +242,7 @@ export default function CustomerServicePage() {
               }}
             >
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-6">
-                Подходит если у вас:
+                {t('productPages.cs.forWhomTitle')}
               </h2>
               <ul className="space-y-4">
                 {whoIsItFor.map((item, idx) => (
@@ -227,15 +270,15 @@ export default function CustomerServicePage() {
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
-                Стоимость Customer Service Bot
+                {t('productPages.cs.pricingTitle')}
               </h2>
               <p className="text-lg text-[#64748B]">
-                Выберите пакет под размер вашего бизнеса
+                {t('productPages.pricingSubtitle')}
               </p>
             </div>
           </ScrollReveal>
 
-          <PricingCards plans={MAIN_PRICING_PLANS} defaultCtaText="Обсудить" />
+          <PricingCards plans={csPricingPlans} defaultCtaText={t('nav.discuss')} />
 
           <ScrollReveal duration={0.6} delay={0.4}>
             <div className="mt-10 text-center max-w-2xl mx-auto">
@@ -243,7 +286,7 @@ export default function CustomerServicePage() {
                 className="rounded-xl p-5 text-sm text-[#94A3B8] leading-relaxed"
                 style={{ background: 'rgba(59, 130, 246, 0.06)', border: '1px solid rgba(59, 130, 246, 0.15)' }}
               >
-                💡 Точную стоимость считаем после бесплатного 60-минутного аудита — цена зависит от количества сценариев, каналов и интеграций.
+                💡 {t('productPages.auditNote')}
               </div>
             </div>
           </ScrollReveal>
