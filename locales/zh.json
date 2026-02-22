@@ -255,54 +255,10 @@
     "quoteAuthor": "AI Solution 团队",
     "quoteRole": "创始人"
   },
-  "contact": {
-    "label": "联系我们",
-    "title": "准备好用",
-    "titleLine2": "AI变革",
-    "titleHighlight": "您的企业",
-    "subtitle": "告诉我们您的挑战和目标。我们将向您展示AI如何为您的组织带来可衡量的成果。",
-    "email": "hello@aisolution.uz",
-    "schedule": "预约30分钟通话",
-    "form": {
-      "name": "姓名",
-      "namePlaceholder": "张三",
-      "email": "邮箱",
-      "emailPlaceholder": "zhangsan@company.com",
-      "company": "公司",
-      "companyPlaceholder": "科技有限公司",
-      "message": "我们如何帮助您？",
-      "messagePlaceholder": "告诉我们您的项目、挑战和目标...",
-      "submit": "发送消息",
-      "submitting": "发送中..."
-    }
-  },
   "floatingCta": {
     "title": "需要帮助？",
     "description": "让我们讨论AI如何改变您的业务。",
     "button": "开始对话"
-  },
-  "footer": {
-    "brand": "构建改变企业运营方式的智能AI解决方案。",
-    "product": "产品",
-    "company": "公司",
-    "resources": "资源",
-    "links": {
-      "solutions": "解决方案",
-      "process": "流程",
-      "pricing": "定价",
-      "enterprise": "企业版",
-      "about": "关于我们",
-      "careers": "招聘",
-      "blog": "博客",
-      "press": "新闻",
-      "documentation": "文档",
-      "apiReference": "API参考",
-      "status": "状态",
-      "support": "技术支持"
-    },
-    "copyright": "aisolution. 保留所有权利。",
-    "privacy": "隐私政策",
-    "terms": "服务条款"
   },
   "scroll": "滚动",
   "valueProp": {

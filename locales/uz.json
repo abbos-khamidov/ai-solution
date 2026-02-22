@@ -255,54 +255,10 @@
     "quoteAuthor": "AI Solution jamoasi",
     "quoteRole": "Asoschilari"
   },
-  "contact": {
-    "label": "Bog'lanish",
-    "title": "Biznesingizni",
-    "titleLine2": "transformatsiya qilishga tayyormisiz",
-    "titleHighlight": "SI",
-    "subtitle": "Muammolaringiz va maqsadlaringiz haqida gapirib bering. Biz SI qanday qilib tashkilotingiz uchun o'lchanadigan natijalarni berishini ko'rsatamiz.",
-    "email": "hello@aisolution.uz",
-    "schedule": "30 daqiqalik qo'ng'iroqni rejalashtiring",
-    "form": {
-      "name": "Ism",
-      "namePlaceholder": "Ali Valiyev",
-      "email": "Elektron pochta",
-      "emailPlaceholder": "ali@company.com",
-      "company": "Kompaniya",
-      "companyPlaceholder": "Kompaniya MChJ",
-      "message": "Qanday yordam bera olamiz?",
-      "messagePlaceholder": "Loyihangiz, muammolaringiz va maqsadlaringiz haqida gapirib bering...",
-      "submit": "Xabar yuborish",
-      "submitting": "Yuborilmoqda..."
-    }
-  },
   "floatingCta": {
     "title": "Yordam kerakmi?",
     "description": "SI biznesingizni qanday o'zgartirishi mumkinligini muhokama qilaylik.",
     "button": "Suhbatni boshlash"
-  },
-  "footer": {
-    "brand": "Biznes ishlashini o'zgartiradigan aqlli SI yechimlarini yaratamiz.",
-    "product": "Mahsulot",
-    "company": "Kompaniya",
-    "resources": "Resurslar",
-    "links": {
-      "solutions": "Yechimlar",
-      "process": "Jarayon",
-      "pricing": "Narxlar",
-      "enterprise": "Korporativ",
-      "about": "Biz haqimizda",
-      "careers": "Karyera",
-      "blog": "Blog",
-      "press": "Matbuot",
-      "documentation": "Hujjatlar",
-      "apiReference": "API Ma'lumotnoma",
-      "status": "Holat",
-      "support": "Qo'llab-quvvatlash"
-    },
-    "copyright": "aisolution. Barcha huquqlar himoyalangan.",
-    "privacy": "Maxfiylik siyosati",
-    "terms": "Foydalanish shartlari"
   },
   "scroll": "Pastga",
   "valueProp": {

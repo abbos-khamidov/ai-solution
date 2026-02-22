@@ -255,54 +255,10 @@
     "quoteAuthor": "Команда AI Solution",
     "quoteRole": "Основатели"
   },
-  "contact": {
-    "label": "Свяжитесь с нами",
-    "title": "Готовы трансформировать",
-    "titleLine2": "бизнес с помощью",
-    "titleHighlight": "ИИ?",
-    "subtitle": "Расскажите о ваших задачах и целях. Мы покажем, как ИИ может дать измеримые результаты для вашей организации.",
-    "email": "hello@aisolution.uz",
-    "schedule": "Запланировать 30-мин звонок",
-    "form": {
-      "name": "Имя",
-      "namePlaceholder": "Иван Иванов",
-      "email": "Email",
-      "emailPlaceholder": "ivan@company.com",
-      "company": "Компания",
-      "companyPlaceholder": "ООО «Компания»",
-      "message": "Как мы можем помочь?",
-      "messagePlaceholder": "Расскажите о вашем проекте, задачах и целях...",
-      "submit": "Отправить сообщение",
-      "submitting": "Отправка..."
-    }
-  },
   "floatingCta": {
     "title": "Нужна помощь?",
     "description": "Обсудим, как ИИ может трансформировать ваш бизнес.",
     "button": "Начать разговор"
-  },
-  "footer": {
-    "brand": "Создаём интеллектуальные ИИ-решения, которые трансформируют бизнес-процессы.",
-    "product": "Продукт",
-    "company": "Компания",
-    "resources": "Ресурсы",
-    "links": {
-      "solutions": "Решения",
-      "process": "Процесс",
-      "pricing": "Цены",
-      "enterprise": "Для предприятий",
-      "about": "О нас",
-      "careers": "Карьера",
-      "blog": "Блог",
-      "press": "Пресса",
-      "documentation": "Документация",
-      "apiReference": "API Справка",
-      "status": "Статус",
-      "support": "Поддержка"
-    },
-    "copyright": "aisolution. Все права защищены.",
-    "privacy": "Политика конфиденциальности",
-    "terms": "Условия использования"
   },
   "scroll": "Прокрутка",
   "valueProp": {

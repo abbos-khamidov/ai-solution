@@ -255,54 +255,10 @@
     "quoteAuthor": "AI Solution Team",
     "quoteRole": "Founders"
   },
-  "contact": {
-    "label": "Get in Touch",
-    "title": "Ready to transform",
-    "titleLine2": "your business with",
-    "titleHighlight": "AI",
-    "subtitle": "Tell us about your challenges and goals. We'll show you exactly how AI can drive measurable results for your organization.",
-    "email": "hello@aisolution.uz",
-    "schedule": "Schedule a 30-min call",
-    "form": {
-      "name": "Name",
-      "namePlaceholder": "John Doe",
-      "email": "Email",
-      "emailPlaceholder": "john@company.com",
-      "company": "Company",
-      "companyPlaceholder": "Company Inc.",
-      "message": "How can we help?",
-      "messagePlaceholder": "Tell us about your project, challenges, and goals...",
-      "submit": "Send Message",
-      "submitting": "Sending..."
-    }
-  },
   "floatingCta": {
     "title": "Need help?",
     "description": "Let's discuss how AI can transform your business.",
     "button": "Start a Conversation"
-  },
-  "footer": {
-    "brand": "Building intelligent AI solutions that transform how businesses operate.",
-    "product": "Product",
-    "company": "Company",
-    "resources": "Resources",
-    "links": {
-      "solutions": "Solutions",
-      "process": "Process",
-      "pricing": "Pricing",
-      "enterprise": "Enterprise",
-      "about": "About",
-      "careers": "Careers",
-      "blog": "Blog",
-      "press": "Press",
-      "documentation": "Documentation",
-      "apiReference": "API Reference",
-      "status": "Status",
-      "support": "Support"
-    },
-    "copyright": "aisolution. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
   },
   "scroll": "Scroll",
   "valueProp": {
