@@ -1,12 +1,64 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { PricingCards, MAIN_PRICING_PLANS } from '@/components/shared/PricingCards';
+import { PricingCards, PricingPlan } from '@/components/shared/PricingCards';
 
 export function SimplePricingSection() {
   const { t } = useTranslation();
+
+  const plans: PricingPlan[] = useMemo(() => [
+    {
+      name: 'Basic',
+      setupPrice: '$1 000 – $1 500',
+      monthlyPrice: '$500 – $800',
+      description: t('pricing.basic.desc'),
+      highlighted: false,
+      features: [
+        t('pricing.basic.f1'),
+        t('pricing.basic.f2'),
+        t('pricing.basic.f3'),
+        t('pricing.basic.f4'),
+        t('pricing.basic.f5'),
+        t('pricing.basic.f6'),
+      ],
+    },
+    {
+      name: 'Pro',
+      badge: t('pricing.popular'),
+      setupPrice: '$3 000 – $6 000',
+      monthlyPrice: '$1 200 – $2 500',
+      description: t('pricing.pro.desc'),
+      highlighted: true,
+      features: [
+        t('pricing.pro.f1'),
+        t('pricing.pro.f2'),
+        t('pricing.pro.f3'),
+        t('pricing.pro.f4'),
+        t('pricing.pro.f5'),
+        t('pricing.pro.f6'),
+        t('pricing.pro.f7'),
+      ],
+    },
+    {
+      name: 'Max',
+      setupPrice: '$8 000 – $20 000+',
+      monthlyPrice: '$3 000 – $8 000',
+      description: t('pricing.max.desc'),
+      highlighted: false,
+      features: [
+        t('pricing.max.f1'),
+        t('pricing.max.f2'),
+        t('pricing.max.f3'),
+        t('pricing.max.f4'),
+        t('pricing.max.f5'),
+        t('pricing.max.f6'),
+        t('pricing.max.f7'),
+      ],
+    },
+  ], [t]);
+
   return (
     <section className="relative py-16 md:py-24 overflow-hidden" id="pricing" style={{ background: '#0D0D1A' }}>
       <div className="absolute inset-0" aria-hidden="true">
@@ -31,7 +83,7 @@ export function SimplePricingSection() {
           </div>
         </ScrollReveal>
 
-        <PricingCards plans={MAIN_PRICING_PLANS} />
+        <PricingCards plans={plans} />
 
         <ScrollReveal duration={0.6} delay={0.4}>
           <div className="mt-12 text-center max-w-2xl mx-auto">

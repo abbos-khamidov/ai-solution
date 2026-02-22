@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
@@ -112,10 +113,10 @@ export function Header() {
             >
               <Link
                 href="/"
-                className="flex items-center gap-1.5 text-[20px] font-bold text-white tracking-tight select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm"
+                className="flex items-center gap-2 select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm"
               >
-                <span className="text-lg">\u26A1</span>
-                AI Solution
+                <Image src="/logo.png" alt="AI Solution" width={32} height={32} className="w-8 h-8 object-contain" priority />
+                <span className="text-[20px] font-bold text-white tracking-tight">AI Solution</span>
               </Link>
             </motion.div>
 
@@ -276,11 +277,11 @@ export function Header() {
             <div className="flex items-center justify-between h-16 px-6 border-b border-white/[0.06]">
               <Link
                 href="/"
-                className="flex items-center gap-1.5 text-[20px] font-bold text-white tracking-tight"
+                className="flex items-center gap-2"
                 onClick={() => setIsMobileOpen(false)}
               >
-                <span className="text-lg">\u26A1</span>
-                AI Solution
+                <Image src="/logo.png" alt="AI Solution" width={32} height={32} className="w-8 h-8 object-contain" />
+                <span className="text-[20px] font-bold text-white tracking-tight">AI Solution</span>
               </Link>
               <button
                 className="p-2 -mr-2 rounded-md text-white hover:bg-white/10 transition-colors duration-150 focus:outline-none"

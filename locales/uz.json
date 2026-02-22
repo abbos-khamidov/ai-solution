@@ -25,7 +25,37 @@
   "pricing": {
     "setupLabel": "Ishga tushirish (bir martalik)",
     "monthlyLabel": "Qo'llab-quvvatlash / oy",
-    "forWhom": "Kim uchun:"
+    "forWhom": "Kim uchun:",
+    "popular": "⭐ Mashhur",
+    "basic": {
+      "desc": "Tez boshlash, bitta mahsulot, oddiy stsenariylar",
+      "f1": "1 kanal (Telegram)",
+      "f2": "Oyiga 500 tagacha dialog",
+      "f3": "Asosiy javob stsenariylari",
+      "f4": "Cold/Warm/Hot lead kvalifikatsiyasi",
+      "f5": "1 kunda sozlash",
+      "f6": "Email qo'llab-quvvatlash"
+    },
+    "pro": {
+      "desc": "Tizimli joriy etish, 5–50 kishilik jamoa",
+      "f1": "3 kanal (Telegram + Instagram + WhatsApp)",
+      "f2": "Oyiga 3 000 tagacha dialog",
+      "f3": "CRM integratsiyasi",
+      "f4": "Kengaytirilgan tahlil va dashboard",
+      "f5": "Antifrod moduli",
+      "f6": "24/7 ustuvor qo'llab-quvvatlash",
+      "f7": "2 soatda sozlash"
+    },
+    "max": {
+      "desc": "Yirik biznes, bir nechta bo'limlar, o'z talablari",
+      "f1": "Barcha kanallar + API",
+      "f2": "Cheksiz dialoglar",
+      "f3": "White-label yechim",
+      "f4": "On-premise variant",
+      "f5": "Shaxsiy menejer",
+      "f6": "SLA 99.9%",
+      "f7": "Maxsus mantiq"
+    }
   },
   "weAre": {
     "title": "AI savdo yordamchilari ishlaydi",

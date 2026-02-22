@@ -25,7 +25,37 @@
   "pricing": {
     "setupLabel": "Launch (one-time)",
     "monthlyLabel": "Support / mo",
-    "forWhom": "Best for:"
+    "forWhom": "Best for:",
+    "popular": "⭐ Popular",
+    "basic": {
+      "desc": "Quick start, one product, simple scenarios",
+      "f1": "1 channel (Telegram)",
+      "f2": "Up to 500 dialogues per month",
+      "f3": "Basic reply scenarios",
+      "f4": "Cold/Warm/Hot lead qualification",
+      "f5": "Setup in 1 day",
+      "f6": "Email support"
+    },
+    "pro": {
+      "desc": "Systematic rollout, team of 5–50 people",
+      "f1": "3 channels (Telegram + Instagram + WhatsApp)",
+      "f2": "Up to 3,000 dialogues per month",
+      "f3": "CRM integration",
+      "f4": "Advanced analytics and dashboard",
+      "f5": "Anti-fraud module",
+      "f6": "Priority 24/7 support",
+      "f7": "Setup in 2 hours"
+    },
+    "max": {
+      "desc": "Large business, multiple departments, custom requirements",
+      "f1": "All channels + API",
+      "f2": "Unlimited dialogues",
+      "f3": "White-label solution",
+      "f4": "On-premise option",
+      "f5": "Dedicated manager",
+      "f6": "SLA 99.9%",
+      "f7": "Custom logic"
+    }
   },
   "weAre": {
     "title": "AI sales assistants work",

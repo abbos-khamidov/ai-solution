@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-const CONTACT_LABEL = 'Связь: infoaisolution.uz';
+const CONTACT_LABEL = 'info@aisolution.uz';
 const CONTACT_EMAIL = 'info@aisolution.uz';
 
 export function Footer() {
