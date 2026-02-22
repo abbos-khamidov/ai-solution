@@ -69,28 +69,18 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'AI Solution — Отвечает клиентам за 30 секунд пока менеджеры спят',
-    description: 'AI чат-бот для бизнеса в Узбекистане. Telegram + Instagram + WhatsApp. Квалификация лидов 24/7. Конверсия +34%. 500+ клиентов. Ташкент.',
+    title: 'AI Solution — ИИ автоматизация бизнеса | Ташкент, Узбекистан',
+    description: 'Telegram-боты, LLM, бот-менеджер, аналитика для компаний. Ответ за 30 секунд 24/7. Офис в Ташкенте, работаем по всему Узбекистану.',
     type: 'website',
     locale: 'ru_RU',
     alternateLocale: ['uz_UZ', 'en_US'],
     siteName: 'AI Solution',
     url: SITE_URL,
-    images: [{
-      url: '/og-image.png',
-      width: 1200,
-      height: 630,
-      alt: 'AI Solution — AI чат-бот для бизнеса в Узбекистане. Отвечает клиентам за 30 секунд',
-    }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Solution — AI чат-бот для бизнеса | Узбекистан',
-    description: 'Отвечает клиентам за 30 секунд в Telegram, Instagram, WhatsApp. Квалификация лидов 24/7. Конверсия +34%.',
-    images: [{
-      url: '/og-image.png',
-      alt: 'AI Solution — AI чат-бот для бизнеса в Узбекистане',
-    }],
+    title: 'AI Solution — ИИ автоматизация бизнеса | Ташкент',
+    description: 'Telegram-боты, LLM, бот-менеджер, аналитика для компаний. Ответ за 30 сек 24/7.',
   },
   robots: {
     index: true,
