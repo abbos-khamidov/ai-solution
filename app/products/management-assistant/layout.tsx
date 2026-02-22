@@ -1,16 +1,64 @@
 import type { Metadata } from 'next';
+import { ProductJsonLd } from '@/components/seo/ProductJsonLd';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
 export const metadata: Metadata = {
-  title: 'Management Assistant — AI-помощник для управления бизнесом',
-  description: 'AI-ассистент для контроля команды: дашборд метрик, KPI отчёты, финансовый трекер, контроль задач и дедлайнов. От $3 000.',
-  openGraph: {
-    title: 'Management Assistant — AI Solution',
-    description: 'AI-помощник для управления: дашборды, KPI, автоматические отчёты собственнику.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  title: 'Management Assistant — AI-помощник для управления бизнесом | Ташкент',
+  description: 'AI-ассистент для контроля бизнеса: команда, KPI, финансовый трекер, еженедельные отчёты в Telegram. Автоматизация управления для собственника. От $3 000. Ташкент, Узбекистан.',
+  keywords: [
+    'корпоративный AI ассистент Ташкент',
+    'AI менеджер по продажам',
+    'автоматизация клиентского сервиса СНГ',
+    'внедрение ИИ в бизнес Ташкент',
+    'AI для бизнеса Центральная Азия',
+    'управление командой AI',
+    'финансовый трекер AI Ташкент',
+    'KPI дашборд Узбекистан',
+    'management assistant bot',
+    'biznes uchun AI Toshkent',
+    'sun\'iy intellekt biznesga joriy etish',
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/products/management-assistant`,
+    languages: {
+      'ru': `${SITE_URL}/products/management-assistant`,
+      'uz': `${SITE_URL}/products/management-assistant`,
+      'en': `${SITE_URL}/products/management-assistant`,
+      'x-default': `${SITE_URL}/products/management-assistant`,
+    },
   },
-  alternates: { canonical: '/products/management-assistant' },
+  openGraph: {
+    title: 'Management Assistant — Контроль бизнеса в одном окне | AI Solution',
+    description: 'AI-ассистент для собственника: контроль команды, финансовый трекер, KPI отчёты в Telegram. Автоматизация управления. От $3 000. Узбекистан.',
+    type: 'website',
+    locale: 'ru_RU',
+    alternateLocale: ['uz_UZ', 'en_US'],
+    siteName: 'AI Solution',
+    url: `${SITE_URL}/products/management-assistant`,
+    images: [{
+      url: '/og-image.png',
+      width: 1200,
+      height: 630,
+      alt: 'Management Assistant — AI контроль бизнеса для собственника',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Management Assistant — AI контроль бизнеса | AI Solution',
+    description: 'AI-помощник для собственника: команда, финансы, KPI, отчёты в Telegram. От $3 000.',
+    images: [{
+      url: '/og-image.png',
+      alt: 'Management Assistant — AI для управления бизнесом в Узбекистане',
+    }],
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <ProductJsonLd product="management-assistant" />
+      {children}
+    </>
+  );
 }

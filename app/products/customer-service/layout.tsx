@@ -1,16 +1,66 @@
 import type { Metadata } from 'next';
+import { ProductJsonLd } from '@/components/seo/ProductJsonLd';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
 export const metadata: Metadata = {
-  title: 'Customer Service Bot — AI-ассистент для продаж в мессенджерах',
-  description: 'AI-бот для Telegram, Instagram, WhatsApp. Отвечает за 30 секунд, квалифицирует лиды Cold/Warm/Hot, работает 24/7. От $1 000.',
-  openGraph: {
-    title: 'Customer Service Bot — AI Solution',
-    description: 'AI-бот для мессенджеров. Ответ за 30 секунд, квалификация лидов, антифрод. 24/7.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  title: 'Customer Service Bot — AI чат-бот для Telegram, Instagram, WhatsApp | Узбекистан',
+  description: 'AI чат-бот для бизнеса в Узбекистане: отвечает клиентам за 30 секунд в Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot, антифрод, 24/7. От $1 000. Ташкент.',
+  keywords: [
+    'AI чат-бот для бизнеса Узбекистан',
+    'автоответчик в Telegram Instagram WhatsApp',
+    'квалификация лидов автоматически',
+    'чат-бот для интернет-магазина Узбекистан',
+    'AI ассистент для Instagram WhatsApp',
+    'автоматизация продаж Telegram бот',
+    'AI менеджер по продажам',
+    'чат-бот для бизнеса Ташкент',
+    'умный чат-бот для сайта',
+    'customer service bot',
+    'AI chatbot Toshkent',
+    'mijozlarga avtomatik javob berish',
+    'AI yordamchi Telegram Instagram',
+  ],
+  alternates: {
+    canonical: `${SITE_URL}/products/customer-service`,
+    languages: {
+      'ru': `${SITE_URL}/products/customer-service`,
+      'uz': `${SITE_URL}/products/customer-service`,
+      'en': `${SITE_URL}/products/customer-service`,
+      'x-default': `${SITE_URL}/products/customer-service`,
+    },
   },
-  alternates: { canonical: '/products/customer-service' },
+  openGraph: {
+    title: 'Customer Service Bot — AI отвечает клиентам за 30 секунд | AI Solution',
+    description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot, антифрод, работает 24/7. От $1 000. Бизнес Узбекистан.',
+    type: 'website',
+    locale: 'ru_RU',
+    alternateLocale: ['uz_UZ', 'en_US'],
+    siteName: 'AI Solution',
+    url: `${SITE_URL}/products/customer-service`,
+    images: [{
+      url: '/og-image.png',
+      width: 1200,
+      height: 630,
+      alt: 'Customer Service Bot — AI чат-бот для Telegram, Instagram, WhatsApp',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Customer Service Bot — AI за 30 секунд | AI Solution',
+    description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Квалификация лидов, антифрод, 24/7. От $1 000.',
+    images: [{
+      url: '/og-image.png',
+      alt: 'Customer Service Bot — AI чат-бот для бизнеса в Узбекистане',
+    }],
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <ProductJsonLd product="customer-service" />
+      {children}
+    </>
+  );
 }
