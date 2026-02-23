@@ -61,12 +61,6 @@ export const metadata: Metadata = {
   formatDetection: { telephone: true, email: true, address: false },
   alternates: {
     canonical: SITE_URL,
-    languages: {
-      'ru': `${SITE_URL}/`,
-      'uz': `${SITE_URL}/`,
-      'en': `${SITE_URL}/`,
-      'x-default': `${SITE_URL}/`,
-    },
   },
   openGraph: {
     title: 'AI Solution — ИИ автоматизация бизнеса | Ташкент, Узбекистан',

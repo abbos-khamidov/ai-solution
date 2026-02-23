@@ -23,12 +23,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/products/customer-service`,
-    languages: {
-      'ru': `${SITE_URL}/products/customer-service`,
-      'uz': `${SITE_URL}/products/customer-service`,
-      'en': `${SITE_URL}/products/customer-service`,
-      'x-default': `${SITE_URL}/products/customer-service`,
-    },
   },
   openGraph: {
     title: 'Customer Service Bot — AI отвечает клиентам за 30 секунд | AI Solution',

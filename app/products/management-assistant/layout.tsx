@@ -21,12 +21,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/products/management-assistant`,
-    languages: {
-      'ru': `${SITE_URL}/products/management-assistant`,
-      'uz': `${SITE_URL}/products/management-assistant`,
-      'en': `${SITE_URL}/products/management-assistant`,
-      'x-default': `${SITE_URL}/products/management-assistant`,
-    },
   },
   openGraph: {
     title: 'Management Assistant — Контроль бизнеса в одном окне | AI Solution',

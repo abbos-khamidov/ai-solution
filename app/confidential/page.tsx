@@ -5,6 +5,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Политика конфиденциальности | AI Solution',
   description: 'Политика конфиденциальности и обработки персональных данных AI Solution.',
+  alternates: {
+    canonical: 'https://aisolution.uz/confidential',
+  },
 };
 
 export default function ConfidentialPage() {

@@ -23,12 +23,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${SITE_URL}/products/corporate-ai`,
-    languages: {
-      'ru': `${SITE_URL}/products/corporate-ai`,
-      'uz': `${SITE_URL}/products/corporate-ai`,
-      'en': `${SITE_URL}/products/corporate-ai`,
-      'x-default': `${SITE_URL}/products/corporate-ai`,
-    },
   },
   openGraph: {
     title: 'Corporate AI (RAG) — Своя база знаний компании с AI | AI Solution',
