@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = 'vnedrenie-ii-centralnaya-aziya';
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     'цифровизация бизнеса СНГ',
     'AI решения для СНГ',
   ],
-  alternates: { canonical: `${SITE_URL}/blog/${SLUG}` },
+  alternates: createAlternates(`${SITE_URL}/blog/${SLUG}`),
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

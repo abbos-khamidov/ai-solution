@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ProductJsonLd } from '@/components/seo/ProductJsonLd';
+import { createAlternates } from '@/lib/seo';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
@@ -21,15 +22,13 @@ export const metadata: Metadata = {
     'mijozlarga avtomatik javob berish',
     'AI yordamchi Telegram Instagram',
   ],
-  alternates: {
-    canonical: `${SITE_URL}/products/customer-service`,
-  },
+  alternates: createAlternates(`${SITE_URL}/products/customer-service`),
   openGraph: {
     title: 'Customer Service Bot — AI отвечает клиентам за 30 секунд | AI Solution',
     description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot, антифрод, работает 24/7. От $1 000. Бизнес Узбекистан.',
     type: 'website',
     locale: 'ru_RU',
-    alternateLocale: ['uz_UZ', 'en_US'],
+    alternateLocale: ['uz_UZ'],
     siteName: 'AI Solution',
     url: `${SITE_URL}/products/customer-service`,
     images: [{

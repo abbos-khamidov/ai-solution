@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = 'llm-bot-manager-telegram';
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     'LLM автоматизация',
     'умный бот Telegram Ташкент',
   ],
-  alternates: { canonical: `${SITE_URL}/blog/${SLUG}` },
+  alternates: createAlternates(`${SITE_URL}/blog/${SLUG}`),
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -49,6 +50,7 @@ const articleSchema = {
   dateModified: '2025-02-22',
   url: `${SITE_URL}/blog/${SLUG}`,
   inLanguage: 'ru',
+  image: `${SITE_URL}/og-image.png`,
   about: [
     { '@type': 'Thing', name: 'LLM' },
     { '@type': 'Thing', name: 'Бот-менеджер' },

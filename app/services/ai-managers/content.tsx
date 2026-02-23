@@ -29,6 +29,7 @@ import { FAQAccordion } from '@/components/shared/FAQAccordion';
 import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
 import { Check as CheckIcon } from 'lucide-react';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
 function useScrollReveal(threshold = 0.15) {
@@ -502,6 +503,11 @@ export default function AIManagersContent() {
           </div>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'avtomatizaciya-prodazh-telegram', title: 'Автоматизация продаж через Telegram бот — руководство для бизнеса' },
+        { slug: 'kvalifikaciya-lidov-ai', title: 'Автоматическая квалификация лидов с помощью AI — система Cold/Warm/Hot' },
+      ]} />
     </div>
   );
 }

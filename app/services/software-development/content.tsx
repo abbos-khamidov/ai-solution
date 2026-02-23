@@ -28,6 +28,7 @@ import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
 import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
 function useScrollReveal(threshold = 0.15) {
@@ -665,6 +666,11 @@ export default function SoftwareDevContent() {
           </div>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'vnedrenie-ii-v-biznes-tashkent', title: 'Внедрение ИИ в бизнес в Ташкенте — руководство 2025' },
+        { slug: 'vnedrenie-ii-centralnaya-aziya', title: 'Внедрение ИИ в Центральной Азии — рынок 2025' },
+      ]} />
     </div>
   );
 }

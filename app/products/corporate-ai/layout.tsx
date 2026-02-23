@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ProductJsonLd } from '@/components/seo/ProductJsonLd';
+import { createAlternates } from '@/lib/seo';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
@@ -21,15 +22,13 @@ export const metadata: Metadata = {
     'Toshkentda AI joriy etish',
     'sun\'iy intellekt biznesga',
   ],
-  alternates: {
-    canonical: `${SITE_URL}/products/corporate-ai`,
-  },
+  alternates: createAlternates(`${SITE_URL}/products/corporate-ai`),
   openGraph: {
     title: 'Corporate AI (RAG) — Своя база знаний компании с AI | AI Solution',
     description: 'Корпоративный AI на базе RAG. Отвечает только по вашим документам. Интеграция с 1С, Bitrix24, amoCRM. On-premise. От $8 000. Ташкент.',
     type: 'website',
     locale: 'ru_RU',
-    alternateLocale: ['uz_UZ', 'en_US'],
+    alternateLocale: ['uz_UZ'],
     siteName: 'AI Solution',
     url: `${SITE_URL}/products/corporate-ai`,
     images: [{

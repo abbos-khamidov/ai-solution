@@ -23,6 +23,7 @@ import {
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { BackButton } from '@/components/shared/BackButton';
 import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 import { X as XIcon } from 'lucide-react';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
@@ -542,6 +543,11 @@ export default function TelegramBotsContent() {
           </div>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'avtomatizaciya-prodazh-telegram', title: 'Автоматизация продаж через Telegram бот — руководство для бизнеса' },
+        { slug: 'ai-chatbot-dlya-biznesa-uzbekistan', title: 'AI чат-бот для бизнеса в Узбекистане — полное руководство' },
+      ]} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-const SITE_URL = 'https://aisolution.uz';
+import { SITE_URL } from '@/lib/seo';
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -8,8 +8,8 @@ const localBusinessSchema = {
   url: SITE_URL,
   logo: `${SITE_URL}/icon-512.png`,
   image: `${SITE_URL}/icon-512.png`,
-  description: 'ИИ автоматизация бизнеса в Ташкенте: Telegram-боты, LLM-решения, бот-менеджер, аналитика для компаний. Работаем по всему Узбекистану.',
-  telephone: ['+998939492000', '+998974071125', '+998950000065'],
+  description: 'Автоматизация бизнеса в Ташкенте и Узбекистане. Внедрение искусственного интеллекта: Telegram-боты, LLM-решения, бот-менеджер, AI-аналитика для компаний.',
+  telephone: ['+998770612200', '+998950000065', '+998939492000'],
   email: 'info@aisolution.uz',
   address: {
     '@type': 'PostalAddress',
@@ -58,14 +58,16 @@ const localBusinessSchema = {
     geoRadius: '500000',
   },
   knowsAbout: [
-    'ИИ автоматизация бизнеса',
-    'Telegram боты',
+    'Автоматизация бизнеса в Ташкенте',
+    'Внедрение искусственного интеллекта в Узбекистане',
+    'ИИ в Ташкенте',
+    'Внедрение ИИ в бизнес',
+    'Telegram боты для бизнеса',
     'LLM решения',
-    'Бот менеджер',
-    'Аналитика для компаний',
+    'Бот менеджер по продажам',
+    'AI аналитика для компаний',
     'Личный ассистент ИИ',
-    'AI чат-бот',
-    'Автоматизация продаж',
+    'Автоматизация продаж Ташкент',
   ],
 };
 
@@ -81,12 +83,14 @@ const organizationSchema = {
     width: 512,
     height: 512,
   },
-  description: 'AI-ассистенты для автоматизации продаж и клиентского сервиса в Узбекистане. Отвечают клиентам за 30 секунд в Telegram, Instagram, WhatsApp. Ташкент.',
+  description: 'Автоматизация бизнеса и внедрение искусственного интеллекта в Ташкенте и Узбекистане. ИИ-ассистенты для продаж и клиентского сервиса. Ответ за 30 секунд 24/7.',
   foundingDate: '2025',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'ул. Афросиёб, 35',
     addressLocality: 'Ташкент',
-    addressRegion: 'Ташкент',
+    addressRegion: 'Ташкентская область',
+    postalCode: '100000',
     addressCountry: 'UZ',
   },
   areaServed: [
@@ -100,10 +104,10 @@ const organizationSchema = {
       '@type': 'ContactPoint',
       email: 'info@aisolution.uz',
       contactType: 'customer support',
-      availableLanguage: ['Russian', 'Uzbek', 'English'],
+      availableLanguage: ['Russian', 'Uzbek'],
     },
   ],
-  sameAs: [],
+  sameAs: ['https://t.me/aisolution_uz'],
   knowsAbout: [
     'AI Chatbot', 'Sales Automation', 'Lead Qualification',
     'Telegram Bot', 'WhatsApp Business', 'Instagram Automation',
@@ -117,7 +121,7 @@ const websiteSchema = {
   '@id': `${SITE_URL}/#website`,
   name: 'AI Solution',
   url: SITE_URL,
-  inLanguage: ['ru', 'uz', 'en'],
+  inLanguage: ['ru', 'uz'],
   publisher: { '@id': `${SITE_URL}/#organization` },
   potentialAction: {
     '@type': 'SearchAction',
@@ -130,9 +134,9 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   '@id': `${SITE_URL}/#service`,
-  name: 'AI-ассистент для автоматизации продаж',
+  name: 'Автоматизация бизнеса и внедрение ИИ в Ташкенте',
   provider: { '@id': `${SITE_URL}/#organization` },
-  description: 'AI-ассистенты отвечают клиентам за 30 секунд в Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot 24/7. Конверсия +34%. 500+ клиентов.',
+  description: 'Внедрение искусственного интеллекта в Ташкенте и Узбекистане. Автоматизация бизнеса: AI-ассистенты, Telegram-боты, квалификация лидов 24/7. Конверсия +34%.',
   areaServed: [
     { '@type': 'Country', name: 'Uzbekistan' },
     { '@type': 'Country', name: 'Kazakhstan' },

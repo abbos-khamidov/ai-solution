@@ -1,12 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Mail } from 'lucide-react';
+import { X, Mail, Phone, Send } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-const CONTACT_LABEL = 'info@aisolution.uz';
 const CONTACT_EMAIL = 'info@aisolution.uz';
+const CONTACT_PHONES = [
+  '+998 77 061 22 00',
+  '+998 95 000 00 65',
+  '+998 93 949 20 00',
+];
+const CONTACT_TG = '@aisolution_uz';
+const CONTACT_ADDRESS = 'ул. Афросиёб 35, Ташкент, Узбекистан';
 
 export function Footer() {
   const { t } = useTranslation();
@@ -18,14 +25,16 @@ export function Footer() {
       links: [
         { labelKey: 'footer.howItWorks', href: '#process' },
         { labelKey: 'footer.products', href: '#products' },
-        { labelKey: 'footer.pricing', href: '#pricing' },
+        { labelKey: 'footer.services', href: '/services' },
       ],
     },
     {
       categoryKey: 'footer.company',
       links: [
         { labelKey: 'footer.about', href: '#solutions' },
+        { labelKey: 'footer.blog', href: '/blog' },
         { labelKey: 'footer.contacts', href: '#contact', contacts: true },
+        { labelKey: 'footer.tashkent', href: '/tashkent' },
       ],
     },
   ];
@@ -33,11 +42,10 @@ export function Footer() {
   return (
     <>
       <footer className="relative" style={{ background: '#05050A' }}>
-        {/* Gradient top edge */}
         <div className="h-px bg-gradient-to-r from-transparent via-[#3B82F6]/30 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 mb-12">
             {/* Brand column */}
             <div>
               <div className="flex items-center gap-2.5 mb-4">
@@ -67,6 +75,15 @@ export function Footer() {
                           {t(link.labelKey)}
                         </button>
                       </li>
+                    ) : link.href.startsWith('/') ? (
+                      <li key={link.labelKey}>
+                        <Link
+                          href={link.href}
+                          className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200"
+                        >
+                          {t(link.labelKey)}
+                        </Link>
+                      </li>
                     ) : (
                       <li key={link.labelKey}>
                         <a
@@ -81,6 +98,31 @@ export function Footer() {
                 </ul>
               </div>
             ))}
+
+            {/* NAP column */}
+            <div>
+              <h4 className="text-sm font-semibold text-[#F8FAFC] mb-4">Контакты</h4>
+              <ul className="space-y-2 text-sm text-[#64748B]">
+                {CONTACT_PHONES.map((phone) => (
+                  <li key={phone}>
+                    <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:text-[#F8FAFC] transition-colors">
+                      {phone}
+                    </a>
+                  </li>
+                ))}
+                <li>
+                  <a href="https://t.me/aisolution_uz" target="_blank" rel="noopener noreferrer" className="hover:text-[#F8FAFC] transition-colors">
+                    {CONTACT_TG}
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-[#F8FAFC] transition-colors">
+                    {CONTACT_EMAIL}
+                  </a>
+                </li>
+                <li>{CONTACT_ADDRESS}</li>
+              </ul>
+            </div>
           </div>
 
           <div
@@ -91,7 +133,7 @@ export function Footer() {
               &copy; {new Date().getFullYear()} AI Solution. {t('footer.rights')}
             </p>
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-xs text-[#64748B] hover:text-[#F8FAFC] transition-colors">
-              {CONTACT_LABEL}
+              {CONTACT_EMAIL}
             </a>
           </div>
         </div>
@@ -139,21 +181,56 @@ export function Footer() {
                 </button>
 
                 <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">{t('footer.contactUsTitle')}</h3>
-                <p className="text-sm text-[#64748B] mb-6">{CONTACT_LABEL}</p>
+                <p className="text-sm text-[#64748B] mb-5">Позвоните, напишите в Telegram или на почту</p>
 
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="group flex items-center gap-4 p-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.07)',
-                  }}
+                {/* Phones group */}
+                <div
+                  className="rounded-xl p-4 space-y-2.5 mb-3"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
                 >
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-4 h-4 text-white" />
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <span className="text-xs text-[#64748B] font-medium uppercase tracking-wider">Телефоны</span>
                   </div>
-                  <span className="text-[#F8FAFC] font-medium text-[15px]">{CONTACT_EMAIL}</span>
-                </a>
+                  {CONTACT_PHONES.map((phone) => (
+                    <a
+                      key={phone}
+                      href={`tel:${phone.replace(/\s/g, '')}`}
+                      className="block text-[#F8FAFC] font-medium text-[15px] hover:text-[#93C5FD] transition-colors pl-11"
+                    >
+                      {phone}
+                    </a>
+                  ))}
+                </div>
+
+                {/* TG + Email group */}
+                <div className="space-y-2.5">
+                  <a
+                    href="https://t.me/aisolution_uz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
+                      <Send className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <span className="text-[#F8FAFC] font-medium text-[15px]">{CONTACT_TG}</span>
+                  </a>
+
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="flex items-center gap-4 p-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <span className="text-[#F8FAFC] font-medium text-[15px]">{CONTACT_EMAIL}</span>
+                  </a>
+                </div>
               </div>
             </motion.div>
           </>

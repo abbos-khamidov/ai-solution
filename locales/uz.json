@@ -10,10 +10,10 @@
     "discuss": "Muhokama qilish"
   },
   "heroNew": {
-    "titleLine1": "Menejerlaringiz uxlaydi.",
-    "titleLine2": "Sizning AI —",
-    "titleAccent": "yo'q",
-    "subtitle": "Mijozlarning 30% javob kutmasdan ketadi.\nBizning AI 30 soniyada javob beradi — kunu tun.",
+    "titleLine1": "Biznes avtomatlashtirish",
+    "titleLine2": "Toshkentda",
+    "titleAccent": "AI",
+    "subtitle": "O'zbekistonda sun'iy intellekt joriy etish.\nMijozlarga 30 soniyada javob — kunu tun, 24/7.",
     "cta": "Tarifni tanlang",
     "stats": {
       "speed": "Javob tezligi",
@@ -227,7 +227,7 @@
     "telegramText": "Yoki to'g'ridan-to'g'ri Telegramda yozing:"
   },
   "footer": {
-    "tagline": "Savdoni avtomatlashtirish uchun AI yordamchilar. Telegram, Instagram va WhatsApp da 30 soniyada javob beramiz.",
+    "tagline": "Toshkentda biznes avtomatlashtirish. O'zbekistonda sun'iy intellekt joriy etish. 30 soniyada javob.",
     "product": "Mahsulot",
     "company": "Kompaniya",
     "howItWorks": "Qanday ishlaydi",
@@ -235,6 +235,9 @@
     "pricing": "Tariflar",
     "about": "Biz haqimizda",
     "contacts": "Kontaktlar",
+    "services": "Xizmatlar",
+    "blog": "Blog",
+    "tashkent": "Toshkentda AI",
     "rights": "Barcha huquqlar himoyalangan.",
     "contactUsTitle": "Biz bilan bog'laning",
     "contactUsSubtitle": "Istalgan raqamga qo'ng'iroq qiling",

@@ -18,6 +18,7 @@ import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
 import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 
 function useScrollReveal(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -237,6 +238,11 @@ export default function AIAssistantContent() {
           </div>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'lichny-ii-bot-assistant', title: 'Личный AI бот-ассистент для руководителя бизнеса' },
+        { slug: 'sozdat-chatgpt-dlya-kompanii', title: 'Как создать свой ChatGPT для компании — корпоративный AI' },
+      ]} />
     </div>
   );
 }

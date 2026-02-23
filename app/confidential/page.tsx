@@ -46,7 +46,7 @@ export default function ConfidentialPage() {
 
             <h2 className="text-xl font-semibold text-[var(--foreground)] mt-8 mb-3">5. Контакты</h2>
             <p className="leading-relaxed">
-              По вопросам обработки персональных данных: Связь: infoaisolution.uz (email: info@aisolution.uz).
+              По вопросам обработки персональных данных: Связь: info@aisolution.uz (email: info@aisolution.uz).
             </p>
 
             <p className="text-sm text-[var(--muted-foreground)] mt-12">

@@ -10,7 +10,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       const normalized = normalizeLanguage(lng);
       document.documentElement.lang = normalized;
       localStorage.setItem('aisolution-lang', normalized);
-      document.documentElement.classList.toggle('lang-zh', normalized === 'zh');
+      document.documentElement.classList.remove('lang-zh');
     };
 
     const saved = localStorage.getItem('aisolution-lang');

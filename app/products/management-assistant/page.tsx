@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { ChevronRight, ArrowDown, AlertTriangle } from 'lucide-react';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -256,6 +257,11 @@ export default function ManagementAssistantPage() {
           </ScrollReveal>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'lichny-ii-bot-assistant', title: 'Личный AI бот-ассистент для руководителя бизнеса' },
+        { slug: 'llm-bot-manager-telegram', title: 'LLM и бот-менеджер в Telegram — что это и зачем бизнесу в 2025' },
+      ]} />
 
       {/* Contact */}
       <ContactSection />

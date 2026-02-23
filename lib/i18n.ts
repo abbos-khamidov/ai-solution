@@ -1,16 +1,12 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from '@/locales/en.json';
 import ru from '@/locales/ru.json';
 import uz from '@/locales/uz.json';
-import zh from '@/locales/zh.json';
 
 export const languages = [
-  { code: 'en', label: 'English', flag: '\u{1F1FA}\u{1F1F8}' },
   { code: 'ru', label: '\u0420\u0443\u0441\u0441\u043A\u0438\u0439', flag: '\u{1F1F7}\u{1F1FA}' },
   { code: 'uz', label: "O'zbek", flag: '\u{1F1FA}\u{1F1FF}' },
-  { code: 'zh', label: '\u4E2D\u6587', flag: '\u{1F1E8}\u{1F1F3}' },
 ] as const;
 
 export type LanguageCode = (typeof languages)[number]['code'];
@@ -37,10 +33,8 @@ function getSavedLanguage(): LanguageCode {
 
 i18n.use(initReactI18next).init({
   resources: {
-    en: { translation: en },
     ru: { translation: ru },
     uz: { translation: uz },
-    zh: { translation: zh },
   },
   lng: getSavedLanguage(),
   fallbackLng: DEFAULT_LANGUAGE,

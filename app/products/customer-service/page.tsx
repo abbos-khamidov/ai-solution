@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { ChevronRight, ArrowDown } from 'lucide-react';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -292,6 +293,11 @@ export default function CustomerServicePage() {
           </ScrollReveal>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'ai-chatbot-dlya-biznesa-uzbekistan', title: 'AI чат-бот для бизнеса в Узбекистане — полное руководство' },
+        { slug: 'kvalifikaciya-lidov-ai', title: 'Автоматическая квалификация лидов с помощью AI — система Cold/Warm/Hot' },
+      ]} />
 
       {/* Contact */}
       <ContactSection />

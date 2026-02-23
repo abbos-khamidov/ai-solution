@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Noto_Sans_SC } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { I18nProvider } from '@/components/providers/I18nProvider';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -11,12 +11,6 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const notoSansSC = Noto_Sans_SC({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-noto-sc',
-});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 const GOOGLE_SITE_VERIFICATION =
@@ -25,34 +19,37 @@ const GOOGLE_SITE_VERIFICATION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'AI Solution — AI чат-бот для бизнеса Узбекистан | Отвечает за 30 секунд',
+    default: 'AI Solution — автоматизация бизнеса в Ташкенте | Внедрение ИИ в Узбекистане',
     template: '%s | AI Solution',
   },
-  description: 'AI-ассистент для бизнеса в Узбекистане: отвечает клиентам за 30 секунд в Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot 24/7. Конверсия +34%. Ташкент, Узбекистан, Центральная Азия.',
+  description: 'Автоматизация бизнеса в Ташкенте и Узбекистане с помощью искусственного интеллекта. Внедрение ИИ: Telegram-боты, бот-менеджер, аналитика. Ответ клиентам за 30 секунд 24/7. Офис в Ташкенте.',
   keywords: [
-    // Русский
-    'AI чат-бот для бизнеса Узбекистан',
-    'внедрение ИИ в бизнес Ташкент',
+    'автоматизация бизнеса Ташкент',
+    'автоматизация бизнеса в Ташкенте',
+    'ИИ в Ташкенте',
+    'ИИ Ташкент',
+    'внедрение искусственного интеллекта Ташкент',
+    'внедрение искусственного интеллекта в Ташкенте',
+    'внедрение ИИ в Узбекистане',
     'внедрение искусственного интеллекта Узбекистан',
-    'автоматизация продаж Telegram бот',
-    'AI ассистент для Instagram WhatsApp',
-    'квалификация лидов автоматически',
-    'чат-бот для интернет-магазина Узбекистан',
-    'личный AI бот ассистент для бизнеса',
-    'создать ChatGPT для своей компании',
-    'корпоративный AI ассистент Ташкент',
-    'AI для бизнеса Центральная Азия',
+    'автоматизация бизнеса Узбекистан',
+    'автоматизация бизнеса в Узбекистане',
+    'AI автоматизация Ташкент',
+    'искусственный интеллект для бизнеса Ташкент',
+    'внедрение ИИ в бизнес Ташкент',
+    'AI чат-бот для бизнеса Узбекистан',
+    'автоматизация продаж Ташкент',
     'чат-бот для бизнеса Ташкент',
-    'автоответчик в Telegram Instagram WhatsApp',
-    'AI менеджер по продажам',
-    'автоматизация клиентского сервиса СНГ',
-    'создать ИИ бот для компании',
-    'умный чат-бот для сайта',
+    'корпоративный AI ассистент Ташкент',
+    'AI менеджер по продажам Ташкент',
+    'Telegram бот для бизнеса Ташкент',
+    'автоматизация клиентского сервиса Узбекистан',
     // Узбекский
-    'biznes uchun AI chatbot Toshkent',
-    'sun\'iy intellekt biznesga joriy etish',
-    'AI yordamchi Telegram Instagram',
-    'mijozlarga avtomatik javob berish',
+    'Toshkentda biznes avtomatlashtirish',
+    "sun'iy intellekt Toshkent",
+    "sun'iy intellekt joriy etish Toshkent",
+    'biznes avtomatlashtirish O\'zbekiston',
+    'AI chatbot Toshkent',
     'Toshkentda AI joriy etish',
   ],
   authors: [{ name: 'AI Solution', url: SITE_URL }],
@@ -63,18 +60,18 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: 'AI Solution — ИИ автоматизация бизнеса | Ташкент, Узбекистан',
-    description: 'Telegram-боты, LLM, бот-менеджер, аналитика для компаний. Ответ за 30 секунд 24/7. Офис в Ташкенте, работаем по всему Узбекистану.',
+    title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ | AI Solution',
+    description: 'Автоматизация бизнеса в Ташкенте и Узбекистане: внедрение искусственного интеллекта, Telegram-боты, бот-менеджер, аналитика. Ответ за 30 секунд 24/7.',
     type: 'website',
     locale: 'ru_RU',
-    alternateLocale: ['uz_UZ', 'en_US'],
+    alternateLocale: ['uz_UZ'],
     siteName: 'AI Solution',
     url: SITE_URL,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Solution — ИИ автоматизация бизнеса | Ташкент',
-    description: 'Telegram-боты, LLM, бот-менеджер, аналитика для компаний. Ответ за 30 сек 24/7.',
+    title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ в Узбекистане',
+    description: 'Внедрение искусственного интеллекта в Ташкенте. Автоматизация бизнеса, Telegram-боты, аналитика. Ответ за 30 сек 24/7.',
   },
   robots: {
     index: true,
@@ -101,7 +98,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ru" suppressHydrationWarning className={`scroll-smooth ${inter.variable} ${notoSansSC.variable}`}>
+    <html lang="ru" suppressHydrationWarning className={`scroll-smooth ${inter.variable}`}>
       <head>
         <JsonLd />
       </head>

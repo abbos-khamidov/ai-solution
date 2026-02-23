@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import Link from 'next/link';
 import { ChevronRight, ArrowDown, ArrowRight } from 'lucide-react';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { ContactSection } from '@/components/sections/ContactSection';
@@ -279,6 +280,11 @@ export default function CorporateAIPage() {
           </ScrollReveal>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'sozdat-chatgpt-dlya-kompanii', title: 'Как создать свой ChatGPT для компании — корпоративный AI' },
+        { slug: 'ii-avtomatizaciya-biznesa-uzbekistan', title: 'ИИ автоматизация бизнеса в Узбекистане — полное руководство 2025' },
+      ]} />
 
       {/* Contact */}
       <ContactSection />

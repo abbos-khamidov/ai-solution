@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ProductJsonLd } from '@/components/seo/ProductJsonLd';
+import { createAlternates } from '@/lib/seo';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
@@ -19,15 +20,13 @@ export const metadata: Metadata = {
     'biznes uchun AI Toshkent',
     'sun\'iy intellekt biznesga joriy etish',
   ],
-  alternates: {
-    canonical: `${SITE_URL}/products/management-assistant`,
-  },
+  alternates: createAlternates(`${SITE_URL}/products/management-assistant`),
   openGraph: {
     title: 'Management Assistant — Контроль бизнеса в одном окне | AI Solution',
     description: 'AI-ассистент для собственника: контроль команды, финансовый трекер, KPI отчёты в Telegram. Автоматизация управления. От $3 000. Узбекистан.',
     type: 'website',
     locale: 'ru_RU',
-    alternateLocale: ['uz_UZ', 'en_US'],
+    alternateLocale: ['uz_UZ'],
     siteName: 'AI Solution',
     url: `${SITE_URL}/products/management-assistant`,
     images: [{

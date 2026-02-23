@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import AIAssistantContent from './content';
+import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/ai-assistant';
@@ -20,8 +21,11 @@ export const metadata: Metadata = {
     'умный ассистент для бизнеса',
     'AI на основе данных компании',
     'LLM Ташкент',
+    'ИИ ассистент Ташкент',
+    'искусственный интеллект для бизнеса Ташкент',
+    'автоматизация в Ташкенте',
   ],
-  alternates: { canonical: `${SITE_URL}${SLUG}` },
+  alternates: createAlternates(`${SITE_URL}${SLUG}`),
   openGraph: {
     title: TITLE,
     description: DESC,
@@ -29,6 +33,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ru_RU',
     siteName: 'AI Solution',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESC,
+    images: [{ url: DEFAULT_TWITTER_IMAGE }],
   },
   robots: { index: true, follow: true },
 };

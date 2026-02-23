@@ -1,4 +1,4 @@
-const SITE_URL = 'https://aisolution.uz';
+import { SITE_URL } from '@/lib/seo';
 
 interface ProductJsonLdProps {
   product: 'customer-service' | 'management-assistant' | 'corporate-ai';
@@ -109,7 +109,7 @@ export function ProductJsonLd({ product }: ProductJsonLdProps) {
       priceCurrency: 'USD',
       lowPrice: p.lowPrice,
       highPrice: p.highPrice,
-      offerCount: '3',
+      offerCount: 3,
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',

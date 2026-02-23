@@ -28,6 +28,7 @@ import { BackButton } from '@/components/shared/BackButton';
 import { FAQAccordion } from '@/components/shared/FAQAccordion';
 import { DetailPricingSection } from '@/components/shared/DetailPricingSection';
 import { CounterAnimation } from '@/components/shared/CounterAnimation';
+import { RelatedArticles } from '@/components/seo/RelatedArticles';
 
 // ─── Scroll-reveal hook ──────────────────────────────────────
 function useScrollReveal(threshold = 0.15) {
@@ -770,6 +771,11 @@ export default function AnalyticsContent() {
           </div>
         </div>
       </section>
+
+      <RelatedArticles articles={[
+        { slug: 'analitika-dlya-kompaniy-tashkent', title: 'Аналитика для компаний на базе ИИ — Ташкент 2025' },
+        { slug: 'ii-avtomatizaciya-biznesa-uzbekistan', title: 'ИИ автоматизация бизнеса в Узбекистане — полное руководство 2025' },
+      ]} />
     </div>
   );
 }

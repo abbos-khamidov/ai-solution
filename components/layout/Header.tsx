@@ -29,14 +29,23 @@ export function Header() {
   const isHomePage = pathname === '/';
   const isProductPage = pathname?.startsWith('/products/');
 
+  const isServicesPage = pathname?.startsWith('/services');
+  const isBlogPage = pathname?.startsWith('/blog');
+
   const otherNavLinks = [
     {
       label: t('nav.process'),
       href: isHomePage ? '#process' : '/#process',
     },
     {
-      label: t('nav.about'),
-      href: isHomePage ? '#about' : '/#about',
+      label: 'Услуги',
+      href: '/services',
+      active: isServicesPage,
+    },
+    {
+      label: 'Блог',
+      href: '/blog',
+      active: isBlogPage,
     },
     {
       label: t('nav.contact'),
@@ -196,27 +205,46 @@ export function Header() {
               </motion.div>
 
               {/* Other nav links */}
-              {otherNavLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.28 + i * 0.08,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={(e) => scrollTo(e, link.href)}
-                    className="group relative text-[15px] font-medium text-[#64748B] hover:text-white transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm"
+              {otherNavLinks.map((link, i) => {
+                const isInternal = link.href.startsWith('/');
+                const isActive = 'active' in link && link.active;
+                const cls = `group relative text-[15px] font-medium transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm ${
+                  isActive ? 'text-white' : 'text-[#64748B] hover:text-white'
+                }`;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.28 + i * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
                   >
-                    {link.label}
-                    <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] transition-[width] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
-                  </a>
-                </motion.div>
-              ))}
+                    {isInternal ? (
+                      <Link href={link.href} className={cls}>
+                        {link.label}
+                        {isActive && (
+                          <span className="absolute left-0 -bottom-0.5 h-[2px] w-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4]" />
+                        )}
+                        {!isActive && (
+                          <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] transition-[width] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                        )}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        onClick={(e) => scrollTo(e, link.href)}
+                        className={cls}
+                      >
+                        {link.label}
+                        <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] transition-[width] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                      </a>
+                    )}
+                  </motion.div>
+                );
+              })}
             </nav>
 
             {/* Desktop right side */}
@@ -354,29 +382,45 @@ export function Header() {
               </motion.div>
 
               {/* Other nav links */}
-              {otherNavLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: 0.1 + i * 0.06,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={(e) => {
-                      scrollTo(e, link.href);
-                      if (link.href.startsWith('#')) setIsMobileOpen(false);
+              {otherNavLinks.map((link, i) => {
+                const isInternal = link.href.startsWith('/');
+                const isActive = 'active' in link && link.active;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.1 + i * 0.06,
+                      ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="block py-3 text-[18px] font-medium text-[#94A3B8] hover:text-white transition-colors rounded-sm"
                   >
-                    {link.label}
-                  </a>
-                </motion.div>
-              ))}
+                    {isInternal ? (
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsMobileOpen(false)}
+                        className={`block py-3 text-[18px] font-medium transition-colors rounded-sm ${
+                          isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        onClick={(e) => {
+                          scrollTo(e, link.href);
+                          if (link.href.startsWith('#')) setIsMobileOpen(false);
+                        }}
+                        className="block py-3 text-[18px] font-medium text-[#94A3B8] hover:text-white transition-colors rounded-sm"
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </motion.div>
+                );
+              })}
 
               <motion.div
                 initial={{ opacity: 0, y: 12 }}
