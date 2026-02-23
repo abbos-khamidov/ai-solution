@@ -31,7 +31,7 @@ export function Footer() {
     {
       categoryKey: 'footer.company',
       links: [
-        { labelKey: 'footer.about', href: '#solutions' },
+        { labelKey: 'footer.about', href: '/about' },
         { labelKey: 'footer.blog', href: '/blog' },
         { labelKey: 'footer.contacts', href: '#contact', contacts: true },
         { labelKey: 'footer.tashkent', href: '/tashkent' },

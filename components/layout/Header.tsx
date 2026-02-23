@@ -31,11 +31,17 @@ export function Header() {
 
   const isServicesPage = pathname?.startsWith('/services');
   const isBlogPage = pathname?.startsWith('/blog');
+  const isAboutPage = pathname?.startsWith('/about');
 
   const otherNavLinks = [
     {
       label: t('nav.process'),
       href: isHomePage ? '#process' : '/#process',
+    },
+    {
+      label: t('nav.about'),
+      href: '/about',
+      active: isAboutPage,
     },
     {
       label: t('nav.services'),
