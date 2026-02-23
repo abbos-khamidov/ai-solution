@@ -16,6 +16,7 @@ const entries: SitemapEntry[] = [
   { path: '/ii-avtomatizaciya', changeFrequency: 'monthly', priority: 0.88 },
   { path: '/ii-avtomatizaciya-uzbekistan', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/ai-agent-dlya-biznesa-tashkent', changeFrequency: 'monthly', priority: 0.88 },
+  { path: '/ai-dlya-biznesa', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/blog', changeFrequency: 'weekly', priority: 0.85 },
   { path: '/services', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/products/customer-service', changeFrequency: 'monthly', priority: 0.95 },
