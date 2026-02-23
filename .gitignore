@@ -36,3 +36,6 @@ __pycache__/
 .venv/
 backend/.env
 backend/db.sqlite3
+
+# deploy scripts with credentials
+deploy/remote_exec.py

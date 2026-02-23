@@ -20,6 +20,13 @@ const productLinks = [
   { href: '/products/corporate-ai', title: 'Corporate AI' },
 ];
 
+const moneyQueryLinks = [
+  { href: '/ai-bot-tashkent', title: 'ИИ бот в Ташкенте' },
+  { href: '/ii-avtomatizaciya', title: 'ИИ автоматизация бизнеса' },
+  { href: '/ii-avtomatizaciya-uzbekistan', title: 'ИИ автоматизация в Узбекистане' },
+  { href: '/ai-agent-dlya-biznesa-tashkent', title: 'AI агент для бизнеса в Ташкенте' },
+];
+
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
@@ -94,6 +101,24 @@ export default function ServicesIndexPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <h2 className="text-xl font-semibold">Популярные запросы</h2>
+          <p className="mt-2 text-sm text-[#94A3B8]">
+            Подборки страниц под ключевые запросы по AI и автоматизации в Ташкенте и Узбекистане.
+          </p>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {moneyQueryLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-[#93C5FD] hover:text-white transition-colors"
+              >
+                {item.title}
+              </Link>
+            ))}
           </div>
         </div>
       </section>

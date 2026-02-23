@@ -11,6 +11,10 @@ type SitemapEntry = {
 const entries: SitemapEntry[] = [
   { path: '/', changeFrequency: 'weekly', priority: 1.0 },
   { path: '/tashkent', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/ai-bot-tashkent', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/ii-avtomatizaciya', changeFrequency: 'monthly', priority: 0.88 },
+  { path: '/ii-avtomatizaciya-uzbekistan', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/ai-agent-dlya-biznesa-tashkent', changeFrequency: 'monthly', priority: 0.88 },
   { path: '/blog', changeFrequency: 'weekly', priority: 0.85 },
   { path: '/services', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/products/customer-service', changeFrequency: 'monthly', priority: 0.95 },

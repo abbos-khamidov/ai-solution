@@ -1,5 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { SITE_URL } from '@/lib/seo';
+import { useTranslation } from 'react-i18next';
+import { normalizeLanguage } from '@/lib/i18n';
 
 const posts = [
   { slug: 'kvalifikaciya-lidov-ai', title: 'Автоматическая квалификация лидов с помощью AI — система Cold/Warm/Hot', description: 'Как AI автоматически квалифицирует лидов по системе Cold/Warm/Hot и увеличивает конверсию продаж.', date: '2025-02-15' },
@@ -15,30 +19,54 @@ const posts = [
   { slug: 'vnedrenie-ii-v-biznes-tashkent', title: 'Внедрение ИИ в бизнес в Ташкенте — руководство 2025', description: 'Пошаговое руководство по внедрению искусственного интеллекта в бизнес в Ташкенте. Реальные кейсы и ROI.', date: '2025-01-20' },
 ];
 
-function formatDate(dateStr: string) {
+function formatDate(dateStr: string, locale: string) {
   const d = new Date(dateStr);
-  return d.toLocaleDateString('ru-RU', { year: 'numeric', month: 'long', day: 'numeric' });
+  return d.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-const blogListSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  name: 'Блог AI Solution',
-  description: 'Экспертные статьи по AI-автоматизации бизнеса в Ташкенте и Узбекистане.',
-  url: `${SITE_URL}/blog`,
-  mainEntity: {
-    '@type': 'ItemList',
-    numberOfItems: posts.length,
-    itemListElement: posts.map((post, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      url: `${SITE_URL}/blog/${post.slug}`,
-      name: post.title,
-    })),
+const copyByLang = {
+  ru: {
+    eyebrow: 'AI Solution Blog',
+    title: 'Блог',
+    subtitle:
+      'Практические руководства по внедрению AI в бизнес: Telegram-боты, LLM, аналитика, автоматизация продаж в Ташкенте и Узбекистане.',
+    schemaName: 'Блог AI Solution',
+    schemaDescription: 'Экспертные статьи по AI-автоматизации бизнеса в Ташкенте и Узбекистане.',
+    dateLocale: 'ru-RU',
+  },
+  uz: {
+    eyebrow: 'AI Solution Blog',
+    title: 'Blog',
+    subtitle:
+      "Biznesga AI joriy etish bo'yicha amaliy qo'llanmalar: Telegram-botlar, LLM, analitika va Toshkent hamda O'zbekistonda savdolarni avtomatlashtirish.",
+    schemaName: 'AI Solution Blog',
+    schemaDescription: "Toshkent va O'zbekistonda biznesni AI yordamida avtomatlashtirish bo'yicha amaliy maqolalar.",
+    dateLocale: 'uz-UZ',
   },
 };
 
 export default function BlogIndexPage() {
+  const { i18n } = useTranslation();
+  const lang = normalizeLanguage(i18n.language);
+  const copy = copyByLang[lang];
+  const blogListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: copy.schemaName,
+    description: copy.schemaDescription,
+    url: `${SITE_URL}/blog`,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: posts.length,
+      itemListElement: posts.map((post, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  };
+
   return (
     <>
       <script
@@ -49,13 +77,12 @@ export default function BlogIndexPage() {
       <main className="min-h-screen bg-[#05050A] pt-28 pb-16">
         <div className="max-w-4xl mx-auto px-4 md:px-6">
           <div className="mb-12">
-            <p className="text-sm text-[#3B82F6] font-medium mb-3">AI Solution Blog</p>
+            <p className="text-sm text-[#3B82F6] font-medium mb-3">{copy.eyebrow}</p>
             <h1 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] tracking-tight">
-              Блог
+              {copy.title}
             </h1>
             <p className="mt-4 text-lg text-[#94A3B8] max-w-2xl">
-              Практические руководства по внедрению AI в бизнес: Telegram-боты, LLM, аналитика,
-              автоматизация продаж в Ташкенте и Узбекистане.
+              {copy.subtitle}
             </p>
           </div>
 
@@ -79,7 +106,7 @@ export default function BlogIndexPage() {
                     dateTime={post.date}
                     className="text-xs text-[#64748B] whitespace-nowrap pt-1"
                   >
-                    {formatDate(post.date)}
+                    {formatDate(post.date, copy.dateLocale)}
                   </time>
                 </div>
               </Link>

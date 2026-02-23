@@ -38,12 +38,12 @@ export function Header() {
       href: isHomePage ? '#process' : '/#process',
     },
     {
-      label: 'Услуги',
+      label: t('nav.services'),
       href: '/services',
       active: isServicesPage,
     },
     {
-      label: 'Блог',
+      label: t('nav.blog'),
       href: '/blog',
       active: isBlogPage,
     },
