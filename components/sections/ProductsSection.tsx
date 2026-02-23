@@ -2,13 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Bot, Building2, LayoutDashboard, LineChart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
+import { track } from '@/lib/analytics/gtag';
 
 const productKeys = [
   {
-    emoji: '🤖',
+    icon: Bot,
     titleKey: 'productsSection.product1Title',
     descKey: 'productsSection.product1Desc',
     featureKeys: ['productsSection.product1F1', 'productsSection.product1F2', 'productsSection.product1F3'],
@@ -18,7 +19,7 @@ const productKeys = [
     accentColor: '#3B82F6',
   },
   {
-    emoji: '📊',
+    icon: LayoutDashboard,
     titleKey: 'productsSection.product2Title',
     descKey: 'productsSection.product2Desc',
     featureKeys: ['productsSection.product2F1', 'productsSection.product2F2', 'productsSection.product2F3'],
@@ -28,7 +29,7 @@ const productKeys = [
     accentColor: '#06B6D4',
   },
   {
-    emoji: '🏢',
+    icon: Building2,
     titleKey: 'productsSection.product3Title',
     descKey: 'productsSection.product3Desc',
     featureKeys: ['productsSection.product3F1', 'productsSection.product3F2', 'productsSection.product3F3'],
@@ -55,7 +56,7 @@ export function ProductsSection() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {productKeys.map((product, idx) => (
             <ScrollReveal key={idx} direction="up" duration={0.6} delay={idx * 0.12}>
               <Link
@@ -89,7 +90,7 @@ export function ProductsSection() {
                       border: `1px solid ${product.accentColor}30`,
                     }}
                   >
-                    <span className="text-3xl">{product.emoji}</span>
+                    <product.icon className="w-7 h-7" style={{ color: product.accentColor }} />
                   </div>
                 </div>
 
@@ -135,6 +136,71 @@ export function ProductsSection() {
               </Link>
             </ScrollReveal>
           ))}
+
+          <ScrollReveal direction="up" duration={0.6} delay={0.36}>
+            <article
+              className="group relative p-6 md:p-8 rounded-2xl h-full flex flex-col transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(20px)',
+              }}
+            >
+              <Link
+                href="/products/ai-analytics"
+                onClick={() =>
+                  track('cta_click_product_card', {
+                    product: 'ai_analytics',
+                    location: 'home_products',
+                  })
+                }
+                className="absolute inset-0 rounded-2xl"
+                aria-label="AI-аналитика и дашборды"
+              />
+
+              <div className="relative w-16 h-16 flex items-center justify-center mb-5">
+                <div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{ background: 'rgba(14,165,233,0.12)', filter: 'blur(12px)' }}
+                />
+                <div
+                  className="relative w-16 h-16 rounded-2xl flex items-center justify-center"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.08))',
+                    border: '1px solid rgba(14,165,233,0.3)',
+                  }}
+                >
+                  <LineChart className="w-7 h-7 text-sky-400" />
+                </div>
+              </div>
+
+              <h3 className="text-xl font-bold text-[#F8FAFC] mb-2">AI-аналитика и дашборды</h3>
+              <p className="text-sm text-[#94A3B8] mb-6 leading-relaxed flex-1">
+                KPI-дашборды, отчеты и рекомендации руководителю
+              </p>
+
+              <div
+                className="flex items-center justify-between pt-4 relative z-10"
+                style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
+              >
+                <span className="text-base font-bold text-gradient">от $2 000</span>
+                <Link
+                  href="/products/ai-analytics#demo"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    track('cta_click_product_card', {
+                      product: 'ai_analytics',
+                      location: 'home_products',
+                    });
+                  }}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-all duration-300"
+                >
+                  Получить демо
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </article>
+          </ScrollReveal>
         </div>
       </div>
     </section>

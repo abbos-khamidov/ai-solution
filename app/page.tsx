@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
 import { FaqSchema } from '@/components/seo/FaqSchema';
@@ -85,6 +86,19 @@ export default function HomePage() {
         <SolutionSection />
         <ProductsSection />
         <SimplePricingSection />
+        <section className="bg-[#05050A] px-4 md:px-6 py-6">
+          <div className="max-w-6xl mx-auto rounded-2xl p-6 md:p-8 border border-[#3B82F6]/30 bg-[#3B82F6]/10">
+            <p className="text-xl md:text-2xl font-bold text-white">
+              Хотите понять, где бизнес теряет деньги? Получите AI-аудит.
+            </p>
+            <Link
+              href="/ai-dlya-biznesa"
+              className="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold"
+            >
+              Перейти к AI-аудиту
+            </Link>
+          </div>
+        </section>
         <ContactSection />
       </main>
       <Footer />

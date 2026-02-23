@@ -4,9 +4,10 @@ import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, Bot, Building2, Briefcase, LineChart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
+import { track } from '@/lib/analytics/gtag';
 
 export function Header() {
   const { t } = useTranslation();
@@ -19,9 +20,11 @@ export function Header() {
 
   const productLinks = useMemo(
     () => [
-      { emoji: '\u{1F916}', label: t('productsSection.product1Title'), href: '/products/customer-service' },
-      { emoji: '\u{1F4CA}', label: t('productsSection.product2Title'), href: '/products/management-assistant' },
-      { emoji: '\u{1F3E2}', label: t('productsSection.product3Title'), href: '/products/corporate-ai' },
+      { icon: Briefcase, label: 'AI для бизнеса', href: '/ai-dlya-biznesa' },
+      { icon: LineChart, label: 'AI-аналитика', href: '/products/ai-analytics' },
+      { icon: Bot, label: t('productsSection.product1Title'), href: '/products/customer-service' },
+      { icon: LineChart, label: t('productsSection.product2Title'), href: '/products/management-assistant' },
+      { icon: Building2, label: t('productsSection.product3Title'), href: '/products/corporate-ai' },
     ],
     [t]
   );
@@ -176,7 +179,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -8, scale: 0.96 }}
                         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute top-full left-0 mt-3 w-64 rounded-xl p-2 z-[60]"
+                        className="absolute top-full left-0 mt-2 w-64 rounded-xl p-2 z-[60]"
                         style={{
                           background: 'rgba(13, 13, 26, 0.97)',
                           backdropFilter: 'blur(20px)',
@@ -187,11 +190,27 @@ export function Header() {
                       >
                         {productLinks.map((product) => {
                           const isActive = pathname === product.href;
+                          const isAiForBusiness = product.href === '/ai-dlya-biznesa';
+                          const isAiAnalytics = product.href === '/products/ai-analytics';
                           return (
                             <Link
                               key={product.href}
                               href={product.href}
-                              onClick={() => setIsProductsOpen(false)}
+                              onClick={() => {
+                                if (isAiForBusiness) {
+                                  track('nav_click_ai_for_business', {
+                                    location: 'header_nav',
+                                    target: '/ai-dlya-biznesa',
+                                  });
+                                }
+                                if (isAiAnalytics) {
+                                  track('nav_click_product', {
+                                    product: 'ai_analytics',
+                                    location: 'header_dropdown',
+                                  });
+                                }
+                                setIsProductsOpen(false);
+                              }}
                               role="menuitem"
                               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${
                                 isActive
@@ -199,7 +218,7 @@ export function Header() {
                                   : 'text-[#94A3B8] hover:bg-white/5 hover:text-white'
                               }`}
                             >
-                              <span className="text-base">{product.emoji}</span>
+                              <product.icon className="w-4 h-4 shrink-0" />
                               <span>{product.label}</span>
                             </Link>
                           );
@@ -207,6 +226,9 @@ export function Header() {
                       </motion.div>
                     )}
                   </AnimatePresence>
+                  {isProductsOpen && (
+                    <div className="absolute top-full left-0 h-3 w-64" aria-hidden="true" />
+                  )}
                 </div>
               </motion.div>
 
@@ -365,18 +387,34 @@ export function Header() {
                       >
                         {productLinks.map((product) => {
                           const isActive = pathname === product.href;
+                          const isAiForBusiness = product.href === '/ai-dlya-biznesa';
+                          const isAiAnalytics = product.href === '/products/ai-analytics';
                           return (
                             <Link
                               key={product.href}
                               href={product.href}
-                              onClick={() => setIsMobileOpen(false)}
+                              onClick={() => {
+                                if (isAiForBusiness) {
+                                  track('nav_click_ai_for_business', {
+                                    location: 'header_nav',
+                                    target: '/ai-dlya-biznesa',
+                                  });
+                                }
+                                if (isAiAnalytics) {
+                                  track('nav_click_product', {
+                                    product: 'ai_analytics',
+                                    location: 'header_dropdown',
+                                  });
+                                }
+                                setIsMobileOpen(false);
+                              }}
                               className={`flex items-center gap-3 px-3 py-3 rounded-lg text-[16px] font-medium transition-colors ${
                                 isActive
                                   ? 'text-[#3B82F6]'
                                   : 'text-[#94A3B8] hover:text-white'
                               }`}
                             >
-                              <span>{product.emoji}</span>
+                              <product.icon className="w-4 h-4 shrink-0" />
                               <span>{product.label}</span>
                             </Link>
                           );

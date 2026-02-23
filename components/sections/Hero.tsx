@@ -2,18 +2,27 @@
 
 import React, { useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
+import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { MagneticButton } from '@/components/animations/MagneticButton';
 import { useGSAPContext } from '@/components/animations/useGSAPContext';
 import { HeroChatDemo } from '@/components/sections/HeroChatDemo';
+import { track } from '@/lib/analytics/gtag';
 
 const floatingBadges = [
   { text: '🟢 Hot lead detected', delay: '0s', position: 'top-8 -left-4 lg:-left-12' },
   { text: '⚡ Ответ за 2 сек', delay: '1.5s', position: 'top-1/3 -right-4 lg:-right-10' },
   { text: '📊 Конверсия +34%', delay: '3s', position: 'bottom-20 -left-2 lg:-left-8' },
+  { text: '📈 AI-аналитика и дашборды', delay: '2.2s', position: 'bottom-8 -right-2 lg:-right-8' },
 ];
 
 const STAT_VALUES = ['30 сек', '24/7', '3x', '500+'];
+const HERO_SUBTITLE =
+  'AI анализирует продажи и маркетинг, собирает данные из ключевых источников и автоматизирует задачи.\nРуководитель получает рекомендации и управленческий обзор в реальном времени.';
+const HERO_BENEFITS = [
+  'Анализ продаж и маркетинга',
+  'AI-аналитика и дашборд руководителя',
+];
 
 export function Hero() {
   const { t } = useTranslation();
@@ -130,32 +139,42 @@ export function Hero() {
         <div className="grid lg:grid-cols-[1fr_480px] gap-8 lg:gap-12 items-center">
           {/* Left: Text Content */}
           <div className="text-center lg:text-left">
-            <h1 className="text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.1] tracking-[-0.03em] font-extrabold text-[#F8FAFC] mb-6">
-              {t('heroNew.titleLine1')}<br />
-              {t('heroNew.titleLine2')}{' '}
+            <h1 className="text-[clamp(2.1rem,4.6vw,4rem)] leading-[1.05] tracking-[-0.03em] font-extrabold text-[#F8FAFC] mb-5 hyphens-none break-normal [text-wrap:balance]">
+              AI анализирует бизнес,<br />
+              находит потери и{' '}
               <span className="text-gradient bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] bg-clip-text text-transparent">
-                {t('heroNew.titleAccent')}
+                автоматизирует процессы
               </span>
               .
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-[#94A3B8] max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed whitespace-pre-line">
-              {t('heroNew.subtitle')}
+            <p className="text-base sm:text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto lg:mx-0 mb-6 leading-relaxed whitespace-pre-line">
+              {HERO_SUBTITLE}
             </p>
 
             {/* CTA Button */}
-            <div className="flex justify-center lg:justify-start mb-12">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
               <MagneticButton strength={0.3} radius={150}>
-                <button
-                  onClick={() => {
-                    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
+                <Link
+                  href="/ai-dlya-biznesa#audit"
+                  onClick={() =>
+                    track('cta_click_hero', {
+                      location: 'hero',
+                      target: '/ai-dlya-biznesa#audit',
+                    })
+                  }
                   className="btn-shimmer inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2 focus:ring-offset-[#05050A]"
                 >
-                  {t('heroNew.cta')}
+                  Получить AI-аудит
                   <ArrowDown className="w-5 h-5 shrink-0 animate-bounce" />
-                </button>
+                </Link>
               </MagneticButton>
+              <Link
+                href="/products"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold rounded-xl border border-white/20 text-[#F8FAFC] hover:bg-white/5 transition-colors"
+              >
+                Посмотреть решения
+              </Link>
             </div>
 
             {/* Stats row */}
@@ -174,10 +193,31 @@ export function Hero() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-5 flex flex-wrap justify-center lg:justify-start gap-2">
+              {HERO_BENEFITS.map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1.5 rounded-full text-xs sm:text-sm text-[#CBD5E1] border border-white/10 bg-white/[0.03]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Right: Chat Demo with floating badges */}
           <div className="relative flex justify-center lg:justify-end">
+            <div
+              className="absolute -top-5 lg:-top-6 z-30 px-3 py-1.5 rounded-full text-xs font-semibold text-[#DBEAFE]"
+              style={{
+                background: 'rgba(59,130,246,0.2)',
+                border: '1px solid rgba(147,197,253,0.35)',
+                backdropFilter: 'blur(10px)',
+              }}
+            >
+              AI анализирует бизнес в реальном времени
+            </div>
             {/* Floating badges */}
             {floatingBadges.map((badge, idx) => (
               <div
@@ -195,7 +235,10 @@ export function Hero() {
               </div>
             ))}
 
-            <HeroChatDemo />
+            <div className="w-full max-w-md">
+              <HeroChatDemo />
+              <p className="mt-3 text-center text-sm text-[#94A3B8]">+ адаптивный дашборд для руководителя</p>
+            </div>
           </div>
         </div>
       </div>

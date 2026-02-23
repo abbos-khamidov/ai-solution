@@ -19,10 +19,14 @@ export function Footer() {
   const { t } = useTranslation();
   const [showContacts, setShowContacts] = useState(false);
 
-  const footerLinks: { categoryKey: string; links: { labelKey: string; href: string; contacts?: boolean }[] }[] = [
+  const footerLinks: {
+    categoryKey: string;
+    links: { labelKey?: string; label?: string; href: string; contacts?: boolean }[];
+  }[] = [
     {
-      categoryKey: 'footer.product',
+      categoryKey: 'nav.solutions',
       links: [
+        { label: 'AI для бизнеса', href: '/ai-dlya-biznesa' },
         { labelKey: 'footer.howItWorks', href: '#process' },
         { labelKey: 'footer.products', href: '#products' },
         { labelKey: 'footer.services', href: '/services' },
@@ -67,30 +71,30 @@ export function Footer() {
                 <ul className="space-y-2.5">
                   {links.map((link) =>
                     link.contacts ? (
-                      <li key={link.labelKey}>
+                      <li key={link.labelKey ?? link.label}>
                         <button
                           onClick={() => setShowContacts(true)}
                           className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200 text-left"
                         >
-                          {t(link.labelKey)}
+                          {link.label ?? (link.labelKey ? t(link.labelKey) : '')}
                         </button>
                       </li>
                     ) : link.href.startsWith('/') ? (
-                      <li key={link.labelKey}>
+                      <li key={link.labelKey ?? link.label}>
                         <Link
                           href={link.href}
                           className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200"
                         >
-                          {t(link.labelKey)}
+                          {link.label ?? (link.labelKey ? t(link.labelKey) : '')}
                         </Link>
                       </li>
                     ) : (
-                      <li key={link.labelKey}>
+                      <li key={link.labelKey ?? link.label}>
                         <a
                           href={link.href}
                           className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200"
                         >
-                          {t(link.labelKey)}
+                          {link.label ?? (link.labelKey ? t(link.labelKey) : '')}
                         </a>
                       </li>
                     )

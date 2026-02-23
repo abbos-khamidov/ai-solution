@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { CasePreviewCard } from '@/components/sections/CasePreviewCard';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/tashkent';
@@ -49,35 +50,20 @@ export const metadata: Metadata = {
 
 const caseStudies = [
   {
-    name: 'Studify.uz',
-    niche: 'Образование / EdTech',
-    goals: [
-      'ускорить первичный ответ потенциальным студентам',
-      'автоматизировать квалификацию лидов в Telegram',
-      'дать руководителю ежедневный AI-аудит в одном окне',
-    ],
-    solutions: [
-      'Бот-менеджер продаж для Telegram и Instagram',
-      'Бот-ассистент руководителя с ежедневными сводками',
-      'Аудит-бот по качеству диалогов и скорости ответа',
-      'Бот-менеджер ассистент для операционных задач команды',
-    ],
-    result: 'Сокращение времени первого ответа до секунд и прозрачная воронка для руководителя в реальном времени.',
+    title: 'Studify.uz',
+    sector: 'Образование / EdTech',
+    goal: 'Ускорить первичный ответ и улучшить квалификацию входящих лидов.',
+    solution: 'AI-бот для коммуникаций + управленческие сводки по KPI.',
+    result: 'Ответ клиентам за секунды и прозрачная воронка для руководителя.',
+    href: '/cases/studify-ai-automation',
   },
   {
-    name: 'Marsit.uz',
-    niche: 'IT-услуги / B2B',
-    goals: [
-      'не терять входящие лиды в нерабочее время',
-      'поднять конверсию из чата в целевой звонок',
-      'снизить нагрузку на менеджеров по продажам',
-    ],
-    solutions: [
-      'Бот-менеджер продаж с квалификацией Cold/Warm/Hot',
-      'Автопередача горячих лидов менеджеру с контекстом диалога',
-      'Сценарии ответов по типовым возражениям',
-    ],
-    result: 'Стабильный прием лидов 24/7 и рост доли квалифицированных заявок для отдела продаж.',
+    title: 'Marsit.uz',
+    sector: 'IT-услуги / B2B',
+    goal: 'Не терять заявки в нерабочее время и повысить конверсию в звонок.',
+    solution: 'AI-квалификация Cold/Warm/Hot и передача горячих лидов менеджеру.',
+    result: 'Стабильный прием лидов 24/7 и рост доли качественных заявок.',
+    href: '/cases/marsit-lead-automation',
   },
 ];
 
@@ -168,40 +154,15 @@ export default function TashkentLocalPage() {
 
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
             {caseStudies.map((item) => (
-              <article
-                key={item.name}
-                className="rounded-2xl p-6 md:p-7 border border-white/10 bg-white/[0.02]"
-              >
-                <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-xl font-bold text-[#F8FAFC]">{item.name}</h3>
-                  <span className="text-xs px-2 py-1 rounded-full border border-white/15 text-[#94A3B8]">
-                    {item.niche}
-                  </span>
-                </div>
-
-                <div className="mt-5">
-                  <p className="text-sm font-semibold text-[#93C5FD] mb-2">Цели</p>
-                  <ul className="space-y-2 text-[#CBD5E1]">
-                    {item.goals.map((goal) => (
-                      <li key={goal}>- {goal}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-5">
-                  <p className="text-sm font-semibold text-[#93C5FD] mb-2">Внедренные решения</p>
-                  <ul className="space-y-2 text-[#CBD5E1]">
-                    {item.solutions.map((solution) => (
-                      <li key={solution}>- {solution}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <p className="mt-5 text-[#94A3B8]">
-                  <span className="text-[#F8FAFC] font-semibold">Результат: </span>
-                  {item.result}
-                </p>
-              </article>
+              <CasePreviewCard
+                key={item.title}
+                title={item.title}
+                sector={item.sector}
+                goal={item.goal}
+                solution={item.solution}
+                result={item.result}
+                href={item.href}
+              />
             ))}
           </div>
         </section>
@@ -227,6 +188,22 @@ export default function TashkentLocalPage() {
                 <p className="text-sm text-[#94A3B8] leading-relaxed">{svc.desc}</p>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
+          <div className="rounded-2xl p-7 border border-[#3B82F6]/30 bg-[#3B82F6]/10">
+            <h2 className="text-2xl md:text-3xl font-bold">AI решения для бизнеса в Ташкенте</h2>
+            <p className="mt-3 text-[#CFE2FF] max-w-3xl">
+              Нужна единая коммерческая страница по внедрению AI: с этапами, сроками, стоимостью,
+              кейсами и формой аудита бизнеса.
+            </p>
+            <Link
+              href="/ai-dlya-biznesa"
+              className="mt-5 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold"
+            >
+              Перейти на страницу AI для бизнеса
+            </Link>
           </div>
         </section>
 
