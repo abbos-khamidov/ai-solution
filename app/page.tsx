@@ -64,6 +64,9 @@ const SolutionSection = dynamic(() =>
 const ProductsSection = dynamic(() =>
   import('@/components/sections/ProductsSection').then((m) => m.ProductsSection)
 );
+const SocialProofSection = dynamic(() =>
+  import('@/components/sections/SocialProofSection').then((m) => m.SocialProofSection)
+);
 const SimplePricingSection = dynamic(() =>
   import('@/components/sections/SimplePricingSection').then((m) => m.SimplePricingSection)
 );
@@ -85,6 +88,7 @@ export default function HomePage() {
         <ProblemSection />
         <SolutionSection />
         <ProductsSection />
+        <SocialProofSection />
         <SimplePricingSection />
         <section className="bg-[#05050A] px-4 md:px-6 py-6">
           <div className="max-w-6xl mx-auto rounded-2xl p-6 md:p-8 border border-[#3B82F6]/30 bg-[#3B82F6]/10">
@@ -97,6 +101,23 @@ export default function HomePage() {
             >
               Перейти к AI-аудиту
             </Link>
+          </div>
+        </section>
+        <section className="bg-[#05050A] px-4 md:px-6 py-12">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-6">
+              Подходит для бизнеса любого масштаба
+            </h2>
+            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[#94A3B8]">
+              <li>• малый бизнес и локальные компании</li>
+              <li>• сети учебных центров и клиник</li>
+              <li>• агентства и сервисные компании</li>
+              <li>• производственные и торговые фирмы</li>
+              <li>• компании с отделом продаж</li>
+            </ul>
+            <p className="mt-5 text-sm text-[#64748B] max-w-lg mx-auto">
+              Если у вас есть клиенты, заявки или сотрудники — AI&nbsp;Solution уже может приносить вам результат.
+            </p>
           </div>
         </section>
         <ContactSection />

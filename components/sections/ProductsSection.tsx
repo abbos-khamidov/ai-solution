@@ -44,7 +44,7 @@ export function ProductsSection() {
   const { t } = useTranslation();
   return (
     <section className="py-16 md:py-24 bg-[#05050A]" id="products">
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <ScrollReveal duration={0.6}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
@@ -175,17 +175,29 @@ export function ProductsSection() {
               </div>
 
               <h3 className="text-xl font-bold text-[#F8FAFC] mb-2">AI-аналитика и дашборды</h3>
-              <p className="text-sm text-[#94A3B8] mb-6 leading-relaxed flex-1">
+              <p className="text-sm text-[#94A3B8] mb-5 leading-relaxed">
                 KPI-дашборды, отчеты и рекомендации руководителю
               </p>
+
+              <ul className="space-y-2.5 mb-6 flex-1">
+                {['Дашборд KPI в реальном времени', 'AI-рекомендации руководителю', 'Алерты при просадках метрик'].map((feat, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="8" fill="rgba(14,165,233,0.2)" />
+                      <path d="M5 8l2 2 4-4" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="text-sm text-[#94A3B8]">{feat}</span>
+                  </li>
+                ))}
+              </ul>
 
               <div
                 className="flex items-center justify-between pt-4 relative z-10"
                 style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
               >
-                <span className="text-base font-bold text-gradient">от $1 900</span>
+                <span className="text-base font-bold text-gradient whitespace-nowrap">от $1 900</span>
                 <Link
-                  href="/products/ai-analytics#demo"
+                  href="/products/ai-analytics"
                   onClick={(event) => {
                     event.stopPropagation();
                     track('cta_click_product_card', {
@@ -193,9 +205,9 @@ export function ProductsSection() {
                       location: 'home_products',
                     });
                   }}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-all duration-300"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-all duration-300 whitespace-nowrap"
                 >
-                  Получить демо
+                  Подробнее
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

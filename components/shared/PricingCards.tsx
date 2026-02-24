@@ -15,6 +15,7 @@ export interface PricingPlan {
   result?: string;
   roi?: { label: string; detail: string };
   features: string[];
+  whenNeeded?: string[];
   highlighted: boolean;
   ctaText?: string;
   ctaHref?: string;
@@ -118,7 +119,7 @@ export function PricingCards({
               </p>
             )}
 
-            <ul className="space-y-3 mb-8 flex-1">
+            <ul className="space-y-3 flex-1">
               {plan.features.map((feature, featureIdx) => (
                 <li key={featureIdx} className="flex items-start gap-3">
                   <Check className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#3B82F6]" />
@@ -126,6 +127,20 @@ export function PricingCards({
                 </li>
               ))}
             </ul>
+
+            {plan.whenNeeded && plan.whenNeeded.length > 0 && (
+              <div className="mt-5 pt-4 mb-6" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-2">Когда нужен</p>
+                <ul className="space-y-1.5">
+                  {plan.whenNeeded.map((item, i) => (
+                    <li key={i} className="text-xs text-[#94A3B8] flex items-start gap-2">
+                      <span className="text-[#3B82F6] mt-px">—</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <MagneticButton strength={0.15} radius={80} className="w-full">
               <a
