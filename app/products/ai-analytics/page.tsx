@@ -387,28 +387,59 @@ export default function AiAnalyticsProductPage() {
       </section>
 
       <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-        <h2 className="text-2xl md:text-3xl font-bold">Сроки и стоимость</h2>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-            <h3 className="font-semibold text-[#F8FAFC]">Сроки внедрения</h3>
-            <ul className="mt-3 space-y-2 text-[#CBD5E1]">
-              <li>- Пилот с базовыми KPI: 2–4 недели</li>
-              <li>- Полный контур аналитики: 4–8 недель</li>
-              <li>- Мульти-отдел + прогнозная модель: 2–4 месяца</li>
+        <h2 className="text-2xl md:text-3xl font-bold">Инвестиция в прозрачность бизнеса</h2>
+        <p className="mt-2 text-[#94A3B8]">Дашборд окупается за счёт экономии на ручной аналитике и быстрых решений</p>
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
+            <h3 className="font-bold text-[#F8FAFC] text-lg">Starter</h3>
+            <p className="text-sm text-[#64748B] mt-1">Базовый дашборд для руководителя</p>
+            <p className="text-2xl font-bold text-gradient mt-3">$1 900</p>
+            <p className="text-sm text-[#94A3B8]">запуск + $500/мес</p>
+            <div className="mt-3 rounded-lg p-2.5 text-xs" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}>
+              <p className="text-emerald-300 font-semibold">Окупается за 1–2 месяца</p>
+              <p className="text-emerald-400/80 mt-0.5">Экономит 5–8 часов на сбор отчётов в неделю</p>
+            </div>
+            <ul className="mt-3 space-y-1.5 text-sm text-[#CBD5E1] flex-1">
+              <li>• KPI-дашборд + 1 источник</li>
+              <li>• Ежедневные сводки</li>
+              <li>• Запуск за 2–3 недели</li>
             </ul>
           </article>
-          <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-            <h3 className="font-semibold text-[#F8FAFC]">Бюджет</h3>
-            <ul className="mt-3 space-y-2 text-[#CBD5E1]">
-              <li>- Базовый дашборд + отчеты: от $2 000</li>
-              <li>- Интеграции + алерты + AI-рекомендации: $4 000–$10 000</li>
-              <li>- Расширенный enterprise-контур: от $12 000</li>
+          <article className="rounded-xl border border-[#3B82F6]/30 bg-[#3B82F6]/5 p-5 flex flex-col relative">
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white text-xs font-semibold">Популярный</span>
+            <h3 className="font-bold text-[#F8FAFC] text-lg">Growth</h3>
+            <p className="text-sm text-[#64748B] mt-1">Полная аналитика + AI-рекомендации</p>
+            <p className="text-2xl font-bold text-gradient mt-3">$4 500</p>
+            <p className="text-sm text-[#94A3B8]">запуск + $1 500/мес · средний чек $5 800</p>
+            <div className="mt-3 rounded-lg p-2.5 text-xs" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}>
+              <p className="text-emerald-300 font-semibold">Ускоряет решения на 40–60%</p>
+              <p className="text-emerald-400/80 mt-0.5">Окупается за 2–4 месяца</p>
+            </div>
+            <ul className="mt-3 space-y-1.5 text-sm text-[#CBD5E1] flex-1">
+              <li>• CRM + реклама + мессенджеры</li>
+              <li>• Алерты при просадках KPI</li>
+              <li>• AI-рекомендации руководителю</li>
             </ul>
-            <p className="mt-4 text-sm text-[#94A3B8]">
-              Цена зависит от числа источников, качества данных, объема логики и требований к SLA.
-            </p>
+          </article>
+          <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
+            <h3 className="font-bold text-[#F8FAFC] text-lg">Enterprise</h3>
+            <p className="text-sm text-[#64748B] mt-1">Мульти-отдельная AI-аналитика</p>
+            <p className="text-2xl font-bold text-gradient mt-3">от $12 000</p>
+            <p className="text-sm text-[#94A3B8]">запуск + от $3 500/мес</p>
+            <div className="mt-3 rounded-lg p-2.5 text-xs" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}>
+              <p className="text-emerald-300 font-semibold">Экономит 2–4 зарплаты аналитиков</p>
+              <p className="text-emerald-400/80 mt-0.5">Полная замена ручной отчётности</p>
+            </div>
+            <ul className="mt-3 space-y-1.5 text-sm text-[#CBD5E1] flex-1">
+              <li>• Все источники + ERP + 1С</li>
+              <li>• Прогнозные модели</li>
+              <li>• On-premise, SLA 99.9%</li>
+            </ul>
           </article>
         </div>
+        <p className="mt-6 text-sm text-[#94A3B8] text-center">
+          Точную стоимость считаем после бесплатного аудита данных. Аудит ни к чему не обязывает.
+        </p>
       </section>
 
       <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">

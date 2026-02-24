@@ -97,19 +97,19 @@
     "product1F1": "Reply in 30 seconds in any channel",
     "product1F2": "Automatic Cold/Warm/Hot qualification",
     "product1F3": "Antifraud spam filtering",
-    "product1Price": "from $1,000",
+    "product1Price": "from $390",
     "product2Title": "Management Assistant",
     "product2Desc": "Team control, financial tracker, weekly reports for the owner",
     "product2F1": "Real-time metrics dashboard",
     "product2F2": "Automatic KPI reports",
     "product2F3": "Task and deadline control",
-    "product2Price": "from $3,000",
+    "product2Price": "from $490",
     "product3Title": "Corporate AI (RAG)",
     "product3Desc": "Company knowledge base. 1C/CRM integration. On-premise option",
     "product3F1": "RAG on your documentation",
     "product3F2": "Integration with 1C, Bitrix24, amoCRM",
     "product3F3": "On-premise for full control",
-    "product3Price": "from $8,000"
+    "product3Price": "from $1,200"
   },
   "pricingSection": {
     "title": "Transparent pricing",

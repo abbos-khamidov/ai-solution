@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Check, ArrowRight } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { Check, ArrowRight, TrendingUp } from 'lucide-react';
 import { MagneticButton } from '@/components/animations/MagneticButton';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
@@ -12,6 +11,9 @@ export interface PricingPlan {
   setupPrice: string;
   monthlyPrice: string;
   description: string;
+  problem?: string;
+  result?: string;
+  roi?: { label: string; detail: string };
   features: string[];
   highlighted: boolean;
   ctaText?: string;
@@ -24,70 +26,17 @@ interface PricingCardsProps {
   defaultCtaText?: string;
 }
 
-export const MAIN_PRICING_PLANS: PricingPlan[] = [
-  {
-    name: 'Basic',
-    setupPrice: '$1 000 – $1 500',
-    monthlyPrice: '$500 – $800',
-    description: 'Быстрый старт, один продукт, простые сценарии',
-    highlighted: false,
-    features: [
-      '1 канал (Telegram)',
-      'До 500 диалогов в месяц',
-      'Базовые сценарии ответов',
-      'Квалификация Cold/Warm/Hot',
-      'Настройка за 1 день',
-      'Email поддержка',
-    ],
-  },
-  {
-    name: 'Pro',
-    badge: '⭐ Популярный',
-    setupPrice: '$3 000 – $6 000',
-    monthlyPrice: '$1 200 – $2 500',
-    description: 'Системное внедрение, команда 5–50 человек',
-    highlighted: true,
-    features: [
-      '3 канала (Telegram + Instagram + WhatsApp)',
-      'До 3 000 диалогов в месяц',
-      'Интеграция с CRM',
-      'Продвинутая аналитика и дашборд',
-      'Антифрод модуль',
-      'Приоритетная поддержка 24/7',
-      'Настройка за 2 часа',
-    ],
-  },
-  {
-    name: 'Max',
-    setupPrice: '$8 000 – $20 000+',
-    monthlyPrice: '$3 000 – $8 000',
-    description: 'Крупный бизнес, несколько отделов, свои требования',
-    highlighted: false,
-    features: [
-      'Все каналы + API',
-      'Неограниченные диалоги',
-      'White-label решение',
-      'On-premise вариант',
-      'Выделенный менеджер',
-      'SLA 99.9%',
-      'Кастомная логика',
-    ],
-  },
-];
-
 export function PricingCards({
   plans,
   defaultCtaHref = '#contact',
-  defaultCtaText,
+  defaultCtaText = 'Обсудить запуск',
 }: PricingCardsProps) {
-  const { t } = useTranslation();
-  const ctaText = defaultCtaText ?? t('nav.discuss');
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
       {plans.map((plan, idx) => (
         <ScrollReveal key={idx} direction="up" duration={0.6} delay={idx * 0.1}>
           <div
-            className={`relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 h-full flex flex-col ${
+            className={`relative rounded-2xl p-7 md:p-8 transition-all duration-300 hover:-translate-y-2 h-full flex flex-col ${
               plan.highlighted ? 'md:scale-[1.02]' : ''
             }`}
             style={
@@ -105,7 +54,6 @@ export function PricingCards({
                   }
             }
           >
-            {/* Gradient border for highlighted plan */}
             {plan.highlighted && (
               <div
                 className="absolute inset-0 rounded-2xl pointer-events-none"
@@ -120,47 +68,56 @@ export function PricingCards({
               />
             )}
 
-            {/* Badge */}
             {plan.badge && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white text-sm font-semibold shadow-lg shadow-blue-500/20 whitespace-nowrap">
                 {plan.badge}
               </div>
             )}
 
-            {/* Plan name */}
-            <h3 className="text-xl font-bold text-[#F8FAFC] mb-5">{plan.name}</h3>
+            <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">{plan.name}</h3>
 
-            {/* Dual pricing block */}
+            {plan.description && (
+              <p className="text-sm text-[#64748B] mb-5">{plan.description}</p>
+            )}
+
             <div
               className="rounded-xl p-4 mb-4 space-y-3"
               style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
             >
               <div>
-                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">
-                  {t('pricing.setupLabel')}
-                </p>
+                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">Запуск</p>
                 <p className="text-xl font-bold text-gradient">{plan.setupPrice}</p>
               </div>
-              <div
-                className="pt-3"
-                style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
-              >
-                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">
-                  {t('pricing.monthlyLabel')}
-                </p>
+              <div className="pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">Ежемесячно</p>
                 <p className="text-xl font-semibold text-[#F8FAFC]">{plan.monthlyPrice}</p>
               </div>
             </div>
 
-            {/* Description */}
-            <p
-              className="text-sm text-[#64748B] italic mb-5 pb-5"
-              style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
-            >
-              {t('pricing.forWhom')} {plan.description}
-            </p>
+            {plan.roi && (
+              <div
+                className="rounded-xl p-3.5 mb-4 flex items-start gap-2.5"
+                style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}
+              >
+                <TrendingUp className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-semibold text-emerald-300">{plan.roi.label}</p>
+                  <p className="text-xs text-emerald-400/80 mt-0.5">{plan.roi.detail}</p>
+                </div>
+              </div>
+            )}
 
-            {/* Features */}
+            {plan.problem && (
+              <p className="text-xs text-[#94A3B8] mb-1">
+                <span className="text-[#64748B]">Проблема:</span> {plan.problem}
+              </p>
+            )}
+            {plan.result && (
+              <p className="text-xs text-[#93C5FD] mb-4">
+                <span className="text-[#64748B]">Результат:</span> {plan.result}
+              </p>
+            )}
+
             <ul className="space-y-3 mb-8 flex-1">
               {plan.features.map((feature, featureIdx) => (
                 <li key={featureIdx} className="flex items-start gap-3">
@@ -170,7 +127,6 @@ export function PricingCards({
               ))}
             </ul>
 
-            {/* CTA */}
             <MagneticButton strength={0.15} radius={80} className="w-full">
               <a
                 href={plan.ctaHref || defaultCtaHref}
@@ -188,7 +144,7 @@ export function PricingCards({
                     : undefined
                 }
               >
-                {plan.ctaText || ctaText}
+                {plan.ctaText || defaultCtaText}
                 <ArrowRight className="w-4 h-4" />
               </a>
             </MagneticButton>

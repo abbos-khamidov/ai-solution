@@ -99,19 +99,19 @@
     "product1F1": "Ответ за 30 секунд в любом канале",
     "product1F2": "Автоматическая квалификация Cold/Warm/Hot",
     "product1F3": "Антифрод фильтрация спама",
-    "product1Price": "от $1 000",
+    "product1Price": "от $390",
     "product2Title": "Management Assistant",
     "product2Desc": "Контроль команды, финансовый трекер, еженедельные отчёты собственнику",
     "product2F1": "Дашборд метрик в реальном времени",
     "product2F2": "Автоматические отчёты по KPI",
     "product2F3": "Контроль задач и дедлайнов",
-    "product2Price": "от $3 000",
+    "product2Price": "от $490",
     "product3Title": "Corporate AI (RAG)",
     "product3Desc": "База знаний компании. Интеграция с 1С/CRM. On-premise вариант",
     "product3F1": "RAG по вашей документации",
     "product3F2": "Интеграция с 1С, Bitrix24, amoCRM",
     "product3F3": "On-premise для полного контроля",
-    "product3Price": "от $8 000"
+    "product3Price": "от $1 200"
   },
   "pricingSection": {
     "title": "Прозрачные цены",

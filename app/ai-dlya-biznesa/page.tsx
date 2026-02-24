@@ -250,28 +250,59 @@ export default function AiDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold">Сроки и стоимость</h2>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">Ориентировочные сроки</h3>
-              <ul className="mt-3 space-y-2 text-[#CBD5E1]">
-                <li>- Пилот: 2–4 недели</li>
-                <li>- Внедрение 1–2 процессов: 4–8 недель</li>
-                <li>- Комплексная трансформация: 2–4 месяца</li>
+          <h2 className="text-2xl md:text-3xl font-bold">Инвестиция в рост, а не расход на IT</h2>
+          <p className="mt-2 text-[#94A3B8]">Каждый тариф окупается за счёт роста продаж или экономии на персонале</p>
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
+            <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
+              <h3 className="font-bold text-[#F8FAFC] text-lg">Starter</h3>
+              <p className="text-sm text-[#64748B] mt-1">Быстрый тест AI для малого бизнеса</p>
+              <p className="text-2xl font-bold text-gradient mt-3">$390</p>
+              <p className="text-sm text-[#94A3B8]">запуск + $150/мес</p>
+              <div className="mt-3 rounded-lg p-2.5 text-xs" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}>
+                <p className="text-emerald-300 font-semibold">Окупается за 1–2 месяца</p>
+                <p className="text-emerald-400/80 mt-0.5">Заменяет ночную смену оператора</p>
+              </div>
+              <ul className="mt-3 space-y-1.5 text-sm text-[#CBD5E1] flex-1">
+                <li>• Telegram-бот, 1 сценарий</li>
+                <li>• Квалификация лидов</li>
+                <li>• Запуск за 1–2 дня</li>
               </ul>
             </article>
-            <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">Диапазон инвестиций</h3>
-              <ul className="mt-3 space-y-2 text-[#CBD5E1]">
-                <li>- Коммуникации и квалификация лидов: от $1 500</li>
-                <li>- AI-ассистент + интеграции: $3 000–$8 000</li>
-                <li>- Корпоративный LLM/RAG и аналитика: от $8 000</li>
+            <article className="rounded-xl border border-[#3B82F6]/30 bg-[#3B82F6]/5 p-5 flex flex-col relative">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white text-xs font-semibold">Популярный</span>
+              <h3 className="font-bold text-[#F8FAFC] text-lg">Growth</h3>
+              <p className="text-sm text-[#64748B] mt-1">Рост продаж через AI-автоматизацию</p>
+              <p className="text-2xl font-bold text-gradient mt-3">$2 900</p>
+              <p className="text-sm text-[#94A3B8]">запуск + $900/мес · средний чек $4 200</p>
+              <div className="mt-3 rounded-lg p-2.5 text-xs" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}>
+                <p className="text-emerald-300 font-semibold">Увеличивает заявки на 30–70%</p>
+                <p className="text-emerald-400/80 mt-0.5">Окупается за 2–4 месяца</p>
+              </div>
+              <ul className="mt-3 space-y-1.5 text-sm text-[#CBD5E1] flex-1">
+                <li>• Telegram + Instagram + WhatsApp</li>
+                <li>• CRM-интеграция + дашборд</li>
+                <li>• Поддержка 24/7</li>
               </ul>
-              <p className="mt-4 text-sm text-[#94A3B8]">
-                Цена зависит от количества процессов, объёма данных, глубины интеграций и SLA.
-              </p>
+            </article>
+            <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
+              <h3 className="font-bold text-[#F8FAFC] text-lg">Enterprise</h3>
+              <p className="text-sm text-[#64748B] mt-1">AI-система управления для крупного бизнеса</p>
+              <p className="text-2xl font-bold text-gradient mt-3">от $7 500</p>
+              <p className="text-sm text-[#94A3B8]">запуск + от $2 500/мес</p>
+              <div className="mt-3 rounded-lg p-2.5 text-xs" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}>
+                <p className="text-emerald-300 font-semibold">Экономит 1–3 зарплаты сотрудников</p>
+                <p className="text-emerald-400/80 mt-0.5">Заменяет ручную аналитику и отчётность</p>
+              </div>
+              <ul className="mt-3 space-y-1.5 text-sm text-[#CBD5E1] flex-1">
+                <li>• Все каналы + API + RAG</li>
+                <li>• KPI-дашборды и финансы</li>
+                <li>• White-label, On-premise, SLA</li>
+              </ul>
             </article>
           </div>
+          <p className="mt-6 text-sm text-[#94A3B8] text-center">
+            Точную стоимость считаем после бесплатного 60-минутного аудита. Аудит ни к чему не обязывает.
+          </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">

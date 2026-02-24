@@ -99,19 +99,19 @@
     "product1F1": "Har qanday kanalda 30 soniyada javob",
     "product1F2": "Avtomatik Cold/Warm/Hot saralash",
     "product1F3": "Antifrod spam filtri",
-    "product1Price": "$1 000 dan",
+    "product1Price": "$390 dan",
     "product2Title": "Management Assistant",
     "product2Desc": "Jamoa nazorati, moliyaviy treker, haftalik hisobotlar rahbarga",
     "product2F1": "Real vaqt metrikalar paneli",
     "product2F2": "Avtomatik KPI hisobotlari",
     "product2F3": "Vazifa va muddatlar nazorati",
-    "product2Price": "$3 000 dan",
+    "product2Price": "$490 dan",
     "product3Title": "Corporate AI (RAG)",
     "product3Desc": "Kompaniya bilim bazasi. 1S/CRM integratsiyasi. Lokal server varianti",
     "product3F1": "Sizning hujjatlaringiz bo'yicha RAG",
     "product3F2": "1S, Bitrix24, amoCRM bilan integratsiya",
     "product3F3": "To'liq nazorat uchun lokal serverda",
-    "product3Price": "$8 000 dan"
+    "product3Price": "$1 200 dan"
   },
   "pricingSection": {
     "title": "Shaffof narxlar",

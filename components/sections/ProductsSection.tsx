@@ -183,7 +183,7 @@ export function ProductsSection() {
                 className="flex items-center justify-between pt-4 relative z-10"
                 style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
               >
-                <span className="text-base font-bold text-gradient">от $2 000</span>
+                <span className="text-base font-bold text-gradient">от $1 900</span>
                 <Link
                   href="/products/ai-analytics#demo"
                   onClick={(event) => {

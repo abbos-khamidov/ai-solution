@@ -97,19 +97,19 @@
     "product1F1": "任意渠道 30 秒内回复",
     "product1F2": "自动 Cold/Warm/Hot 筛选",
     "product1F3": "反欺诈垃圾过滤",
-    "product1Price": "起 $1,000",
+    "product1Price": "起 $390",
     "product2Title": "Management Assistant",
     "product2Desc": "团队管控、财务追踪、每周报告给负责人",
     "product2F1": "实时指标看板",
     "product2F2": "自动 KPI 报告",
     "product2F3": "任务与截止日管控",
-    "product2Price": "起 $3,000",
+    "product2Price": "起 $490",
     "product3Title": "Corporate AI (RAG)",
     "product3Desc": "企业知识库。1C/CRM 集成。本地部署选项",
     "product3F1": "基于您文档的 RAG",
     "product3F2": "与 1C、Bitrix24、amoCRM 集成",
     "product3F3": "本地部署，完全掌控",
-    "product3Price": "起 $8,000"
+    "product3Price": "起 $1,200"
   },
   "pricingSection": {
     "title": "透明定价",

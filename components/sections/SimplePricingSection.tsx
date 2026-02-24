@@ -1,64 +1,82 @@
 'use client';
 
-import React, { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { PricingCards, PricingPlan } from '@/components/shared/PricingCards';
 
+const plans: PricingPlan[] = [
+  {
+    name: 'Starter',
+    setupPrice: '$390',
+    monthlyPrice: '$150 / мес',
+    description: 'Быстрый тест AI для малого бизнеса',
+    problem: 'Теряете заявки в нерабочее время',
+    result: 'AI отвечает 24/7, вы не теряете ни одного лида',
+    roi: {
+      label: 'Окупается за 1–2 месяца',
+      detail: 'Заменяет ночную смену оператора',
+    },
+    highlighted: false,
+    features: [
+      'AI-бот в Telegram',
+      '1 сценарий общения',
+      'До 500 диалогов / мес',
+      'Квалификация лидов Cold / Warm / Hot',
+      'Уведомления менеджеру о горячих лидах',
+      'Запуск за 1–2 дня',
+    ],
+    ctaText: 'Попробовать за $390',
+  },
+  {
+    name: 'Growth',
+    badge: 'Популярный',
+    setupPrice: '$2 900',
+    monthlyPrice: '$900 / мес',
+    description: 'Рост продаж через AI-автоматизацию',
+    problem: 'Менеджеры не справляются с потоком, заявки теряются',
+    result: 'Рост заявок на 30–70%, полная воронка под контролем',
+    roi: {
+      label: 'Увеличивает заявки на 30–70%',
+      detail: 'Средний чек внедрения $4 200 · окупается за 2–4 месяца',
+    },
+    highlighted: true,
+    features: [
+      'Telegram + Instagram + WhatsApp',
+      'До 3 000 диалогов / мес',
+      'Интеграция с CRM (Bitrix24, amoCRM)',
+      'AI-аналитика и дашборд руководителя',
+      'Антифрод и фильтрация спама',
+      'Приоритетная поддержка 24/7',
+      'Настройка за 3–5 дней',
+    ],
+    ctaText: 'Обсудить внедрение',
+  },
+  {
+    name: 'Enterprise',
+    setupPrice: 'от $7 500',
+    monthlyPrice: 'от $2 500 / мес',
+    description: 'AI-система управления для среднего и крупного бизнеса',
+    problem: 'Нет прозрачности: данные в разных системах, решения принимаются вслепую',
+    result: 'Единый AI-контроль бизнеса, экономия 1–3 зарплат сотрудников',
+    roi: {
+      label: 'Экономит 1–3 зарплаты сотрудников',
+      detail: 'Заменяет ручную аналитику, контроль задач и отчётность',
+    },
+    highlighted: false,
+    features: [
+      'Все каналы + API-интеграции',
+      'AI-аналитика, KPI-дашборды, финансы',
+      'Корпоративная база знаний (RAG)',
+      'Контроль задач и дедлайнов команды',
+      'Еженедельные отчёты руководителю',
+      'White-label и On-premise',
+      'Выделенный менеджер + SLA',
+    ],
+    ctaText: 'Запросить расчёт',
+  },
+];
+
 export function SimplePricingSection() {
-  const { t } = useTranslation();
-
-  const plans: PricingPlan[] = useMemo(() => [
-    {
-      name: 'Basic',
-      setupPrice: '$1 000 – $1 500',
-      monthlyPrice: '$500 – $800',
-      description: t('pricing.basic.desc'),
-      highlighted: false,
-      features: [
-        t('pricing.basic.f1'),
-        t('pricing.basic.f2'),
-        t('pricing.basic.f3'),
-        t('pricing.basic.f4'),
-        t('pricing.basic.f5'),
-        t('pricing.basic.f6'),
-      ],
-    },
-    {
-      name: 'Pro',
-      badge: t('pricing.popular'),
-      setupPrice: '$3 000 – $6 000',
-      monthlyPrice: '$1 200 – $2 500',
-      description: t('pricing.pro.desc'),
-      highlighted: true,
-      features: [
-        t('pricing.pro.f1'),
-        t('pricing.pro.f2'),
-        t('pricing.pro.f3'),
-        t('pricing.pro.f4'),
-        t('pricing.pro.f5'),
-        t('pricing.pro.f6'),
-        t('pricing.pro.f7'),
-      ],
-    },
-    {
-      name: 'Max',
-      setupPrice: '$8 000 – $20 000+',
-      monthlyPrice: '$3 000 – $8 000',
-      description: t('pricing.max.desc'),
-      highlighted: false,
-      features: [
-        t('pricing.max.f1'),
-        t('pricing.max.f2'),
-        t('pricing.max.f3'),
-        t('pricing.max.f4'),
-        t('pricing.max.f5'),
-        t('pricing.max.f6'),
-        t('pricing.max.f7'),
-      ],
-    },
-  ], [t]);
-
   return (
     <section className="relative py-16 md:py-24 overflow-hidden" id="pricing" style={{ background: '#0D0D1A' }}>
       <div className="absolute inset-0" aria-hidden="true">
@@ -75,15 +93,15 @@ export function SimplePricingSection() {
         <ScrollReveal duration={0.6}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
-              {t('pricingSection.title')}
+              Инвестиция в рост, а не расход на IT
             </h2>
             <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">
-              {t('pricingSection.subtitle')}
+              Каждый тариф окупается за счёт роста продаж или экономии на персонале
             </p>
           </div>
         </ScrollReveal>
 
-        <PricingCards plans={plans} />
+        <PricingCards plans={plans} defaultCtaHref="#contact" />
 
         <ScrollReveal duration={0.6} delay={0.4}>
           <div className="mt-12 text-center max-w-2xl mx-auto">
@@ -94,7 +112,7 @@ export function SimplePricingSection() {
                 border: '1px solid rgba(59, 130, 246, 0.15)',
               }}
             >
-              💡 {t('pricingSection.auditNote')}
+              Точную стоимость считаем после бесплатного 60-минутного аудита — цена зависит от каналов, сценариев и интеграций. Аудит ни к чему не обязывает.
             </div>
           </div>
         </ScrollReveal>
