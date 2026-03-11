@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: createAlternates(`${SITE_URL}/products/customer-service`),
   openGraph: {
-    title: 'Customer Service Bot — AI отвечает клиентам за 30 секунд | AI Solution',
+    title: 'Customer Service Bot — AI отвечает клиентам за 30 секунд',
     description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot, антифрод, работает 24/7. От $1 000. Бизнес Узбекистан.',
     type: 'website',
     locale: 'ru_RU',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Customer Service Bot — AI за 30 секунд | AI Solution',
+    title: 'Customer Service Bot — AI за 30 секунд',
     description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Квалификация лидов, антифрод, 24/7. От $1 000.',
     images: [{
       url: '/og-image.png',

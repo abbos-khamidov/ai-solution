@@ -6,7 +6,7 @@ import { CasePreviewCard } from '@/components/sections/CasePreviewCard';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/tashkent';
-const TITLE = 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта | AI Solution';
+const TITLE = 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта';
 const DESCRIPTION =
   'Автоматизация бизнеса в Ташкенте: внедрение искусственного интеллекта, бот-менеджер продаж, ассистент руководителя, аудит-бот. ИИ в Ташкенте — кейсы Studify.uz и Marsit.uz.';
 

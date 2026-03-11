@@ -6,7 +6,7 @@ import { AnalyticsHeroCta } from '@/components/sections/AnalyticsHeroCta';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/products/ai-analytics';
-const TITLE = 'AI-аналитика и дашборды для бизнеса в Ташкенте | AI Solution';
+const TITLE = 'AI-аналитика и дашборды для бизнеса в Ташкенте';
 const DESCRIPTION =
   'AI-аналитика для бизнеса в Ташкенте и Узбекистане: сбор данных из CRM, рекламы, мессенджеров и сайта. KPI-дашборды, алерты и AI-рекомендации для руководителя.';
 

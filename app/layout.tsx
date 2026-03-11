@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ | AI Solution',
+    title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ',
     description: 'Автоматизация бизнеса в Ташкенте и Узбекистане: внедрение искусственного интеллекта, Telegram-боты, бот-менеджер, аналитика. Ответ за 30 секунд 24/7.',
     type: 'website',
     locale: 'ru_RU',

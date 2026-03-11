@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/cases/marsit-lead-automation';
-const TITLE = 'Кейс Marsit: AI-автоматизация лидов и продаж | AI Solution';
+const TITLE = 'Кейс Marsit: AI-автоматизация лидов и продаж';
 const DESCRIPTION =
   'Кейс Marsit.uz: внедрение AI-бота для квалификации лидов и автоматизации продаж. Рост доли качественных заявок и стабильный прием лидов 24/7.';
 
@@ -44,10 +44,23 @@ const caseStudySchema = {
   mainEntityOfPage: `${SITE_URL}${SLUG}`,
 };
 
+const faqItems = [
+  { q: 'Какой результат получил Marsit.uz после внедрения AI?', a: 'Стабильный приём лидов 24/7, рост доли качественных заявок, горячие лиды передаются менеджерам с контекстом — нагрузка на отдел продаж снизилась при росте конверсии.' },
+  { q: 'Как работает квалификация Cold/Warm/Hot в кейсе Marsit?', a: 'AI-бот ведёт диалог, выясняет потребность и готовность к сделке, присваивает статус и мгновенно передаёт горячих лидов менеджеру с кратким контекстом.' },
+  { q: 'Сколько стоит похожее внедрение для B2B?', a: 'Зависит от каналов и интеграций. Ориентир: от $1 000 за запуск бота + от $500/мес. Точная смета после бесплатного 60-минутного аудита.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+
 export default function MarsitCasePage() {
   return (
     <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <section className="max-w-5xl mx-auto px-4 md:px-6">
         <nav className="flex items-center gap-1.5 text-sm text-[#64748B] mb-8">
@@ -84,6 +97,18 @@ export default function MarsitCasePage() {
             <p className="text-sm text-[#93C5FD]">Результат</p>
             <p className="mt-2 text-[#CBD5E1]">Больше квалифицированных заявок и ниже нагрузка на отдел продаж.</p>
           </article>
+        </div>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-4 md:px-6 mt-12">
+        <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">Частые вопросы по кейсу</h2>
+        <div className="space-y-3">
+          {faqItems.map(({ q, a }) => (
+            <details key={q} className="rounded-xl border border-white/10 bg-white/[0.02] group">
+              <summary className="cursor-pointer p-4 text-[#F8FAFC] font-medium list-none">{q}</summary>
+              <p className="px-4 pb-4 text-[#94A3B8] text-sm leading-relaxed">{a}</p>
+            </details>
+          ))}
         </div>
       </section>
 

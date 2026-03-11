@@ -7,7 +7,7 @@ import { CasePreviewCard } from '@/components/sections/CasePreviewCard';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ai-dlya-biznesa';
-const TITLE = 'AI для бизнеса в Ташкенте и Узбекистане | AI Solution';
+const TITLE = 'AI для бизнеса в Ташкенте и Узбекистане';
 const DESCRIPTION =
   'Внедрение AI в Узбекистане: аудит процессов, автоматизация продаж и сервиса, LLM/RAG и аналитика. Запуск от 2 недель. Получите аудит бизнеса.';
 

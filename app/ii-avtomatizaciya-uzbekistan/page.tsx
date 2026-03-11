@@ -3,7 +3,7 @@ import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ii-avtomatizaciya-uzbekistan';
-const TITLE = 'ИИ автоматизация в Узбекистане — решения для бизнеса | AI Solution';
+const TITLE = 'ИИ автоматизация в Узбекистане — решения для бизнеса';
 const DESCRIPTION =
   'ИИ автоматизация в Узбекистане для компаний: чат-боты, AI-менеджеры, аналитика, корпоративные ассистенты. Внедрение в Ташкенте и по всему Узбекистану.';
 

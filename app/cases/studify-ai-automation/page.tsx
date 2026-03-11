@@ -4,7 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/cases/studify-ai-automation';
-const TITLE = 'Кейс Studify: AI-автоматизация лидов в Ташкенте | AI Solution';
+const TITLE = 'Кейс Studify: AI-автоматизация лидов в Ташкенте';
 const DESCRIPTION =
   'Кейс Studify.uz: внедрение AI-автоматизации лидов и управленческой аналитики в Ташкенте. Сокращение времени ответа и рост качества квалификации.';
 
@@ -44,10 +44,23 @@ const caseStudySchema = {
   mainEntityOfPage: `${SITE_URL}${SLUG}`,
 };
 
+const faqItems = [
+  { q: 'Какой результат получил Studify.uz после внедрения AI?', a: 'Время первого ответа клиенту сократилось до секунд, квалификация лидов стала прозрачной, руководитель получает управленческие сводки по KPI в одном окне.' },
+  { q: 'Какое решение внедрили?', a: 'AI-бот для первичных диалогов и квалификации лидов плюс ежедневные сводки для руководства. Интеграция с каналами коммуникации и внутренними процессами.' },
+  { q: 'Сколько стоит похожее внедрение для образовательного проекта?', a: 'Зависит от объёма каналов и интеграций. Ориентир: от $1 000 за запуск бота + от $500/мес. Точная смета после бесплатного аудита.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+
 export default function StudifyCasePage() {
   return (
     <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <section className="max-w-5xl mx-auto px-4 md:px-6">
         <nav className="flex items-center gap-1.5 text-sm text-[#64748B] mb-8">
@@ -84,6 +97,18 @@ export default function StudifyCasePage() {
             <p className="text-sm text-[#93C5FD]">Результат</p>
             <p className="mt-2 text-[#CBD5E1]">Быстрый ответ и более прозрачная воронка с ежедневным контролем.</p>
           </article>
+        </div>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-4 md:px-6 mt-12">
+        <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">Частые вопросы по кейсу</h2>
+        <div className="space-y-3">
+          {faqItems.map(({ q, a }) => (
+            <details key={q} className="rounded-xl border border-white/10 bg-white/[0.02] group">
+              <summary className="cursor-pointer p-4 text-[#F8FAFC] font-medium list-none">{q}</summary>
+              <p className="px-4 pb-4 text-[#94A3B8] text-sm leading-relaxed">{a}</p>
+            </details>
+          ))}
         </div>
       </section>
 

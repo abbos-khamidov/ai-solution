@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 const SLUG = '/services';
-const TITLE = 'Автоматизация бизнеса в Ташкенте — услуги внедрения ИИ | AI Solution';
+const TITLE = 'Автоматизация бизнеса в Ташкенте — услуги внедрения ИИ';
 const DESCRIPTION =
   'Внедрение искусственного интеллекта в Ташкенте и Узбекистане: автоматизация бизнеса, Telegram-боты, AI-менеджеры, аналитика, личный ассистент ИИ. Работаем по всему Узбекистану.';
 
@@ -26,6 +26,19 @@ const moneyQueryLinks = [
   { href: '/ii-avtomatizaciya-uzbekistan', title: 'ИИ автоматизация в Узбекистане' },
   { href: '/ai-agent-dlya-biznesa-tashkent', title: 'AI агент для бизнеса в Ташкенте' },
 ];
+
+const faqItems = [
+  { q: 'Какие услуги по ИИ оказывает AI Solution в Ташкенте?', a: 'Telegram-боты и ИИ-боты для продаж и поддержки, бот-менеджер (квалификация лидов), личный ИИ-ассистент, AI-аналитика и дашборды, разработка ПО. Работаем по всему Узбекистану и СНГ.' },
+  { q: 'Сколько стоит внедрение ИИ под ключ?', a: 'Зависит от продукта: Customer Service Bot — от $1 000 (запуск) + $500/мес; Management Assistant — от $3 000 + $1 200/мес; Telegram-бот — от $1 500. Точная смета после бесплатного аудита.' },
+  { q: 'За сколько запускается бот или автоматизация?', a: 'Базовый бот-менеджер — 5–7 рабочих дней. Полный цикл с CRM и обучением на данных — 2–3 недели. Telegram-бот — от 1–2 недель.' },
+  { q: 'Работаете ли только в Ташкенте?', a: 'Офис в Ташкенте. Обслуживаем компании по всему Узбекистану (Самарканд, Фергана, Андижан и др.), а также Казахстан, Кыргызстан, Таджикистан — в том числе удалённо.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -63,8 +76,9 @@ export const metadata: Metadata = {
 export default function ServicesIndexPage() {
   return (
     <main className="min-h-screen bg-[#05050A] pt-28 pb-16 text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="max-w-5xl mx-auto px-6">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Services</h1>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Услуги внедрения ИИ</h1>
         <p className="mt-3 text-[#94A3B8] max-w-2xl">
           AI Solution оказывает услуги в Ташкенте и по всему Узбекистану. Выберите направление:
           от Telegram-ботов и AI-менеджеров до аналитики и разработки ПО.
@@ -121,6 +135,18 @@ export default function ServicesIndexPage() {
             ))}
           </div>
         </div>
+
+        <section className="mt-12">
+          <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">Частые вопросы</h2>
+          <div className="space-y-3">
+            {faqItems.map(({ q, a }) => (
+              <details key={q} className="rounded-xl border border-white/10 bg-white/[0.02] group">
+                <summary className="cursor-pointer p-4 text-[#F8FAFC] font-medium list-none">{q}</summary>
+                <p className="px-4 pb-4 text-[#94A3B8] text-sm leading-relaxed">{a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
       </section>
     </main>
   );

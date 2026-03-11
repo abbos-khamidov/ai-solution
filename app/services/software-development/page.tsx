@@ -4,7 +4,7 @@ import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/software-development';
-const TITLE = 'Разработка ПО и веб-приложений под ключ | AI Solution Ташкент';
+const TITLE = 'Разработка ПО и веб-приложений под ключ';
 const DESC = 'Разработка программного обеспечения, сайтов и мобильных приложений в Ташкенте. React, Next.js, Flutter, iOS, Android. AI-интеграции, от $5 000. Сроки 4-8 недель.';
 
 export const metadata: Metadata = {
@@ -44,6 +44,23 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const faqItems = [
+  { q: 'Какие технологии используете в разработке?', a: 'React, Next.js, Flutter, iOS, Android, бэкенд на Node.js и других стеках. Интеграции с ИИ, CRM, платёжными системами.' },
+  { q: 'Сколько стоит разработка под ключ?', a: 'От $5 000 за MVP веб- или мобильного приложения. Точная смета после брифа и оценки объёма.' },
+  { q: 'Какие сроки разработки?', a: 'MVP — обычно 4–8 недель. Крупные проекты — по этапам с фиксированными спринтами.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+
 export default function SoftwareDevPage() {
-  return <SoftwareDevContent />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <SoftwareDevContent />
+    </>
+  );
 }

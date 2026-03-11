@@ -2,10 +2,11 @@
 
 /**
  * ScrollReveal - Wrapper component for scroll-triggered animations
- * Uses GSAP ScrollTrigger for performant reveals
+ * Uses GSAP ScrollTrigger for performant reveals.
+ * Fallback: Intersection Observer reveals content if GSAP/ScrollTrigger doesn't run (e.g. mobile, reduced motion).
  */
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useGSAPContext } from './useGSAPContext';
 
 type RevealDirection = 'up' | 'down' | 'left' | 'right' | 'scale' | 'fade';
@@ -101,6 +102,45 @@ export function ScrollReveal({
     },
     { scope: elementRef as React.RefObject<HTMLElement>, deps: [direction, duration, delay, distance] }
   );
+
+  // Fallback: reveal content when in view if GSAP left it hidden (mobile / reduced motion / load failure)
+  useEffect(() => {
+    const el = elementRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const target = entry.target as HTMLElement;
+          timeoutId = window.setTimeout(() => {
+            timeoutId = null;
+            const opacity = window.getComputedStyle(target).opacity;
+            if (opacity === '0' || parseFloat(opacity) < 0.01) {
+              target.style.opacity = '1';
+              target.style.transform = 'none';
+              if (stagger > 0 && target.children.length) {
+                Array.from(target.children).forEach((child) => {
+                  (child as HTMLElement).style.opacity = '1';
+                  (child as HTMLElement).style.transform = 'none';
+                });
+              }
+            }
+          }, 800);
+          break;
+        }
+      },
+      { rootMargin: '50px', threshold: 0.05 }
+    );
+
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, [stagger]);
 
   const Component = Tag as React.ElementType;
 

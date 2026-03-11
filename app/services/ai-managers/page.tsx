@@ -4,7 +4,7 @@ import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/ai-managers';
-const TITLE = 'Бот-менеджер для Telegram, WhatsApp, Instagram | AI Solution Ташкент';
+const TITLE = 'Бот-менеджер для Telegram, WhatsApp, Instagram';
 const DESC = 'Бот-менеджер — ИИ который отвечает клиентам в Telegram, WhatsApp и Instagram за 30 секунд 24/7. Квалификация лидов, интеграция CRM, рост конверсии ×3. Ташкент, Узбекистан.';
 
 export const metadata: Metadata = {
@@ -44,6 +44,23 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const faqItems = [
+  { q: 'Сколько стоит бот-менеджер для Telegram и Instagram?', a: 'Запуск от $1 000 (базовый сценарий) + от $500/мес. С CRM и несколькими каналами — от $2 000 за запуск. Точная смета после бесплатного аудита.' },
+  { q: 'За сколько времени отвечает бот-менеджер?', a: 'В среднем за 30 секунд в любое время суток. Работает 24/7 в Telegram, Instagram и при необходимости WhatsApp.' },
+  { q: 'Как бот квалифицирует лидов?', a: 'Ведёт диалог, выясняет потребность и бюджет, присваивает статус Cold/Warm/Hot. Горячих передаёт менеджеру с контекстом.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+
 export default function AIManagersPage() {
-  return <AIManagersContent />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AIManagersContent />
+    </>
+  );
 }

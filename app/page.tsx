@@ -7,8 +7,14 @@ import { FaqSchema } from '@/components/seo/FaqSchema';
 
 const SITE_URL = 'https://aisolution.uz';
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL }],
+};
+
 export const metadata: Metadata = {
-  title: 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта | AI Solution',
+  title: 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта',
   description:
     'Автоматизация бизнеса в Ташкенте и Узбекистане. Внедрение искусственного интеллекта: Telegram-боты, бот-менеджер, AI-аналитика, личный ассистент ИИ. Ответ клиентам за 30 секунд 24/7. Бесплатный аудит.',
   keywords: [
@@ -80,6 +86,7 @@ const Footer = dynamic(() =>
 export default function HomePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <FaqSchema />
       <Header />
       <main>
@@ -118,6 +125,32 @@ export default function HomePage() {
             <p className="mt-5 text-sm text-[#64748B] max-w-lg mx-auto">
               Если у вас есть клиенты, заявки или сотрудники — AI&nbsp;Solution уже может приносить вам результат.
             </p>
+            <div className="mt-10">
+              <h3 className="text-lg font-semibold text-[#F8FAFC] mb-4">Решения по отраслям</h3>
+              <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+                <li><Link href="/ii-dlya-klinik-tashkent" className="text-[#93C5FD] hover:underline">ИИ для клиник</Link></li>
+                <li><Link href="/ii-dlya-nedvizhimosti-tashkent" className="text-[#93C5FD] hover:underline">ИИ для недвижимости</Link></li>
+                <li><Link href="/ii-dlya-restoranov-tashkent" className="text-[#93C5FD] hover:underline">ИИ для ресторанов</Link></li>
+                <li><Link href="/ii-dlya-logistiki-uzbekistan" className="text-[#93C5FD] hover:underline">ИИ для логистики</Link></li>
+                <li><Link href="/ii-dlya-yuridicheskih-uslug" className="text-[#93C5FD] hover:underline">ИИ для юруслуг</Link></li>
+                <li><Link href="/crm-integraciya-tashkent" className="text-[#93C5FD] hover:underline">Интеграция с CRM</Link></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section className="bg-[#05050A] px-4 md:px-6 py-6">
+          <div className="max-w-6xl mx-auto rounded-2xl p-5 md:p-6 border border-white/10 bg-white/[0.02] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-lg font-semibold text-[#F8FAFC] text-center sm:text-left">
+              Следите за нами в Telegram — кейсы, обзоры ИИ и автоматизации
+            </p>
+            <a
+              href="https://t.me/aisolution_uz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#0088CC] hover:bg-[#0077B5] text-white font-semibold transition-colors"
+            >
+              Перейти в канал
+            </a>
           </div>
         </section>
         <ContactSection />

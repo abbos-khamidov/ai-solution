@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Mail, Phone, Send } from 'lucide-react';
+import { X, Mail, Phone, Send, MessageCircle, Instagram, Linkedin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const CONTACT_EMAIL = 'info@aisolution.uz';
@@ -30,6 +30,8 @@ export function Footer() {
         { labelKey: 'footer.howItWorks', href: '#process' },
         { labelKey: 'footer.products', href: '#products' },
         { labelKey: 'footer.services', href: '/services' },
+        { label: 'Сравнение решений', href: '/sravnenie-ai-reshenii-uzbekistan' },
+        { label: 'Автоматизация в Узбекистане', href: '/biznes-avtomatizaciya-uzbekistan' },
       ],
     },
     {
@@ -63,6 +65,17 @@ export function Footer() {
               <p className="text-sm text-[#64748B] leading-relaxed">
                 {t('footer.tagline')}
               </p>
+              <div className="mt-4 flex items-center gap-3">
+                <a href="https://t.me/aisolution_uz" target="_blank" rel="noopener noreferrer" className="text-[#64748B] hover:text-[#F8FAFC] transition-colors" aria-label="Telegram">
+                  <MessageCircle className="w-5 h-5" />
+                </a>
+                <a href="https://www.instagram.com/aisolution_uz/" target="_blank" rel="noopener noreferrer" className="text-[#64748B] hover:text-[#F8FAFC] transition-colors" aria-label="Instagram">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="https://www.linkedin.com/company/aisolution-uz" target="_blank" rel="noopener noreferrer" className="text-[#64748B] hover:text-[#F8FAFC] transition-colors" aria-label="LinkedIn">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
             </div>
 
             {footerLinks.map(({ categoryKey, links }) => (

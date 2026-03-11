@@ -4,7 +4,7 @@ import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/ai-assistant';
-const TITLE = 'Личный ассистент ИИ для бизнеса | AI Solution Ташкент';
+const TITLE = 'Личный ассистент ИИ для бизнеса';
 const DESC = 'Личный ассистент ИИ для руководителей и команд в Ташкенте. ChatGPT обученный на данных вашей компании. Экономит 15 часов в неделю. LLM решения для бизнеса Узбекистана.';
 
 export const metadata: Metadata = {
@@ -44,6 +44,23 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const faqItems = [
+  { q: 'Чем личный ИИ-ассистент отличается от чат-бота?', a: 'Личный ассистент обучен на данных вашей компании и помогает с внутренними задачами: сводки, отчёты, поиск по документам. Чат-бот в первую очередь общается с клиентами.' },
+  { q: 'Сколько стоит внедрение личного ИИ-ассистента?', a: 'Зависит от объёма данных и интеграций. Ориентир: от $3 000 за внедрение. Точная смета после аудита задач.' },
+  { q: 'Какие данные нужны для обучения ассистента?', a: 'Документы, база знаний, FAQ, внутренние регламенты. Поддерживаем интеграцию с 1С, Bitrix24, Google Workspace и другими источниками.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+
 export default function AIAssistantPage() {
-  return <AIAssistantContent />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <AIAssistantContent />
+    </>
+  );
 }

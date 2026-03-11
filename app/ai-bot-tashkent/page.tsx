@@ -3,7 +3,7 @@ import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ai-bot-tashkent';
-const TITLE = 'ИИ бот в Ташкенте для бизнеса — внедрение и запуск | AI Solution';
+const TITLE = 'ИИ бот в Ташкенте для бизнеса — внедрение и запуск';
 const DESCRIPTION =
   'ИИ бот в Ташкенте для автоматизации продаж и поддержки: Telegram, Instagram, WhatsApp. Внедрение под бизнес в Узбекистане, квалификация лидов Cold/Warm/Hot.';
 

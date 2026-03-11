@@ -119,8 +119,20 @@ export default function CorporateAIPage() {
     },
   ], [t]);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'Что такое Corporate AI (RAG)?', acceptedAnswer: { '@type': 'Answer', text: 'Корпоративная база знаний с ИИ: документы компании индексируются, сотрудники получают ответы из своей базы за секунды. По сути — свой ChatGPT на данных компании.' } },
+      { '@type': 'Question', name: 'Сколько стоит внедрение RAG/Corporate AI?', acceptedAnswer: { '@type': 'Answer', text: 'Starter от $1 200 за запуск + $400/мес. Growth от $4 500 + $1 500/мес. Enterprise — по запросу. Смета после аудита объёма документов.' } },
+      { '@type': 'Question', name: 'Можно ли подключить 1С и Bitrix24?', acceptedAnswer: { '@type': 'Answer', text: 'Да. RAG интегрируется с внутренними системами, документами и CRM. Данные остаются под вашим контролем (в т.ч. on-premise).' } },
+    ],
+  };
+
   return (
-    <main>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <main>
       {/* Hero */}
       <section className="relative min-h-[80vh] pt-28 pb-16 flex items-center overflow-hidden" style={{ background: '#05050A' }}>
         <div
@@ -315,5 +327,6 @@ export default function CorporateAIPage() {
       {/* Contact */}
       <ContactSection />
     </main>
+    </>
   );
 }

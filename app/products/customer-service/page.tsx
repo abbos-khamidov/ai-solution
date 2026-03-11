@@ -130,8 +130,20 @@ export default function CustomerServicePage() {
     t('productPages.cs.fw5'),
   ], [t]);
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'За сколько Customer Service Bot отвечает клиенту?', acceptedAnswer: { '@type': 'Answer', text: 'В среднем за 30 секунд в Telegram, Instagram и WhatsApp. Работает 24/7.' } },
+      { '@type': 'Question', name: 'Сколько стоит запуск Customer Service Bot?', acceptedAnswer: { '@type': 'Answer', text: 'От $390 (Starter) за запуск + от $150/мес. Enterprise — от $7 500 за запуск + от $2 500/мес. Точная смета после аудита.' } },
+      { '@type': 'Question', name: 'Как бот квалифицирует лидов Cold/Warm/Hot?', acceptedAnswer: { '@type': 'Answer', text: 'Ведёт диалог, выясняет потребность и готовность к покупке, присваивает статус. Горячих передаёт менеджеру с контекстом.' } },
+    ],
+  };
+
   return (
-    <main>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <main>
       {/* Hero */}
       <section className="relative min-h-[85vh] pt-28 pb-16 flex items-center overflow-hidden" style={{ background: '#05050A' }}>
         <div
@@ -323,5 +335,6 @@ export default function CustomerServicePage() {
       {/* Contact */}
       <ContactSection />
     </main>
+    </>
   );
 }

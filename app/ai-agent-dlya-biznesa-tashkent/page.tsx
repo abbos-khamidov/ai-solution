@@ -3,7 +3,7 @@ import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ai-agent-dlya-biznesa-tashkent';
-const TITLE = 'AI агент для бизнеса в Ташкенте — внедрение и настройка | AI Solution';
+const TITLE = 'AI агент для бизнеса в Ташкенте — внедрение и настройка';
 const DESCRIPTION =
   'AI агент для бизнеса в Ташкенте: автоматизация продаж, консультаций и поддержки клиентов. Внедрение под ключ, интеграция с CRM и аналитикой.';
 

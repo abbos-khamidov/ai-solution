@@ -3,7 +3,7 @@ import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ii-avtomatizaciya';
-const TITLE = 'ИИ автоматизация бизнеса — внедрение под ключ | AI Solution';
+const TITLE = 'ИИ автоматизация бизнеса — внедрение под ключ';
 const DESCRIPTION =
   'ИИ автоматизация бизнеса: автоматизация продаж, поддержки, аналитики и внутренних процессов. Внедрение искусственного интеллекта под ключ в Ташкенте и Узбекистане.';
 

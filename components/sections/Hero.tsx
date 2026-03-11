@@ -170,7 +170,7 @@ export function Hero() {
                 </Link>
               </MagneticButton>
               <Link
-                href="/products"
+                href="/#solutions"
                 className="inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold rounded-xl border border-white/20 text-[#F8FAFC] hover:bg-white/5 transition-colors"
               >
                 Посмотреть решения

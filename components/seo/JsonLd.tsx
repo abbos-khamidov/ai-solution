@@ -51,7 +51,11 @@ const localBusinessSchema = {
     { '@type': 'Country', name: 'Узбекистан' },
   ],
   hasMap: 'https://maps.google.com/?q=41.2995,69.2401',
-  sameAs: ['https://t.me/aisolution_uz'],
+  sameAs: [
+    'https://t.me/aisolution_uz',
+    'https://www.instagram.com/aisolution_uz/',
+    'https://www.linkedin.com/company/aisolution-uz',
+  ],
   serviceArea: {
     '@type': 'GeoCircle',
     geoMidpoint: { '@type': 'GeoCoordinates', latitude: 41.2995, longitude: 69.2401 },
@@ -107,7 +111,11 @@ const organizationSchema = {
       availableLanguage: ['Russian', 'Uzbek'],
     },
   ],
-  sameAs: ['https://t.me/aisolution_uz'],
+  sameAs: [
+    'https://t.me/aisolution_uz',
+    'https://www.instagram.com/aisolution_uz/',
+    'https://www.linkedin.com/company/aisolution-uz',
+  ],
   knowsAbout: [
     'AI Chatbot', 'Sales Automation', 'Lead Qualification',
     'Telegram Bot', 'WhatsApp Business', 'Instagram Automation',

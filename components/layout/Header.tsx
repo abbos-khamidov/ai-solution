@@ -135,7 +135,7 @@ export function Header() {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-sm">⚡</span>
                 </div>
-                <span className="text-[20px] font-bold text-white tracking-tight">AI Solution</span>
+                <span className="text-[20px] font-bold text-white tracking-tight whitespace-nowrap">AI Solution</span>
               </Link>
             </motion.div>
 
@@ -340,7 +340,7 @@ export function Header() {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-sm">⚡</span>
                 </div>
-                <span className="text-[20px] font-bold text-white tracking-tight">AI Solution</span>
+                <span className="text-[20px] font-bold text-white tracking-tight whitespace-nowrap">AI Solution</span>
               </Link>
               <button
                 className="p-2 -mr-2 rounded-md text-white hover:bg-white/10 transition-colors duration-150 focus:outline-none"

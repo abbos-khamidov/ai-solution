@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   alternates: createAlternates(`${SITE_URL}/products/corporate-ai`),
   openGraph: {
-    title: 'Corporate AI (RAG) — Своя база знаний компании с AI | AI Solution',
+    title: 'Corporate AI (RAG) — Своя база знаний компании с AI',
     description: 'Корпоративный AI на базе RAG. Отвечает только по вашим документам. Интеграция с 1С, Bitrix24, amoCRM. On-premise. От $8 000. Ташкент.',
     type: 'website',
     locale: 'ru_RU',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Corporate AI (RAG) — AI база знаний компании | AI Solution',
+    title: 'Corporate AI (RAG) — AI база знаний компании',
     description: 'Корпоративный AI: база знаний, интеграция с 1С/Bitrix24/amoCRM, on-premise. От $8 000.',
     images: [{
       url: '/og-image.png',

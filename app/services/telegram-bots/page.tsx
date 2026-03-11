@@ -4,7 +4,7 @@ import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/telegram-bots';
-const TITLE = 'Разработка Telegram ботов для бизнеса в Ташкенте | AI Solution';
+const TITLE = 'Разработка Telegram ботов для бизнеса в Ташкенте';
 const DESC = 'Создаём Telegram-боты для бизнеса в Ташкенте и Узбекистане: автоматизация продаж, поддержка клиентов 24/7, интеграция с CRM, приём платежей. От $1 500. Бесплатный аудит.';
 
 export const metadata: Metadata = {
@@ -44,6 +44,23 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const faqItems = [
+  { q: 'Сколько стоит разработка Telegram-бота для бизнеса в Ташкенте?', a: 'Простой бот для приёма заявок — от $1 500, ИИ-бот с квалификацией лидов — от $2 500. Поддержка от $300/мес. Точная оценка после бесплатного аудита.' },
+  { q: 'За сколько запускается Telegram-бот?', a: 'Базовый сценарий — 1–2 недели. Бот с ИИ и интеграциями — 2–4 недели.' },
+  { q: 'Можно ли подключить бота к CRM?', a: 'Да. Интегрируем с Bitrix24, amoCRM, 1С и другими системами.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+
 export default function TelegramBotsPage() {
-  return <TelegramBotsContent />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <TelegramBotsContent />
+    </>
+  );
 }
