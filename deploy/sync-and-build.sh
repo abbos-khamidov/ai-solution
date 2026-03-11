@@ -2,6 +2,10 @@
 set -e
 cd /opt/aisolution
 
+echo "=== Git pull ==="
+git pull origin main
+
+echo "=== Build ==="
 NEXT_PUBLIC_SITE_URL=https://aisolution.uz npm run build 2>&1 | tail -15
 
 pm2 restart aisolution-frontend
