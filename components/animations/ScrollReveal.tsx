@@ -108,7 +108,7 @@ export function ScrollReveal({
     const el = elementRef.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
 
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
+    let timeoutId: number | ReturnType<typeof setTimeout> | null = null;
 
     const observer = new IntersectionObserver(
       (entries) => {

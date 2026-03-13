@@ -19,15 +19,9 @@ export function normalizeLanguage(input?: string | null): LanguageCode {
   return SUPPORTED_LANGS.has(candidate) ? candidate : DEFAULT_LANGUAGE;
 }
 
-// Get saved language or default to 'ru' (target: Uzbekistan/Russia B2B)
-function getSavedLanguage(): LanguageCode {
-  if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('aisolution-lang');
-    if (saved) {
-      return normalizeLanguage(saved);
-    }
-    return normalizeLanguage(window.navigator.language);
-  }
+// Initial language: always 'ru' for SSR and first client paint to avoid hydration mismatch.
+// I18nProvider switches to saved/preferred language in useEffect after mount.
+function getInitialLanguage(): LanguageCode {
   return DEFAULT_LANGUAGE;
 }
 
@@ -36,7 +30,7 @@ i18n.use(initReactI18next).init({
     ru: { translation: ru },
     uz: { translation: uz },
   },
-  lng: getSavedLanguage(),
+  lng: getInitialLanguage(),
   fallbackLng: DEFAULT_LANGUAGE,
   supportedLngs: Array.from(SUPPORTED_LANGS),
   load: 'languageOnly',

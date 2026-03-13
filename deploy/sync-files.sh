@@ -2,7 +2,7 @@
 set -e
 
 PW="BF3YAuxhzqQD5M"
-DST="root@84.238.132.83:/opt/aisolution"
+DST="root@84.238.132.83:/var/www/aisolution"
 SRC="/mnt/c/Users/imabb/OneDrive/Desktop/adams ai/website"
 
 FILES=(

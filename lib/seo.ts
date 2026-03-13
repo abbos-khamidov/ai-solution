@@ -11,13 +11,12 @@ export const DEFAULT_TWITTER_IMAGE = '/og-image.png';
 
 export function createAlternates(canonical: string) {
   const normalized = canonical.replace(/\/$/, '') || SITE_URL;
-  const path = normalized.replace(SITE_URL, '') || '/';
-  const pathForUz = path === '/' ? '/uz' : `/uz${path}`;
   return {
     canonical: normalized,
     languages: {
       ru: normalized,
-      uz: `${SITE_URL}${pathForUz}`,
+      uz: normalized,
+      en: normalized,
       'x-default': normalized,
     },
   };

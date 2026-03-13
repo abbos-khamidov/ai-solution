@@ -10,14 +10,28 @@ const SITE_URL = 'https://aisolution.uz';
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL }],
+  itemListElement: [{ '@type': 'ListItem', position: 1, name: 'AI Solution', item: SITE_URL }],
 };
 
 export const metadata: Metadata = {
   title: 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта',
   description:
-    'Автоматизация бизнеса в Ташкенте и Узбекистане. Внедрение искусственного интеллекта: Telegram-боты, бот-менеджер, AI-аналитика, личный ассистент ИИ. Ответ клиентам за 30 секунд 24/7. Бесплатный аудит.',
+    'AI Solution (aisolution.uz) — автоматизация бизнеса в Ташкенте и Узбекистане. Внедрение искусственного интеллекта: Telegram-боты, бот-менеджер, AI-аналитика, личный ассистент ИИ. Ответ клиентам за 30 секунд 24/7. Бесплатный аудит.',
   keywords: [
+    // Brand variations
+    'aisolution',
+    'ai solution',
+    'ai-solution',
+    'aisolution.uz',
+    'AI Solution Uzbekistan',
+    'AI Solution Tashkent',
+    'аисолюшн',
+    'ай солюшн',
+    'ai solutions',
+    'solution ai',
+    'aisolution uz',
+    'ai solutions uz',
+    // Core keywords
     'автоматизация бизнеса в Ташкенте',
     'автоматизация бизнеса Ташкент',
     'ИИ в Ташкенте',

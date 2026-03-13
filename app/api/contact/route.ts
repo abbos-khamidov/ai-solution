@@ -7,23 +7,22 @@ function getBackendUrl(): string | null {
 }
 
 export async function POST(request: Request) {
-  const bodyText = await request.text();
-
-  // Send Telegram notification immediately — don't wait for backend
   try {
-    const data = JSON.parse(bodyText);
-    await sendTelegram(fmtContact(data));
-  } catch {
-    // ignore parse errors
-  }
+    const bodyText = await request.text();
 
-  const backendUrl = getBackendUrl();
-  if (!backendUrl) {
-    // Backend not configured but we still got the lead via Telegram
-    return NextResponse.json({ success: true });
-  }
+    // Send Telegram notification immediately — don't wait for backend
+    try {
+      const data = JSON.parse(bodyText);
+      await sendTelegram(fmtContact(data));
+    } catch {
+      // ignore parse errors
+    }
 
-  try {
+    const backendUrl = getBackendUrl();
+    if (!backendUrl) {
+      return NextResponse.json({ success: true });
+    }
+
     const response = await fetch(`${backendUrl}/api/contact`, {
       method: "POST",
       headers: {
@@ -41,7 +40,8 @@ export async function POST(request: Request) {
     } catch {
       return NextResponse.json({ error: text || "Bad backend response" }, { status: response.status });
     }
-  } catch {
-    return NextResponse.json({ error: "Backend unavailable" }, { status: 502 });
+  } catch (err) {
+    console.error("Contact API error:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

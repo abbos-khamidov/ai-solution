@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-cd /opt/aisolution
+cd /var/www/aisolution
 
 echo "=== Git pull ==="
 git pull origin main

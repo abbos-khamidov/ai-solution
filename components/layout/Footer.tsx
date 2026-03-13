@@ -32,6 +32,8 @@ export function Footer() {
         { labelKey: 'footer.services', href: '/services' },
         { label: 'Сравнение решений', href: '/sravnenie-ai-reshenii-uzbekistan' },
         { label: 'Автоматизация в Узбекистане', href: '/biznes-avtomatizaciya-uzbekistan' },
+        { label: 'ChatGPT для бизнеса', href: '/chatgpt-dlya-biznesa-uzbekistan' },
+        { label: 'ИИ автоматизация', href: '/ii-avtomatizaciya' },
       ],
     },
     {

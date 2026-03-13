@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, type LucideIcon } from 'react';
+import { useState } from 'react';
+import type { LucideIcon } from 'lucide-react';
 import {
   Flower2,
   GraduationCap,

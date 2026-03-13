@@ -80,15 +80,20 @@ const organizationSchema = {
   '@type': 'Organization',
   '@id': `${SITE_URL}/#organization`,
   name: 'AI Solution',
+  alternateName: ['AISolution', 'AI-Solution', 'aisolution.uz', 'АИ Солюшн', 'Ай Солюшн'],
   url: SITE_URL,
   logo: {
     '@type': 'ImageObject',
-    url: `${SITE_URL}/icon-512.png`,
+    url: `${SITE_URL}/logo.png`,
     width: 512,
     height: 512,
   },
-  description: 'Автоматизация бизнеса и внедрение искусственного интеллекта в Ташкенте и Узбекистане. ИИ-ассистенты для продаж и клиентского сервиса. Ответ за 30 секунд 24/7.',
+  description: 'AI автоматизация бизнеса в Узбекистане. Telegram боты, Instagram боты, корпоративные AI системы.',
   foundingDate: '2025',
+  foundingLocation: {
+    '@type': 'Place',
+    name: 'Tashkent, Uzbekistan',
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'ул. Афросиёб, 35',
@@ -102,6 +107,7 @@ const organizationSchema = {
     { '@type': 'Country', name: 'Kazakhstan' },
     { '@type': 'Country', name: 'Kyrgyzstan' },
     { '@type': 'Country', name: 'Tajikistan' },
+    { '@type': 'Country', name: 'Russia' },
   ],
   contactPoint: [
     {
@@ -128,6 +134,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   '@id': `${SITE_URL}/#website`,
   name: 'AI Solution',
+  alternateName: 'AISolution Uzbekistan',
   url: SITE_URL,
   inLanguage: ['ru', 'uz'],
   publisher: { '@id': `${SITE_URL}/#organization` },

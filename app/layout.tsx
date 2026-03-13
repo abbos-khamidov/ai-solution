@@ -22,8 +22,22 @@ export const metadata: Metadata = {
     default: 'AI Solution — автоматизация бизнеса в Ташкенте | Внедрение ИИ в Узбекистане',
     template: '%s | AI Solution',
   },
-  description: 'Автоматизация бизнеса в Ташкенте и Узбекистане с помощью искусственного интеллекта. Внедрение ИИ: Telegram-боты, бот-менеджер, аналитика. Ответ клиентам за 30 секунд 24/7. Офис в Ташкенте.',
+  description: 'AI Solution (aisolution.uz) — автоматизация бизнеса в Ташкенте и Узбекистане с помощью искусственного интеллекта. Внедрение ИИ: Telegram-боты, бот-менеджер, аналитика. Ответ клиентам за 30 секунд 24/7.',
   keywords: [
+    // Brand variations
+    'aisolution',
+    'ai solution',
+    'ai-solution',
+    'aisolution.uz',
+    'AI Solution Uzbekistan',
+    'AI Solution Tashkent',
+    'аисолюшн',
+    'ай солюшн',
+    'ai solutions',
+    'solution ai',
+    'aisolution uz',
+    'ai solutions uz',
+    // Core keywords
     'автоматизация бизнеса Ташкент',
     'автоматизация бизнеса в Ташкенте',
     'ИИ в Ташкенте',
@@ -58,6 +72,7 @@ export const metadata: Metadata = {
   formatDetection: { telephone: true, email: true, address: false },
   alternates: {
     canonical: SITE_URL,
+    languages: { ru: SITE_URL, uz: SITE_URL, en: SITE_URL, 'x-default': SITE_URL },
   },
   openGraph: {
     title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ',
