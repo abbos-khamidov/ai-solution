@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 
+export const runtime = 'edge';
 export const alt = 'AI Solution — ИИ автоматизация бизнеса в Узбекистане';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -24,6 +25,7 @@ export default function Image() {
         {/* Background glow */}
         <div
           style={{
+            display: 'flex',
             position: 'absolute',
             top: '-80px',
             right: '-80px',
@@ -35,6 +37,7 @@ export default function Image() {
         />
         <div
           style={{
+            display: 'flex',
             position: 'absolute',
             bottom: '-120px',
             left: '200px',
@@ -60,11 +63,11 @@ export default function Image() {
         >
           <div
             style={{
+              display: 'flex',
               width: '32px',
               height: '32px',
               background: 'linear-gradient(135deg, #3B82F6, #06B6D4)',
               borderRadius: '8px',
-              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '18px',
@@ -80,6 +83,7 @@ export default function Image() {
         {/* Main title */}
         <div
           style={{
+            display: 'flex',
             fontSize: '68px',
             fontWeight: 900,
             color: '#F8FAFC',
@@ -106,6 +110,7 @@ export default function Image() {
             <div
               key={tag}
               style={{
+                display: 'flex',
                 background: 'rgba(255,255,255,0.06)',
                 border: '1px solid rgba(255,255,255,0.12)',
                 borderRadius: '8px',
