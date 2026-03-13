@@ -9,8 +9,10 @@ export const LANGUAGE_ALTERNATES = {
 
 export const DEFAULT_TWITTER_IMAGE = '/og-image.png';
 
+/** Normalize canonical URL to always end with / (except bare origin). */
 export function createAlternates(canonical: string) {
-  const normalized = canonical.replace(/\/$/, '') || SITE_URL;
+  const path = canonical === '/' ? '' : canonical.replace(/\/$/, '') + '/';
+  const normalized = path ? `${SITE_URL.replace(/\/$/, '')}${path}` : `${SITE_URL.replace(/\/$/, '')}/`;
   return {
     canonical: normalized,
     languages: {

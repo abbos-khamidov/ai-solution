@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    trailingSlash: true,
     async redirects() {
-        return [{ source: '/privacy', destination: '/confidential', permanent: false }];
+        return [{ source: '/privacy', destination: '/confidential/', permanent: false }];
     },
     async headers() {
         return [

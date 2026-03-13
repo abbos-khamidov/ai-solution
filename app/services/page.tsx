@@ -75,7 +75,7 @@ export const metadata: Metadata = {
 
 export default function ServicesIndexPage() {
   return (
-    <main className="min-h-screen bg-[#05050A] pt-28 pb-16 text-white">
+    <div className="min-h-screen bg-[#05050A] pt-28 pb-16 text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="max-w-5xl mx-auto px-6">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Услуги внедрения ИИ</h1>
@@ -148,6 +148,6 @@ export default function ServicesIndexPage() {
           </div>
         </section>
       </section>
-    </main>
+    </div>
   );
 }
