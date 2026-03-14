@@ -161,10 +161,21 @@ export function HeroChatDemo() {
         body: JSON.stringify({ message: messageText, history: conversationHistory }),
       });
 
-      const data = await res.json();
+      let data: { error?: string; response?: string; leadType?: string; intent?: string; action?: string };
+      try {
+        data = await res.json();
+      } catch {
+        data = { error: 'Неверный ответ сервера' };
+      }
 
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to get response');
+        const serverMessage = (data?.error || '').trim();
+        const textToShow = serverMessage || UI_LABELS[detectedLang].errorText;
+        setMessages((prev) => [
+          ...prev,
+          { id: (Date.now() + 1).toString(), text: textToShow, sender: 'bot' as const },
+        ]);
+        return;
       }
 
       const botMessage: Message = {
@@ -181,11 +192,12 @@ export function HeroChatDemo() {
       });
     } catch (error) {
       console.error('Chat demo error:', error);
+      const message = error instanceof Error ? error.message : '';
       setMessages((prev) => [
         ...prev,
         {
           id: (Date.now() + 1).toString(),
-          text: UI_LABELS[detectedLang].errorText,
+          text: message || UI_LABELS[detectedLang].errorText,
           sender: 'bot',
         },
       ]);

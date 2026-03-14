@@ -69,10 +69,11 @@ Hot: готов начать, просит контакты/договор
 
 export async function POST(req: NextRequest) {
   try {
+    // On server: set OPENAI_API_KEY or CHAT_DEMO_API_KEY in .env.local
     const apiKey = (process.env.CHAT_DEMO_API_KEY || process.env.OPENAI_API_KEY || '').trim();
     if (!apiKey) {
       return NextResponse.json(
-        { error: 'API временно недоступен' },
+        { error: 'API временно недоступен. Задайте OPENAI_API_KEY в .env.local на сервере.' },
         { status: 503 }
       );
     }
