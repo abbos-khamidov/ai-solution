@@ -69,7 +69,7 @@ Hot: готов начать, просит контакты/договор
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.CHAT_DEMO_API_KEY;
+    const apiKey = (process.env.CHAT_DEMO_API_KEY || process.env.OPENAI_API_KEY || '').trim();
     if (!apiKey) {
       return NextResponse.json(
         { error: 'API временно недоступен' },
@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
         throw new Error('Invalid response structure');
       }
 
-      // Notify on new dialogue or Hot lead
+      // Notify on new dialogue or Hot lead (fire-and-forget, don't block response)
       const isNew = conversationHistory.length === 0;
       if (isNew || parsed.leadType === 'Hot') {
         sendTelegram(fmtChatMessage({
@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
           userMessage: message,
           leadType: parsed.leadType,
           historyLen: conversationHistory.length,
-        }));
+        })).catch((err) => console.error('[chat-demo] Telegram notify error:', err));
       }
 
       return NextResponse.json(parsed);
