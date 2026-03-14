@@ -185,10 +185,12 @@ export function HeroChatDemo() {
       };
 
       setMessages((prev) => [...prev, botMessage]);
+      const leadType: Analysis['leadType'] =
+        data.leadType === 'Warm' || data.leadType === 'Hot' ? data.leadType : 'Cold';
       setAnalysis({
-        leadType: data.leadType,
-        intent: data.intent,
-        action: data.action,
+        leadType,
+        intent: data.intent ?? '',
+        action: data.action ?? '',
       });
     } catch (error) {
       console.error('Chat demo error:', error);
