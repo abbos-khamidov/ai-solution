@@ -15,7 +15,7 @@ const inter = Inter({
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION;
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-MZOCD3QZZ9';
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-MZ0CD3QZZ9';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
