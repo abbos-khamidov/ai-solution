@@ -16,13 +16,20 @@ export default function Error({
     }
   }, [error]);
 
+  const message = error?.message || '';
+
   return (
     <div className="min-h-screen bg-[#05050A] text-white flex flex-col items-center justify-center px-4">
       <div className="max-w-md w-full rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center">
         <h1 className="text-xl font-bold text-[#F8FAFC] mb-2">Что-то пошло не так</h1>
-        <p className="text-[#94A3B8] text-sm mb-6">
+        <p className={`text-[#94A3B8] text-sm ${message ? 'mb-2' : 'mb-6'}`}>
           Произошла ошибка при загрузке страницы. Попробуйте обновить страницу или вернуться на главную.
         </p>
+        {message && (
+          <p className="text-[#64748B] text-xs font-mono mb-6 break-all" title={message}>
+            {message}
+          </p>
+        )}
         <div className="flex flex-wrap justify-center gap-3">
           <button
             onClick={reset}
