@@ -41,7 +41,7 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Автоматизация бизнеса в Узбекистане</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Автоматизация бизнеса в Узбекистане</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Бизнес-автоматизация в Узбекистане — AI-боты для продаж и поддержки клиентов</h1>
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Компании в Узбекистане получают заявки из мессенджеров, с сайта и из рекламы. Ручная обработка создаёт задержки, потери в нерабочее время и разрозненную воронку. Автоматизация бизнеса с помощью ИИ объединяет каналы: бот отвечает за 30 секунд 24/7, квалифицирует лидов и передаёт горячих менеджерам с контекстом. При необходимости подключаем CRM, дашборды и отчёты — единая картина по продажам и лидам. Мы внедряем такие решения в Ташкенте и по всему Узбекистану: от малого бизнеса до отделов продаж с десятками менеджеров.
             </p>

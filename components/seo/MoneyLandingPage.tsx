@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { SITE_URL } from '@/lib/seo';
 
 type LinkItem = {
@@ -20,6 +21,7 @@ export type MoneyLandingConfig = {
   title: string;
   description: string;
   bullets: string[];
+  heroImage?: { src: string; alt: string; title: string };
   sections: { title: string; text: string }[];
   faq: FAQItem[];
   relatedLinks: LinkItem[];
@@ -78,6 +80,9 @@ export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">{config.eyebrow}</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">{config.title}</h1>
+            {config.heroImage && (
+              <LandingHeroImage src={config.heroImage.src} alt={config.heroImage.alt} title={config.heroImage.title} />
+            )}
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg">{config.description}</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
               {config.bullets.map((bullet) => (

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/tseny-na-chatboty-tashkent';
@@ -76,8 +77,13 @@ export default function TsenyNaChatbotyTashkentPage() {
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Цены на чатбот для бизнеса в Ташкенте</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-              Стоимость чатбота для бизнеса в Ташкенте
+              Цены на AI-ботов в Ташкенте — тарифы от $150/мес, внедрение от $390
             </h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+              alt="Цены на AI-ботов и чат-боты в Ташкенте — тарифы и стоимость внедрения"
+              title="Стоимость разработки и внедрения AI-ботов для бизнеса в Ташкенте"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Решение внедрить чатбот часто упирается в вопрос бюджета: сколько стоит разработка, что входит в поддержку
               и когда окупится. В Ташкенте и Узбекистане мы предлагаем прозрачную модель: фиксированный старт за

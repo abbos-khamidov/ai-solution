@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/avtomatizaciya-prodazh-tashkent';
@@ -72,8 +73,13 @@ export default function AvtomatizaciyaProdazhTashkentPage() {
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Автоматизация продаж в Ташкенте</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-              Автоматизация продаж в Ташкенте с помощью ИИ
+              Автоматизация продаж в Ташкенте через AI — больше сделок без найма менеджеров
             </h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+              alt="Автоматизация продаж в Ташкенте через AI — рост конверсии без найма менеджеров"
+              title="Автоматизация отдела продаж через искусственный интеллект в Ташкенте"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Заявки приходят в мессенджеры и на сайт в любое время, но менеджеры не успевают отвечать мгновенно —
               часть клиентов уходит к конкурентам, часть заявок обрабатывается без единых правил квалификации.

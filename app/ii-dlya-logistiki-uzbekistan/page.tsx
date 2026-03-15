@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ii-dlya-logistiki-uzbekistan';
@@ -41,7 +42,12 @@ export default function IiDlyaLogistikiUzbekistanPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для логистики в Узбекистане</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ИИ автоматизация логистики в Узбекистане</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">AI для логистических компаний Узбекистана — автоматизация заявок и уведомлений</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+              alt="AI для логистики в Узбекистане — автоматизация заявок отслеживания и уведомлений"
+              title="Внедрение AI в логистические компании Узбекистана"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Логистические компании и службы доставки в Узбекистане получают десятки обращений в день: заказ перевозки, уточнение маршрута и стоимости, запрос статуса груза. Диспетчеры не успевают отвечать ночью и в выходные — часть заказов уходит к конкурентам или клиент остаётся без ответа. ИИ для логистики автоматизирует первый контакт: бот принимает заявку на перевозку 24/7, уточняет маршрут и тип груза, при интеграции с учётом сообщает статус доставки по номеру заказа и передаёт сложные запросы диспетчеру с контекстом. В результате вы не теряете заказы из-за задержки ответа и разгружаете диспетчерскую службу.
             </p>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/whatsapp-bot-dlya-biznesa';
@@ -41,7 +42,12 @@ export default function WhatsAppBotDlyaBiznesaPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">WhatsApp-бот для бизнеса</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">WhatsApp-бот для бизнеса в Узбекистане</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">WhatsApp-бот для бизнеса в Узбекистане — автоответы и CRM интеграция</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80"
+              alt="WhatsApp-бот для бизнеса в Узбекистане — автоответы клиентам и интеграция CRM"
+              title="WhatsApp автоматизация для бизнеса в Ташкенте и Узбекистане"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               В Узбекистане WhatsApp — один из основных каналов общения с клиентами: заявки, вопросы, подтверждение заказов. Ручная обработка создаёт задержки и потери. WhatsApp-бот для бизнеса автоматизирует первый контакт: отвечает за 30 секунд, уточняет запрос, квалифицирует лидов и передаёт горячих менеджерам с контекстом. Работает 24/7 вместе с Telegram и Instagram при едином ИИ — без дублирования диалогов. Мы внедряем WhatsApp-ботов в Ташкенте и по всему Узбекистану.
             </p>

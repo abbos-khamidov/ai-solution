@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createAlternates } from '@/lib/seo';
 
@@ -29,8 +30,8 @@ const articleSchema = {
   description: DESCRIPTION,
   author: { '@type': 'Organization', name: 'AI Solution', url: SITE_URL },
   publisher: { '@type': 'Organization', name: 'AI Solution', logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` } },
-  datePublished: '2025-03-08',
-  dateModified: '2025-03-11',
+  datePublished: '2026-03-15',
+  dateModified: '2026-03-15',
   url: `${SITE_URL}/blog/${SLUG}`,
   image: `${SITE_URL}/og-image.png`,
   inLanguage: 'ru',
@@ -68,6 +69,16 @@ export default function Page() {
           <article className="space-y-8 text-[#94A3B8] leading-relaxed text-base md:text-lg">
             <section className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">Кейс Studify.uz: образование</h2>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
+                <Image
+                  src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80"
+                  alt="Telegram бот для продаж в Узбекистане"
+                  title="Telegram бот для продаж в Узбекистане"
+                  fill
+                  className="object-cover opacity-70"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
               <p>
                 Образовательная платформа получала заявки в Telegram и на сайте. Менеджеры не успевали отвечать в первые минуты — часть абитуриентов уходила к конкурентам или теряла интерес. Задача: ускорить первичный ответ и улучшить квалификацию входящих лидов. Внедрили ИИ-бота для коммуникаций и управленческие сводки по KPI для руководства.
               </p>

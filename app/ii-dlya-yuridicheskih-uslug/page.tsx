@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ii-dlya-yuridicheskih-uslug';
@@ -41,7 +42,12 @@ export default function IiDlyaYuridicheskihUslugPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для юридических компаний</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ИИ для юридических компаний</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">AI для юридических услуг в Ташкенте — первичная консультация и квалификация клиентов</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80"
+              alt="AI для юридических услуг в Ташкенте — первичная консультация и квалификация клиентов"
+              title="Автоматизация юридической практики через AI в Ташкенте"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Юридические фирмы и адвокаты в Ташкенте и Узбекистане получают обращения в любое время: запросы на консультацию, уточнение темы дела, запись на приём. Пока секретарь или юрист не ответил, клиент может обратиться к другому специалисту. ИИ для юридических компаний решает это: бот принимает обращение 24/7, уточняет тему (семейное, трудовое, корпоративное право и т.д.), записывает на консультацию и передаёт подготовленную заявку юристу с контекстом. Конфиденциальность соблюдается за счёт настройки хранения данных и доступа. В результате вы не теряете клиентов из-за задержки ответа и разгружаете приём первичных обращений.
             </p>

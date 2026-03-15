@@ -1,52 +1,107 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Bot, Building2, LayoutDashboard, LineChart } from 'lucide-react';
+import { Bot, LayoutDashboard, Building2, LineChart, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 import { track } from '@/lib/analytics/gtag';
 
-const productKeys = [
+type Message = { from: 'user' | 'bot'; text: string };
+
+const products = [
   {
+    id: 'customer-service',
+    tab: 'Customer Service Bot',
     icon: Bot,
+    accentColor: '#3B82F6',
+    glowColor: 'rgba(59,130,246,0.18)',
     titleKey: 'productsSection.product1Title',
     descKey: 'productsSection.product1Desc',
     featureKeys: ['productsSection.product1F1', 'productsSection.product1F2', 'productsSection.product1F3'],
     priceKey: 'productsSection.product1Price',
     href: '/products/customer-service',
-    glowColor: 'rgba(59, 130, 246, 0.12)',
-    accentColor: '#3B82F6',
+    mockup: [
+      { from: 'user', text: 'Добрый день! Хочу узнать о ценах' },
+      { from: 'bot',  text: 'Привет! Рад помочь 👋 Что вас интересует?' },
+      { from: 'user', text: 'Абонемент на месяц' },
+      { from: 'bot',  text: '✅ Абонемент — 3 500 000 сум/мес. Оформляем?' },
+    ] as Message[],
   },
   {
+    id: 'management-assistant',
+    tab: 'Management Assistant',
     icon: LayoutDashboard,
+    accentColor: '#06B6D4',
+    glowColor: 'rgba(6,182,212,0.18)',
     titleKey: 'productsSection.product2Title',
     descKey: 'productsSection.product2Desc',
     featureKeys: ['productsSection.product2F1', 'productsSection.product2F2', 'productsSection.product2F3'],
     priceKey: 'productsSection.product2Price',
     href: '/products/management-assistant',
-    glowColor: 'rgba(6, 182, 212, 0.12)',
-    accentColor: '#06B6D4',
+    mockup: [
+      { from: 'bot',  text: '📊 Отчёт за вчера: +12% продаж' },
+      { from: 'bot',  text: '48 новых лидов · 6 горячих' },
+      { from: 'user', text: 'Кто лучший менеджер?' },
+      { from: 'bot',  text: '🏆 Алишер — 14 сделок, конверсия 68%' },
+    ] as Message[],
   },
   {
+    id: 'corporate-ai',
+    tab: 'Corporate AI (RAG)',
     icon: Building2,
+    accentColor: '#7C3AED',
+    glowColor: 'rgba(124,58,237,0.18)',
     titleKey: 'productsSection.product3Title',
     descKey: 'productsSection.product3Desc',
     featureKeys: ['productsSection.product3F1', 'productsSection.product3F2', 'productsSection.product3F3'],
     priceKey: 'productsSection.product3Price',
     href: '/products/corporate-ai',
-    glowColor: 'rgba(124, 58, 237, 0.12)',
-    accentColor: '#7C3AED',
+    mockup: [
+      { from: 'user', text: 'Что в уставе о дивидендах?' },
+      { from: 'bot',  text: '📄 §12.3: дивиденды выплачиваются ежеквартально...' },
+      { from: 'user', text: 'KPI отдела за Q1' },
+      { from: 'bot',  text: '📊 Q1: выполнение 94%, топ — отдел продаж' },
+    ] as Message[],
+  },
+  {
+    id: 'ai-analytics',
+    tab: 'AI-аналитика',
+    icon: LineChart,
+    accentColor: '#0EA5E9',
+    glowColor: 'rgba(14,165,233,0.18)',
+    title: 'AI-аналитика и дашборды',
+    desc: 'KPI-дашборды, отчёты и рекомендации руководителю',
+    features: ['Дашборд KPI в реальном времени', 'AI-рекомендации руководителю', 'Алерты при просадках метрик'],
+    price: 'от $1 900',
+    href: '/products/ai-analytics',
+    mockup: [
+      { from: 'bot',  text: '⚠️ Конверсия упала на 8% вчера' },
+      { from: 'user', text: 'Почему?' },
+      { from: 'bot',  text: '📉 3 менеджера не отвечали >2 часов' },
+      { from: 'bot',  text: '💡 Включить авто-напоминания?' },
+    ] as Message[],
   },
 ];
 
 export function ProductsSection() {
   const { t } = useTranslation();
+  const [activeIdx, setActiveIdx] = useState(0);
+  const product = products[activeIdx];
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const tp = product as any;
+  const title    = tp.titleKey    ? t(tp.titleKey)                          : tp.title    ?? '';
+  const desc     = tp.descKey     ? t(tp.descKey)                           : tp.desc     ?? '';
+  const features = tp.featureKeys ? (tp.featureKeys as string[]).map((k: string) => t(k as never)) : (tp.features as string[]) ?? [];
+  const price    = tp.priceKey    ? t(tp.priceKey)                          : tp.price    ?? '';
+
   return (
-    <section className="py-16 md:py-24 bg-[#05050A]" id="products">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <ScrollReveal duration={0.6}>
-          <div className="text-center mb-12 md:mb-16">
+    <section className="py-12 md:py-14 bg-[#05050A]" id="products">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
+
+        <ScrollReveal duration={0.25}>
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
               {t('productsSection.title')}
             </h2>
@@ -56,163 +111,170 @@ export function ProductsSection() {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {productKeys.map((product, idx) => (
-            <ScrollReveal key={idx} direction="up" duration={0.6} delay={idx * 0.12}>
+        {/* Tabs */}
+        <ScrollReveal duration={0.25} delay={0.08}>
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {products.map((p, idx) => {
+              const Icon = p.icon;
+              const isActive = activeIdx === idx;
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setActiveIdx(idx)}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 whitespace-nowrap"
+                  style={isActive ? {
+                    background: `linear-gradient(135deg, ${p.accentColor}22, ${p.accentColor}10)`,
+                    border: `1px solid ${p.accentColor}55`,
+                    color: p.accentColor,
+                    boxShadow: `0 0 16px ${p.glowColor}`,
+                  } : {
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    color: '#94A3B8',
+                  }}
+                >
+                  <Icon className="w-4 h-4" />
+                  {p.tab}
+                </button>
+              );
+            })}
+          </div>
+        </ScrollReveal>
+
+        {/* Tab content */}
+        <div
+          key={activeIdx}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+          style={{ animation: 'fadeIn 0.3s ease-out' }}
+        >
+          {/* Left: product info */}
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style={{
+                  background: `linear-gradient(135deg, ${product.accentColor}22, ${product.accentColor}08)`,
+                  border: `1px solid ${product.accentColor}30`,
+                  boxShadow: `0 0 28px ${product.glowColor}`,
+                }}
+              >
+                <product.icon className="w-8 h-8" style={{ color: product.accentColor }} />
+              </div>
+              <div className="pt-1">
+                <h3 className="text-2xl font-bold text-[#F8FAFC]">{title}</h3>
+                <p className="text-[#64748B] text-sm mt-1.5 leading-relaxed">{desc}</p>
+              </div>
+            </div>
+
+            <ul className="space-y-3">
+              {features.map((feat, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="10" fill={`${product.accentColor}20`} />
+                    <path
+                      d="M6 10l3 3 5-5"
+                      stroke={product.accentColor}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span className="text-sm text-[#CBD5E1]">{feat}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div
+              className="flex items-center justify-between pt-5"
+              style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+            >
+              <span className="text-xl font-bold" style={{ color: product.accentColor }}>
+                {price}
+              </span>
               <Link
                 href={product.href}
-                className="group relative p-6 md:p-8 rounded-2xl h-full flex flex-col transition-all duration-300 hover:-translate-y-1 block"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  backdropFilter: 'blur(20px)',
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = `${product.accentColor}40`;
-                  el.style.boxShadow = `0 0 40px ${product.glowColor}`;
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                  el.style.boxShadow = 'none';
-                }}
+                onClick={() => track('cta_click_product_tab', { product: product.id })}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
+                style={{ background: `linear-gradient(135deg, ${product.accentColor}, ${product.accentColor}bb)` }}
               >
-                <div className="relative w-16 h-16 flex items-center justify-center mb-5">
-                  <div
-                    className="absolute inset-0 rounded-2xl"
-                    style={{ background: product.glowColor, filter: 'blur(12px)' }}
-                  />
-                  <div
-                    className="relative w-16 h-16 rounded-2xl flex items-center justify-center"
-                    style={{
-                      background: `linear-gradient(135deg, ${product.accentColor}20, ${product.accentColor}08)`,
-                      border: `1px solid ${product.accentColor}30`,
-                    }}
-                  >
-                    <product.icon className="w-7 h-7" style={{ color: product.accentColor }} />
-                  </div>
-                </div>
-
-                <h3 className="text-xl font-bold text-[#F8FAFC] mb-2 group-hover:text-gradient transition-all duration-300">
-                  {t(product.titleKey)}
-                </h3>
-
-                <p className="text-sm text-[#94A3B8] mb-5 leading-relaxed">
-                  {t(product.descKey)}
-                </p>
-
-                <ul className="space-y-2.5 mb-6 flex-1">
-                  {product.featureKeys.map((key, featureIdx) => (
-                    <li key={featureIdx} className="flex items-start gap-2.5">
-                      <svg className="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="8" fill={`${product.accentColor}20`} />
-                        <path
-                          d="M5 8l2 2 4-4"
-                          stroke={product.accentColor}
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      <span className="text-sm text-[#94A3B8]">{t(key)}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div
-                  className="flex items-center justify-between pt-4"
-                  style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
-                >
-                  <span className="text-base font-bold text-gradient">{t(product.priceKey)}</span>
-                  <span
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold transition-all duration-300 group-hover:gap-2.5"
-                    style={{ color: product.accentColor }}
-                  >
-                    {t('productsSection.more')}
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
+                Подробнее
+                <ArrowRight className="w-4 h-4" />
               </Link>
-            </ScrollReveal>
-          ))}
+            </div>
+          </div>
 
-          <ScrollReveal direction="up" duration={0.6} delay={0.36}>
-            <article
-              className="group relative p-6 md:p-8 rounded-2xl h-full flex flex-col transition-all duration-300 hover:-translate-y-1"
+          {/* Right: chat mockup */}
+          <div className="flex justify-center lg:justify-end">
+            <div
+              className="w-full max-w-[340px] rounded-2xl p-px"
               style={{
-                background: 'rgba(255, 255, 255, 0.03)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                backdropFilter: 'blur(20px)',
+                background: `linear-gradient(135deg, ${product.accentColor}40, rgba(255,255,255,0.06))`,
               }}
             >
-              <Link
-                href="/products/ai-analytics"
-                onClick={() =>
-                  track('cta_click_product_card', {
-                    product: 'ai_analytics',
-                    location: 'home_products',
-                  })
-                }
-                className="absolute inset-0 rounded-2xl"
-                aria-label="AI-аналитика и дашборды"
-              />
-
-              <div className="relative w-16 h-16 flex items-center justify-center mb-5">
+              <div className="rounded-2xl overflow-hidden" style={{ background: '#080812' }}>
+                {/* Chat header */}
                 <div
-                  className="absolute inset-0 rounded-2xl"
-                  style={{ background: 'rgba(14,165,233,0.12)', filter: 'blur(12px)' }}
-                />
-                <div
-                  className="relative w-16 h-16 rounded-2xl flex items-center justify-center"
+                  className="flex items-center gap-2.5 px-4 py-3"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.08))',
-                    border: '1px solid rgba(14,165,233,0.3)',
+                    background: `${product.accentColor}12`,
+                    borderBottom: `1px solid ${product.accentColor}20`,
                   }}
                 >
-                  <LineChart className="w-7 h-7 text-sky-400" />
+                  <div
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ background: product.accentColor, boxShadow: `0 0 6px ${product.accentColor}` }}
+                  />
+                  <span className="text-xs font-semibold" style={{ color: product.accentColor }}>
+                    AI Solution Bot
+                  </span>
+                  <span className="ml-auto text-[11px] text-[#34D399]">● онлайн</span>
+                </div>
+
+                {/* Messages */}
+                <div className="p-4 space-y-2.5 min-h-[196px]">
+                  {product.mockup.map((msg, i) => (
+                    <div key={i} className={`flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}>
+                      <div
+                        className="max-w-[85%] px-3 py-2 text-[12px] leading-relaxed"
+                        style={msg.from === 'user' ? {
+                          background: `${product.accentColor}28`,
+                          border: `1px solid ${product.accentColor}40`,
+                          color: '#F8FAFC',
+                          borderRadius: '12px 12px 3px 12px',
+                        } : {
+                          background: 'rgba(255,255,255,0.06)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          color: '#CBD5E1',
+                          borderRadius: '12px 12px 12px 3px',
+                        }}
+                      >
+                        {msg.text}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Input bar */}
+                <div
+                  className="flex items-center gap-2 px-3 py-3"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+                >
+                  <div
+                    className="flex-1 h-8 rounded-lg px-3 flex items-center text-[11px] text-[#475569]"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                  >
+                    Написать сообщение...
+                  </div>
+                  <div
+                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: product.accentColor }}
+                  >
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
+                  </div>
                 </div>
               </div>
-
-              <h3 className="text-xl font-bold text-[#F8FAFC] mb-2">AI-аналитика и дашборды</h3>
-              <p className="text-sm text-[#94A3B8] mb-5 leading-relaxed">
-                KPI-дашборды, отчеты и рекомендации руководителю
-              </p>
-
-              <ul className="space-y-2.5 mb-6 flex-1">
-                {['Дашборд KPI в реальном времени', 'AI-рекомендации руководителю', 'Алерты при просадках метрик'].map((feat, i) => (
-                  <li key={i} className="flex items-start gap-2.5">
-                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="8" r="8" fill="rgba(14,165,233,0.2)" />
-                      <path d="M5 8l2 2 4-4" stroke="#0EA5E9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="text-sm text-[#94A3B8]">{feat}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div
-                className="flex items-center justify-between pt-4 relative z-10"
-                style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
-              >
-                <span className="text-base font-bold text-gradient whitespace-nowrap">от $1 900</span>
-                <Link
-                  href="/products/ai-analytics"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    track('cta_click_product_card', {
-                      product: 'ai_analytics',
-                      location: 'home_products',
-                    });
-                  }}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-sky-400 hover:text-sky-300 transition-all duration-300 whitespace-nowrap"
-                >
-                  Подробнее
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </article>
-          </ScrollReveal>
+            </div>
+          </div>
         </div>
       </div>
     </section>

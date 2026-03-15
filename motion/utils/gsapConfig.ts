@@ -32,7 +32,7 @@ export const initGSAP = (): typeof gsap | null => {
     // Set global GSAP defaults
     gsap.defaults({
       ease: 'power2.out',
-      duration: 0.6,
+      duration: 0.3,
       force3D: true,           // Force GPU acceleration
       overwrite: 'auto'        // Prevent animation conflicts
     })
@@ -98,3 +98,11 @@ export const isGSAPInitialized = (): boolean => {
 
 // Export configured instances
 export { gsap, ScrollTrigger }
+
+// Guard: do not auto-init on import — wait for explicit getGSAP() call
+if (typeof window !== 'undefined' && document.readyState === 'complete') {
+  // Page already loaded — safe to init
+  initGSAP();
+} else if (typeof window !== 'undefined') {
+  window.addEventListener('load', () => initGSAP(), { once: true });
+}

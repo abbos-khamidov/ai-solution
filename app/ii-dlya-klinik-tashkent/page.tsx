@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ii-dlya-klinik-tashkent';
@@ -41,7 +42,12 @@ export default function IiDlyaKlinikTashkentPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для клиник в Ташкенте</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ИИ для клиник и медицины в Ташкенте</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">AI-бот для клиник и медцентров в Ташкенте — запись пациентов 24/7</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80"
+              alt="AI-бот для клиник в Ташкенте — автоматическая запись пациентов и ответы 24/7"
+              title="Внедрение искусственного интеллекта в медицинские центры Ташкента"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Клиники и медцентры в Ташкенте получают десятки звонков и сообщений в день: запись на приём, вопросы о услугах и ценах, напоминания. Администраторы не успевают обрабатывать заявки в нерабочее время, часть пациентов уходит к конкурентам. ИИ для клиник решает это: бот принимает запись 24/7, отвечает на частые вопросы по услугам и ценам, напоминает о визите и при необходимости передаёт сложные запросы оператору с контекстом. Так вы не теряете пациентов из-за занятой линии и разгружаете колл-центр.
             </p>

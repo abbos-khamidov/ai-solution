@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { MagneticButton } from '@/components/animations/MagneticButton';
-import { useGSAPContext } from '@/components/animations/useGSAPContext';
 import { HeroChatDemo } from '@/components/sections/HeroChatDemo';
 import { track } from '@/lib/analytics/gtag';
 
@@ -16,9 +15,9 @@ const floatingBadges = [
   { text: '📈 AI-аналитика и дашборды', delay: '2.2s', position: 'bottom-8 -right-2 lg:-right-8' },
 ];
 
-const STAT_VALUES = ['30 сек', '24/7', '3x', '500+'];
+const STAT_VALUES = ['30 сек', '24/7', '3x', '12+'];
 const HERO_SUBTITLE =
-  'AI анализирует продажи и маркетинг, собирает данные из ключевых источников и автоматизирует задачи.\nРуководитель получает рекомендации и управленческий обзор в реальном времени.';
+  'Пока менеджеры спят — бот квалифицирует лиды, отвечает клиентам и передаёт горячих в CRM. Внедрение за 10 дней.';
 const HERO_BENEFITS = [
   'Анализ продаж и маркетинга',
   'AI-аналитика и дашборд руководителя',
@@ -27,6 +26,7 @@ const HERO_BENEFITS = [
 export function Hero() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [revealed, setRevealed] = useState(false);
 
   const stats = [
     { value: STAT_VALUES[0], label: t('heroNew.stats.speed') },
@@ -37,38 +37,10 @@ export function Hero() {
   const bgShapesRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  useGSAPContext(
-    (gsap, container) => {
-      if (bgShapesRef.current) {
-        const shapes = bgShapesRef.current.children;
-        gsap.fromTo(
-          shapes,
-          { opacity: 0, scale: 0.8 },
-          { opacity: 1, scale: 1, duration: 1.4, stagger: 0.2, ease: 'power3.out' }
-        );
-      }
-
-      if (gridRef.current) {
-        gsap.fromTo(gridRef.current, { opacity: 0 }, { opacity: 1, duration: 2, ease: 'power2.out' });
-      }
-
-      if (bgShapesRef.current) {
-        const shapes = Array.from(bgShapesRef.current.children);
-        shapes.forEach((shape, i) => {
-          gsap.to(shape, {
-            y: (i + 1) * -50,
-            scrollTrigger: {
-              trigger: container,
-              start: 'top top',
-              end: 'bottom top',
-              scrub: 1.5,
-            },
-          });
-        });
-      }
-    },
-    { scope: sectionRef as React.RefObject<HTMLElement> }
-  );
+  useEffect(() => {
+    const t = setTimeout(() => setRevealed(true), 100);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <section
@@ -86,7 +58,7 @@ export function Hero() {
       {/* Animated CSS grid pattern */}
       <div
         ref={gridRef}
-        className="absolute inset-0 opacity-0"
+        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${revealed ? 'opacity-100' : 'opacity-0'}`}
         style={{
           zIndex: 1,
           backgroundImage: `
@@ -101,13 +73,13 @@ export function Hero() {
       {/* Glowing orbs */}
       <div
         ref={bgShapesRef}
-        className="absolute inset-0 pointer-events-none"
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-1000 ease-out ${revealed ? 'opacity-100' : 'opacity-0'}`}
         style={{ zIndex: 2 }}
         aria-hidden="true"
       >
         {/* Primary orb behind headline */}
         <div
-          className="absolute top-1/4 left-1/4 w-[600px] h-[600px] opacity-0"
+          className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] transition-all duration-700 ease-out ${revealed ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
           style={{
             background: 'radial-gradient(circle, rgba(59,130,246,0.15), transparent 70%)',
             filter: 'blur(80px)',
@@ -116,7 +88,7 @@ export function Hero() {
         />
         {/* Secondary orb */}
         <div
-          className="absolute -bottom-20 right-1/4 w-[500px] h-[500px] animate-morph animation-delay-2000 opacity-0"
+          className={`absolute -bottom-20 right-1/4 w-[500px] h-[500px] animate-morph animation-delay-2000 transition-all duration-700 ease-out delay-200 ${revealed ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
           style={{
             background: 'radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%)',
             filter: 'blur(60px)',
@@ -125,7 +97,7 @@ export function Hero() {
         />
         {/* Purple accent */}
         <div
-          className="absolute top-1/2 right-1/3 w-[300px] h-[300px] animate-morph animation-delay-4000 opacity-0"
+          className={`absolute top-1/2 right-1/3 w-[300px] h-[300px] animate-morph animation-delay-4000 transition-all duration-700 ease-out delay-300 ${revealed ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
           style={{
             background: 'radial-gradient(circle, rgba(124,58,237,0.08), transparent 70%)',
             filter: 'blur(60px)',
@@ -140,12 +112,8 @@ export function Hero() {
           {/* Left: Text Content */}
           <div className="text-center lg:text-left">
             <h1 className="text-[clamp(2.1rem,4.6vw,4rem)] leading-[1.05] tracking-[-0.03em] font-extrabold text-[#F8FAFC] mb-5 hyphens-none break-normal [text-wrap:balance]">
-              AI анализирует бизнес,<br />
-              находит потери и{' '}
-              <span className="text-gradient bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] bg-clip-text text-transparent">
-                автоматизирует процессы
-              </span>
-              .
+              Ваши клиенты пишут ночью.<br />
+              <span className="text-[#3B82F6]">AI отвечает за 30 секунд.</span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto lg:mx-0 mb-6 leading-relaxed whitespace-pre-line">
@@ -153,7 +121,7 @@ export function Hero() {
             </p>
 
             {/* CTA Button */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-4">
               <MagneticButton strength={0.3} radius={150}>
                 <Link
                   href="/ai-dlya-biznesa#audit"
@@ -176,6 +144,11 @@ export function Hero() {
                 Посмотреть решения
               </Link>
             </div>
+
+            {/* Social proof micro-line */}
+            <p className="flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-1 text-xs text-[#475569] mb-6">
+              ⚡ Внедрение за 10 дней · Ответ за 30 секунд · Окупаемость за 1 месяц
+            </p>
 
             {/* Stats row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0">

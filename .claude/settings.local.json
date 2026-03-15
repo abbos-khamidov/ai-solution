@@ -15,7 +15,8 @@
       "Bash(Write-Host \"Cleared\")",
       "WebSearch",
       "Bash(npx tsc:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(tail:*)"
     ]
   }
 }

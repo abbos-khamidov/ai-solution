@@ -1,13 +1,31 @@
 'use client';
 
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowRight, ChevronDown, Bot, Building2, Briefcase, LineChart } from 'lucide-react';
+import {
+  Menu, X, ArrowRight, ChevronDown, Send,
+  Bot, Building2, LineChart, BarChart3,
+  Heart, GraduationCap, Utensils, ShoppingBag,
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
 import { track } from '@/lib/analytics/gtag';
+
+const productLinks = [
+  { icon: Bot,       label: 'Customer Service Bot',  href: '/products/customer-service',    desc: 'Поддержка клиентов 24/7' },
+  { icon: LineChart, label: 'Management Assistant',  href: '/products/management-assistant', desc: 'Автоматизация менеджмента' },
+  { icon: Building2, label: 'Corporate AI (RAG)',    href: '/products/corporate-ai',         desc: 'Корпоративная база знаний' },
+  { icon: BarChart3, label: 'AI-аналитика',          href: '/products/ai-analytics',         desc: 'Аналитика и отчёты' },
+];
+
+const industryLinks = [
+  { icon: Heart,          label: 'Медицина',    href: '/industries/medicine',   desc: 'Клиники, аптеки, медцентры' },
+  { icon: GraduationCap,  label: 'Образование', href: '/industries/education',  desc: 'Школы, курсы, университеты' },
+  { icon: Utensils,       label: 'HoReCa',      href: '/industries/horeca',     desc: 'Рестораны, отели, кафе' },
+  { icon: ShoppingBag,    label: 'Ритейл',      href: '/industries/retail',     desc: 'Магазины, интернет-торговля' },
+];
 
 export function Header() {
   const { t } = useTranslation();
@@ -18,48 +36,16 @@ export function Header() {
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const productsRef = useRef<HTMLDivElement>(null);
 
-  const productLinks = useMemo(
-    () => [
-      { icon: Briefcase, label: 'AI для бизнеса', href: '/ai-dlya-biznesa' },
-      { icon: LineChart, label: 'AI-аналитика', href: '/products/ai-analytics' },
-      { icon: Bot, label: t('productsSection.product1Title'), href: '/products/customer-service' },
-      { icon: LineChart, label: t('productsSection.product2Title'), href: '/products/management-assistant' },
-      { icon: Building2, label: t('productsSection.product3Title'), href: '/products/corporate-ai' },
-    ],
-    [t]
-  );
-
   const isHomePage = pathname === '/';
   const isProductPage = pathname?.startsWith('/products/');
-
-  const isServicesPage = pathname?.startsWith('/services');
   const isBlogPage = pathname?.startsWith('/blog');
-  const isAboutPage = pathname?.startsWith('/about');
+  const isCasesPage = pathname?.startsWith('/cases');
 
   const otherNavLinks = [
-    {
-      label: t('nav.process'),
-      href: isHomePage ? '#process' : '/#process',
-    },
-    {
-      label: t('nav.about'),
-      href: '/about',
-      active: isAboutPage,
-    },
-    {
-      label: t('nav.services'),
-      href: '/services',
-      active: isServicesPage,
-    },
-    {
-      label: t('nav.blog'),
-      href: '/blog',
-      active: isBlogPage,
-    },
-    {
-      label: t('nav.contact'),
-      href: isHomePage ? '#contact' : '/#contact',
-    },
+    { label: t('nav.process'), href: isHomePage ? '#process' : '/#process' },
+    { label: 'Кейсы',          href: '/cases',  active: isCasesPage },
+    { label: t('nav.blog'),    href: '/blog',   active: isBlogPage },
+    { label: t('nav.contact'), href: isHomePage ? '#contact' : '/#contact' },
   ];
 
   const ctaHref = isHomePage ? '#contact' : '/#contact';
@@ -120,7 +106,7 @@ export function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16 md:h-[72px]">
+          <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
             <motion.div
@@ -141,7 +127,7 @@ export function Header() {
 
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-8">
-              {/* Products dropdown */}
+              {/* Solutions dropdown (mega-menu) */}
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -154,7 +140,7 @@ export function Header() {
                   onMouseLeave={() => setIsProductsOpen(false)}
                 >
                   <button
-                    className={`group relative flex items-center gap-1 text-[15px] font-medium transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm ${
+                    className={`group relative flex items-center gap-1 text-sm font-medium transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm ${
                       isProductPage ? 'text-white' : 'text-[#64748B] hover:text-white'
                     }`}
                     aria-haspopup="true"
@@ -162,11 +148,8 @@ export function Header() {
                   >
                     {t('nav.solutions')}
                     <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-300 ${
-                        isProductsOpen ? 'rotate-180' : ''
-                      }`}
+                      className={`w-4 h-4 transition-transform duration-300 ${isProductsOpen ? 'rotate-180' : ''}`}
                     />
-                    {/* Active indicator */}
                     {isProductPage && (
                       <span className="absolute left-0 -bottom-0.5 h-[2px] w-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4]" />
                     )}
@@ -179,7 +162,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -8, scale: 0.96 }}
                         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute top-full left-0 mt-2 w-64 rounded-xl p-2 z-[60]"
+                        className="absolute top-full left-0 mt-2 w-[480px] rounded-2xl p-4 z-[60]"
                         style={{
                           background: 'rgba(13, 13, 26, 0.97)',
                           backdropFilter: 'blur(20px)',
@@ -188,46 +171,64 @@ export function Header() {
                         }}
                         role="menu"
                       >
-                        {productLinks.map((product) => {
-                          const isActive = pathname === product.href;
-                          const isAiForBusiness = product.href === '/ai-dlya-biznesa';
-                          const isAiAnalytics = product.href === '/products/ai-analytics';
-                          return (
-                            <Link
-                              key={product.href}
-                              href={product.href}
-                              onClick={() => {
-                                if (isAiForBusiness) {
-                                  track('nav_click_ai_for_business', {
-                                    location: 'header_nav',
-                                    target: '/ai-dlya-biznesa',
-                                  });
-                                }
-                                if (isAiAnalytics) {
-                                  track('nav_click_product', {
-                                    product: 'ai_analytics',
-                                    location: 'header_dropdown',
-                                  });
-                                }
-                                setIsProductsOpen(false);
-                              }}
-                              role="menuitem"
-                              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${
-                                isActive
-                                  ? 'text-[#3B82F6] bg-[#3B82F6]/10'
-                                  : 'text-[#94A3B8] hover:bg-white/5 hover:text-white'
-                              }`}
-                            >
-                              <product.icon className="w-4 h-4 shrink-0" />
-                              <span>{product.label}</span>
-                            </Link>
-                          );
-                        })}
+                        <div className="grid grid-cols-2 gap-4">
+                          {/* Products column */}
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-2 px-2">Продукты</p>
+                            {productLinks.map((product) => {
+                              const isActive = pathname === product.href;
+                              return (
+                                <Link
+                                  key={product.href}
+                                  href={product.href}
+                                  onClick={() => {
+                                    track('nav_click_product', { product: product.label, location: 'header_dropdown' });
+                                    setIsProductsOpen(false);
+                                  }}
+                                  role="menuitem"
+                                  className={`flex items-start gap-3 px-2 py-2.5 rounded-xl transition-all duration-150 group ${
+                                    isActive ? 'bg-[#3B82F6]/10' : 'hover:bg-white/5'
+                                  }`}
+                                >
+                                  <product.icon className={`w-4 h-4 mt-0.5 shrink-0 transition-colors ${isActive ? 'text-[#3B82F6]' : 'text-[#64748B] group-hover:text-[#3B82F6]'}`} />
+                                  <div>
+                                    <p className={`text-sm font-medium transition-colors ${isActive ? 'text-[#3B82F6]' : 'text-[#94A3B8] group-hover:text-white'}`}>
+                                      {product.label}
+                                    </p>
+                                    <p className="text-xs text-[#475569]">{product.desc}</p>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+
+                          {/* Industries column */}
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-2 px-2">Отрасли</p>
+                            {industryLinks.map((industry) => (
+                              <Link
+                                key={industry.label}
+                                href={industry.href}
+                                onClick={() => setIsProductsOpen(false)}
+                                role="menuitem"
+                                className="flex items-start gap-3 px-2 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-150 group"
+                              >
+                                <industry.icon className="w-4 h-4 mt-0.5 shrink-0 text-[#64748B] group-hover:text-[#3B82F6] transition-colors" />
+                                <div>
+                                  <p className="text-sm font-medium text-[#94A3B8] group-hover:text-white transition-colors">
+                                    {industry.label}
+                                  </p>
+                                  <p className="text-xs text-[#475569]">{industry.desc}</p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
                   {isProductsOpen && (
-                    <div className="absolute top-full left-0 h-3 w-64" aria-hidden="true" />
+                    <div className="absolute top-full left-0 h-3 w-[480px]" aria-hidden="true" />
                   )}
                 </div>
               </motion.div>
@@ -236,7 +237,7 @@ export function Header() {
               {otherNavLinks.map((link, i) => {
                 const isInternal = link.href.startsWith('/');
                 const isActive = 'active' in link && link.active;
-                const cls = `group relative text-[15px] font-medium transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm ${
+                const cls = `group relative text-sm font-medium transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm ${
                   isActive ? 'text-white' : 'text-[#64748B] hover:text-white'
                 }`;
                 return (
@@ -244,11 +245,7 @@ export function Header() {
                     key={link.href}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.28 + i * 0.08,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
+                    transition={{ duration: 0.5, delay: 0.28 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {isInternal ? (
                       <Link href={link.href} className={cls}>
@@ -261,11 +258,7 @@ export function Header() {
                         )}
                       </Link>
                     ) : (
-                      <a
-                        href={link.href}
-                        onClick={(e) => scrollTo(e, link.href)}
-                        className={cls}
-                      >
+                      <a href={link.href} onClick={(e) => scrollTo(e, link.href)} className={cls}>
                         {link.label}
                         <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] transition-[width] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
                       </a>
@@ -284,6 +277,15 @@ export function Header() {
             >
               <LanguageSwitcher />
               <a
+                href="https://t.me/aisolution_uz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex items-center gap-1.5 px-4 py-2.5 text-[14px] font-medium rounded-lg border border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all duration-200 whitespace-nowrap"
+              >
+                <Send className="w-3.5 h-3.5" />
+                Telegram
+              </a>
+              <a
                 href={ctaHref}
                 onClick={(e) => scrollTo(e, ctaHref)}
                 className="relative inline-flex items-center gap-1.5 px-6 py-2.5 text-[14px] font-semibold rounded-lg overflow-hidden transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A]"
@@ -291,8 +293,7 @@ export function Header() {
                 <span
                   className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-r from-[#3B82F6] to-[#06B6D4]"
                   style={{
-                    WebkitMask:
-                      'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                     WebkitMaskComposite: 'xor',
                     maskComposite: 'exclude',
                   }}
@@ -332,11 +333,7 @@ export function Header() {
             className="fixed inset-0 z-50 bg-[#05050A] overflow-y-auto"
           >
             <div className="flex items-center justify-between h-16 px-6 border-b border-white/[0.06]">
-              <Link
-                href="/"
-                className="flex items-center gap-2"
-                onClick={() => setIsMobileOpen(false)}
-              >
+              <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileOpen(false)}>
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-sm">⚡</span>
                 </div>
@@ -366,9 +363,7 @@ export function Header() {
                 >
                   {t('nav.solutions')}
                   <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-300 ${
-                      isMobileProductsOpen ? 'rotate-180' : ''
-                    }`}
+                    className={`w-5 h-5 transition-transform duration-300 ${isMobileProductsOpen ? 'rotate-180' : ''}`}
                   />
                 </button>
 
@@ -381,41 +376,24 @@ export function Header() {
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <div
-                        className="mb-3 rounded-xl p-2"
-                        style={{ background: 'rgba(255,255,255,0.04)' }}
-                      >
+                      <div className="mb-3 rounded-xl p-2" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] px-2 py-1.5">Продукты</p>
                         {productLinks.map((product) => {
                           const isActive = pathname === product.href;
-                          const isAiForBusiness = product.href === '/ai-dlya-biznesa';
-                          const isAiAnalytics = product.href === '/products/ai-analytics';
                           return (
                             <Link
                               key={product.href}
                               href={product.href}
-                              onClick={() => {
-                                if (isAiForBusiness) {
-                                  track('nav_click_ai_for_business', {
-                                    location: 'header_nav',
-                                    target: '/ai-dlya-biznesa',
-                                  });
-                                }
-                                if (isAiAnalytics) {
-                                  track('nav_click_product', {
-                                    product: 'ai_analytics',
-                                    location: 'header_dropdown',
-                                  });
-                                }
-                                setIsMobileOpen(false);
-                              }}
-                              className={`flex items-center gap-3 px-3 py-3 rounded-lg text-[16px] font-medium transition-colors ${
-                                isActive
-                                  ? 'text-[#3B82F6]'
-                                  : 'text-[#94A3B8] hover:text-white'
+                              onClick={() => setIsMobileOpen(false)}
+                              className={`flex items-start gap-3 px-3 py-2.5 rounded-lg transition-colors ${
+                                isActive ? 'text-[#3B82F6]' : 'text-[#94A3B8] hover:text-white'
                               }`}
                             >
-                              <product.icon className="w-4 h-4 shrink-0" />
-                              <span>{product.label}</span>
+                              <product.icon className="w-4 h-4 shrink-0 mt-0.5" />
+                              <div>
+                                <p className="text-[15px] font-medium">{product.label}</p>
+                                <p className="text-xs text-[#475569]">{product.desc}</p>
+                              </div>
                             </Link>
                           );
                         })}
@@ -434,11 +412,7 @@ export function Header() {
                     key={link.href}
                     initial={{ opacity: 0, x: -16 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.1 + i * 0.06,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
+                    transition={{ duration: 0.4, delay: 0.1 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {isInternal ? (
                       <Link

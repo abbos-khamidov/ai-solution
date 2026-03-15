@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/chatbot-dlya-instagram';
@@ -72,8 +73,13 @@ export default function ChatbotDlyaInstagramPage() {
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Чатбот для Instagram в Ташкенте</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-              Чатбот для Instagram — автоответы 24/7
+              Чат-бот для Instagram в Ташкенте — автоответы в директе и квалификация клиентов
             </h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80"
+              alt="Чат-бот для Instagram в Ташкенте — автоответы в директе и квалификация клиентов"
+              title="Instagram автоматизация через AI-бот для бизнеса в Узбекистане"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Клиенты пишут в Direct в любое время — после поста, сторис или рекламы. Пока менеджер не онлайн, заявка
               может остыть или уйти к конкуренту. Чатбот для Instagram решает это: он отвечает в Direct за 30 секунд,

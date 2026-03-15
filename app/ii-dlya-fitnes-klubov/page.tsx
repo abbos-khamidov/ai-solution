@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ii-dlya-fitnes-klubov';
@@ -41,7 +42,12 @@ export default function IiDlyaFitnesKlubovPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для фитнес-клубов</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ИИ для фитнес-клубов и спортивных центров</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">AI для фитнес-клубов в Ташкенте — запись на тренировки и продление абонементов</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80"
+              alt="AI для фитнес-клубов в Ташкенте — автозапись на тренировки и продление абонементов"
+              title="AI автоматизация для фитнес-центров и спортивных клубов Ташкента"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Фитнес-клубы и спортивные центры в Ташкенте и Узбекистане получают заявки на запись в зал, на групповые занятия и персональные тренировки. Администратор не успевает отвечать в нерабочее время — часть потенциальных клиентов уходит к конкурентам. ИИ для фитнес-клубов решает это: бот принимает запись на занятия 24/7, консультирует по абонементам и ценам, напоминает о визите и при необходимости передаёт сложные запросы менеджеру с контекстом. В результате вы не теряете лидов из-за задержки ответа и разгружаете ресепшен в часы пик.
             </p>

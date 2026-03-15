@@ -41,7 +41,7 @@ export default function ChatgptDlyaBiznesaUzbekistanPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ChatGPT для бизнеса в Узбекистане</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ChatGPT для бизнеса в Узбекистане — интеграция</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ChatGPT для бизнеса в Узбекистане — корпоративный AI-ассистент под ваши задачи</h1>
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Публичный ChatGPT удобен для личных задач, но не знает ваших продуктов, цен и процессов и не встроен в мессенджеры и CRM. ChatGPT для бизнеса — это интеграция возможностей больших языковых моделей (LLM) под вашу компанию: ИИ обучается на ваших данных или получает доступ к базе знаний (RAG), работает в Telegram, на сайте и при необходимости в других каналах, квалифицирует лидов и передаёт их в CRM. В Узбекистане мы внедряем такие решения в Ташкенте и по всей стране: от чатбота для продаж до корпоративной базы знаний.
             </p>

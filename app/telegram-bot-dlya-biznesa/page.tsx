@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/telegram-bot-dlya-biznesa';
@@ -72,8 +73,13 @@ export default function TelegramBotDlyaBiznesaPage() {
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Telegram-бот для бизнеса в Узбекистане</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-              Telegram-бот для бизнеса — автоматизация продаж
+              Telegram-бот для бизнеса в Ташкенте — квалификация лидов 24/7
             </h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80"
+              alt="Telegram-бот для бизнеса в Ташкенте — квалификация лидов и автоответы клиентам"
+              title="Создание Telegram-ботов для автоматизации продаж в Узбекистане"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               В Узбекистане Telegram остаётся одним из главных каналов общения с клиентами: заявки приходят в любое
               время, а ручная обработка съедает время менеджеров и создаёт задержки в ответах. Telegram-бот для бизнеса

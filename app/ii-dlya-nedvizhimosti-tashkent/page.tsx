@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ii-dlya-nedvizhimosti-tashkent';
@@ -40,7 +41,12 @@ export default function IiDlyaNedvizhimostiTashkentPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для недвижимости в Ташкенте</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ИИ для агентств недвижимости Ташкента</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">AI для агентств недвижимости в Ташкенте — квалификация покупателей автоматически</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
+              alt="AI для недвижимости в Ташкенте — автоматическая квалификация покупателей и арендаторов"
+              title="Внедрение AI в агентства недвижимости Ташкента"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Агентства недвижимости в Ташкенте получают десятки обращений в день: в мессенджерах, на сайте, по телефону. Пока агент не успевает ответить, клиент может уйти к конкуренту или потерять интерес. ИИ для недвижимости решает это: бот отвечает за 30 секунд, уточняет бюджет и критерии, квалифицирует лида (аренда/покупка, срочность) и либо подбирает объекты по базе, либо передаёт горячего клиента агенту с готовым контекстом. Запись на просмотр и ответы на типовые вопросы — круглосуточно, без потерь лидов.
             </p>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createAlternates } from '@/lib/seo';
 
@@ -46,8 +47,8 @@ const articleSchema = {
     name: 'AI Solution',
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
   },
-  datePublished: '2025-02-10',
-  dateModified: '2025-02-22',
+  datePublished: '2026-03-15',
+  dateModified: '2026-03-15',
   url: `${SITE_URL}/blog/${SLUG}`,
   inLanguage: 'ru',
   image: `${SITE_URL}/og-image.png`,
@@ -103,6 +104,16 @@ export default function Page() {
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
                 Что такое ИИ автоматизация бизнеса
               </h2>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
+                <Image
+                  src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80"
+                  alt="ИИ автоматизация бизнеса в Узбекистане 2026"
+                  title="ИИ автоматизация бизнеса в Узбекистане 2026"
+                  fill
+                  className="object-cover opacity-70"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
               <p>
                 ИИ автоматизация бизнеса — это применение технологий искусственного интеллекта для
                 выполнения рутинных бизнес-процессов без участия человека. В отличие от обычной

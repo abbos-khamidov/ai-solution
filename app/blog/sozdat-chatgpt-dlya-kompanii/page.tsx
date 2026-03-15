@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createAlternates } from '@/lib/seo';
 
@@ -45,8 +46,8 @@ const articleSchema = {
     name: 'AI Solution',
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
   },
-  datePublished: '2025-02-01',
-  dateModified: '2025-02-22',
+  datePublished: '2026-03-15',
+  dateModified: '2026-03-15',
   url: `${SITE_URL}/blog/${SLUG}`,
   image: `${SITE_URL}/og-image.png`,
   inLanguage: 'ru',
@@ -97,6 +98,16 @@ export default function Page() {
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
                 ChatGPT против корпоративного AI: в чём принципиальная разница
               </h2>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
+                <Image
+                  src="https://images.unsplash.com/photo-1676277791608-ac54525aa94d?w=800&q=80"
+                  alt="Создание корпоративного ChatGPT для компании"
+                  title="Создание корпоративного ChatGPT для компании"
+                  fill
+                  className="object-cover opacity-70"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
               <p>
                 Публичный ChatGPT обучен на данных всего интернета — миллиардах страниц текста.
                 Это его сила и одновременно главный недостаток для бизнеса. Он не знает ваш

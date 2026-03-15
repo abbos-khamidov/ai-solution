@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/crm-integraciya-tashkent';
@@ -41,7 +42,12 @@ export default function CrmIntegraciyaTashkentPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Интеграция ИИ с CRM в Ташкенте</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Интеграция ИИ с CRM системами в Ташкенте</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Интеграция AI-бота с CRM в Ташкенте — Bitrix24, amoCRM, 1C</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+              alt="CRM интеграция с AI-ботом в Ташкенте — Bitrix24 amoCRM 1C подключение"
+              title="Интеграция AI-ботов с CRM системами в Узбекистане"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               ИИ-бот принимает заявки в Telegram, Instagram и на сайте, квалифицирует лидов и передаёт горячих менеджерам. Чтобы менеджеры не дублировали работу и видели полную картину, бота интегрируют с CRM: лиды и диалоги попадают в Bitrix24, amoCRM, 1С или другую систему. Менеджер получает уведомление с контекстом и сразу видит историю переписки в карточке лида. В Ташкенте и Узбекистане мы настраиваем интеграцию ИИ с популярными CRM под ваши процессы — единая воронка, без потери контекста и двойного ввода.
             </p>

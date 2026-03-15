@@ -4,139 +4,131 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Mail, Phone, Send, MessageCircle, Instagram, Linkedin } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
 const CONTACT_EMAIL = 'info@aisolution.uz';
-const CONTACT_PHONES = [
-  '+998 77 061 22 00',
-  '+998 95 000 00 65',
-  '+998 93 949 20 00',
-];
+const CONTACT_PHONE = '+998 77 061 22 00';
+const CONTACT_PHONES = ['+998 77 061 22 00', '+998 95 000 00 65', '+998 93 949 20 00'];
 const CONTACT_TG = '@aisolution_uz';
-const CONTACT_ADDRESS = 'ул. Афросиёб 35, Ташкент, Узбекистан';
+const CONTACT_ADDRESS = 'ул. Афросиёб 35, Ташкент';
+
+const productLinks = [
+  { label: 'Customer Service Bot',  href: '/products/customer-service' },
+  { label: 'Management Assistant',  href: '/products/management-assistant' },
+  { label: 'Corporate AI (RAG)',     href: '/products/corporate-ai' },
+  { label: 'AI-аналитика',          href: '/products/ai-analytics' },
+];
+
+const companyLinks = [
+  { label: 'О нас',   href: '/about' },
+  { label: 'Блог',    href: '/blog' },
+  { label: 'Кейсы',   href: '/cases' },
+];
+
+const colHeadClass = 'text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-4';
+const linkClass = 'text-sm text-[#94A3B8] hover:text-white transition-colors duration-200';
 
 export function Footer() {
-  const { t } = useTranslation();
   const [showContacts, setShowContacts] = useState(false);
-
-  const footerLinks: {
-    categoryKey: string;
-    links: { labelKey?: string; label?: string; href: string; contacts?: boolean }[];
-  }[] = [
-    {
-      categoryKey: 'nav.solutions',
-      links: [
-        { label: 'AI для бизнеса', href: '/ai-dlya-biznesa' },
-        { labelKey: 'footer.howItWorks', href: '#process' },
-        { labelKey: 'footer.products', href: '#products' },
-        { labelKey: 'footer.services', href: '/services' },
-        { label: 'Сравнение решений', href: '/sravnenie-ai-reshenii-uzbekistan' },
-        { label: 'Автоматизация в Узбекистане', href: '/biznes-avtomatizaciya-uzbekistan' },
-        { label: 'ChatGPT для бизнеса', href: '/chatgpt-dlya-biznesa-uzbekistan' },
-        { label: 'ИИ автоматизация', href: '/ii-avtomatizaciya' },
-      ],
-    },
-    {
-      categoryKey: 'footer.company',
-      links: [
-        { labelKey: 'footer.about', href: '/about' },
-        { labelKey: 'footer.blog', href: '/blog' },
-        { labelKey: 'footer.contacts', href: '#contact', contacts: true },
-        { labelKey: 'footer.tashkent', href: '/tashkent' },
-      ],
-    },
-  ];
 
   return (
     <>
       <footer className="relative" style={{ background: '#05050A' }}>
         <div className="h-px bg-gradient-to-r from-transparent via-[#3B82F6]/30 to-transparent" />
 
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 mb-12">
-            {/* Brand column */}
+        <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+
+            {/* Column 1: Brand */}
             <div>
               <div className="flex items-center gap-2.5 mb-4">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center">
                   <span className="text-white font-bold text-xs tracking-tight">AI</span>
                 </div>
-                <span className="font-bold text-lg tracking-tight text-[#F8FAFC]">
-                  AI Solution
-                </span>
+                <span className="font-bold text-lg tracking-tight text-[#F8FAFC]">AI Solution</span>
               </div>
-              <p className="text-sm text-[#64748B] leading-relaxed">
-                {t('footer.tagline')}
+              <p className="text-sm text-[#64748B] leading-relaxed mb-5">
+                Автоматизация продаж и клиентского сервиса через AI. Работаем с бизнесом в Узбекистане и СНГ.
               </p>
-              <div className="mt-4 flex items-center gap-3">
-                <a href="https://t.me/aisolution_uz" target="_blank" rel="noopener noreferrer" className="text-[#64748B] hover:text-[#F8FAFC] transition-colors" aria-label="Telegram">
-                  <MessageCircle className="w-5 h-5" />
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://t.me/aisolution_uz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegram"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] text-[#64748B] hover:text-white transition-all duration-200"
+                >
+                  <MessageCircle className="w-4 h-4" />
                 </a>
-                <a href="https://www.instagram.com/aisolution_uz/" target="_blank" rel="noopener noreferrer" className="text-[#64748B] hover:text-[#F8FAFC] transition-colors" aria-label="Instagram">
-                  <Instagram className="w-5 h-5" />
+                <a
+                  href="https://www.instagram.com/aisolution_uz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] text-[#64748B] hover:text-white transition-all duration-200"
+                >
+                  <Instagram className="w-4 h-4" />
                 </a>
-                <a href="https://www.linkedin.com/company/aisolution-uz" target="_blank" rel="noopener noreferrer" className="text-[#64748B] hover:text-[#F8FAFC] transition-colors" aria-label="LinkedIn">
-                  <Linkedin className="w-5 h-5" />
+                <a
+                  href="https://www.linkedin.com/company/aisolution-uz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] text-[#64748B] hover:text-white transition-all duration-200"
+                >
+                  <Linkedin className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
-            {footerLinks.map(({ categoryKey, links }) => (
-              <div key={categoryKey}>
-                <h4 className="text-sm font-semibold text-[#F8FAFC] mb-4">{t(categoryKey)}</h4>
-                <ul className="space-y-2.5">
-                  {links.map((link) =>
-                    link.contacts ? (
-                      <li key={link.labelKey ?? link.label}>
-                        <button
-                          onClick={() => setShowContacts(true)}
-                          className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200 text-left"
-                        >
-                          {link.label ?? (link.labelKey ? t(link.labelKey) : '')}
-                        </button>
-                      </li>
-                    ) : link.href.startsWith('/') ? (
-                      <li key={link.labelKey ?? link.label}>
-                        <Link
-                          href={link.href}
-                          className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200"
-                        >
-                          {link.label ?? (link.labelKey ? t(link.labelKey) : '')}
-                        </Link>
-                      </li>
-                    ) : (
-                      <li key={link.labelKey ?? link.label}>
-                        <a
-                          href={link.href}
-                          className="text-sm text-[#64748B] hover:text-[#F8FAFC] transition-colors duration-200"
-                        >
-                          {link.label ?? (link.labelKey ? t(link.labelKey) : '')}
-                        </a>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </div>
-            ))}
-
-            {/* NAP column */}
+            {/* Column 2: Products */}
             <div>
-              <h4 className="text-sm font-semibold text-[#F8FAFC] mb-4">Контакты</h4>
-              <ul className="space-y-2 text-sm text-[#64748B]">
-                {CONTACT_PHONES.map((phone) => (
-                  <li key={phone}>
-                    <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:text-[#F8FAFC] transition-colors">
-                      {phone}
-                    </a>
+              <h4 className={colHeadClass}>Продукты</h4>
+              <ul className="space-y-2.5">
+                {productLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className={linkClass}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3: Company */}
+            <div>
+              <h4 className={colHeadClass}>Компания</h4>
+              <ul className="space-y-2.5">
+                {companyLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className={linkClass}>{link.label}</Link>
                   </li>
                 ))}
                 <li>
-                  <a href="https://t.me/aisolution_uz" target="_blank" rel="noopener noreferrer" className="hover:text-[#F8FAFC] transition-colors">
-                    {CONTACT_TG}
+                  <button
+                    onClick={() => setShowContacts(true)}
+                    className={`${linkClass} text-left`}
+                  >
+                    Контакты
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: Contacts */}
+            <div>
+              <h4 className={colHeadClass}>Контакты</h4>
+              <ul className="space-y-2.5 text-sm text-[#94A3B8]">
+                <li>
+                  <a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`} className="hover:text-white transition-colors">
+                    {CONTACT_PHONE}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-[#F8FAFC] transition-colors">
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
                     {CONTACT_EMAIL}
+                  </a>
+                </li>
+                <li>
+                  <a href="https://t.me/aisolution_uz" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    {CONTACT_TG}
                   </a>
                 </li>
                 <li>{CONTACT_ADDRESS}</li>
@@ -144,16 +136,25 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Bottom bar */}
           <div
-            className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
-            style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
+            className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
           >
-            <p className="text-xs text-[#64748B]">
-              &copy; {new Date().getFullYear()} AI Solution. {t('footer.rights')}
-            </p>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-xs text-[#64748B] hover:text-[#F8FAFC] transition-colors">
-              {CONTACT_EMAIL}
-            </a>
+            <p className="text-xs text-[#475569]">&copy; 2026 AI Solution</p>
+            <div className="flex items-center gap-4">
+              <a href="/privacy" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
+                Политика конфиденциальности
+              </a>
+              <span className="text-[#334155]">·</span>
+              <Link href="/security" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
+                Условия работы
+              </Link>
+              <span className="text-[#334155]">·</span>
+              <a href="/offer" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
+                Договор оферты
+              </a>
+            </div>
           </div>
         </div>
       </footer>
@@ -162,7 +163,6 @@ export function Footer() {
       <AnimatePresence>
         {showContacts && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               initial={{ opacity: 0 }}
@@ -172,8 +172,6 @@ export function Footer() {
               className="fixed inset-0 z-[80] bg-black/60 backdrop-blur-sm"
               onClick={() => setShowContacts(false)}
             />
-
-            {/* Modal */}
             <motion.div
               key="modal"
               initial={{ opacity: 0, scale: 0.92, y: 20 }}
@@ -191,7 +189,6 @@ export function Footer() {
                   boxShadow: '0 24px 64px rgba(0,0,0,0.6), 0 0 40px rgba(59,130,246,0.08)',
                 }}
               >
-                {/* Close button */}
                 <button
                   onClick={() => setShowContacts(false)}
                   className="absolute top-4 right-4 p-1.5 rounded-lg text-[#64748B] hover:text-white hover:bg-white/10 transition-colors"
@@ -199,10 +196,9 @@ export function Footer() {
                   <X className="w-4 h-4" />
                 </button>
 
-                <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">{t('footer.contactUsTitle')}</h3>
+                <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">Свяжитесь с нами</h3>
                 <p className="text-sm text-[#64748B] mb-5">Позвоните, напишите в Telegram или на почту</p>
 
-                {/* Phones group */}
                 <div
                   className="rounded-xl p-4 space-y-2.5 mb-3"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
@@ -224,7 +220,6 @@ export function Footer() {
                   ))}
                 </div>
 
-                {/* TG + Email group */}
                 <div className="space-y-2.5">
                   <a
                     href="https://t.me/aisolution_uz"
@@ -238,7 +233,6 @@ export function Footer() {
                     </div>
                     <span className="text-[#F8FAFC] font-medium text-[15px]">{CONTACT_TG}</span>
                   </a>
-
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
                     className="flex items-center gap-4 p-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"

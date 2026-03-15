@@ -93,7 +93,7 @@ const plans: PricingPlan[] = [
 
 export function SimplePricingSection() {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden" id="pricing" style={{ background: '#0D0D1A' }}>
+    <section className="relative py-12 md:py-14 overflow-hidden" id="pricing" style={{ background: '#0D0D1A' }}>
       <div className="absolute inset-0" aria-hidden="true">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
@@ -105,7 +105,7 @@ export function SimplePricingSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
-        <ScrollReveal duration={0.6}>
+        <ScrollReveal duration={0.3}>
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
               Инвестиция в рост, а не расход на IT
@@ -118,7 +118,7 @@ export function SimplePricingSection() {
 
         <PricingCards plans={plans} defaultCtaHref="#contact" />
 
-        <ScrollReveal duration={0.6} delay={0.4}>
+        <ScrollReveal duration={0.3} delay={0.4}>
           <div className="mt-12 text-center max-w-2xl mx-auto">
             <div
               className="rounded-xl p-5 text-sm text-[#94A3B8] leading-relaxed"

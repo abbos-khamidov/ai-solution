@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createAlternates } from '@/lib/seo';
 
@@ -46,8 +47,8 @@ const articleSchema = {
     name: 'AI Solution',
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
   },
-  datePublished: '2025-02-15',
-  dateModified: '2025-02-22',
+  datePublished: '2026-03-15',
+  dateModified: '2026-03-15',
   url: `${SITE_URL}/blog/${SLUG}`,
   inLanguage: 'ru',
   image: `${SITE_URL}/og-image.png`,
@@ -103,6 +104,16 @@ export default function Page() {
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
                 Что такое LLM простыми словами
               </h2>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
+                <Image
+                  src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80"
+                  alt="LLM бот менеджер в Telegram для бизнеса"
+                  title="LLM бот менеджер в Telegram для бизнеса"
+                  fill
+                  className="object-cover opacity-70"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
               <p>
                 LLM (Large Language Model — большая языковая модель) — это тип искусственного
                 интеллекта, обученный на огромных массивах текстов. Именно на LLM работают

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ii-dlya-restoranov-tashkent';
@@ -41,7 +42,12 @@ export default function IiDlyaRestoranovTashkentPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для ресторанов в Ташкенте</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ИИ для ресторанов и кафе Ташкента</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">AI-бот для ресторанов в Ташкенте — приём заказов и бронирование столов</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
+              alt="AI-бот для ресторанов в Ташкенте — автоматический приём заказов и бронирование"
+              title="Автоматизация ресторанного бизнеса через AI в Ташкенте"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Рестораны и кафе в Ташкенте получают заявки на бронирование столов и заказы на доставку в мессенджерах и по телефону. Администратор не успевает отвечать в пиковые часы и ночью — часть гостей выбирает другую точку. ИИ для ресторанов решает это: бот принимает брони столов 24/7, уточняет дату, время и количество гостей, при необходимости принимает заказы на доставку по меню и передаёт заявку в кухню или учётную систему. Отвечает на вопросы о меню, часах работы и адресе. В результате вы не теряете гостей из-за занятой линии и разгружаете администратора в часы пик.
             </p>

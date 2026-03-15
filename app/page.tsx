@@ -3,7 +3,9 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
+import { ClientLogos } from '@/components/sections/ClientLogos';
 import { FaqSchema } from '@/components/seo/FaqSchema';
+import { RoiCalculator } from '@/components/sections/RoiCalculator';
 
 const SITE_URL = 'https://aisolution.uz';
 
@@ -72,9 +74,6 @@ export const metadata: Metadata = {
   },
 };
 
-const WeAreSection = dynamic(() =>
-  import('@/components/sections/WeAreSection').then((m) => m.WeAreSection)
-);
 const ProblemSection = dynamic(() =>
   import('@/components/sections/ProblemSection').then((m) => m.ProblemSection)
 );
@@ -105,53 +104,14 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <WeAreSection />
+        <ClientLogos />
         <ProblemSection />
         <SolutionSection />
         <ProductsSection />
         <SocialProofSection />
         <SimplePricingSection />
-        <section className="bg-[#05050A] px-4 md:px-6 py-6">
-          <div className="max-w-6xl mx-auto rounded-2xl p-6 md:p-8 border border-[#3B82F6]/30 bg-[#3B82F6]/10">
-            <p className="text-xl md:text-2xl font-bold text-white">
-              Хотите понять, где бизнес теряет деньги? Получите AI-аудит.
-            </p>
-            <Link
-              href="/ai-dlya-biznesa"
-              className="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold"
-            >
-              Перейти к AI-аудиту
-            </Link>
-          </div>
-        </section>
-        <section className="bg-[#05050A] px-4 md:px-6 py-12">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-6">
-              Подходит для бизнеса любого масштаба
-            </h2>
-            <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[#94A3B8]">
-              <li>• малый бизнес и локальные компании</li>
-              <li>• сети учебных центров и клиник</li>
-              <li>• агентства и сервисные компании</li>
-              <li>• производственные и торговые фирмы</li>
-              <li>• компании с отделом продаж</li>
-            </ul>
-            <p className="mt-5 text-sm text-[#64748B] max-w-lg mx-auto">
-              Если у вас есть клиенты, заявки или сотрудники — AI&nbsp;Solution уже может приносить вам результат.
-            </p>
-            <div className="mt-10">
-              <h3 className="text-lg font-semibold text-[#F8FAFC] mb-4">Решения по отраслям</h3>
-              <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
-                <li><Link href="/ii-dlya-klinik-tashkent" className="text-[#93C5FD] hover:underline">ИИ для клиник</Link></li>
-                <li><Link href="/ii-dlya-nedvizhimosti-tashkent" className="text-[#93C5FD] hover:underline">ИИ для недвижимости</Link></li>
-                <li><Link href="/ii-dlya-restoranov-tashkent" className="text-[#93C5FD] hover:underline">ИИ для ресторанов</Link></li>
-                <li><Link href="/ii-dlya-logistiki-uzbekistan" className="text-[#93C5FD] hover:underline">ИИ для логистики</Link></li>
-                <li><Link href="/ii-dlya-yuridicheskih-uslug" className="text-[#93C5FD] hover:underline">ИИ для юруслуг</Link></li>
-                <li><Link href="/crm-integraciya-tashkent" className="text-[#93C5FD] hover:underline">Интеграция с CRM</Link></li>
-              </ul>
-            </div>
-          </div>
-        </section>
+        <RoiCalculator />
+        <ContactSection />
         <section className="bg-[#05050A] px-4 md:px-6 py-6">
           <div className="max-w-6xl mx-auto rounded-2xl p-5 md:p-6 border border-white/10 bg-white/[0.02] flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-lg font-semibold text-[#F8FAFC] text-center sm:text-left">
@@ -167,7 +127,6 @@ export default function HomePage() {
             </a>
           </div>
         </section>
-        <ContactSection />
       </main>
       <Footer />
     </>

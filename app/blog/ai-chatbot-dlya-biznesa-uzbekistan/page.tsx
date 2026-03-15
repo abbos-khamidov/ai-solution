@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createAlternates } from '@/lib/seo';
 
@@ -46,7 +47,7 @@ const articleSchema = {
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` },
   },
   datePublished: '2025-01-25',
-  dateModified: '2025-02-22',
+  dateModified: '2026-03-15',
   url: `${SITE_URL}/blog/${SLUG}`,
   image: `${SITE_URL}/og-image.png`,
   inLanguage: 'ru',
@@ -96,6 +97,16 @@ export default function Page() {
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
                 Что такое AI чат-бот и чем он отличается от обычного бота
               </h2>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
+                <Image
+                  src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80"
+                  alt="AI чат-бот для бизнеса в Узбекистане"
+                  title="AI чат-бот для бизнеса в Узбекистане"
+                  fill
+                  className="object-cover opacity-70"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
               <p>
                 Обычный чат-бот работает по жёсткому сценарию: клиент выбирает из кнопок, бот
                 выдаёт заранее написанный ответ. Такие боты решают только те вопросы, которые

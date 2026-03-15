@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/ii-dlya-obrazovaniya-tashkent';
@@ -40,7 +41,12 @@ export default function IiDlyaObrazovaniyaTashkentPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для образования в Ташкенте</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">ИИ для образовательных центров Ташкента</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">AI для учебных центров в Ташкенте — запись студентов и ответы 24/7</h1>
+            <LandingHeroImage
+              src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80"
+              alt="AI для учебных центров в Ташкенте — автоматическая запись студентов и ответы 24/7"
+              title="AI автоматизация для образовательных учреждений Ташкента"
+            />
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Учебные центры и образовательные проекты в Ташкенте получают заявки в Telegram, на сайте и по телефону. Пока менеджер не ответил, абитуриент может выбрать другую школу или потерять интерес. ИИ для образования решает это: бот отвечает за 30 секунд, консультирует по курсам и форматам, записывает на пробное занятие или консультацию и квалифицирует лидов. Горячих передаёт менеджеру с контекстом. Руководитель при необходимости получает сводки по воронке. Реальный кейс — Studify.uz: ускорение ответа и прозрачная квалификация лидов.
             </p>

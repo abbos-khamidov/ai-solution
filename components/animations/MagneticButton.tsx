@@ -2,24 +2,16 @@
 
 /**
  * MagneticButton - DIV wrapper that applies magnetic cursor effect to children.
- * Always renders a <div> — never a <button> — to avoid nested interactive elements.
- * Children are responsible for their own semantics (button, a, etc.).
- * GPU-accelerated with transform3d.
+ * Uses CSS transform + requestAnimationFrame (no GSAP).
  */
 
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { useIsomorphicLayoutEffect } from '@/motion/utils/ssrGuard';
-import { getGSAP } from '@/motion/utils/gsapConfig';
-import { getAnimationLevel } from '@/motion/utils/performance';
-import { AnimationLevel } from '@/motion/types/animations';
 
 interface MagneticButtonProps {
   children: React.ReactNode;
-  /** Magnetic pull strength (0-1) */
   strength?: number;
-  /** Radius of magnetic effect in pixels */
   radius?: number;
-  /** Additional className */
   className?: string;
   style?: React.CSSProperties;
 }
@@ -34,15 +26,9 @@ export function MagneticButton({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
 
-  const animLevel = typeof window !== 'undefined' ? getAnimationLevel() : AnimationLevel.FULL;
-  const isAnimated = animLevel === AnimationLevel.FULL;
-
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
-      if (!isAnimated || !wrapperRef.current) return;
-
-      const gsapInstance = getGSAP();
-      if (!gsapInstance) return;
+      if (!wrapperRef.current) return;
 
       const rect = wrapperRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
@@ -54,82 +40,54 @@ export function MagneticButton({
 
       if (distance < radius) {
         const pull = (1 - distance / radius) * strength;
-
-        gsapInstance.to(wrapperRef.current, {
-          x: distX * pull,
-          y: distY * pull,
-          duration: 0.4,
-          ease: 'power3.out',
-          overwrite: true,
-        });
-
+        const x = distX * pull;
+        const y = distY * pull;
+        wrapperRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         if (innerRef.current) {
-          gsapInstance.to(innerRef.current, {
-            x: distX * pull * 0.5,
-            y: distY * pull * 0.5,
-            duration: 0.4,
-            ease: 'power3.out',
-            overwrite: true,
-          });
+          innerRef.current.style.transform = `translate3d(${x * 0.5}px, ${y * 0.5}px, 0)`;
         }
       }
     },
-    [isAnimated, radius, strength]
+    [radius, strength]
   );
 
   const handleMouseLeave = useCallback(() => {
-    if (!isAnimated || !wrapperRef.current) return;
-
-    const gsapInstance = getGSAP();
-    if (!gsapInstance) return;
-
-    gsapInstance.to(wrapperRef.current, {
-      x: 0,
-      y: 0,
-      duration: 0.6,
-      ease: 'elastic.out(1, 0.4)',
-      overwrite: true,
-    });
-
-    if (innerRef.current) {
-      gsapInstance.to(innerRef.current, {
-        x: 0,
-        y: 0,
-        duration: 0.6,
-        ease: 'elastic.out(1, 0.4)',
-        overwrite: true,
-      });
+    if (wrapperRef.current) {
+      wrapperRef.current.style.transform = 'translate3d(0, 0, 0)';
     }
-  }, [isAnimated]);
+    if (innerRef.current) {
+      innerRef.current.style.transform = 'translate3d(0, 0, 0)';
+    }
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
-    if (!isAnimated) return;
-
     const el = wrapperRef.current;
     if (!el) return;
 
     const onMove = (e: MouseEvent) => handleMouseMove(e);
-    const onLeave = () => handleMouseLeave();
-
-    el.addEventListener('mouseleave', onLeave);
+    el.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('mousemove', onMove);
 
     return () => {
       window.removeEventListener('mousemove', onMove);
-      el.removeEventListener('mouseleave', onLeave);
+      el.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [isAnimated, handleMouseMove, handleMouseLeave]);
+  }, [handleMouseMove, handleMouseLeave]);
 
   return (
     <div
       ref={wrapperRef}
-      className={`magnetic-wrapper inline-block will-change-transform ${className}`}
+      className={`inline-block will-change-transform ${className}`}
       style={{
         ...style,
-        transform: 'translate3d(0, 0, 0)',
+        transition: 'transform 0.4s ease-out',
       }}
     >
-      <div ref={innerRef} className="magnetic-inner inline-block will-change-transform">
+      <div
+        ref={innerRef}
+        className="inline-block will-change-transform"
+        style={{ transition: 'transform 0.4s ease-out' }}
+      >
         {children}
       </div>
     </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createAlternates } from '@/lib/seo';
 
@@ -30,8 +31,8 @@ const articleSchema = {
   description: DESCRIPTION,
   author: { '@type': 'Organization', name: 'AI Solution', url: SITE_URL },
   publisher: { '@type': 'Organization', name: 'AI Solution', logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` } },
-  datePublished: '2025-03-05',
-  dateModified: '2025-03-11',
+  datePublished: '2026-03-15',
+  dateModified: '2026-03-15',
   url: `${SITE_URL}/blog/${SLUG}`,
   image: `${SITE_URL}/og-image.png`,
   inLanguage: 'ru',
@@ -69,6 +70,16 @@ export default function Page() {
           <article className="space-y-8 text-[#94A3B8] leading-relaxed text-base md:text-lg">
             <section className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">Из чего складывается ROI</h2>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
+                <Image
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                  alt="ROI от внедрения AI автоматизации в бизнес"
+                  title="ROI от внедрения AI автоматизации в бизнес"
+                  fill
+                  className="object-cover opacity-70"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
               <p>
                 Окупаемость внедрения ИИ складывается из нескольких факторов. Первый — сохранённые лиды: заявки, которые раньше терялись ночью и в выходные, теперь обрабатываются ботом и часть из них конвертируется в сделки. Второй — время менеджеров: они тратят меньше часов на первичный отбор и типовые ответы и больше — на закрытие сделок. Третий — скорость ответа: клиент получает реакцию за 30 секунд вместо часов; это повышает конверсию из обращения в диалог и в сделку. Четвёртый — масштаб без линейного роста штата: один бот обрабатывает десятки обращений параллельно.
               </p>

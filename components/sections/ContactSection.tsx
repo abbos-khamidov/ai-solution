@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, CheckCircle, Phone, Mail } from 'lucide-react';
+import { Send, CheckCircle, Shield, Server, FileText, Clock, Phone, Mail, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
 
@@ -15,9 +14,29 @@ const CONTACT_PHONES = [
 ];
 const CONTACT_TG = '@aisolution_uz';
 
+const TRUST_BLOCKS = [
+  {
+    icon: Shield,
+    text: 'NDA до начала работы — подписываем соглашение о конфиденциальности перед стартом',
+  },
+  {
+    icon: Server,
+    text: 'Данные на вашем сервере — on-premise вариант, ваши данные не покидают вашу инфраструктуру',
+  },
+  {
+    icon: FileText,
+    text: 'Официальный договор по законам РУз — предоплата 50% + постоплата 50% после сдачи',
+  },
+  {
+    icon: Clock,
+    text: 'Ответ за 30 минут — в рабочее время по Telegram или email',
+  },
+];
+
 export function ContactSection() {
   const { t } = useTranslation();
   const [name, setName] = useState('');
+  const [business, setBusiness] = useState('');
   const [contact, setContact] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,10 +50,14 @@ export function ContactSection() {
       await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.trim(), contact: contact.trim() }),
+        body: JSON.stringify({
+          name: name.trim(),
+          contact: contact.trim(),
+          business: business.trim() || undefined,
+        }),
       });
     } catch {
-      // fail silently — user still sees success
+      // fail silently
     }
     setSubmitted(true);
     setLoading(false);
@@ -42,99 +65,133 @@ export function ContactSection() {
 
   return (
     <>
-      <section id="contact" className="py-16 md:py-24 bg-[#05050A]">
-        <div className="max-w-2xl mx-auto px-4 md:px-6">
-          <ScrollReveal duration={0.6}>
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
-                {t('contact.title')}
-              </h2>
-              <p className="text-lg text-[#64748B]">
-                {t('contact.subtitle')}
-              </p>
-            </div>
-
-            {submitted ? (
-              <div className="flex flex-col items-center gap-4 py-12 text-center">
-                <div className="relative">
-                  <div className="absolute inset-0 w-16 h-16 rounded-full" style={{ background: 'rgba(34, 197, 94, 0.15)', filter: 'blur(16px)' }} />
-                  <CheckCircle className="relative w-16 h-16 text-green-400" />
+      <section id="contact" className="py-12 md:py-14 bg-[#05050A]">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <ScrollReveal duration={0.3}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+              {/* Left column */}
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
+                  Начните за 48 часов
+                </h2>
+                <p className="text-lg text-[#94A3B8] mb-8">
+                  Оставьте контакт — проведём бесплатный аудит и покажем как AI закроет ваши задачи
+                </p>
+                <div className="space-y-4">
+                  {TRUST_BLOCKS.map(({ icon: Icon, text }) => (
+                    <div key={text} className="flex gap-3">
+                      <div className="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.15)', color: '#3B82F6' }}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <p className="text-sm text-[#94A3B8] pt-1.5">{text}</p>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="text-2xl font-bold text-[#F8FAFC]">{t('contact.successTitle')}</h3>
-                <p className="text-[#94A3B8]">{t('contact.successMessage')}</p>
+                <p className="text-xs text-[#475569] mt-4">
+                  Внедрение происходит параллельно с текущими процессами — работа бизнеса не останавливается.
+                </p>
               </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="rounded-2xl p-8 space-y-4"
+
+              {/* Right column — form */}
+              <div
+                className="rounded-2xl p-8"
                 style={{
                   background: 'rgba(255, 255, 255, 0.03)',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   backdropFilter: 'blur(20px)',
                 }}
               >
-                <div>
-                  <label className="block text-sm font-medium text-[#F8FAFC] mb-2">
-                    {t('contact.nameLabel')}
-                  </label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder={t('contact.namePlaceholder')}
-                    required
-                    className="w-full px-4 py-3 rounded-xl text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all focus:border-[#3B82F6]/50 focus:ring-2 focus:ring-[#3B82F6]/20"
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                    }}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-[#F8FAFC] mb-2">
-                    {t('contact.contactLabel')}
-                  </label>
-                  <input
-                    type="text"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
-                    placeholder={t('contact.contactPlaceholder')}
-                    required
-                    className="w-full px-4 py-3 rounded-xl text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all focus:border-[#3B82F6]/50 focus:ring-2 focus:ring-[#3B82F6]/20"
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                    }}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={loading || !name.trim() || !contact.trim()}
-                  className="btn-shimmer w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {loading ? (
-                    <span>{t('contact.sending')}</span>
-                  ) : (
-                    <>
-                      {t('contact.submit')}
-                      <Send className="w-5 h-5" />
-                    </>
-                  )}
-                </button>
-                <p className="text-xs text-center text-[#64748B]">
-                  {t('contact.noSpam')}
-                </p>
-              </form>
-            )}
+                {submitted ? (
+                  <div className="flex flex-col items-center gap-4 py-8 text-center">
+                    <div className="relative">
+                      <div className="absolute inset-0 w-16 h-16 rounded-full" style={{ background: 'rgba(34, 197, 94, 0.15)', filter: 'blur(16px)' }} />
+                      <CheckCircle className="relative w-16 h-16 text-green-400" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-[#F8FAFC]">{t('contact.successTitle')}</h3>
+                    <p className="text-[#94A3B8]">{t('contact.successMessage')}</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-[#F8FAFC] mb-2">
+                        {t('contact.nameLabel')}
+                      </label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder={t('contact.namePlaceholder')}
+                        required
+                        className="w-full px-4 py-3 rounded-xl text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all focus:border-[#3B82F6]/50 focus:ring-2 focus:ring-[#3B82F6]/20"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#F8FAFC] mb-2">
+                        Сфера бизнеса
+                      </label>
+                      <input
+                        type="text"
+                        value={business}
+                        onChange={(e) => setBusiness(e.target.value)}
+                        placeholder="Сфера бизнеса (клиника, магазин, учебный центр...)"
+                        className="w-full px-4 py-3 rounded-xl text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all focus:border-[#3B82F6]/50 focus:ring-2 focus:ring-[#3B82F6]/20"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-[#F8FAFC] mb-2">
+                        {t('contact.contactLabel')}
+                      </label>
+                      <input
+                        type="text"
+                        value={contact}
+                        onChange={(e) => setContact(e.target.value)}
+                        placeholder={t('contact.contactPlaceholder')}
+                        required
+                        className="w-full px-4 py-3 rounded-xl text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all focus:border-[#3B82F6]/50 focus:ring-2 focus:ring-[#3B82F6]/20"
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.05)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                        }}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={loading || !name.trim() || !contact.trim()}
+                      className="btn-shimmer w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {loading ? (
+                        <span>{t('contact.sending')}</span>
+                      ) : (
+                        <>
+                          Получить бесплатный аудит →
+                          <Send className="w-5 h-5" />
+                        </>
+                      )}
+                    </button>
+                    <p className="text-xs text-center text-[#64748B]">
+                      Без спама. Без обязательств. Только по делу.
+                    </p>
+                  </form>
+                )}
 
-            <div className="mt-8 flex justify-center">
-              <button
-                onClick={() => setShowContacts(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-[#93C5FD] font-medium text-sm border border-[#3B82F6]/30 hover:bg-[#3B82F6]/10 transition-all duration-200"
-              >
-                <Phone className="w-4 h-4" />
-                Контакты
-              </button>
+                <div className="mt-6 flex justify-center">
+                  <button
+                    onClick={() => setShowContacts(true)}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-[#93C5FD] font-medium text-sm border border-[#3B82F6]/30 hover:bg-[#3B82F6]/10 transition-all duration-200"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Контакты
+                  </button>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </div>

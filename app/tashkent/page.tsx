@@ -132,7 +132,7 @@ export default function TashkentLocalPage() {
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Внедрение искусственного интеллекта в Ташкенте</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-              Автоматизация бизнеса в Ташкенте с помощью ИИ
+              AI-автоматизация бизнеса в Ташкенте — внедрение ботов и ИИ под ключ
             </h1>
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg">
               Внедрение искусственного интеллекта в Узбекистане: бот-менеджер продаж, ассистент

@@ -24,6 +24,7 @@ const SITEMAP_ENTRIES: SitemapEntry[] = [
   { path: '/about', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/brand', changeFrequency: 'monthly', priority: 0.9 },
   { path: '/confidential', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/security', changeFrequency: 'yearly', priority: 0.7 },
 
   // ——— Services ———
   { path: '/services', changeFrequency: 'monthly', priority: 0.8 },

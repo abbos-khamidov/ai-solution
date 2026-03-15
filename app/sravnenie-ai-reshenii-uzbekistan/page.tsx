@@ -41,7 +41,7 @@ export default function SravnenieAiResheniiUzbekistanPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Сравнение AI-решений</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Сравнение AI-решений для бизнеса в Узбекистане</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Сравнение AI-решений для бизнеса в Узбекистане — что выбрать в 2026 году</h1>
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
               Выбор AI-решения для бизнеса в Узбекистане зависит от задачи: приём заявок и продажи, управление и отчётность или корпоративная база знаний. Ниже — краткое сравнение продуктов AI Solution по целям, возможностям и ориентирам по стоимости, чтобы вы могли понять, что ближе вашей компании и с чего начать.
             </p>

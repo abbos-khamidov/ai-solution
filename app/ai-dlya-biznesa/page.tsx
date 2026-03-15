@@ -139,7 +139,7 @@ export default function AiDlyaBiznesaPage() {
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">AI внедрение для B2B-компаний</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
-              AI для бизнеса в Ташкенте и Узбекистане
+              AI для бизнеса — автоматизация продаж, поддержки и аналитики в одном решении
             </h1>
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg">
               AI анализирует бизнес, находит потери, автоматизирует процессы и помогает команде

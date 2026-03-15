@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createAlternates } from '@/lib/seo';
 
@@ -30,8 +31,8 @@ const articleSchema = {
   description: DESCRIPTION,
   author: { '@type': 'Organization', name: 'AI Solution', url: SITE_URL },
   publisher: { '@type': 'Organization', name: 'AI Solution', logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon-512.png` } },
-  datePublished: '2025-03-01',
-  dateModified: '2025-03-11',
+  datePublished: '2026-03-15',
+  dateModified: '2026-03-15',
   url: `${SITE_URL}/blog/${SLUG}`,
   image: `${SITE_URL}/og-image.png`,
   inLanguage: 'ru',
@@ -69,6 +70,16 @@ export default function Page() {
           <article className="space-y-8 text-[#94A3B8] leading-relaxed text-base md:text-lg">
             <section className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">Сценарий или ИИ: что выбрать</h2>
+              <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
+                <Image
+                  src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80"
+                  alt="Как выбрать чат-бот для бизнеса — сравнение решений"
+                  title="Как выбрать чат-бот для бизнеса — сравнение решений"
+                  fill
+                  className="object-cover opacity-70"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                />
+              </div>
               <p>
                 Чатбот по сценарию работает по жёсткому дереву: кнопки, шаги, заранее прописанные ответы. Подходит для простых задач: запись на приём, ответ на 5–10 типовых вопросов. Стоит клиенту написать что-то не из сценария — бот не понимает. ИИ-чатбот понимает естественный язык, ведёт диалог гибко и может квалифицировать лидов по ходу разговора. Для продаж, консультаций и приёма заявок в 2025 году чаще выбирают ИИ: выше конверсия и меньше «тупиковых» диалогов.
               </p>
