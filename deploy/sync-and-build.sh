@@ -8,6 +8,9 @@ git pull origin main
 echo "=== Build ==="
 NEXT_PUBLIC_SITE_URL=https://aisolution.uz npm run build 2>&1 | tail -15
 
+echo "=== Sharp for standalone (image optimization) ==="
+(cd .next/standalone && npm install sharp --no-save 2>/dev/null) || true
+
 pm2 restart aisolution-frontend
 sleep 3
 pm2 list

@@ -16,6 +16,9 @@ npm install
 echo "=== Build ==="
 NEXT_PUBLIC_SITE_URL=https://aisolution.uz npm run build
 
+echo "=== Sharp for standalone (image optimization) ==="
+(cd .next/standalone && npm install sharp --no-save 2>/dev/null) || true
+
 echo "=== PM2 restart ==="
 pm2 restart aisolution-frontend 2>/dev/null || pm2 start npm --name "aisolution-frontend" -- start
 sleep 2

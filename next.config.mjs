@@ -26,7 +26,8 @@ const nextConfig = {
         ];
     },
     experimental: {
-        optimizePackageImports: ["lucide-react", "motion/react"]
+        optimizePackageImports: ["lucide-react", "motion/react"],
+        serverComponentsExternalPackages: ["sharp"],
     },
     images: {
         formats: ["image/avif", "image/webp"],
