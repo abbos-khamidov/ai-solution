@@ -96,6 +96,7 @@ export default function ChatgptDlyaBiznesaUzbekistanPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
           <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
+            <li><Link href="/ai-bot-tashkent" className="text-[#93C5FD] hover:underline">AI-бот для бизнеса в Ташкенте</Link></li>
             <li><Link href="/products/corporate-ai" className="text-[#93C5FD] hover:underline">Corporate AI (RAG) — база знаний компании</Link></li>
             <li><Link href="/blog/sozdat-chatgpt-dlya-kompanii" className="text-[#93C5FD] hover:underline">Как создать ChatGPT для компании — блог</Link></li>
             <li><Link href="/sravnenie-ai-reshenii-uzbekistan" className="text-[#93C5FD] hover:underline">Сравнение AI-решений для бизнеса в Узбекистане</Link></li>

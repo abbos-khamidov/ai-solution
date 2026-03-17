@@ -112,10 +112,11 @@ function toAbsoluteUrl(baseUrl: string, routePath: string): string {
 }
 
 /**
- * Generates the sitemap for search engines.
+ * Generates the sitemap for search engines (server-side only, no DOM).
  * - Only includes routes that have a corresponding page in app/
  * - URLs use trailing slash (canonical)
  * - lastModified from file mtime (ISO 8601)
+ * Note: <script> tags in /sitemap.xml when viewed in browser come from Chrome extensions, not from this code.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';

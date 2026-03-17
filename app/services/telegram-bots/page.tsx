@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import TelegramBotsContent from './content';
-import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
+import { buildCanonical, DEFAULT_TWITTER_IMAGE } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/telegram-bots';
@@ -25,7 +26,10 @@ export const metadata: Metadata = {
     'Telegram бот Ташкент',
     'внедрение искусственного интеллекта Узбекистан',
   ],
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: {
+    canonical: buildCanonical('/telegram-bot-dlya-biznesa/'),
+    languages: { ru: buildCanonical('/telegram-bot-dlya-biznesa/'), uz: buildCanonical('/telegram-bot-dlya-biznesa/'), en: buildCanonical('/telegram-bot-dlya-biznesa/'), 'x-default': buildCanonical('/telegram-bot-dlya-biznesa/') },
+  },
   openGraph: {
     title: TITLE,
     description: DESC,
@@ -61,6 +65,16 @@ export default function TelegramBotsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TelegramBotsContent />
+      <section className="bg-gray-50 py-10 px-4 md:px-6">
+        <div className="max-w-[800px] mx-auto">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Подробнее по теме</h2>
+          <p>
+            <Link href="/telegram-bot-dlya-biznesa" className="text-blue-600 hover:underline font-medium">
+              Telegram-бот для бизнеса в Ташкенте — полное руководство с кейсами и ценами →
+            </Link>
+          </p>
+        </div>
+      </section>
     </>
   );
 }

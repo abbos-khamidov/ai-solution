@@ -199,8 +199,13 @@ export default function IiChatbotTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Подробнее по теме</h2>
           <ul className="space-y-2 text-[#94A3B8]">
+            <li>
+              <Link href="/ai-bot-tashkent" className="text-[#93C5FD] hover:underline">
+                AI-бот для бизнеса в Ташкенте — полное руководство
+              </Link>
+            </li>
             <li>
               <Link href="/tashkent" className="text-[#93C5FD] hover:underline">
                 Автоматизация бизнеса в Ташкенте

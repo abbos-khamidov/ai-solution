@@ -28,7 +28,8 @@ export type MoneyLandingConfig = {
 };
 
 function buildSchemas(config: MoneyLandingConfig) {
-  const pageUrl = `${SITE_URL}${config.slug}`;
+  const slugNorm = config.slug.replace(/^\//, '').replace(/\/?$/, '') + '/';
+  const pageUrl = `${SITE_URL.replace(/\/$/, '')}/${slugNorm}`;
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -41,6 +42,7 @@ function buildSchemas(config: MoneyLandingConfig) {
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
+    '@id': `${pageUrl}#service`,
     name: config.pageTitle,
     provider: { '@id': `${SITE_URL}/#organization` },
     areaServed: [

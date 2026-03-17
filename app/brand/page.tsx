@@ -142,7 +142,7 @@ export default function BrandPage() {
                 </a>
               </li>
               <li>Email: info@aisolution.uz</li>
-              <li>Адрес: ул. Афросиёб, 35, Ташкент, Узбекистан</li>
+              <li>Адрес: ул. Богибустан, 186, Ташкент, Узбекистан</li>
             </ul>
           </section>
 

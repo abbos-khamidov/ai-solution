@@ -51,6 +51,18 @@ const faqItems = [
     q: 'За сколько запускается бот?',
     a: 'Базовый сценарий приёма заявок — 1–2 недели. Бот с ИИ, квалификацией и интеграциями — 2–4 недели. Сроки уточняются после обсуждения задач.',
   },
+  {
+    q: 'Работает ли бот на узбекском языке?',
+    a: 'Да. Настраиваем бота на русском, узбекском и английском языках. Один бот может вести диалог сразу на нескольких языках — определяет язык клиента автоматически.',
+  },
+  {
+    q: 'Можно ли подключить к Instagram и WhatsApp?',
+    a: 'Да. Один и тот же ИИ-движок работает в Telegram, Instagram Direct и WhatsApp одновременно. Клиент может написать в любом канале — бот отвечает с сохранением контекста.',
+  },
+  {
+    q: 'Что если клиент задаст нестандартный вопрос?',
+    a: 'AI отвечает на основе базы знаний о вашем бизнесе. Если вопрос за пределами базы — бот вежливо переключает на менеджера и передаёт контекст разговора.',
+  },
 ];
 
 const faqSchema = {
@@ -92,6 +104,17 @@ export default function TelegramBotDlyaBiznesaPage() {
               <span className="px-3 py-1 rounded-full border border-white/15 text-[#CBD5E1]">Продажи 24/7</span>
             </div>
           </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Для каких задач подходит Telegram-бот</h2>
+          <ul className="space-y-3 text-[#94A3B8] mb-6">
+            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Приём заявок 24/7</strong> — бот отвечает клиентам в нерабочее время, ночью и в выходные. В Узбекистане клиенты пишут после 22:00 — без бота эти заявки теряются.</li>
+            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Квалификация лидов</strong> — система Cold/Warm/Hot автоматически определяет готовность к покупке. Менеджер получает только горячих с контекстом диалога.</li>
+            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Ответы на частые вопросы</strong> — цены, сроки, условия, наличие. Бот отвечает мгновенно на 80% типовых запросов без участия менеджера.</li>
+            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Интеграция с CRM</strong> — лиды из Telegram, Instagram, WhatsApp попадают в Bitrix24 или amoCRM автоматически, с тегами и историей переписки.</li>
+            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Уведомления команде</strong> — горячий лид даёт мгновенный алерт менеджеру с кратким резюме: кто, что хочет, какой бюджет.</li>
+          </ul>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
@@ -139,13 +162,31 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Пример внедрения</h2>
-          <p className="text-[#94A3B8] leading-relaxed">
-            IT-компания в Ташкенте получала заявки в Telegram и на сайте. В нерабочее время часть обращений терялась.
-            Мы внедрили ИИ-бота: он квалифицирует лидов Cold/Warm/Hot и передаёт горячих менеджеру с контекстом.
-            Результат — стабильный приём заявок 24/7 и рост доли качественных обращений. Подробнее в кейсе{' '}
-            <Link href="/cases/marsit-lead-automation" className="text-[#93C5FD] hover:underline">Marsit.uz</Link>.
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Реальный результат: кейс MarsIT</h2>
+          <p className="text-[#94A3B8] leading-relaxed mb-4">
+            IT-компания в Ташкенте (MarsIT) обрабатывала входящие заявки вручную. Менеджеры отвечали через 3–4 часа — горячие лиды успевали уйти к конкурентам. Значительная часть обращений оказывалась нецелевой: студенты, фрилансеры, нерелевантные запросы. Менеджеры тратили время на отсев вместо закрытия сделок.
           </p>
+          <p className="text-[#94A3B8] leading-relaxed mb-4">
+            Мы внедрили AI-бот в Telegram с трёхуровневой квалификацией Cold/Warm/Hot. Бот ведёт диалог, выясняет потребность и бюджет, присваивает статус и действует по сценарию: горячих передаёт менеджеру с контекстом, холодных греет автоматически.
+          </p>
+          <ul className="space-y-2 text-[#94A3B8] mb-4">
+            <li>Время первого ответа: с 4 часов → до 30 секунд</li>
+            <li>Конверсия лидов в сделку: +35% за первые 6 недель</li>
+            <li>Пропущенные заявки ночью: 0</li>
+          </ul>
+          <p>
+            <Link href="/cases/marsit-lead-automation" className="text-[#93C5FD] hover:underline font-medium">Читать полный кейс MarsIT →</Link>
+          </p>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как проходит внедрение</h2>
+          <ol className="space-y-3 text-[#94A3B8] list-decimal list-inside mb-6">
+            <li><strong>Аудит и постановка задачи (день 1–2)</strong> — разбираем вашу воронку, определяем узкие места, составляем техзадание на сценарии бота.</li>
+            <li><strong>Разработка сценариев (день 3–7)</strong> — пишем диалоги, настраиваем квалификационные вопросы, прописываем логику Cold/Warm/Hot.</li>
+            <li><strong>Интеграция и тестирование (день 8–12)</strong> — подключаем к вашему Telegram/Instagram/WhatsApp, настраиваем CRM-интеграцию, тестируем 50+ сценариев.</li>
+            <li><strong>Запуск и поддержка</strong> — запускаем в продакшн, первые 2 недели мониторим, дорабатываем по результатам. Затем — ежемесячная поддержка.</li>
+          </ol>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">

@@ -9,7 +9,7 @@ const CONTACT_EMAIL = 'info@aisolution.uz';
 const CONTACT_PHONE = '+998 77 061 22 00';
 const CONTACT_PHONES = ['+998 77 061 22 00', '+998 95 000 00 65', '+998 93 949 20 00'];
 const CONTACT_TG = '@aisolution_uz';
-const CONTACT_ADDRESS = 'ул. Афросиёб 35, Ташкент';
+const CONTACT_ADDRESS = 'ул. Богибустан 186, Ташкент';
 
 const productLinks = [
   { label: 'Customer Service Bot',  href: '/products/customer-service' },

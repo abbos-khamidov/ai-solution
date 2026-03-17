@@ -112,6 +112,7 @@ const breadcrumbSchema = {
 const localServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
+  '@id': `${SITE_URL}${SLUG}#service`,
   name: 'Автоматизация бизнеса и внедрение искусственного интеллекта в Ташкенте',
   provider: { '@id': `${SITE_URL}/#organization` },
   areaServed: { '@type': 'City', name: 'Ташкент' },
@@ -230,7 +231,7 @@ export default function TashkentLocalPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">География</h2>
           <p className="text-[#94A3B8] max-w-3xl">
-            Офис AI Solution находится в Ташкенте (ул. Афросиёб 35). Также работаем с компаниями
+            Офис AI Solution находится в Ташкенте (ул. Богибустан 186). Также работаем с компаниями
             из Самарканда, Ферганы, Андижана, Намангана, Бухары и других городов Узбекистана.
             Клиенты из Казахстана, Кыргызстана и Таджикистана — обслуживаем удалённо.
           </p>
@@ -253,7 +254,7 @@ export default function TashkentLocalPage() {
               </div>
               <div>
                 <p className="text-[#64748B] mb-1">Адрес</p>
-                <p className="text-[#F8FAFC]">ул. Афросиёб 35, Ташкент, 100000</p>
+                <p className="text-[#F8FAFC]">ул. Богибустан 186, Ташкент, 100000</p>
               </div>
             </div>
           </div>

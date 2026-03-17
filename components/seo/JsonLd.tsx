@@ -13,7 +13,7 @@ const localBusinessSchema = {
   email: 'info@aisolution.uz',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'ул. Афросиёб, 35',
+    streetAddress: 'ул. Богибустан, 186',
     addressLocality: 'Ташкент',
     addressRegion: 'Ташкентская область',
     postalCode: '100000',
@@ -96,7 +96,7 @@ const organizationSchema = {
   },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'ул. Афросиёб, 35',
+    streetAddress: 'ул. Богибустан, 186',
     addressLocality: 'Ташкент',
     addressRegion: 'Ташкентская область',
     postalCode: '100000',
@@ -145,42 +145,6 @@ const websiteSchema = {
   },
 };
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  '@id': `${SITE_URL}/#service`,
-  name: 'Автоматизация бизнеса и внедрение ИИ в Ташкенте',
-  provider: { '@id': `${SITE_URL}/#organization` },
-  description: 'Внедрение искусственного интеллекта в Ташкенте и Узбекистане. Автоматизация бизнеса: AI-ассистенты, Telegram-боты, квалификация лидов 24/7. Конверсия +34%.',
-  areaServed: [
-    { '@type': 'Country', name: 'Uzbekistan' },
-    { '@type': 'Country', name: 'Kazakhstan' },
-    { '@type': 'Country', name: 'Kyrgyzstan' },
-  ],
-  serviceType: 'AI Chatbot / Sales Automation',
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'AI Solution Products',
-    itemListElement: [
-      {
-        '@type': 'OfferCatalog',
-        name: 'Customer Service Bot',
-        url: `${SITE_URL}/products/customer-service`,
-      },
-      {
-        '@type': 'OfferCatalog',
-        name: 'Management Assistant',
-        url: `${SITE_URL}/products/management-assistant`,
-      },
-      {
-        '@type': 'OfferCatalog',
-        name: 'Corporate AI (RAG)',
-        url: `${SITE_URL}/products/corporate-ai`,
-      },
-    ],
-  },
-};
-
 export function JsonLd() {
   return (
     <>
@@ -195,10 +159,6 @@ export function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
     </>
   );

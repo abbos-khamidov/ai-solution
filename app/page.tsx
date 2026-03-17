@@ -111,6 +111,31 @@ export default function HomePage() {
         <SocialProofSection />
         <SimplePricingSection />
         <RoiCalculator />
+        <section className="bg-[#05050A] px-4 md:px-6 py-10" aria-label="Популярные решения">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-6 text-center">
+              Популярные решения
+            </h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                { href: '/telegram-bot-dlya-biznesa/', label: 'Telegram-бот для бизнеса' },
+                { href: '/ai-bot-tashkent/', label: 'AI-бот в Ташкенте' },
+                { href: '/avtomatizaciya-prodazh-tashkent/', label: 'Автоматизация продаж' },
+                { href: '/crm-integraciya-tashkent/', label: 'CRM интеграция' },
+                { href: '/ii-chatbot-tashkent/', label: 'ИИ чатбот Ташкент' },
+                { href: '/biznes-avtomatizaciya-uzbekistan/', label: 'Автоматизация в Узбекистане' },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.03] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#3B82F6]/40 hover:bg-[#3B82F6]/10 transition-colors text-sm font-medium"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
         <ContactSection />
         <section className="bg-[#05050A] px-4 md:px-6 py-6">
           <div className="max-w-6xl mx-auto rounded-2xl p-5 md:p-6 border border-white/10 bg-white/[0.02] flex flex-col sm:flex-row items-center justify-between gap-4">

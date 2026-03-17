@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
+import { buildCanonical, DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ii-avtomatizaciya';
@@ -18,7 +18,10 @@ export const metadata: Metadata = {
     'автоматизация продаж ИИ',
     'AI automation Uzbekistan',
   ],
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: {
+    canonical: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'),
+    languages: { ru: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'), uz: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'), en: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'), 'x-default': buildCanonical('/biznes-avtomatizaciya-uzbekistan/') },
+  },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -55,6 +58,22 @@ const config: MoneyLandingConfig = {
       title: 'Как проходит внедрение',
       text: 'Сначала аудит и карта процессов, затем запуск пилота, измерение результатов и масштабирование на остальные каналы и отделы.',
     },
+    {
+      title: 'Для каких задач подходит ИИ автоматизация',
+      text: 'Приём заявок 24/7 — бот отвечает клиентам в нерабочее время. Квалификация лидов Cold/Warm/Hot — менеджер получает только горячих с контекстом. Ответы на частые вопросы — цены, сроки, условия; бот закрывает 80% типовых запросов. Интеграция с CRM — лиды из мессенджеров попадают в Bitrix24 или amoCRM с тегами и историей. Уведомления команде — горячий лид даёт алерт менеджеру с резюме.',
+    },
+    {
+      title: 'Реальный результат: кейс MarsIT',
+      text: 'IT-компания в Ташкенте обрабатывала заявки вручную; менеджеры отвечали через 3–4 часа. Внедрили AI-бот с квалификацией Cold/Warm/Hot. Время первого ответа: с 4 часов до 30 секунд. Конверсия в сделку: +35% за 6 недель. Пропущенные заявки ночью: 0. Подробнее — кейс MarsIT на нашем сайте.',
+    },
+    {
+      title: 'Стоимость и сроки',
+      text: 'Базовый бот (приём заявок, FAQ) — от $1 500, 1–2 недели. AI с квалификацией лидов — от $2 500, 2–4 недели. Поддержка — от $300/мес. Оценка бесплатно за 60 минут аудита.',
+    },
+    {
+      title: 'Этапы внедрения',
+      text: 'Аудит и постановка задачи (день 1–2). Разработка сценариев (день 3–7). Интеграция и тестирование (день 8–12). Запуск и поддержка — мониторинг 2 недели, далее ежемесячное сопровождение.',
+    },
   ],
   faq: [
     {
@@ -69,8 +88,22 @@ const config: MoneyLandingConfig = {
       q: 'Сколько длится внедрение?',
       a: 'Пилот обычно запускается за 1-3 недели. Полный этап зависит от объема интеграций и числа бизнес-процессов.',
     },
+    {
+      q: 'Работает ли бот на узбекском языке?',
+      a: 'Да. Настраиваем на русском, узбекском и английском. Один бот может вести диалог на нескольких языках и определяет язык клиента автоматически.',
+    },
+    {
+      q: 'Можно ли подключить к Instagram и WhatsApp?',
+      a: 'Да. Один AI-движок работает в Telegram, Instagram Direct и WhatsApp одновременно с сохранением контекста.',
+    },
+    {
+      q: 'Что если клиент задаст нестандартный вопрос?',
+      a: 'AI отвечает из базы знаний о вашем бизнесе. Если вопроса нет в базе — бот переключает на менеджера и передаёт контекст разговора.',
+    },
   ],
   relatedLinks: [
+    { href: '/biznes-avtomatizaciya-uzbekistan', label: 'Полное руководство по автоматизации бизнеса в Узбекистане' },
+    { href: '/cases/marsit-lead-automation', label: 'Кейс MarsIT: AI-квалификация лидов' },
     { href: '/services', label: 'Все услуги AI Solution' },
     { href: '/services/analytics', label: 'AI-аналитика и KPI-дашборды' },
     { href: '/products/management-assistant', label: 'Management Assistant для собственника' },
