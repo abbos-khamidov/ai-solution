@@ -88,7 +88,7 @@ const track = [...items, ...items];
 
 export function ClientLogos() {
   return (
-    <section className="bg-[#05050A] py-10 px-4 md:px-6 overflow-hidden">
+    <section className="bg-background py-10 px-4 md:px-6 overflow-hidden">
       <style>{`
         @keyframes marquee-scroll {
           from { transform: translateX(0); }
@@ -136,8 +136,8 @@ export function ClientLogos() {
                     href={item.href}
                     className={`flex items-center gap-3 px-5 py-3.5 rounded-2xl flex-shrink-0 transition-all duration-300 hover:-translate-y-0.5`}
                     style={{
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(255,255,255,0.08)',
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(15,23,42,0.1)',
                       backdropFilter: 'blur(12px)',
                     }}
                   >
@@ -147,7 +147,7 @@ export function ClientLogos() {
                       <span className="text-white font-bold text-sm">{item.initial}</span>
                     </div>
                     <div>
-                      <p className="text-[#F8FAFC] font-bold text-sm leading-tight">{item.name}</p>
+                      <p className="text-foreground font-bold text-sm leading-tight">{item.name}</p>
                       <p className="text-[#475569] text-xs mt-0.5">{item.subtitle}</p>
                     </div>
                   </Link>
@@ -159,8 +159,8 @@ export function ClientLogos() {
                   key={i}
                   className="flex items-center gap-2.5 px-4 py-3 rounded-xl flex-shrink-0"
                   style={{
-                    background: 'rgba(255,255,255,0.02)',
-                    border: '1px solid rgba(255,255,255,0.06)',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(15,23,42,0.08)',
                   }}
                 >
                   {item.icon}

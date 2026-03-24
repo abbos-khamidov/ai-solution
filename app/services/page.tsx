@@ -75,7 +75,7 @@ export const metadata: Metadata = {
 
 export default function ServicesIndexPage() {
   return (
-    <div className="min-h-screen bg-[#05050A] pt-28 pb-16 text-white">
+    <div className="min-h-screen bg-background pb-16 text-foreground">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="max-w-5xl mx-auto px-6">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Услуги внедрения ИИ</h1>
@@ -92,7 +92,7 @@ export default function ServicesIndexPage() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[#93C5FD] hover:text-white transition-colors"
+                    className="text-[#2563EB] hover:text-[#1D4ED8] transition-colors"
                   >
                     {item.title}
                   </Link>
@@ -108,7 +108,7 @@ export default function ServicesIndexPage() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-[#93C5FD] hover:text-white transition-colors"
+                    className="text-[#2563EB] hover:text-[#1D4ED8] transition-colors"
                   >
                     {item.title}
                   </Link>
@@ -128,7 +128,7 @@ export default function ServicesIndexPage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-[#93C5FD] hover:text-white transition-colors"
+                className="block rounded-xl border border-border bg-card px-4 py-3 text-[#2563EB] hover:text-[#1D4ED8] transition-colors shadow-sm"
               >
                 {item.title}
               </Link>
@@ -137,11 +137,11 @@ export default function ServicesIndexPage() {
         </div>
 
         <section className="mt-12">
-          <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">Частые вопросы</h2>
+          <h2 className="text-xl font-semibold text-foreground mb-4">Частые вопросы</h2>
           <div className="space-y-3">
             {faqItems.map(({ q, a }) => (
-              <details key={q} className="rounded-xl border border-white/10 bg-white/[0.02] group">
-                <summary className="cursor-pointer p-4 text-[#F8FAFC] font-medium list-none">{q}</summary>
+              <details key={q} className="rounded-xl border border-border bg-card group shadow-sm">
+                <summary className="cursor-pointer p-4 text-foreground font-medium list-none">{q}</summary>
                 <p className="px-4 pb-4 text-[#94A3B8] text-sm leading-relaxed">{a}</p>
               </details>
             ))}

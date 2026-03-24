@@ -134,7 +134,7 @@ export default function AiDlyaBiznesaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">AI внедрение для B2B-компаний</p>
@@ -166,28 +166,28 @@ export default function AiDlyaBiznesaPage() {
           <h2 className="text-2xl md:text-3xl font-bold">Что делает AI для бизнеса</h2>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
             <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">Анализ продаж и маркетинга</h3>
+              <h3 className="font-semibold text-foreground">Анализ продаж и маркетинга</h3>
               <p className="mt-2 text-[#94A3B8]">
                 Выявляет, где теряются лиды, какие каналы дают слабый ROI и какие шаги увеличат
                 конверсию.
               </p>
             </article>
             <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">Автоматизация коммуникаций</h3>
+              <h3 className="font-semibold text-foreground">Автоматизация коммуникаций</h3>
               <p className="mt-2 text-[#94A3B8]">
                 Отвечает клиентам 24/7, квалифицирует входящие заявки и передаёт команде горячие
                 лиды с контекстом.
               </p>
             </article>
             <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">Управление задачами</h3>
+              <h3 className="font-semibold text-foreground">Управление задачами</h3>
               <p className="mt-2 text-[#94A3B8]">
                 Сокращает рутину, контролирует сроки, формирует сводки и помогает руководителю
                 видеть статус задач в одном окне.
               </p>
             </article>
             <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">Прогнозирование и рекомендации</h3>
+              <h3 className="font-semibold text-foreground">Прогнозирование и рекомендации</h3>
               <p className="mt-2 text-[#94A3B8]">
                 Строит прогноз спроса и нагрузки, предлагает оптимальные действия для роста и
                 экономии ресурсов.
@@ -205,7 +205,7 @@ export default function AiDlyaBiznesaPage() {
                 href={item.href}
                 className="rounded-xl border border-white/10 bg-white/[0.02] p-5 hover:bg-white/[0.04] transition-colors"
               >
-                <h3 className="font-semibold text-[#F8FAFC]">{item.title}</h3>
+                <h3 className="font-semibold text-foreground">{item.title}</h3>
                 <p className="mt-2 text-[#94A3B8]">{item.text}</p>
               </Link>
             ))}
@@ -218,7 +218,7 @@ export default function AiDlyaBiznesaPage() {
             {rolloutStages.map((stage, idx) => (
               <article key={stage} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
                 <p className="text-sm text-[#93C5FD]">Этап {idx + 1}</p>
-                <p className="mt-1 text-[#F8FAFC] font-medium">{stage}</p>
+                <p className="mt-1 text-foreground font-medium">{stage}</p>
               </article>
             ))}
           </div>
@@ -254,7 +254,7 @@ export default function AiDlyaBiznesaPage() {
           <p className="mt-2 text-[#94A3B8]">Каждый тариф окупается за счёт роста продаж или экономии на персонале</p>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
             <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
-              <h3 className="font-bold text-[#F8FAFC] text-lg">Starter</h3>
+              <h3 className="font-bold text-foreground text-lg">Starter</h3>
               <p className="text-sm text-[#64748B] mt-1">Быстрый тест AI для малого бизнеса</p>
               <p className="text-2xl font-bold text-gradient mt-3">$390</p>
               <p className="text-sm text-[#94A3B8]">запуск + $150/мес</p>
@@ -270,7 +270,7 @@ export default function AiDlyaBiznesaPage() {
             </article>
             <article className="rounded-xl border border-[#3B82F6]/30 bg-[#3B82F6]/5 p-5 flex flex-col relative">
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white text-xs font-semibold">Популярный</span>
-              <h3 className="font-bold text-[#F8FAFC] text-lg">Growth</h3>
+              <h3 className="font-bold text-foreground text-lg">Growth</h3>
               <p className="text-sm text-[#64748B] mt-1">Рост продаж через AI-автоматизацию</p>
               <p className="text-2xl font-bold text-gradient mt-3">$2 900</p>
               <p className="text-sm text-[#94A3B8]">запуск + $900/мес · средний чек $4 200</p>
@@ -285,7 +285,7 @@ export default function AiDlyaBiznesaPage() {
               </ul>
             </article>
             <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
-              <h3 className="font-bold text-[#F8FAFC] text-lg">Enterprise</h3>
+              <h3 className="font-bold text-foreground text-lg">Enterprise</h3>
               <p className="text-sm text-[#64748B] mt-1">AI-система управления для крупного бизнеса</p>
               <p className="text-2xl font-bold text-gradient mt-3">от $7 500</p>
               <p className="text-sm text-[#94A3B8]">запуск + от $2 500/мес</p>
@@ -326,7 +326,7 @@ export default function AiDlyaBiznesaPage() {
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
           <h2 className="text-2xl md:text-3xl font-bold">Ключевые блоки на узбекском (qisqa)</h2>
           <div className="mt-6 rounded-2xl p-6 border border-white/10 bg-white/[0.02]">
-            <p className="text-[#F8FAFC] font-medium">Toshkent va O&apos;zbekistonda biznes uchun AI</p>
+            <p className="text-foreground font-medium">Toshkent va O&apos;zbekistonda biznes uchun AI</p>
             <p className="mt-3 text-[#CBD5E1]">
               AI biznesingizni tahlil qiladi, yo&apos;qotishlarni topadi va jarayonlarni
               avtomatlashtiradi.
@@ -346,7 +346,7 @@ export default function AiDlyaBiznesaPage() {
                 key={q}
                 className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors"
               >
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">
                   {q}
                   <span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
                 </summary>

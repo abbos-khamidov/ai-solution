@@ -10,7 +10,7 @@ export default function Image() {
     (
       <div
         style={{
-          background: 'linear-gradient(135deg, #05050A 0%, #0D0D1A 60%, #080818 100%)',
+          background: 'linear-gradient(135deg, #F8FAFC 0%, #E0F2FE 45%, #F1F5F9 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -86,7 +86,7 @@ export default function Image() {
             display: 'flex',
             fontSize: '68px',
             fontWeight: 900,
-            color: '#F8FAFC',
+            color: '#0F172A',
             lineHeight: 1.05,
             marginBottom: '24px',
             maxWidth: '920px',
@@ -111,12 +111,12 @@ export default function Image() {
               key={tag}
               style={{
                 display: 'flex',
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.12)',
+                background: 'rgba(59,130,246,0.08)',
+                border: '1px solid rgba(59,130,246,0.2)',
                 borderRadius: '8px',
                 padding: '6px 16px',
                 fontSize: '20px',
-                color: '#94A3B8',
+                color: '#475569',
               }}
             >
               {tag}

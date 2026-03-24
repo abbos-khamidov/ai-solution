@@ -38,7 +38,7 @@ export default function IiDlyaYuridicheskihUslugPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для юридических компаний</p>
@@ -59,14 +59,14 @@ export default function IiDlyaYuridicheskihUslugPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как ИИ решает задачи юридических компаний</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как ИИ решает задачи юридических компаний</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             ИИ-бот ведёт диалог в мессенджерах или на сайте: уточняет суть обращения (без разглашения деталей дела при необходимости), направление права, срочность и записывает на консультацию к нужному специалисту. Отвечает на типовые вопросы: стоимость первичной консультации, документы, режим работы офиса. Сложные или конфиденциальные запросы передаёт юристу с кратким резюме. Для юридических компаний в Узбекистане мы настраиваем сценарии с учётом этики и конфиденциальности: данные можно хранить на вашей инфраструктуре, логи ограничивать по доступу. В результате первый контакт с клиентом не теряется, юристы получают подготовленные заявки, а приём первичных обращений работает круглосуточно.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Что получает юркомпания после внедрения</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Что получает юркомпания после внедрения</h2>
           <ul className="space-y-3 text-[#94A3B8]">
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Приём обращений и запись на консультацию 24/7.</li>
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Ответ клиенту за 30 секунд — меньше уходов к конкурентам.</li>
@@ -76,7 +76,7 @@ export default function IiDlyaYuridicheskihUslugPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Запуск ИИ для юридической компании — от $1 000 (приём обращений, запись на консультацию) + от $500/мес. С требованиями к on-premise или особым политикам данных — по смете после аудита. Срок базового запуска — 5–7 рабочих дней.
           </p>
@@ -87,7 +87,7 @@ export default function IiDlyaYuridicheskihUslugPage() {
           <div className="space-y-4">
             {faqItems.map(({ q, a }) => (
               <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
                 <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
               </details>
             ))}
@@ -103,7 +103,7 @@ export default function IiDlyaYuridicheskihUslugPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li><Link href="/tashkent" className="text-[#93C5FD] hover:underline">Автоматизация бизнеса в Ташкенте</Link></li>
             <li><Link href="/ii-chatbot-tashkent" className="text-[#93C5FD] hover:underline">ИИ чатбот для бизнеса в Ташкенте</Link></li>

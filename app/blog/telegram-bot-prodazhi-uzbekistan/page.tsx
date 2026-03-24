@@ -41,15 +41,15 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <main className="min-h-screen" style={{ background: '#05050A' }}>
-        <div className="pt-28 pb-10" style={{ background: '#0D0D1A', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <main className="min-h-screen bg-background">
+        <div className="pt-28 pb-10 bg-background-secondary border-b border-border">
           <div className="max-w-4xl mx-auto px-4 md:px-6">
             <nav className="flex items-center gap-2 text-sm text-[#64748B] mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+              <Link href="/" className="hover:text-foreground transition-colors">Главная</Link>
               <span>/</span>
-              <Link href="/blog" className="hover:text-white transition-colors">Блог</Link>
+              <Link href="/blog" className="hover:text-foreground transition-colors">Блог</Link>
               <span>/</span>
-              <span className="text-[#F8FAFC]">Telegram-бот для продаж</span>
+              <span className="text-foreground">Telegram-бот для продаж</span>
             </nav>
             <div className="flex items-center gap-4 text-sm text-[#64748B] mb-4">
               <span>8 марта 2025</span>
@@ -58,7 +58,7 @@ export default function Page() {
               <span>·</span>
               <span className="px-2 py-0.5 rounded text-xs font-medium" style={{ background: 'rgba(59,130,246,0.12)', color: '#3B82F6' }}>Кейсы</span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] leading-tight tracking-tight mb-4">{TITLE}</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight tracking-tight mb-4">{TITLE}</h1>
             <p className="text-lg text-[#94A3B8] leading-relaxed max-w-3xl">
               В Узбекистане Telegram остаётся одним из главных каналов для заявок и продаж. Компании, которые автоматизировали первый контакт через ИИ-бота в Telegram, получили быстрый ответ клиенту, стабильный приём лидов 24/7 и прозрачную воронку. Ниже — два реальных кейса из Ташкента: образовательная платформа Studify.uz и IT-компания Marsit.uz.
             </p>
@@ -68,7 +68,7 @@ export default function Page() {
         <div className="max-w-4xl mx-auto px-4 md:px-6 py-12">
           <article className="space-y-8 text-[#94A3B8] leading-relaxed text-base md:text-lg">
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">Кейс Studify.uz: образование</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Кейс Studify.uz: образование</h2>
               <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
                 <Image
                   src="https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80"
@@ -88,7 +88,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">Кейс Marsit.uz: IT и B2B</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Кейс Marsit.uz: IT и B2B</h2>
               <p>
                 IT-компания получала заявки в Telegram и на сайте. В нерабочее время часть обращений терялась; кроме того, не все заявки были одинаково готовы к диалогу — менеджеры тратили время на отбор. Задача: не терять заявки по ночам и в выходные и повысить конверсию в целевой звонок. Внедрили AI-квалификацию Cold/Warm/Hot и передачу горячих лидов менеджеру с контекстом.
               </p>
@@ -98,14 +98,14 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">Что общего в подходах</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Что общего в подходах</h2>
               <p>
                 В обоих кейсах использовался единый ИИ-движок в Telegram (и при необходимости в других каналах): первый ответ за 30 секунд, квалификация по ходу диалога, передача горячих лидов менеджеру с кратким резюме. Никаких отдельных «ботов-визиток» — один бот решает задачу приёма, квалификации и маршрутизации. Для компаний в Узбекистане такой формат особенно удобен: Telegram уже основной канал общения с клиентами, расширение на Instagram и WhatsApp при необходимости не требует переписывания логики.
               </p>
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">С чего начать</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">С чего начать</h2>
               <p>
                 Если вы рассматриваете Telegram-бота для продаж — начните с аудита входящего потока: откуда приходят заявки, в какое время, как быстро вы отвечаете и какая доля лидов «остывает». Затем определите цель: только приём заявок или ещё квалификация и сводки для руководства. На основе этого можно оценить сроки и бюджет внедрения и получить ориентир по ROI. В AI Solution мы проводим бесплатный 60-минутный аудит и предлагаем сценарий под вашу воронку — можно оставить заявку на сайте или написать в Telegram @aisolution_uz.
               </p>
@@ -113,7 +113,7 @@ export default function Page() {
           </article>
 
           <section className="mt-16 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-            <h2 className="text-2xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">Читайте также</h2>
             <ul className="space-y-2 text-[#94A3B8]">
               <li><Link href="/cases/studify-ai-automation" className="text-[#93C5FD] hover:underline">Кейс Studify.uz: AI-автоматизация лидов</Link></li>
               <li><Link href="/cases/marsit-lead-automation" className="text-[#93C5FD] hover:underline">Кейс Marsit.uz: AI-автоматизация продаж</Link></li>

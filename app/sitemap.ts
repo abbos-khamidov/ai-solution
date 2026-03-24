@@ -41,6 +41,7 @@ const SITEMAP_ENTRIES: SitemapEntry[] = [
   { path: '/products/corporate-ai', changeFrequency: 'monthly', priority: 0.9 },
 
   // ——— Cases ———
+  { path: '/cases', changeFrequency: 'weekly', priority: 0.85 },
   { path: '/cases/studify-ai-automation', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/cases/marsit-lead-automation', changeFrequency: 'monthly', priority: 0.8 },
 

@@ -97,12 +97,12 @@ export function ProductsSection() {
   const price    = tp.priceKey    ? t(tp.priceKey)                          : tp.price    ?? '';
 
   return (
-    <section className="py-12 md:py-14 bg-[#05050A]" id="products">
+    <section className="py-12 md:py-14 bg-background scroll-mt-24" id="solutions">
       <div className="max-w-6xl mx-auto px-4 md:px-6">
 
         <ScrollReveal duration={0.25}>
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               {t('productsSection.title')}
             </h2>
             <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">
@@ -128,9 +128,9 @@ export function ProductsSection() {
                     color: p.accentColor,
                     boxShadow: `0 0 16px ${p.glowColor}`,
                   } : {
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    color: '#94A3B8',
+                    background: 'rgb(248 250 252)',
+                    border: '1px solid rgba(15, 23, 42, 0.1)',
+                    color: '#64748B',
                   }}
                 >
                   <Icon className="w-4 h-4" />
@@ -161,7 +161,7 @@ export function ProductsSection() {
                 <product.icon className="w-8 h-8" style={{ color: product.accentColor }} />
               </div>
               <div className="pt-1">
-                <h3 className="text-2xl font-bold text-[#F8FAFC]">{title}</h3>
+                <h3 className="text-2xl font-bold text-foreground">{title}</h3>
                 <p className="text-[#64748B] text-sm mt-1.5 leading-relaxed">{desc}</p>
               </div>
             </div>
@@ -179,14 +179,13 @@ export function ProductsSection() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <span className="text-sm text-[#CBD5E1]">{feat}</span>
+                  <span className="text-sm text-[#334155]">{feat}</span>
                 </li>
               ))}
             </ul>
 
             <div
-              className="flex items-center justify-between pt-5"
-              style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+              className="flex items-center justify-between pt-5 border-t border-border"
             >
               <span className="text-xl font-bold" style={{ color: product.accentColor }}>
                 {price}
@@ -208,16 +207,15 @@ export function ProductsSection() {
             <div
               className="w-full max-w-[340px] rounded-2xl p-px"
               style={{
-                background: `linear-gradient(135deg, ${product.accentColor}40, rgba(255,255,255,0.06))`,
+                background: `linear-gradient(135deg, ${product.accentColor}35, rgba(15,23,42,0.06))`,
               }}
             >
-              <div className="rounded-2xl overflow-hidden" style={{ background: '#080812' }}>
+              <div className="rounded-2xl overflow-hidden bg-white border border-slate-200/80 shadow-sm">
                 {/* Chat header */}
                 <div
-                  className="flex items-center gap-2.5 px-4 py-3"
+                  className="flex items-center gap-2.5 px-4 py-3 bg-slate-50"
                   style={{
-                    background: `${product.accentColor}12`,
-                    borderBottom: `1px solid ${product.accentColor}20`,
+                    borderBottom: `1px solid ${product.accentColor}25`,
                   }}
                 >
                   <div
@@ -231,20 +229,20 @@ export function ProductsSection() {
                 </div>
 
                 {/* Messages */}
-                <div className="p-4 space-y-2.5 min-h-[196px]">
+                <div className="p-4 space-y-2.5 min-h-[196px] bg-slate-50/80">
                   {product.mockup.map((msg, i) => (
                     <div key={i} className={`flex ${msg.from === 'user' ? 'justify-end' : 'justify-start'}`}>
                       <div
                         className="max-w-[85%] px-3 py-2 text-[12px] leading-relaxed"
                         style={msg.from === 'user' ? {
-                          background: `${product.accentColor}28`,
-                          border: `1px solid ${product.accentColor}40`,
-                          color: '#F8FAFC',
+                          background: `linear-gradient(135deg, ${product.accentColor}, ${product.accentColor}cc)`,
+                          border: `1px solid ${product.accentColor}55`,
+                          color: '#FFFFFF',
                           borderRadius: '12px 12px 3px 12px',
                         } : {
-                          background: 'rgba(255,255,255,0.06)',
-                          border: '1px solid rgba(255,255,255,0.1)',
-                          color: '#CBD5E1',
+                          background: '#FFFFFF',
+                          border: '1px solid rgba(15, 23, 42, 0.1)',
+                          color: '#334155',
                           borderRadius: '12px 12px 12px 3px',
                         }}
                       >
@@ -256,12 +254,10 @@ export function ProductsSection() {
 
                 {/* Input bar */}
                 <div
-                  className="flex items-center gap-2 px-3 py-3"
-                  style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+                  className="flex items-center gap-2 px-3 py-3 bg-white border-t border-slate-200/90"
                 >
                   <div
-                    className="flex-1 h-8 rounded-lg px-3 flex items-center text-[11px] text-[#475569]"
-                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                    className="flex-1 h-8 rounded-lg px-3 flex items-center text-[11px] text-slate-500 bg-slate-100 border border-slate-200/90"
                   >
                     Написать сообщение...
                   </div>

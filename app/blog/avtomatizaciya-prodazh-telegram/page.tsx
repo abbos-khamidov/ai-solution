@@ -61,15 +61,15 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <main className="min-h-screen" style={{ background: '#05050A' }}>
-        <div className="pt-28 pb-10" style={{ background: '#0D0D1A', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <main className="min-h-screen bg-background">
+        <div className="pt-28 pb-10 bg-background-secondary border-b border-border">
           <div className="max-w-4xl mx-auto px-4 md:px-6">
             <nav className="flex items-center gap-2 text-sm text-[#64748B] mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+              <Link href="/" className="hover:text-foreground transition-colors">Главная</Link>
               <span>/</span>
               <span className="text-[#94A3B8]">Блог</span>
               <span>/</span>
-              <span className="text-[#F8FAFC]">Автоматизация продаж Telegram</span>
+              <span className="text-foreground">Автоматизация продаж Telegram</span>
             </nav>
             <div className="flex items-center gap-4 text-sm text-[#64748B] mb-4">
               <span>8 февраля 2025</span>
@@ -80,7 +80,7 @@ export default function Page() {
                 Продажи
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight tracking-tight mb-4">
               {TITLE}
             </h1>
             <p className="text-lg text-[#94A3B8] leading-relaxed max-w-3xl">
@@ -95,7 +95,7 @@ export default function Page() {
           <article className="space-y-8 text-[#94A3B8] leading-relaxed text-base md:text-lg">
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Почему Telegram — главный канал продаж в Узбекистане
               </h2>
               <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
@@ -130,7 +130,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Что теряет бизнес без автоматизации в Telegram
               </h2>
               <p>
@@ -155,7 +155,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Как работает AI Telegram-бот для продаж
               </h2>
               <p>
@@ -179,7 +179,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Квалификация лидов и передача менеджеру
               </h2>
               <p>
@@ -207,7 +207,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Интеграция с CRM и системами учёта
               </h2>
               <p>
@@ -226,7 +226,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Реальные цифры и результаты
               </h2>
               <p>
@@ -246,24 +246,24 @@ export default function Page() {
           </article>
 
           <section className="mt-16 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-            <h2 className="text-2xl font-bold text-[#F8FAFC] mb-3">Решения AI Solution для вашего бизнеса</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-3">Решения AI Solution для вашего бизнеса</h2>
             <p className="text-[#64748B] mb-8">Выберите AI-продукт под задачи вашей компании</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Link href="/products/customer-service" className="group block p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1" style={{ background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)' }}>
                 <div className="text-2xl mb-3">🤖</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Customer Service Bot</h3>
+                <h3 className="font-bold text-foreground mb-2">Customer Service Bot</h3>
                 <p className="text-sm text-[#64748B] mb-3">AI в Telegram, Instagram, WhatsApp. Ответ за 30 сек, квалификация лидов 24/7.</p>
                 <span className="text-sm font-semibold text-[#3B82F6]">От $1 000 →</span>
               </Link>
               <Link href="/products/management-assistant" className="group block p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1" style={{ background: 'rgba(6,182,212,0.06)', border: '1px solid rgba(6,182,212,0.2)' }}>
                 <div className="text-2xl mb-3">📊</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Management Assistant</h3>
+                <h3 className="font-bold text-foreground mb-2">Management Assistant</h3>
                 <p className="text-sm text-[#64748B] mb-3">Контроль команды, финансовый трекер, еженедельные отчёты в Telegram.</p>
                 <span className="text-sm font-semibold text-[#06B6D4]">От $3 000 →</span>
               </Link>
               <Link href="/products/corporate-ai" className="group block p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1" style={{ background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)' }}>
                 <div className="text-2xl mb-3">🏢</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Corporate AI (RAG)</h3>
+                <h3 className="font-bold text-foreground mb-2">Corporate AI (RAG)</h3>
                 <p className="text-sm text-[#64748B] mb-3">База знаний компании с AI. Интеграция с 1С, Bitrix24, amoCRM.</p>
                 <span className="text-sm font-semibold text-[#7C3AED]">От $8 000 →</span>
               </Link>

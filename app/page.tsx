@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
-import { ClientLogos } from '@/components/sections/ClientLogos';
 import { FaqSchema } from '@/components/seo/FaqSchema';
 import { RoiCalculator } from '@/components/sections/RoiCalculator';
+import { HomePageExtras } from '@/components/home/HomePageExtras';
 
 const SITE_URL = 'https://aisolution.uz';
 
@@ -83,6 +82,9 @@ const SolutionSection = dynamic(() =>
 const ProductsSection = dynamic(() =>
   import('@/components/sections/ProductsSection').then((m) => m.ProductsSection)
 );
+const MarketBenchmarkSection = dynamic(() =>
+  import('@/components/sections/MarketBenchmarkSection').then((m) => m.MarketBenchmarkSection)
+);
 const SocialProofSection = dynamic(() =>
   import('@/components/sections/SocialProofSection').then((m) => m.SocialProofSection)
 );
@@ -102,56 +104,17 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <FaqSchema />
       <Header />
-      <main>
+      <main className="pt-0">
         <Hero />
-        <ClientLogos />
         <ProblemSection />
         <SolutionSection />
-        <ProductsSection />
         <SocialProofSection />
-        <SimplePricingSection />
+        <ProductsSection />
+        <MarketBenchmarkSection />
         <RoiCalculator />
-        <section className="bg-[#05050A] px-4 md:px-6 py-10" aria-label="Популярные решения">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-6 text-center">
-              Популярные решения
-            </h2>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                { href: '/telegram-bot-dlya-biznesa/', label: 'Telegram-бот для бизнеса' },
-                { href: '/ai-bot-tashkent/', label: 'AI-бот в Ташкенте' },
-                { href: '/avtomatizaciya-prodazh-tashkent/', label: 'Автоматизация продаж' },
-                { href: '/crm-integraciya-tashkent/', label: 'CRM интеграция' },
-                { href: '/ii-chatbot-tashkent/', label: 'ИИ чатбот Ташкент' },
-                { href: '/biznes-avtomatizaciya-uzbekistan/', label: 'Автоматизация в Узбекистане' },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.03] text-[#94A3B8] hover:text-[#F8FAFC] hover:border-[#3B82F6]/40 hover:bg-[#3B82F6]/10 transition-colors text-sm font-medium"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+        <SimplePricingSection />
         <ContactSection />
-        <section className="bg-[#05050A] px-4 md:px-6 py-6">
-          <div className="max-w-6xl mx-auto rounded-2xl p-5 md:p-6 border border-white/10 bg-white/[0.02] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-lg font-semibold text-[#F8FAFC] text-center sm:text-left">
-              Следите за нами в Telegram — кейсы, обзоры ИИ и автоматизации
-            </p>
-            <a
-              href="https://t.me/aisolution_uz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#0088CC] hover:bg-[#0077B5] text-white font-semibold transition-colors"
-            >
-              Перейти в канал
-            </a>
-          </div>
-        </section>
+        <HomePageExtras />
       </main>
       <Footer />
     </>

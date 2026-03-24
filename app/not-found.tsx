@@ -30,7 +30,7 @@ export default function NotFound() {
   };
 
   return (
-    <div className="min-h-screen bg-[#05050A] flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4">
       <div className="relative mb-8">
         <div className="absolute inset-[-20px] rounded-full animate-ping opacity-20 border-2 border-blue-500" />
         <div
@@ -67,7 +67,7 @@ export default function NotFound() {
         </div>
       </div>
 
-      <h1 className="text-white text-3xl font-bold mt-6 text-center">
+      <h1 className="text-foreground text-3xl font-bold mt-6 text-center">
         Вы недоступны
       </h1>
       <p className="text-[#64748B] text-sm mt-2 text-center max-w-sm">

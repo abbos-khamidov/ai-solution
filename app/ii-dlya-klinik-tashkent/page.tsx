@@ -38,7 +38,7 @@ export default function IiDlyaKlinikTashkentPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ИИ для клиник в Ташкенте</p>
@@ -59,7 +59,7 @@ export default function IiDlyaKlinikTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как ИИ решает задачи клиник</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как ИИ решает задачи клиник</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             ИИ-бот ведёт диалог в Telegram, Instagram или на сайте: уточняет цель визита (консультация, анализы, процедура), предлагает специалиста или услугу, показывает свободные слоты и фиксирует запись. Одновременно отвечает на типовые вопросы: стоимость приёма, подготовка к анализам, адрес и режим работы. При необходимости передаёт диалог администратору с уже собранными данными. Для клиник в Ташкенте мы настраиваем сценарии под ваши услуги и расписание, при необходимости интегрируем с учётной системой и напоминаниями (SMS или мессенджер). В результате первый ответ пациенту занимает до 30 секунд, запись доступна круглосуточно, а колл-центр фокусируется на сложных обращениях.
           </p>
@@ -69,7 +69,7 @@ export default function IiDlyaKlinikTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Что получает клиника после внедрения</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Что получает клиника после внедрения</h2>
           <ul className="space-y-3 text-[#94A3B8]">
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Запись пациентов 24/7 без потерь в нерабочее время.</li>
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Быстрый ответ на вопросы об услугах и ценах — меньше пропущенных звонков.</li>
@@ -79,14 +79,14 @@ export default function IiDlyaKlinikTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Пример внедрения</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Пример внедрения</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Медцентр в Ташкенте получал заявки на запись в Telegram и по телефону. В вечернее время и в выходные часть обращений терялась. Внедрили ИИ-бота: он принимает запись по слотам, отвечает на вопросы по услугам и ценам и передаёт сложные запросы администратору. Время первого ответа сократилось до 30 секунд, доля записей через бота выросла, нагрузка на колл-центр снизилась.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Запуск ИИ-бота для клиники: от $390 (базовый сценарий записи и FAQ) + $150/мес. С интеграцией с учётной системой и напоминаниями — от $1 000 за запуск + от $300/мес. Срок базового запуска — 5–7 рабочих дней.
           </p>
@@ -97,7 +97,7 @@ export default function IiDlyaKlinikTashkentPage() {
           <div className="space-y-4">
             {faqItems.map(({ q, a }) => (
               <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
                 <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
               </details>
             ))}
@@ -113,7 +113,7 @@ export default function IiDlyaKlinikTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li><Link href="/tashkent" className="text-[#93C5FD] hover:underline">Автоматизация бизнеса в Ташкенте</Link></li>
             <li><Link href="/ii-chatbot-tashkent" className="text-[#93C5FD] hover:underline">ИИ чатбот для бизнеса в Ташкенте</Link></li>

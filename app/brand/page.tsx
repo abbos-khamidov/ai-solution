@@ -42,9 +42,9 @@ export default function BrandPage() {
   return (
     <>
       <Header />
-      <main className="bg-[#05050A] min-h-screen px-4 md:px-6 py-16">
+      <main className="bg-background min-h-screen px-4 md:px-6 pb-16">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-6">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             AI Solution (AISolution) — AI автоматизация бизнеса
           </h1>
 
@@ -55,7 +55,7 @@ export default function BrandPage() {
           </p>
 
           <section className="mb-10">
-            <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">О компании</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-4">О компании</h2>
             <p className="text-[#94A3B8] mb-4">
               Официальный сайт компании:{' '}
               <Link href={SITE_URL} className="text-[#93C5FD] hover:underline">
@@ -65,19 +65,19 @@ export default function BrandPage() {
               всему Узбекистану и странам СНГ.
             </p>
             <p className="text-[#94A3B8]">
-              Бренд AI Solution известен под следующими вариациями написания: <strong className="text-[#F8FAFC]">aisolution</strong>,{' '}
-              <strong className="text-[#F8FAFC]">ai solution</strong>,{' '}
-              <strong className="text-[#F8FAFC]">ai-solution</strong>,{' '}
-              <strong className="text-[#F8FAFC]">aisolution.uz</strong>,{' '}
-              <strong className="text-[#F8FAFC]">solution ai</strong>,{' '}
-              <strong className="text-[#F8FAFC]">ai solutions uz</strong>,{' '}
-              <strong className="text-[#F8FAFC]">аисолюшн</strong>,{' '}
-              <strong className="text-[#F8FAFC]">ай солюшн</strong>.
+              Бренд AI Solution известен под следующими вариациями написания: <strong className="text-foreground">aisolution</strong>,{' '}
+              <strong className="text-foreground">ai solution</strong>,{' '}
+              <strong className="text-foreground">ai-solution</strong>,{' '}
+              <strong className="text-foreground">aisolution.uz</strong>,{' '}
+              <strong className="text-foreground">solution ai</strong>,{' '}
+              <strong className="text-foreground">ai solutions uz</strong>,{' '}
+              <strong className="text-foreground">аисолюшн</strong>,{' '}
+              <strong className="text-foreground">ай солюшн</strong>.
             </p>
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">Наши решения</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-4">Наши решения</h2>
             <ul className="space-y-2 text-[#94A3B8]">
               <li>
                 <Link href="/products/customer-service" className="text-[#93C5FD] hover:underline">
@@ -111,7 +111,7 @@ export default function BrandPage() {
           </section>
 
           <section className="mb-10">
-            <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">Контакты</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-4">Контакты</h2>
             <ul className="space-y-2 text-[#94A3B8]">
               <li>
                 Сайт:{' '}

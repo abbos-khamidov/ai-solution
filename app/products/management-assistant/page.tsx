@@ -127,7 +127,7 @@ export default function ManagementAssistantPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <main>
       {/* Hero */}
-      <section className="relative min-h-[80vh] pt-28 pb-16 flex items-center overflow-hidden" style={{ background: '#05050A' }}>
+      <section className="relative min-h-[80vh] pb-16 flex items-center overflow-hidden bg-background">
         <div
           className="absolute inset-0 opacity-40"
           style={{
@@ -148,11 +148,11 @@ export default function ManagementAssistantPage() {
         <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 w-full">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-1.5 text-sm text-[#64748B] mb-8">
-            <Link href="/" className="hover:text-white transition-colors">{t('nav.home')}</Link>
+            <Link href="/" className="hover:text-foreground transition-colors">{t('nav.home')}</Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <span>{t('nav.products')}</span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-[#F8FAFC]">Management Assistant</span>
+            <span className="text-foreground">Management Assistant</span>
           </nav>
 
           {/* Badge */}
@@ -163,7 +163,7 @@ export default function ManagementAssistantPage() {
             📊 Management Assistant
           </div>
 
-          <h1 className="text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.1] font-extrabold text-[#F8FAFC] tracking-[-0.03em] mb-6 max-w-3xl">
+          <h1 className="text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.1] font-extrabold text-foreground tracking-[-0.03em] mb-6 max-w-3xl">
             {t('productPages.ma.heroTitle')}
           </h1>
 
@@ -182,7 +182,7 @@ export default function ManagementAssistantPage() {
       </section>
 
       {/* Warning block */}
-      <section className="py-10 md:py-16" style={{ background: '#0D0D1A' }}>
+      <section className="py-10 md:py-16 bg-background-secondary">
         <div className="max-w-4xl mx-auto px-4 md:px-6">
           <ScrollReveal duration={0.6}>
             <div
@@ -213,11 +213,11 @@ export default function ManagementAssistantPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 md:py-20" style={{ background: '#05050A' }}>
+      <section className="py-16 md:py-20 bg-background">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">{t('productPages.ma.featuresTitle')}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t('productPages.ma.featuresTitle')}</h2>
             </div>
           </ScrollReveal>
 
@@ -254,7 +254,7 @@ export default function ManagementAssistantPage() {
                       <span className="text-2xl">{feature.emoji}</span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-bold text-[#F8FAFC] mb-3">{feature.title}</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-3">{feature.title}</h3>
                   <p className="text-[#94A3B8] leading-relaxed text-sm">{feature.description}</p>
                 </div>
               </ScrollReveal>
@@ -264,14 +264,14 @@ export default function ManagementAssistantPage() {
       </section>
 
       {/* Pricing */}
-      <section className="relative py-16 md:py-24 overflow-hidden" style={{ background: '#0D0D1A' }}>
+      <section className="relative py-16 md:py-24 overflow-hidden bg-background-secondary">
         <div className="absolute inset-0" aria-hidden="true">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.06), transparent 70%)', filter: 'blur(80px)' }} />
         </div>
         <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
           <ScrollReveal duration={0.6}>
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 {t('productPages.ma.pricingTitle')}
               </h2>
               <p className="text-lg text-[#64748B]">

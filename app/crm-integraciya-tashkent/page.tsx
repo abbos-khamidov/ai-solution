@@ -38,7 +38,7 @@ export default function CrmIntegraciyaTashkentPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Интеграция ИИ с CRM в Ташкенте</p>
@@ -59,14 +59,14 @@ export default function CrmIntegraciyaTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как работает интеграция ИИ с CRM</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как работает интеграция ИИ с CRM</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             ИИ-бот ведёт диалог в мессенджерах или на сайте. При создании лида (или при присвоении статуса Hot) данные передаются в CRM: имя, контакт, источник, краткое резюме диалога. История переписки сохраняется в карточке лида или в комментариях. Менеджер получает уведомление (в CRM, в Telegram или по email) и открывает карточку с полным контекстом. Дополнительно можно синхронизировать этапы сделки: когда менеджер переводит лид в сделку или закрывает — бот может получать обратную связь для аналитики. Для компаний в Ташкенте мы настраиваем интеграцию под вашу CRM и поля: какие данные передавать, когда создавать лид, как помечать источник (Telegram, Instagram, сайт).
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Что получает бизнес после интеграции</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Что получает бизнес после интеграции</h2>
           <ul className="space-y-3 text-[#94A3B8]">
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Единая воронка: все лиды из бота в CRM без ручного ввода.</li>
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Контекст диалога в карточке лида — менеджер не теряет историю.</li>
@@ -76,7 +76,7 @@ export default function CrmIntegraciyaTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Базовая интеграция ИИ-бота с CRM (создание лида, передача контекста, уведомление) — от $500. Сложная синхронизация полей, этапов и отчётов — от $1 000 и выше. Срок — от 1 до 3 недель в зависимости от CRM и объёма. Оценка после аудита вашей системы.
           </p>
@@ -87,7 +87,7 @@ export default function CrmIntegraciyaTashkentPage() {
           <div className="space-y-4">
             {faqItems.map(({ q, a }) => (
               <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
                 <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
               </details>
             ))}
@@ -103,7 +103,7 @@ export default function CrmIntegraciyaTashkentPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li><Link href="/services/ai-managers" className="text-[#93C5FD] hover:underline">Бот-менеджер для Telegram, WhatsApp, Instagram</Link></li>
             <li><Link href="/avtomatizaciya-prodazh-tashkent" className="text-[#93C5FD] hover:underline">Автоматизация продаж в Ташкенте</Link></li>

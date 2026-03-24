@@ -40,7 +40,7 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Автоматизация бизнеса в Узбекистане</p>
@@ -56,7 +56,7 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Для каких задач подходит автоматизация</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Для каких задач подходит автоматизация</h2>
           <ul className="space-y-3 text-[#94A3B8] mb-6">
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Приём заявок 24/7</strong> — бот отвечает клиентам в нерабочее время, ночью и в выходные. В Узбекистане клиенты пишут после 22:00 — без бота эти заявки теряются.</li>
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Квалификация лидов</strong> — система Cold/Warm/Hot автоматически определяет готовность к покупке. Менеджер получает только горячих с контекстом диалога.</li>
@@ -67,14 +67,14 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Из чего складывается автоматизация</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Из чего складывается автоматизация</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             Первый уровень — ИИ-бот в одном или нескольких каналах (Telegram, Instagram, WhatsApp, сайт): приём заявок, ответы на FAQ, квалификация лидов Cold/Warm/Hot и передача горячих менеджерам. Второй — интеграция с CRM: лиды и диалоги в Bitrix24, amoCRM, 1С, уведомления в привычной системе. Третий — аналитика и отчётность: дашборды по лидам, конверсии, источникам; при необходимости управленческие сводки для руководства. Для бизнеса в Узбекистане мы подбираем контур под ваш масштаб: можно начать с одного канала и бота, затем добавить CRM и отчёты без потери накопленных данных.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Что получает бизнес после внедрения</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Что получает бизнес после внедрения</h2>
           <ul className="space-y-3 text-[#94A3B8]">
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Ответ клиенту за 30 секунд 24/7 — меньше потерь лидов.</li>
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Единая воронка по каналам и квалификация лидов.</li>
@@ -84,14 +84,14 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Кейсы в Узбекистане</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Кейсы в Узбекистане</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             Образовательная платформа Studify.uz и IT-компания Marsit.uz внедрили ИИ-автоматизацию лидов в Ташкенте. В обоих случаях время первого ответа сократилось до 30 секунд, воронка стала прозрачной, доля качественных заявок выросла. Подробнее — в кейсах <Link href="/cases/studify-ai-automation" className="text-[#93C5FD] hover:underline">Studify.uz</Link> и <Link href="/cases/marsit-lead-automation" className="text-[#93C5FD] hover:underline">Marsit.uz</Link>.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как проходит внедрение</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как проходит внедрение</h2>
           <ol className="space-y-3 text-[#94A3B8] list-decimal list-inside">
             <li><strong>Аудит и постановка задачи (день 1–2)</strong> — разбираем вашу воронку, определяем узкие места, составляем техзадание на сценарии бота.</li>
             <li><strong>Разработка сценариев (день 3–7)</strong> — пишем диалоги, настраиваем квалификационные вопросы, прописываем логику Cold/Warm/Hot.</li>
@@ -101,7 +101,7 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Запуск автоматизации: от $1 000 (бот в 1–2 каналах) + от $500/мес. С CRM и аналитикой — от $2 000 за запуск + от $700/мес. Срок базового запуска — 5–7 рабочих дней, полный цикл — 2–3 недели. Оценка под ваши задачи — после бесплатного аудита.
           </p>
@@ -112,7 +112,7 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
           <div className="space-y-4">
             {faqItems.map(({ q, a }) => (
               <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
                 <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
               </details>
             ))}
@@ -128,7 +128,7 @@ export default function BiznesAvtomatizaciyaUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li><Link href="/tashkent" className="text-[#93C5FD] hover:underline">Автоматизация бизнеса в Ташкенте</Link></li>
             <li><Link href="/ii-avtomatizaciya-uzbekistan" className="text-[#93C5FD] hover:underline">ИИ автоматизация в Узбекистане</Link></li>

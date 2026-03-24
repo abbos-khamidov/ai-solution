@@ -80,7 +80,7 @@ export default function TelegramBotDlyaBiznesaPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Telegram-бот для бизнеса в Узбекистане</p>
@@ -107,7 +107,7 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Для каких задач подходит Telegram-бот</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Для каких задач подходит Telegram-бот</h2>
           <ul className="space-y-3 text-[#94A3B8] mb-6">
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Приём заявок 24/7</strong> — бот отвечает клиентам в нерабочее время, ночью и в выходные. В Узбекистане клиенты пишут после 22:00 — без бота эти заявки теряются.</li>
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Квалификация лидов</strong> — система Cold/Warm/Hot автоматически определяет готовность к покупке. Менеджер получает только горячих с контекстом диалога.</li>
@@ -118,7 +118,7 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
             Как Telegram-бот решает задачи бизнеса
           </h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
@@ -138,7 +138,7 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
             Что получает бизнес после внедрения
           </h2>
           <ul className="space-y-3 text-[#94A3B8]">
@@ -162,7 +162,7 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Реальный результат: кейс MarsIT</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Реальный результат: кейс MarsIT</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             IT-компания в Ташкенте (MarsIT) обрабатывала входящие заявки вручную. Менеджеры отвечали через 3–4 часа — горячие лиды успевали уйти к конкурентам. Значительная часть обращений оказывалась нецелевой: студенты, фрилансеры, нерелевантные запросы. Менеджеры тратили время на отсев вместо закрытия сделок.
           </p>
@@ -180,7 +180,7 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как проходит внедрение</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как проходит внедрение</h2>
           <ol className="space-y-3 text-[#94A3B8] list-decimal list-inside mb-6">
             <li><strong>Аудит и постановка задачи (день 1–2)</strong> — разбираем вашу воронку, определяем узкие места, составляем техзадание на сценарии бота.</li>
             <li><strong>Разработка сценариев (день 3–7)</strong> — пишем диалоги, настраиваем квалификационные вопросы, прописываем логику Cold/Warm/Hot.</li>
@@ -190,7 +190,7 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Простой Telegram-бот для приёма заявок — от $1 500. ИИ-бот с квалификацией лидов и интеграциями — от $2 500.
             Поддержка — от $300/мес. Срок запуска базового бота — 1–2 недели, с ИИ и интеграциями — 2–4 недели.
@@ -205,7 +205,7 @@ export default function TelegramBotDlyaBiznesaPage() {
                 key={q}
                 className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors"
               >
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">
                   {q}
                   <span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
                 </summary>
@@ -231,7 +231,7 @@ export default function TelegramBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li>
               <Link href="/" className="text-[#93C5FD] hover:underline">Главная — AI Solution</Link>

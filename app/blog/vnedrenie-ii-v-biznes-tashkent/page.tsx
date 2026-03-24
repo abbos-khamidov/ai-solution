@@ -70,16 +70,16 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <main className="min-h-screen" style={{ background: '#05050A' }}>
+      <main className="min-h-screen bg-background">
         {/* Hero */}
-        <div className="pt-28 pb-10" style={{ background: '#0D0D1A', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="pt-28 pb-10 bg-background-secondary border-b border-border">
           <div className="max-w-4xl mx-auto px-4 md:px-6">
             <nav className="flex items-center gap-2 text-sm text-[#64748B] mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+              <Link href="/" className="hover:text-foreground transition-colors">Главная</Link>
               <span>/</span>
               <span className="text-[#94A3B8]">Блог</span>
               <span>/</span>
-              <span className="text-[#F8FAFC]">Внедрение ИИ в Ташкенте</span>
+              <span className="text-foreground">Внедрение ИИ в Ташкенте</span>
             </nav>
             <div className="flex items-center gap-4 text-sm text-[#64748B] mb-4">
               <span>20 января 2025</span>
@@ -93,7 +93,7 @@ export default function Page() {
                 Руководство
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight tracking-tight mb-4">
               {TITLE}
             </h1>
             <p className="text-lg text-[#94A3B8] leading-relaxed max-w-3xl">
@@ -110,7 +110,7 @@ export default function Page() {
 
             {/* Section 1 */}
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Почему ташкентский бизнес переходит на ИИ
               </h2>
               <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
@@ -147,7 +147,7 @@ export default function Page() {
 
             {/* Section 2 */}
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Пошаговый план внедрения ИИ
               </h2>
               <p>
@@ -156,32 +156,32 @@ export default function Page() {
                 болевой точки, получить результат, затем масштабировать.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Шаг 1: Аудит процессов.</strong> Прежде чем
+                <strong className="text-foreground">Шаг 1: Аудит процессов.</strong> Прежде чем
                 внедрять ИИ, нужно понять, где именно теряются деньги и время. Типичные точки потерь:
                 обработка входящих обращений в мессенджерах, квалификация лидов, составление отчётов
                 вручную, ответы на повторяющиеся вопросы клиентов. Хороший аудит занимает один-два
                 дня и сразу расставляет приоритеты.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Шаг 2: Выбор точки входа.</strong> Самый быстрый
+                <strong className="text-foreground">Шаг 2: Выбор точки входа.</strong> Самый быстрый
                 ROI даёт автоматизация обработки входящих обращений. Именно здесь скрыты наибольшие
                 потери лидов. Клиент написал, менеджер ответил через три часа — клиент уже выбрал
                 другого поставщика. AI отвечает за 30 секунд в любое время суток.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Шаг 3: Выбор партнёра.</strong> Выбирайте
+                <strong className="text-foreground">Шаг 3: Выбор партнёра.</strong> Выбирайте
                 команду, которая понимает специфику узбекского рынка: менталитет клиентов, типичные
                 возражения, популярные каналы коммуникации. Решения, разработанные для западного
                 рынка, часто не учитывают эти нюансы и требуют дорогой адаптации.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Шаг 4: Обучение системы.</strong> AI обучается
+                <strong className="text-foreground">Шаг 4: Обучение системы.</strong> AI обучается
                 на реальных диалогах вашего бизнеса: частые вопросы, типичные возражения, сценарии
                 продаж. Чем больше данных для обучения — тем точнее ответы. Опытная команда внедрения
                 берёт на себя весь этот процесс.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Шаг 5: Тестирование и запуск.</strong> Первые
+                <strong className="text-foreground">Шаг 5: Тестирование и запуск.</strong> Первые
                 две недели — тестовый период. AI работает параллельно с менеджерами, вы видите
                 реальные диалоги, корректируете сценарии и только потом переходите в полноценный
                 режим работы.
@@ -190,38 +190,38 @@ export default function Page() {
 
             {/* Section 3 */}
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Сферы бизнеса в Ташкенте с максимальным ROI от ИИ
               </h2>
               <p>
-                <strong className="text-[#F8FAFC]">Интернет-магазины и маркетплейсы.</strong> Главная
+                <strong className="text-foreground">Интернет-магазины и маркетплейсы.</strong> Главная
                 боль — покупатели круглосуточно задают одинаковые вопросы: наличие товара, сроки
                 доставки, условия возврата. Менеджеры тратят 70-80% рабочего времени на эти ответы
                 вместо реальных продаж. AI берёт рутину на себя, а команда занимается увеличением
                 среднего чека и работой с VIP-клиентами.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Медицина и клиники.</strong> Запись на приём,
+                <strong className="text-foreground">Медицина и клиники.</strong> Запись на приём,
                 ответы на вопросы о стоимости услуг, инструкции по подготовке к процедурам — всё
                 это AI автоматизирует полностью. Пациент получает ответ мгновенно в 3 ночи,
                 администратор освобождается для работы непосредственно в клинике.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Недвижимость.</strong> Агентства недвижимости
+                <strong className="text-foreground">Недвижимость.</strong> Агентства недвижимости
                 в Ташкенте ежедневно обрабатывают десятки обращений. AI квалифицирует каждого
                 потенциального покупателя: серьёзный покупатель с бюджетом или просто интересующийся.
                 Агенты получают только горячих лидов с собранным профилем: бюджет, желаемый район,
                 срок покупки.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Образование и онлайн-курсы.</strong> Поток
+                <strong className="text-foreground">Образование и онлайн-курсы.</strong> Поток
                 заявок в образовательные учреждения непостоянен: перед началом учебного года —
                 огромная нагрузка, в остальное время — тишина. AI справляется с пиковой нагрузкой
                 без найма временного персонала, консультирует по программам и записывает на
                 пробные уроки 24/7.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Юридические услуги.</strong> Потенциальные
+                <strong className="text-foreground">Юридические услуги.</strong> Потенциальные
                 клиенты часто не понимают, к какому специалисту им нужно обратиться и сколько
                 стоят услуги. AI проводит первичную консультацию, квалифицирует запрос и записывает
                 на встречу с нужным юристом. Конверсия из заявки в оплату растёт в среднем на 40%.
@@ -230,7 +230,7 @@ export default function Page() {
 
             {/* Section 4 */}
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 ROI и реальные результаты внедрения
               </h2>
               <p>
@@ -249,7 +249,7 @@ export default function Page() {
 
             {/* Section 5 */}
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Что мешает внедрению ИИ и как с этим работать
               </h2>
               <p>
@@ -269,7 +269,7 @@ export default function Page() {
 
             {/* Section 6 */}
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Как начать прямо сейчас
               </h2>
               <p>
@@ -289,7 +289,7 @@ export default function Page() {
 
           {/* Products CTA */}
           <section className="mt-16 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-            <h2 className="text-2xl font-bold text-[#F8FAFC] mb-3">
+            <h2 className="text-2xl font-bold text-foreground mb-3">
               Решения AI Solution для вашего бизнеса
             </h2>
             <p className="text-[#64748B] mb-8">
@@ -302,7 +302,7 @@ export default function Page() {
                 style={{ background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)' }}
               >
                 <div className="text-2xl mb-3">🤖</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Customer Service Bot</h3>
+                <h3 className="font-bold text-foreground mb-2">Customer Service Bot</h3>
                 <p className="text-sm text-[#64748B] mb-3">
                   AI в Telegram, Instagram, WhatsApp. Ответ за 30 сек, квалификация лидов 24/7.
                 </p>
@@ -314,7 +314,7 @@ export default function Page() {
                 style={{ background: 'rgba(6,182,212,0.06)', border: '1px solid rgba(6,182,212,0.2)' }}
               >
                 <div className="text-2xl mb-3">📊</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Management Assistant</h3>
+                <h3 className="font-bold text-foreground mb-2">Management Assistant</h3>
                 <p className="text-sm text-[#64748B] mb-3">
                   Контроль команды, финансовый трекер, еженедельные отчёты в Telegram.
                 </p>
@@ -326,7 +326,7 @@ export default function Page() {
                 style={{ background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)' }}
               >
                 <div className="text-2xl mb-3">🏢</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Corporate AI (RAG)</h3>
+                <h3 className="font-bold text-foreground mb-2">Corporate AI (RAG)</h3>
                 <p className="text-sm text-[#64748B] mb-3">
                   База знаний компании с AI. Интеграция с 1С, Bitrix24, amoCRM. On-premise.
                 </p>

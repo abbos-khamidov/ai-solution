@@ -38,7 +38,7 @@ export default function WhatsAppBotDlyaBiznesaPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">WhatsApp-бот для бизнеса</p>
@@ -59,14 +59,14 @@ export default function WhatsAppBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как WhatsApp-бот решает задачи бизнеса</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как WhatsApp-бот решает задачи бизнеса</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             ИИ-бот в WhatsApp приветствует клиента, уточняет потребность (заказ, консультация, запись), отвечает на частые вопросы по ценам и срокам и при готовности к сделке передаёт диалог менеджеру с кратким контекстом. Один и тот же бот может работать в Telegram и Instagram — единая база диалогов, единая квалификация. Для компаний в Узбекистане настраиваем сценарии под вашу нишу и политики WhatsApp, при необходимости подключаем интеграции с CRM. В результате первый ответ в WhatsApp занимает до 30 секунд, заявки не теряются в нерабочее время, менеджеры получают только квалифицированные обращения.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Что получает бизнес после внедрения</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Что получает бизнес после внедрения</h2>
           <ul className="space-y-3 text-[#94A3B8]">
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Ответ в WhatsApp за 30 секунд 24/7.</li>
             <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Квалификация лидов и передача горячих с контекстом.</li>
@@ -76,7 +76,7 @@ export default function WhatsAppBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Запуск WhatsApp-бота (часто в связке с Telegram/Instagram) — от $1 000 + от $500/мес. Срок базового сценария — 5–7 рабочих дней, с интеграциями — 2–3 недели.
           </p>
@@ -87,7 +87,7 @@ export default function WhatsAppBotDlyaBiznesaPage() {
           <div className="space-y-4">
             {faqItems.map(({ q, a }) => (
               <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
                 <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
               </details>
             ))}
@@ -103,7 +103,7 @@ export default function WhatsAppBotDlyaBiznesaPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li><Link href="/telegram-bot-dlya-biznesa" className="text-[#93C5FD] hover:underline">Telegram-бот для бизнеса</Link></li>
             <li><Link href="/ii-chatbot-tashkent" className="text-[#93C5FD] hover:underline">ИИ чатбот для бизнеса в Ташкенте</Link></li>

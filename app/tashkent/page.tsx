@@ -128,7 +128,7 @@ export default function TashkentLocalPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localServiceSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Внедрение искусственного интеллекта в Ташкенте</p>
@@ -185,7 +185,7 @@ export default function TashkentLocalPage() {
                 href={svc.href}
                 className="group block p-5 rounded-xl border border-white/10 bg-white/[0.02] hover:-translate-y-0.5 transition-all"
               >
-                <h3 className="font-bold text-[#F8FAFC] mb-1">{svc.title}</h3>
+                <h3 className="font-bold text-foreground mb-1">{svc.title}</h3>
                 <p className="text-sm text-[#94A3B8] leading-relaxed">{svc.desc}</p>
               </Link>
             ))}
@@ -217,7 +217,7 @@ export default function TashkentLocalPage() {
                 key={q}
                 className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors"
               >
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">
                   {q}
                   <span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
                 </summary>
@@ -244,17 +244,17 @@ export default function TashkentLocalPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
               <div>
                 <p className="text-[#64748B] mb-1">Телефоны</p>
-                <a href="tel:+998770612200" className="block text-[#F8FAFC] font-medium hover:underline">+998 77 061 22 00</a>
-                <a href="tel:+998950000065" className="block text-[#F8FAFC] font-medium hover:underline">+998 95 000 00 65</a>
-                <a href="tel:+998939492000" className="block text-[#F8FAFC] font-medium hover:underline">+998 93 949 20 00</a>
+                <a href="tel:+998770612200" className="block text-foreground font-medium hover:underline">+998 77 061 22 00</a>
+                <a href="tel:+998950000065" className="block text-foreground font-medium hover:underline">+998 95 000 00 65</a>
+                <a href="tel:+998939492000" className="block text-foreground font-medium hover:underline">+998 93 949 20 00</a>
               </div>
               <div>
                 <p className="text-[#64748B] mb-1">Email</p>
-                <a href="mailto:info@aisolution.uz" className="text-[#F8FAFC] font-medium hover:underline">info@aisolution.uz</a>
+                <a href="mailto:info@aisolution.uz" className="text-foreground font-medium hover:underline">info@aisolution.uz</a>
               </div>
               <div>
                 <p className="text-[#64748B] mb-1">Адрес</p>
-                <p className="text-[#F8FAFC]">ул. Богибустан 186, Ташкент, 100000</p>
+                <p className="text-foreground">ул. Богибустан 186, Ташкент, 100000</p>
               </div>
             </div>
           </div>
@@ -277,7 +277,7 @@ export default function TashkentLocalPage() {
               </Link>
               <Link
                 href="/services/ai-managers"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/20 text-[#F8FAFC] hover:bg-white/5 transition-colors"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/20 text-foreground hover:bg-white/5 transition-colors"
               >
                 Подробнее про бот-менеджера
               </Link>

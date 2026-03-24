@@ -289,18 +289,18 @@ export const metadata: Metadata = {
 
 export default function AiAnalyticsProductPage() {
   return (
-    <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+    <main className="min-h-screen bg-background text-foreground pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <section className="max-w-6xl mx-auto px-4 md:px-6">
         <nav className="flex items-center gap-1.5 text-sm text-[#64748B] mb-8">
-          <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+          <Link href="/" className="hover:text-foreground transition-colors">Главная</Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/products" className="hover:text-white transition-colors">Продукты</Link>
+          <Link href="/products" className="hover:text-foreground transition-colors">Продукты</Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-[#F8FAFC]">AI-аналитика</span>
+          <span className="text-foreground">AI-аналитика</span>
         </nav>
 
         <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
@@ -323,7 +323,7 @@ export default function AiAnalyticsProductPage() {
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           {dataSources.map((item) => (
             <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">{item.title}</h3>
+              <h3 className="font-semibold text-foreground">{item.title}</h3>
               <p className="mt-2 text-[#94A3B8]">{item.text}</p>
             </article>
           ))}
@@ -335,7 +335,7 @@ export default function AiAnalyticsProductPage() {
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           {outcomes.map((item) => (
             <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">{item.title}</h3>
+              <h3 className="font-semibold text-foreground">{item.title}</h3>
               <p className="mt-2 text-[#94A3B8]">{item.text}</p>
             </article>
           ))}
@@ -352,7 +352,7 @@ export default function AiAnalyticsProductPage() {
             { title: 'Финансы', text: 'Юнит-экономика, рентабельность каналов и прогноз по денежным потокам.' },
           ].map((item) => (
             <article key={item.title} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-              <h3 className="font-semibold text-[#F8FAFC]">{item.title}</h3>
+              <h3 className="font-semibold text-foreground">{item.title}</h3>
               <p className="mt-2 text-[#94A3B8] text-sm">{item.text}</p>
             </article>
           ))}
@@ -367,7 +367,7 @@ export default function AiAnalyticsProductPage() {
               <div className="min-h-[190px] md:min-h-[200px]">
                 <DashboardWireframe id={item.id as 'ceo' | 'sales' | 'marketing'} />
               </div>
-              <h3 className="mt-4 font-semibold text-[#F8FAFC] leading-tight">{item.title}</h3>
+              <h3 className="mt-4 font-semibold text-foreground leading-tight">{item.title}</h3>
               <p className="mt-2 text-[#94A3B8] text-sm leading-relaxed">{item.text}</p>
             </article>
           ))}
@@ -380,7 +380,7 @@ export default function AiAnalyticsProductPage() {
           {implementationSteps.map((step, idx) => (
             <article key={step} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
               <p className="text-sm text-[#93C5FD]">Этап {idx + 1}</p>
-              <p className="mt-1 text-[#F8FAFC] font-medium">{step}</p>
+              <p className="mt-1 text-foreground font-medium">{step}</p>
             </article>
           ))}
         </div>
@@ -391,7 +391,7 @@ export default function AiAnalyticsProductPage() {
         <p className="mt-2 text-[#94A3B8]">Дашборд окупается за счёт экономии на ручной аналитике и быстрых решений</p>
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
           <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
-            <h3 className="font-bold text-[#F8FAFC] text-lg">Starter</h3>
+            <h3 className="font-bold text-foreground text-lg">Starter</h3>
             <p className="text-sm text-[#64748B] mt-1">Базовый дашборд для руководителя</p>
             <p className="text-2xl font-bold text-gradient mt-3">$1 900</p>
             <p className="text-sm text-[#94A3B8]">запуск + $500/мес</p>
@@ -407,7 +407,7 @@ export default function AiAnalyticsProductPage() {
           </article>
           <article className="rounded-xl border border-[#3B82F6]/30 bg-[#3B82F6]/5 p-5 flex flex-col relative">
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white text-xs font-semibold">Популярный</span>
-            <h3 className="font-bold text-[#F8FAFC] text-lg">Growth</h3>
+            <h3 className="font-bold text-foreground text-lg">Growth</h3>
             <p className="text-sm text-[#64748B] mt-1">Полная аналитика + AI-рекомендации</p>
             <p className="text-2xl font-bold text-gradient mt-3">$4 500</p>
             <p className="text-sm text-[#94A3B8]">запуск + $1 500/мес · средний чек $5 800</p>
@@ -422,7 +422,7 @@ export default function AiAnalyticsProductPage() {
             </ul>
           </article>
           <article className="rounded-xl border border-white/10 bg-white/[0.02] p-5 flex flex-col">
-            <h3 className="font-bold text-[#F8FAFC] text-lg">Enterprise</h3>
+            <h3 className="font-bold text-foreground text-lg">Enterprise</h3>
             <p className="text-sm text-[#64748B] mt-1">Мульти-отдельная AI-аналитика</p>
             <p className="text-2xl font-bold text-gradient mt-3">от $12 000</p>
             <p className="text-sm text-[#94A3B8]">запуск + от $3 500/мес</p>
@@ -462,7 +462,7 @@ export default function AiAnalyticsProductPage() {
               key={q}
               className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors"
             >
-              <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">
+              <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">
                 {q}
                 <span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
               </summary>

@@ -47,9 +47,9 @@ export default function SecurityPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <div className="max-w-3xl mx-auto px-4 md:px-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#F8FAFC] mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Безопасность данных и условия работы
           </h1>
           <p className="text-lg text-[#94A3B8] mb-12">
@@ -67,7 +67,7 @@ export default function SecurityPage() {
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(59,130,246,0.15)', color: '#3B82F6' }}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h2 className="text-xl font-bold text-[#F8FAFC]">{h2}</h2>
+                  <h2 className="text-xl font-bold text-foreground">{h2}</h2>
                 </div>
                 <p className="text-[#94A3B8] leading-relaxed">{text}</p>
               </div>

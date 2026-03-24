@@ -65,18 +65,18 @@ const results = [
 
 export default function MarsitCasePage() {
   return (
-    <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+    <main className="min-h-screen bg-background text-foreground pb-16">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Breadcrumb */}
       <section className="max-w-5xl mx-auto px-4 md:px-6">
         <nav className="flex items-center gap-1.5 text-sm text-[#64748B] mb-8">
-          <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+          <Link href="/" className="hover:text-foreground transition-colors">Главная</Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <Link href="/cases" className="hover:text-white transition-colors">Кейсы</Link>
+          <Link href="/cases" className="hover:text-foreground transition-colors">Кейсы</Link>
           <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-[#F8FAFC]">MarsIT</span>
+          <span className="text-foreground">MarsIT</span>
         </nav>
 
         {/* Hero */}
@@ -111,7 +111,7 @@ export default function MarsitCasePage() {
           ].map((item) => (
             <div key={item.label} className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
               <p className="text-xs text-[#64748B] mb-1">{item.label}</p>
-              <p className="text-sm font-semibold text-[#F8FAFC]">{item.value}</p>
+              <p className="text-sm font-semibold text-foreground">{item.value}</p>
             </div>
           ))}
         </div>
@@ -120,7 +120,7 @@ export default function MarsitCasePage() {
       {/* Проблема */}
       <section className="max-w-5xl mx-auto px-4 md:px-6 mt-10">
         <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-7 md:p-9">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Задача</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Задача</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Входящие заявки в MarsIT обрабатывались вручную — менеджеры отвечали через 3–4 часа.
             За это время горячий лид остывал или уходил к конкурентам. Плюс значительная часть
@@ -145,7 +145,7 @@ export default function MarsitCasePage() {
       {/* Решение */}
       <section className="max-w-5xl mx-auto px-4 md:px-6 mt-6">
         <div className="rounded-2xl border border-[#3B82F6]/20 bg-[#3B82F6]/5 p-7 md:p-9">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Решение</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Решение</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Разработали AI-бот в Telegram с трёхуровневой квалификацией лидов (Cold / Warm / Hot).
             Бот ведёт диалог, выясняет потребность и бюджет клиента, присваивает статус и действует
@@ -172,7 +172,7 @@ export default function MarsitCasePage() {
 
       {/* Результаты */}
       <section className="max-w-5xl mx-auto px-4 md:px-6 mt-6">
-        <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Результаты</h2>
+        <h2 className="text-xl font-bold text-foreground mb-4">Результаты</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {results.map((r) => (
             <div
@@ -198,11 +198,11 @@ export default function MarsitCasePage() {
 
       {/* FAQ */}
       <section className="max-w-5xl mx-auto px-4 md:px-6 mt-10">
-        <h2 className="text-xl font-semibold text-[#F8FAFC] mb-4">Частые вопросы</h2>
+        <h2 className="text-xl font-semibold text-foreground mb-4">Частые вопросы</h2>
         <div className="space-y-3">
           {faqItems.map(({ q, a }) => (
             <details key={q} className="rounded-xl border border-white/10 bg-white/[0.02] group">
-              <summary className="cursor-pointer p-4 text-[#F8FAFC] font-medium list-none">{q}</summary>
+              <summary className="cursor-pointer p-4 text-foreground font-medium list-none">{q}</summary>
               <p className="px-4 pb-4 text-[#94A3B8] text-sm leading-relaxed">{a}</p>
             </details>
           ))}

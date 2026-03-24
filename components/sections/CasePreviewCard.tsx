@@ -25,7 +25,7 @@ export function CasePreviewCard({ title, sector, goal, solution, result, href }:
   return (
     <article className="rounded-2xl p-6 md:p-7 border border-white/10 bg-white/[0.02] h-full flex flex-col">
       <div className="flex items-center justify-between gap-4">
-        <h3 className="text-xl font-bold text-[#F8FAFC]">{title}</h3>
+        <h3 className="text-xl font-bold text-foreground">{title}</h3>
         <span className="text-xs px-2 py-1 rounded-full border border-white/15 text-[#94A3B8]">
           {sector}
         </span>

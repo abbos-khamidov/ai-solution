@@ -19,9 +19,9 @@ export default function Error({
   const message = error?.message || '';
 
   return (
-    <div className="min-h-screen bg-[#05050A] text-white flex flex-col items-center justify-center px-4">
-      <div className="max-w-md w-full rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center">
-        <h1 className="text-xl font-bold text-[#F8FAFC] mb-2">Что-то пошло не так</h1>
+    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-4">
+      <div className="max-w-md w-full rounded-2xl border border-border bg-card shadow-sm p-8 text-center">
+        <h1 className="text-xl font-bold text-foreground mb-2">Что-то пошло не так</h1>
         <p className={`text-[#94A3B8] text-sm ${message ? 'mb-2' : 'mb-6'}`}>
           Произошла ошибка при загрузке страницы. Попробуйте обновить страницу или вернуться на главную.
         </p>
@@ -39,7 +39,7 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="px-5 py-3 rounded-xl border border-white/20 text-[#F8FAFC] font-semibold hover:bg-white/5 transition-colors"
+            className="px-5 py-3 rounded-xl border border-border text-foreground font-semibold hover:bg-muted transition-colors"
           >
             На главную
           </Link>

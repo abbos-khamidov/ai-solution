@@ -14,7 +14,7 @@ const products = {
     highPrice: '6000',
     breadcrumbs: [
       { name: 'Главная', url: SITE_URL },
-      { name: 'Продукты', url: `${SITE_URL}/#products` },
+      { name: 'Продукты', url: `${SITE_URL}/#solutions` },
       { name: 'Customer Service Bot', url: `${SITE_URL}/products/customer-service` },
     ],
     faq: [
@@ -41,7 +41,7 @@ const products = {
     highPrice: '20000',
     breadcrumbs: [
       { name: 'Главная', url: SITE_URL },
-      { name: 'Продукты', url: `${SITE_URL}/#products` },
+      { name: 'Продукты', url: `${SITE_URL}/#solutions` },
       { name: 'Management Assistant', url: `${SITE_URL}/products/management-assistant` },
     ],
     faq: [
@@ -68,7 +68,7 @@ const products = {
     highPrice: '20000',
     breadcrumbs: [
       { name: 'Главная', url: SITE_URL },
-      { name: 'Продукты', url: `${SITE_URL}/#products` },
+      { name: 'Продукты', url: `${SITE_URL}/#solutions` },
       { name: 'Corporate AI (RAG)', url: `${SITE_URL}/products/corporate-ai` },
     ],
     faq: [

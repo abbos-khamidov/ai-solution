@@ -1,15 +1,25 @@
 'use client';
 
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Check, ArrowRight, TrendingUp } from 'lucide-react';
 import { MagneticButton } from '@/components/animations/MagneticButton';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
+
+export type PricingBillingMode = 'subscription' | 'onetime';
+
+export interface PricingPlanOneTime {
+  totalPrice: string;
+  subline: string;
+}
 
 export interface PricingPlan {
   name: string;
   badge?: string;
   setupPrice: string;
   monthlyPrice: string;
+  /** Разовый проект без абонплаты — для переключателя на главной */
+  oneTime?: PricingPlanOneTime;
   description: string;
   problem?: string;
   result?: string;
@@ -21,20 +31,46 @@ export interface PricingPlan {
   ctaHref?: string;
 }
 
+export interface PricingCardsLabels {
+  primaryRow: string;
+  secondaryRow: string;
+  problem: string;
+  result: string;
+  whenNeeded: string;
+}
+
 interface PricingCardsProps {
   plans: PricingPlan[];
   defaultCtaHref?: string;
   defaultCtaText?: string;
+  billingMode?: PricingBillingMode;
+  cardLabels?: Partial<PricingCardsLabels>;
 }
 
 export function PricingCards({
   plans,
   defaultCtaHref = '#contact',
   defaultCtaText = 'Обсудить запуск',
+  billingMode = 'subscription',
+  cardLabels,
 }: PricingCardsProps) {
+  const { t } = useTranslation();
+  const L: PricingCardsLabels = {
+    primaryRow: cardLabels?.primaryRow ?? t('pricingCard.setup'),
+    secondaryRow: cardLabels?.secondaryRow ?? t('pricingCard.monthly'),
+    problem: cardLabels?.problem ?? t('pricingCard.problem'),
+    result: cardLabels?.result ?? t('pricingCard.result'),
+    whenNeeded: cardLabels?.whenNeeded ?? t('pricingCard.whenNeeded'),
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
-      {plans.map((plan, idx) => (
+      {plans.map((plan, idx) => {
+        const useOnetime = billingMode === 'onetime' && plan.oneTime;
+        const primaryValue = useOnetime ? plan.oneTime!.totalPrice : plan.setupPrice;
+        const secondaryValue = useOnetime ? plan.oneTime!.subline : plan.monthlyPrice;
+
+        return (
         <ScrollReveal key={idx} direction="up" duration={0.6} delay={idx * 0.1}>
           <div
             className={`relative rounded-2xl p-7 md:p-8 transition-all duration-300 hover:-translate-y-2 h-full flex flex-col ${
@@ -43,15 +79,14 @@ export function PricingCards({
             style={
               plan.highlighted
                 ? {
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    backdropFilter: 'blur(20px)',
+                    background: '#FFFFFF',
                     boxShadow:
-                      '0 0 40px rgba(59, 130, 246, 0.12), 0 0 80px rgba(6, 182, 212, 0.06)',
+                      '0 0 40px rgba(59, 130, 246, 0.12), 0 4px 24px rgba(15, 23, 42, 0.06)',
                   }
                 : {
-                    background: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    backdropFilter: 'blur(20px)',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(15, 23, 42, 0.1)',
+                    boxShadow: '0 1px 3px rgba(15, 23, 42, 0.06)',
                   }
             }
           >
@@ -75,47 +110,52 @@ export function PricingCards({
               </div>
             )}
 
-            <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">{plan.name}</h3>
+            <h3 className="text-xl font-bold text-foreground mb-1">{plan.name}</h3>
 
             {plan.description && (
               <p className="text-sm text-[#64748B] mb-5">{plan.description}</p>
             )}
 
-            <div
-              className="rounded-xl p-4 mb-4 space-y-3"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
-            >
+            <div className="rounded-xl p-4 mb-4 space-y-3 bg-slate-50 border border-slate-200/90">
               <div>
-                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">Запуск</p>
-                <p className="text-xl font-bold text-gradient">{plan.setupPrice}</p>
+                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">{L.primaryRow}</p>
+                <p className="text-xl font-bold text-gradient">{primaryValue}</p>
               </div>
-              <div className="pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">Ежемесячно</p>
-                <p className="text-xl font-semibold text-[#F8FAFC]">{plan.monthlyPrice}</p>
+              <div className="pt-3 border-t border-slate-200/90">
+                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-1">{L.secondaryRow}</p>
+                <p
+                  className={
+                    useOnetime
+                      ? 'text-sm font-medium text-foreground leading-snug'
+                      : 'text-xl font-semibold text-foreground'
+                  }
+                >
+                  {secondaryValue}
+                </p>
               </div>
             </div>
 
             {plan.roi && (
               <div
-                className="rounded-xl p-3.5 mb-4 flex items-start gap-2.5"
-                style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)' }}
+                className="rounded-xl p-3.5 mb-4 flex items-start gap-2.5 min-h-[5.25rem]"
+                style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)' }}
               >
-                <TrendingUp className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-semibold text-emerald-300">{plan.roi.label}</p>
-                  <p className="text-xs text-emerald-400/80 mt-0.5">{plan.roi.detail}</p>
+                  <p className="text-sm font-semibold text-emerald-800">{plan.roi.label}</p>
+                  <p className="text-xs text-emerald-700/90 mt-0.5 leading-snug">{plan.roi.detail}</p>
                 </div>
               </div>
             )}
 
             {plan.problem && (
               <p className="text-xs text-[#94A3B8] mb-1">
-                <span className="text-[#64748B]">Проблема:</span> {plan.problem}
+                <span className="text-[#64748B]">{L.problem}</span> {plan.problem}
               </p>
             )}
             {plan.result && (
-              <p className="text-xs text-[#93C5FD] mb-4">
-                <span className="text-[#64748B]">Результат:</span> {plan.result}
+              <p className="text-xs text-[#2563EB] mb-4">
+                <span className="text-[#64748B]">{L.result}</span> {plan.result}
               </p>
             )}
 
@@ -123,14 +163,14 @@ export function PricingCards({
               {plan.features.map((feature, featureIdx) => (
                 <li key={featureIdx} className="flex items-start gap-3">
                   <Check className="w-4 h-4 flex-shrink-0 mt-0.5 text-[#3B82F6]" />
-                  <span className="text-sm leading-relaxed text-[#94A3B8]">{feature}</span>
+                  <span className="text-sm leading-relaxed text-[#334155]">{feature}</span>
                 </li>
               ))}
             </ul>
 
             {plan.whenNeeded && plan.whenNeeded.length > 0 && (
-              <div className="mt-5 pt-4 mb-6" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-2">Когда нужен</p>
+              <div className="mt-5 pt-4 mb-6 border-t border-slate-200/90">
+                <p className="text-[11px] text-[#64748B] uppercase tracking-widest mb-2">{L.whenNeeded}</p>
                 <ul className="space-y-1.5">
                   {plan.whenNeeded.map((item, i) => (
                     <li key={i} className="text-xs text-[#94A3B8] flex items-start gap-2">
@@ -148,13 +188,13 @@ export function PricingCards({
                 className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold transition-all duration-300 ${
                   plan.highlighted
                     ? 'bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white hover:shadow-lg hover:shadow-blue-500/25'
-                    : 'text-[#F8FAFC] hover:shadow-lg hover:shadow-blue-500/10'
+                    : 'text-foreground hover:shadow-lg hover:shadow-blue-500/10'
                 }`}
                 style={
                   !plan.highlighted
                     ? {
-                        background: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        background: 'rgb(248 250 252)',
+                        border: '1px solid rgba(15, 23, 42, 0.12)',
                       }
                     : undefined
                 }
@@ -165,7 +205,8 @@ export function PricingCards({
             </MagneticButton>
           </div>
         </ScrollReveal>
-      ))}
+        );
+      })}
     </div>
   );
 }

@@ -1,162 +1,119 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
-import { ArrowDown } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { MagneticButton } from '@/components/animations/MagneticButton';
 import { HeroChatDemo } from '@/components/sections/HeroChatDemo';
 import { track } from '@/lib/analytics/gtag';
 
-const floatingBadges = [
-  { text: '🟢 Hot lead detected', delay: '0s', position: 'top-8 -left-4 lg:-left-12' },
-  { text: '⚡ Ответ за 2 сек', delay: '1.5s', position: 'top-1/3 -right-4 lg:-right-10' },
-  { text: '📊 Конверсия +34%', delay: '3s', position: 'bottom-20 -left-2 lg:-left-8' },
-  { text: '📈 AI-аналитика и дашборды', delay: '2.2s', position: 'bottom-8 -right-2 lg:-right-8' },
-];
-
-const STAT_VALUES = ['30 сек', '24/7', '3x', '12+'];
-const HERO_SUBTITLE =
-  'Пока менеджеры спят — бот квалифицирует лиды, отвечает клиентам и передаёт горячих в CRM. Внедрение за 10 дней.';
-const HERO_BENEFITS = [
-  'Анализ продаж и маркетинга',
-  'AI-аналитика и дашборд руководителя',
-];
-
 export function Hero() {
   const { t } = useTranslation();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [revealed, setRevealed] = useState(false);
-
+  const reduceMotion = useReducedMotion();
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const title = t('heroAww.title');
+  const growthPhraseRu = 'для роста продаж';
+  const titleHasGrowthRu = title.includes(growthPhraseRu);
+  const titleBeforeGrowthRu = titleHasGrowthRu ? title.slice(0, title.indexOf(growthPhraseRu)).trimEnd() : title;
+  const sellingPhrases = useMemo(
+    () => [
+      t('heroAww.sellPhrases.p1'),
+      t('heroAww.sellPhrases.p2'),
+      t('heroAww.sellPhrases.p3'),
+    ],
+    [t]
+  );
   const stats = [
-    { value: STAT_VALUES[0], label: t('heroNew.stats.speed') },
-    { value: STAT_VALUES[1], label: t('heroNew.stats.nonstop') },
-    { value: STAT_VALUES[2], label: t('heroNew.stats.conversion') },
-    { value: STAT_VALUES[3], label: t('heroNew.stats.clients') },
+    { value: t('heroAww.stats.speedValue'), label: t('heroAww.stats.speedLabel') },
+    { value: t('heroAww.stats.replyValue'), label: t('heroAww.stats.replyLabel') },
+    { value: t('heroAww.stats.roiValue'), label: t('heroAww.stats.roiLabel') },
+    { value: t('heroAww.stats.launchValue'), label: t('heroAww.stats.launchLabel') },
   ];
-  const bgShapesRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const t = setTimeout(() => setRevealed(true), 100);
-    return () => clearTimeout(t);
-  }, []);
+    if (reduceMotion) return;
+    const timer = window.setInterval(() => {
+      setPhraseIndex((prev) => (prev + 1) % sellingPhrases.length);
+    }, 2200);
+    return () => window.clearInterval(timer);
+  }, [reduceMotion, sellingPhrases.length]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen pt-20 md:pt-24 overflow-hidden flex items-center"
-      style={{ zIndex: 'var(--z-content)' }}
-    >
-      {/* Dark background */}
-      <div
-        className="absolute inset-0 bg-[#05050A]"
-        style={{ zIndex: 0 }}
-        aria-hidden="true"
-      />
+    <section className="relative min-h-screen overflow-hidden bg-background">
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-[#3B82F6]/8 via-transparent to-transparent" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_16%_16%,rgba(59,130,246,0.18),transparent_42%),radial-gradient(circle_at_84%_72%,rgba(6,182,212,0.12),transparent_40%)]" />
 
-      {/* Animated CSS grid pattern */}
-      <div
-        ref={gridRef}
-        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${revealed ? 'opacity-100' : 'opacity-0'}`}
-        style={{
-          zIndex: 1,
-          backgroundImage: `
-            linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Glowing orbs */}
-      <div
-        ref={bgShapesRef}
-        className={`absolute inset-0 pointer-events-none transition-opacity duration-1000 ease-out ${revealed ? 'opacity-100' : 'opacity-0'}`}
-        style={{ zIndex: 2 }}
-        aria-hidden="true"
-      >
-        {/* Primary orb behind headline */}
-        <div
-          className={`absolute top-1/4 left-1/4 w-[600px] h-[600px] transition-all duration-700 ease-out ${revealed ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-          style={{
-            background: 'radial-gradient(circle, rgba(59,130,246,0.15), transparent 70%)',
-            filter: 'blur(80px)',
-            transform: 'translate3d(0,0,0)',
-          }}
-        />
-        {/* Secondary orb */}
-        <div
-          className={`absolute -bottom-20 right-1/4 w-[500px] h-[500px] animate-morph animation-delay-2000 transition-all duration-700 ease-out delay-200 ${revealed ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-          style={{
-            background: 'radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%)',
-            filter: 'blur(60px)',
-            transform: 'translate3d(0,0,0)',
-          }}
-        />
-        {/* Purple accent */}
-        <div
-          className={`absolute top-1/2 right-1/3 w-[300px] h-[300px] animate-morph animation-delay-4000 transition-all duration-700 ease-out delay-300 ${revealed ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-          style={{
-            background: 'radial-gradient(circle, rgba(124,58,237,0.08), transparent 70%)',
-            filter: 'blur(60px)',
-            transform: 'translate3d(0,0,0)',
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-8 py-12 md:py-0">
-        <div className="grid lg:grid-cols-[1fr_480px] gap-8 lg:gap-12 items-center">
-          {/* Left: Text Content */}
+      <div className="relative z-10 pt-[var(--site-header-height,116px)]">
+        <div className="max-w-7xl mx-auto w-full px-5 sm:px-6 lg:px-8 min-h-[calc(100svh-var(--site-header-height,116px))] flex items-center py-4">
+        <div className="grid lg:grid-cols-[1fr_480px] gap-8 lg:gap-12 items-center w-full">
           <div className="text-center lg:text-left">
-            <h1 className="text-[clamp(2.1rem,4.6vw,4rem)] leading-[1.05] tracking-[-0.03em] font-extrabold text-[#F8FAFC] mb-5 hyphens-none break-normal [text-wrap:balance]">
-              Ваши клиенты пишут ночью.<br />
-              <span className="text-[#3B82F6]">AI отвечает за 30 секунд.</span>
+            <span className="inline-flex items-center rounded-full px-3.5 py-1.5 text-xs font-semibold border border-[#3B82F6]/30 bg-[#3B82F6]/10 text-[#1D4ED8] shadow-[0_4px_16px_rgba(59,130,246,0.18)]">
+              {t('heroAww.badge')}
+            </span>
+
+            <div className="mt-3 h-8 flex justify-center lg:justify-start items-center">
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={phraseIndex}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: reduceMotion ? 0.12 : 0.26, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="text-sm sm:text-base font-semibold text-[#1D4ED8]"
+                >
+                  {sellingPhrases[phraseIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+
+            <h1 className="mt-4 text-[clamp(2rem,4.2vw,3.7rem)] leading-[1.04] tracking-[-0.03em] font-extrabold text-foreground hyphens-none break-normal [text-wrap:balance] max-w-[18ch] mx-auto lg:mx-0">
+              {titleHasGrowthRu ? (
+                <>
+                  {titleBeforeGrowthRu}{' '}
+                  <span className="bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] bg-clip-text text-transparent">
+                    {growthPhraseRu}
+                  </span>
+                </>
+              ) : (
+                title
+              )}
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto lg:mx-0 mb-6 leading-relaxed whitespace-pre-line">
-              {HERO_SUBTITLE}
+            <p className="mt-4 text-base sm:text-lg text-[#475569] max-w-2xl mx-auto lg:mx-0 leading-relaxed whitespace-pre-line">
+              {t('heroAww.subtitle')}
             </p>
 
-            {/* CTA Button */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-4">
-              <MagneticButton strength={0.3} radius={150}>
+            <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
+              <MagneticButton strength={0.25} radius={130}>
                 <Link
-                  href="/ai-dlya-biznesa#audit"
-                  onClick={() =>
-                    track('cta_click_hero', {
-                      location: 'hero',
-                      target: '/ai-dlya-biznesa#audit',
-                    })
-                  }
-                  className="btn-shimmer inline-flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2 focus:ring-offset-[#05050A]"
+                  href="/#contact"
+                  onClick={() => track('cta_click_hero', { location: 'hero', target: '/#contact' })}
+                  className="btn-shimmer inline-flex items-center justify-center gap-2 px-8 py-4 text-base md:text-lg font-semibold text-white rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] shadow-[0_12px_34px_rgba(59,130,246,0.35)] hover:shadow-[0_16px_40px_rgba(59,130,246,0.42)] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2 focus:ring-offset-background"
                 >
-                  Получить AI-аудит
-                  <ArrowDown className="w-5 h-5 shrink-0 animate-bounce" />
+                  {t('heroAww.primaryCta')}
+                  <ArrowRight className="w-5 h-5 shrink-0" />
                 </Link>
               </MagneticButton>
               <Link
-                href="/#solutions"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold rounded-xl border border-white/20 text-[#F8FAFC] hover:bg-white/5 transition-colors"
+                href="/#process"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-semibold rounded-xl border border-border text-foreground hover:bg-muted transition-colors"
               >
-                Посмотреть решения
+                {t('heroAww.secondaryCta')}
               </Link>
             </div>
 
-            {/* Social proof micro-line */}
-            <p className="flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-1 text-xs text-[#475569] mb-6">
-              ⚡ Внедрение за 10 дней · Ответ за 30 секунд · Окупаемость за 1 месяц
+            <p className="mt-3 text-xs text-[#64748B]">
+              {t('heroAww.microline')}
             </p>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0">
+            <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-0 rounded-2xl border border-border bg-card/85 backdrop-blur-sm px-2 py-2 shadow-[0_8px_28px_rgba(15,23,42,0.06)]">
               {stats.map((stat, idx) => (
                 <div
                   key={idx}
-                  className={`text-center px-4 py-2 ${
-                    idx < stats.length - 1 ? 'sm:border-r sm:border-white/[0.08]' : ''
+                  className={`text-center px-4 py-3 ${
+                    idx < stats.length - 1 ? 'sm:border-r sm:border-border' : ''
                   }`}
                 >
                   <div className="text-2xl sm:text-3xl font-bold text-gradient bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] bg-clip-text text-transparent">
@@ -166,63 +123,18 @@ export function Hero() {
                 </div>
               ))}
             </div>
-
-            <div className="mt-5 flex flex-wrap justify-center lg:justify-start gap-2">
-              {HERO_BENEFITS.map((item) => (
-                <span
-                  key={item}
-                  className="px-3 py-1.5 rounded-full text-xs sm:text-sm text-[#CBD5E1] border border-white/10 bg-white/[0.03]"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
           </div>
 
-          {/* Right: Chat Demo with floating badges */}
           <div className="relative flex justify-center lg:justify-end">
-            <div
-              className="absolute -top-5 lg:-top-6 z-30 px-3 py-1.5 rounded-full text-xs font-semibold text-[#DBEAFE]"
-              style={{
-                background: 'rgba(59,130,246,0.2)',
-                border: '1px solid rgba(147,197,253,0.35)',
-                backdropFilter: 'blur(10px)',
-              }}
-            >
-              AI анализирует бизнес в реальном времени
-            </div>
-            {/* Floating badges */}
-            {floatingBadges.map((badge, idx) => (
-              <div
-                key={idx}
-                className={`hidden lg:flex absolute ${badge.position} z-20 items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-[#F8FAFC] whitespace-nowrap`}
-                style={{
-                  background: 'rgba(13, 13, 26, 0.8)',
-                  backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  animation: `${idx % 2 === 0 ? 'float-badge' : 'float-badge-alt'} ${4 + idx}s ease-in-out infinite`,
-                  animationDelay: badge.delay,
-                }}
-              >
-                {badge.text}
+            <div className="w-full max-w-md rounded-[1.4rem] p-[1px] bg-gradient-to-br from-[#3B82F6]/35 via-[#06B6D4]/25 to-[#7C3AED]/20 shadow-[0_18px_44px_rgba(15,23,42,0.16)]">
+              <div className="rounded-[1.3rem] bg-white/85 backdrop-blur-sm p-2">
+                <HeroChatDemo />
               </div>
-            ))}
-
-            <div className="w-full max-w-md">
-              <HeroChatDemo />
-              <p className="mt-3 text-center text-sm text-[#94A3B8]">+ адаптивный дашборд для руководителя</p>
+              <p className="mt-3 text-center text-sm text-[#64748B]">{t('heroAww.chatCaption')}</p>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <div className="flex flex-col items-center gap-2 opacity-40">
-          <div className="w-6 h-10 rounded-full border-2 border-white/10 flex items-start justify-center p-1.5">
-            <div className="w-1.5 h-3 rounded-full bg-[#3B82F6]/50 animate-bounce" />
-          </div>
-        </div>
       </div>
     </section>
   );

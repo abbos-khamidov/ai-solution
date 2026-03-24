@@ -77,10 +77,10 @@ export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
-          <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
-            <p className="text-sm text-[#93C5FD] mb-3">{config.eyebrow}</p>
+          <div className="rounded-2xl p-8 md:p-10 border border-border bg-card shadow-sm">
+            <p className="text-sm text-[#2563EB] mb-3">{config.eyebrow}</p>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">{config.title}</h1>
             {config.heroImage && (
               <LandingHeroImage src={config.heroImage.src} alt={config.heroImage.alt} title={config.heroImage.title} />
@@ -88,7 +88,7 @@ export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg">{config.description}</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm">
               {config.bullets.map((bullet) => (
-                <span key={bullet} className="px-3 py-1 rounded-full border border-white/15 text-[#CBD5E1]">
+                <span key={bullet} className="px-3 py-1 rounded-full border border-border text-foreground-secondary bg-muted/50">
                   {bullet}
                 </span>
               ))}
@@ -98,8 +98,8 @@ export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
           {config.sections.map((section) => (
-            <article key={section.title} className="rounded-2xl p-6 border border-white/10 bg-white/[0.02]">
-              <h2 className="text-xl font-bold text-[#F8FAFC]">{section.title}</h2>
+            <article key={section.title} className="rounded-2xl p-6 border border-border bg-card shadow-sm">
+              <h2 className="text-xl font-bold text-foreground">{section.title}</h2>
               <p className="mt-3 text-[#94A3B8] leading-relaxed">{section.text}</p>
             </article>
           ))}
@@ -109,8 +109,8 @@ export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
           <h2 className="text-2xl md:text-3xl font-bold">Частые вопросы</h2>
           <div className="mt-5 space-y-4">
             {config.faq.map((item) => (
-              <details key={item.q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">
+              <details key={item.q} className="group rounded-xl border border-border bg-card open:bg-muted/40 transition-colors shadow-sm">
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">
                   {item.q}
                   <span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
                 </summary>
@@ -124,7 +124,7 @@ export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
           <h2 className="text-2xl md:text-3xl font-bold">Полезные страницы</h2>
           <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {config.relatedLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="block rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-[#93C5FD] hover:text-white transition-colors">
+              <Link key={link.href} href={link.href} className="block rounded-xl border border-border bg-card px-4 py-3 text-[#2563EB] hover:text-[#1D4ED8] transition-colors shadow-sm">
                 {link.label}
               </Link>
             ))}
@@ -142,7 +142,7 @@ export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
               <Link href="/#contact" className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold">
                 Обсудить проект
               </Link>
-              <Link href="/services" className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/20 text-[#F8FAFC] hover:bg-white/5 transition-colors">
+              <Link href="/services" className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-border text-foreground hover:bg-muted transition-colors">
                 Все услуги
               </Link>
             </div>

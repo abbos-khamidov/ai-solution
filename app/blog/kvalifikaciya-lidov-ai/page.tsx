@@ -61,15 +61,15 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
-      <main className="min-h-screen" style={{ background: '#05050A' }}>
-        <div className="pt-28 pb-10" style={{ background: '#0D0D1A', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <main className="min-h-screen bg-background">
+        <div className="pt-28 pb-10 bg-background-secondary border-b border-border">
           <div className="max-w-4xl mx-auto px-4 md:px-6">
             <nav className="flex items-center gap-2 text-sm text-[#64748B] mb-6">
-              <Link href="/" className="hover:text-white transition-colors">Главная</Link>
+              <Link href="/" className="hover:text-foreground transition-colors">Главная</Link>
               <span>/</span>
               <span className="text-[#94A3B8]">Блог</span>
               <span>/</span>
-              <span className="text-[#F8FAFC]">Квалификация лидов с AI</span>
+              <span className="text-foreground">Квалификация лидов с AI</span>
             </nav>
             <div className="flex items-center gap-4 text-sm text-[#64748B] mb-4">
               <span>15 февраля 2025</span>
@@ -80,7 +80,7 @@ export default function Page() {
                 Продажи
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#F8FAFC] leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight tracking-tight mb-4">
               {TITLE}
             </h1>
             <p className="text-lg text-[#94A3B8] leading-relaxed max-w-3xl">
@@ -96,7 +96,7 @@ export default function Page() {
           <article className="space-y-8 text-[#94A3B8] leading-relaxed text-base md:text-lg">
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Что такое квалификация лидов и почему она определяет выручку
               </h2>
               <div className="relative w-full h-48 rounded-xl overflow-hidden my-6">
@@ -125,7 +125,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Система Cold / Warm / Hot: три стадии готовности клиента
               </h2>
               <p>
@@ -133,7 +133,7 @@ export default function Page() {
                 отражает реальную картину воронки продаж.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Cold — холодный лид.</strong> Человек
+                <strong className="text-foreground">Cold — холодный лид.</strong> Человек
                 проявил первичный интерес: написал в мессенджер, спросил общий вопрос о
                 продукте или компании. Он находится в самом начале пути — сравнивает варианты,
                 ещё не сформировал чёткое решение. Передавать такого лида менеджеру сейчас —
@@ -141,7 +141,7 @@ export default function Page() {
                 вопросы, отправляет релевантную информацию, устанавливает доверие.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Warm — тёплый лид.</strong> Клиент активно
+                <strong className="text-foreground">Warm — тёплый лид.</strong> Клиент активно
                 изучает продукт, задаёт конкретные вопросы о характеристиках, условиях,
                 стоимости. Он явно рассматривает покупку, но ещё не принял окончательного
                 решения. AI продолжает вести диалог, предоставляет детальную информацию,
@@ -149,7 +149,7 @@ export default function Page() {
                 активному участию.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Hot — горячий лид.</strong> Клиент готов
+                <strong className="text-foreground">Hot — горячий лид.</strong> Клиент готов
                 купить: спрашивает о способах оплаты, уточняет дату поставки, просит
                 выставить счёт. Это момент для немедленного подключения менеджера. AI
                 мгновенно отправляет уведомление с полным контекстом разговора — и менеджер
@@ -158,7 +158,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Как AI определяет статус лида автоматически
               </h2>
               <p>
@@ -183,31 +183,31 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Сценарии квалификации для разных ниш
               </h2>
               <p>
-                <strong className="text-[#F8FAFC]">Недвижимость.</strong> AI задаёт серию
+                <strong className="text-foreground">Недвижимость.</strong> AI задаёт серию
                 вопросов: тип объекта (квартира/дом/коммерция), бюджет, предпочтительный
                 район, срок покупки, готовность к ипотеке или наличие собственных средств.
                 Клиент с чётким бюджетом и сроком "до конца месяца" немедленно получает
                 статус Hot и передаётся агенту.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Образование и курсы.</strong> Квалификация
+                <strong className="text-foreground">Образование и курсы.</strong> Квалификация
                 включает уточнение цели обучения, текущего уровня знаний, предпочтительного
                 формата (онлайн/офлайн), бюджета и наличия времени для учёбы. Студент,
                 готовый записаться прямо сейчас с понятным запросом — Hot-лид.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">B2B-услуги.</strong> В корпоративных
+                <strong className="text-foreground">B2B-услуги.</strong> В корпоративных
                 продажах ключевой вопрос квалификации — ЛПР (лицо, принимающее решение).
                 AI выясняет, кто инициирует запрос — конечный пользователь или человек,
                 полномочный подписать договор. Контакты с ЛПР автоматически получают
                 повышенный приоритет в очереди менеджеров.
               </p>
               <p>
-                <strong className="text-[#F8FAFC]">Медицина.</strong> Квалификация помогает
+                <strong className="text-foreground">Медицина.</strong> Квалификация помогает
                 направить пациента к нужному специалисту без звонков в регистратуру. AI
                 уточняет симптомы или запрос, определяет профиль врача и предлагает
                 свободные слоты для записи. Острые обращения (ситуации требующие срочной
@@ -216,7 +216,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Передача горячего лида: момент истины
               </h2>
               <p>
@@ -235,7 +235,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Антифрод: защита от ботов и спама
               </h2>
               <p>
@@ -254,7 +254,7 @@ export default function Page() {
             </section>
 
             <section className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC]">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">
                 Влияние на конверсию: реальные цифры
               </h2>
               <p>
@@ -275,24 +275,24 @@ export default function Page() {
           </article>
 
           <section className="mt-16 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-            <h2 className="text-2xl font-bold text-[#F8FAFC] mb-3">Решения AI Solution для вашего бизнеса</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-3">Решения AI Solution для вашего бизнеса</h2>
             <p className="text-[#64748B] mb-8">Выберите AI-продукт под задачи вашей компании</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Link href="/products/customer-service" className="group block p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1" style={{ background: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)' }}>
                 <div className="text-2xl mb-3">🤖</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Customer Service Bot</h3>
+                <h3 className="font-bold text-foreground mb-2">Customer Service Bot</h3>
                 <p className="text-sm text-[#64748B] mb-3">AI в Telegram, Instagram, WhatsApp. Ответ за 30 сек, квалификация лидов 24/7.</p>
                 <span className="text-sm font-semibold text-[#3B82F6]">От $1 000 →</span>
               </Link>
               <Link href="/products/management-assistant" className="group block p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1" style={{ background: 'rgba(6,182,212,0.06)', border: '1px solid rgba(6,182,212,0.2)' }}>
                 <div className="text-2xl mb-3">📊</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Management Assistant</h3>
+                <h3 className="font-bold text-foreground mb-2">Management Assistant</h3>
                 <p className="text-sm text-[#64748B] mb-3">Контроль команды, финансовый трекер, еженедельные отчёты в Telegram.</p>
                 <span className="text-sm font-semibold text-[#06B6D4]">От $3 000 →</span>
               </Link>
               <Link href="/products/corporate-ai" className="group block p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1" style={{ background: 'rgba(124,58,237,0.06)', border: '1px solid rgba(124,58,237,0.2)' }}>
                 <div className="text-2xl mb-3">🏢</div>
-                <h3 className="font-bold text-[#F8FAFC] mb-2">Corporate AI (RAG)</h3>
+                <h3 className="font-bold text-foreground mb-2">Corporate AI (RAG)</h3>
                 <p className="text-sm text-[#64748B] mb-3">База знаний компании с AI. Интеграция с 1С, Bitrix24, amoCRM.</p>
                 <span className="text-sm font-semibold text-[#7C3AED]">От $8 000 →</span>
               </Link>

@@ -230,10 +230,10 @@ export function HeroChatDemo() {
       <div
         className="rounded-2xl overflow-hidden flex flex-col h-[500px]"
         style={{
-          background: 'rgba(13, 13, 26, 0.9)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          background: 'rgba(255, 255, 255, 0.95)',
+          border: '1px solid rgba(15, 23, 42, 0.1)',
           backdropFilter: 'blur(20px)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 60px rgba(59, 130, 246, 0.05)',
+          boxShadow: '0 8px 32px rgba(15, 23, 42, 0.08), 0 0 60px rgba(59, 130, 246, 0.08)',
         }}
       >
         {/* Chat Header */}
@@ -254,7 +254,7 @@ export function HeroChatDemo() {
         <div
           ref={messagesContainerRef}
           className="flex-1 overflow-y-auto p-4 space-y-3"
-          style={{ background: 'rgba(5, 5, 10, 0.5)' }}
+          style={{ background: 'rgba(241, 245, 249, 0.9)' }}
         >
           {messages.map((msg) => (
             <div
@@ -265,11 +265,11 @@ export function HeroChatDemo() {
                 className={`max-w-[80%] rounded-xl px-3 py-2 text-sm ${
                   msg.sender === 'user'
                     ? 'bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white'
-                    : 'text-[#F8FAFC]'
+                    : 'text-foreground'
                 }`}
                 style={msg.sender === 'bot' ? {
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  border: '1px solid rgba(15, 23, 42, 0.1)',
                 } : undefined}
               >
                 {msg.text}
@@ -282,8 +282,8 @@ export function HeroChatDemo() {
               <div
                 className="rounded-xl px-3 py-2"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  border: '1px solid rgba(15, 23, 42, 0.1)',
                 }}
               >
                 <div className="flex items-center gap-1.5 text-sm text-[#64748B]">
@@ -304,8 +304,8 @@ export function HeroChatDemo() {
           <div
             className="px-4 py-3"
             style={{
-              background: 'rgba(5, 5, 10, 0.6)',
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'rgba(248, 250, 252, 0.95)',
+              borderTop: '1px solid rgba(15, 23, 42, 0.08)',
             }}
           >
             <div className="flex flex-col gap-2">
@@ -328,8 +328,8 @@ export function HeroChatDemo() {
           <div
             className="px-4 py-2"
             style={{
-              background: 'rgba(5, 5, 10, 0.6)',
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'rgba(248, 250, 252, 0.95)',
+              borderTop: '1px solid rgba(15, 23, 42, 0.08)',
             }}
           >
             <p className="text-xs text-[#64748B] mb-2 transition-all duration-300">{labels.examplesLabel}</p>
@@ -343,10 +343,10 @@ export function HeroChatDemo() {
                     e.stopPropagation();
                     sendMessage(prompt);
                   }}
-                  className="text-xs px-2.5 py-1 rounded-full text-[#94A3B8] transition-all duration-200 hover:text-white hover:shadow-[0_0_12px_rgba(59,130,246,0.15)]"
+                  className="text-xs px-2.5 py-1 rounded-full text-[#94A3B8] transition-all duration-200 hover:text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.15)]"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    border: '1px solid rgba(15, 23, 42, 0.12)',
                   }}
                 >
                   {prompt}
@@ -360,8 +360,8 @@ export function HeroChatDemo() {
         <div
           className="p-3"
           style={{
-            background: 'rgba(13, 13, 26, 0.9)',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+            background: 'rgba(255, 255, 255, 0.98)',
+            borderTop: '1px solid rgba(15, 23, 42, 0.08)',
           }}
         >
           <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="flex gap-2">
@@ -372,10 +372,10 @@ export function HeroChatDemo() {
               onKeyDown={handleKeyPress}
               placeholder={labels.placeholder}
               disabled={loading}
-              className="flex-1 px-3 py-2 text-sm rounded-lg text-[#F8FAFC] placeholder-[#64748B] outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:border-[#3B82F6]/50 focus:ring-1 focus:ring-[#3B82F6]/30"
+              className="flex-1 px-3 py-2 text-sm rounded-lg text-foreground placeholder-[#64748B] outline-none transition-all disabled:opacity-50 disabled:cursor-not-allowed focus:border-[#3B82F6]/50 focus:ring-1 focus:ring-[#3B82F6]/30"
               style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                background: 'rgba(248, 250, 252, 1)',
+                border: '1px solid rgba(15, 23, 42, 0.12)',
               }}
             />
             <button

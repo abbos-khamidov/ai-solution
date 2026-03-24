@@ -111,7 +111,7 @@ export default function AboutPage() {
       />
       <Header />
 
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">About AI Solution</p>
@@ -151,7 +151,7 @@ export default function AboutPage() {
                   </div>
                 )}
 
-                <h2 className="text-xl font-bold text-[#F8FAFC]">{member.name}</h2>
+                <h2 className="text-xl font-bold text-foreground">{member.name}</h2>
                 <p className="mt-1 text-sm text-[#93C5FD] font-medium">{member.role}</p>
                 <p className="mt-3 text-sm text-[#CBD5E1] leading-relaxed">{member.stack}</p>
                 <p className="mt-2 text-sm text-[#94A3B8]">{member.experience}</p>
@@ -184,7 +184,7 @@ export default function AboutPage() {
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/20 text-[#F8FAFC] hover:bg-white/5 transition-colors"
+                className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-white/20 text-foreground hover:bg-white/5 transition-colors"
               >
                 Смотреть услуги
               </Link>

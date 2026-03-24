@@ -68,7 +68,7 @@ export default function ChatbotDlyaInstagramPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Чатбот для Instagram в Ташкенте</p>
@@ -96,7 +96,7 @@ export default function ChatbotDlyaInstagramPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
             Как чатбот решает задачи бизнеса в Instagram
           </h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
@@ -117,7 +117,7 @@ export default function ChatbotDlyaInstagramPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
             Что получает бизнес после внедрения
           </h2>
           <ul className="space-y-3 text-[#94A3B8]">
@@ -141,7 +141,7 @@ export default function ChatbotDlyaInstagramPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Пример внедрения</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Пример внедрения</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Компании в Ташкенте, с которыми мы работали, получали заявки и в Telegram, и в Instagram. После внедрения
             единого ИИ-чатбота время первого ответа сократилось до 30 секунд в обоих каналах, доля горячих лидов
@@ -151,7 +151,7 @@ export default function ChatbotDlyaInstagramPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Запуск чатбота для Instagram (в связке с Telegram при необходимости) — от $1 000 плюс от $500/мес. Срок
             базового сценария — 5–7 рабочих дней, с квалификацией и интеграциями — 2–3 недели.
@@ -166,7 +166,7 @@ export default function ChatbotDlyaInstagramPage() {
                 key={q}
                 className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors"
               >
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">
                   {q}
                   <span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span>
                 </summary>
@@ -192,7 +192,7 @@ export default function ChatbotDlyaInstagramPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li>
               <Link href="/tashkent" className="text-[#93C5FD] hover:underline">Автоматизация бизнеса в Ташкенте</Link>

@@ -74,11 +74,11 @@ export default function BlogIndexPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}
       />
 
-      <main className="min-h-screen bg-[#05050A] pt-28 pb-16">
+      <main className="min-h-screen bg-background pb-16">
         <div className="max-w-4xl mx-auto px-4 md:px-6">
           <div className="mb-12">
             <p className="text-sm text-[#3B82F6] font-medium mb-3">{copy.eyebrow}</p>
-            <h1 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] tracking-tight">
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
               {copy.title}
             </h1>
             <p className="mt-4 text-lg text-[#94A3B8] max-w-2xl">
@@ -95,7 +95,7 @@ export default function BlogIndexPage() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-lg font-semibold text-[#F8FAFC] group-hover:text-[#93C5FD] transition-colors line-clamp-2">
+                    <h2 className="text-lg font-semibold text-foreground group-hover:text-[#93C5FD] transition-colors line-clamp-2">
                       {post.title}
                     </h2>
                     <p className="mt-2 text-sm text-[#94A3B8] line-clamp-2 leading-relaxed">

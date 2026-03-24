@@ -14,18 +14,18 @@ import { LanguageSwitcher } from '@/components/layout/LanguageSwitcher';
 import { track } from '@/lib/analytics/gtag';
 
 const productLinks = [
-  { icon: Bot,       label: 'Customer Service Bot',  href: '/products/customer-service',    desc: 'Поддержка клиентов 24/7' },
-  { icon: LineChart, label: 'Management Assistant',  href: '/products/management-assistant', desc: 'Автоматизация менеджмента' },
-  { icon: Building2, label: 'Corporate AI (RAG)',    href: '/products/corporate-ai',         desc: 'Корпоративная база знаний' },
-  { icon: BarChart3, label: 'AI-аналитика',          href: '/products/ai-analytics',         desc: 'Аналитика и отчёты' },
-];
+  { icon: Bot, href: '/products/customer-service', labelKey: 'headerDropdown.productLabels.cs', descKey: 'headerDropdown.productDesc.cs' },
+  { icon: LineChart, href: '/products/management-assistant', labelKey: 'headerDropdown.productLabels.ma', descKey: 'headerDropdown.productDesc.ma' },
+  { icon: Building2, href: '/products/corporate-ai', labelKey: 'headerDropdown.productLabels.rag', descKey: 'headerDropdown.productDesc.rag' },
+  { icon: BarChart3, href: '/products/ai-analytics', labelKey: 'headerDropdown.productLabels.analytics', descKey: 'headerDropdown.productDesc.analytics' },
+] as const;
 
 const industryLinks = [
-  { icon: Heart,          label: 'Медицина',    href: '/industries/medicine',   desc: 'Клиники, аптеки, медцентры' },
-  { icon: GraduationCap,  label: 'Образование', href: '/industries/education',  desc: 'Школы, курсы, университеты' },
-  { icon: Utensils,       label: 'HoReCa',      href: '/industries/horeca',     desc: 'Рестораны, отели, кафе' },
-  { icon: ShoppingBag,    label: 'Ритейл',      href: '/industries/retail',     desc: 'Магазины, интернет-торговля' },
-];
+  { icon: Heart, href: '/ii-dlya-klinik-tashkent', labelKey: 'headerDropdown.industryLabels.medicine', descKey: 'headerDropdown.industryDesc.medicine' },
+  { icon: GraduationCap, href: '/ii-dlya-obrazovaniya-tashkent', labelKey: 'headerDropdown.industryLabels.edu', descKey: 'headerDropdown.industryDesc.edu' },
+  { icon: Utensils, href: '/ii-dlya-restoranov-tashkent', labelKey: 'headerDropdown.industryLabels.horeca', descKey: 'headerDropdown.industryDesc.horeca' },
+  { icon: ShoppingBag, href: '/ii-dlya-internet-magazina', labelKey: 'headerDropdown.industryLabels.retail', descKey: 'headerDropdown.industryDesc.retail' },
+] as const;
 
 export function Header() {
   const { t } = useTranslation();
@@ -35,20 +35,29 @@ export function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const productsRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   const isHomePage = pathname === '/';
   const isProductPage = pathname?.startsWith('/products/');
-  const isBlogPage = pathname?.startsWith('/blog');
   const isCasesPage = pathname?.startsWith('/cases');
+  const isSoftwareDevPage = pathname?.startsWith('/services/software-development');
 
   const otherNavLinks = [
     { label: t('nav.process'), href: isHomePage ? '#process' : '/#process' },
-    { label: 'Кейсы',          href: '/cases',  active: isCasesPage },
-    { label: t('nav.blog'),    href: '/blog',   active: isBlogPage },
+    { label: t('nav.pricing'), href: isHomePage ? '#pricing' : '/#pricing' },
+    { label: t('nav.softwareDev'), href: '/services/software-development', active: isSoftwareDevPage },
+    { label: t('nav.cases'),   href: '/cases',  active: isCasesPage },
     { label: t('nav.contact'), href: isHomePage ? '#contact' : '/#contact' },
   ];
 
   const ctaHref = isHomePage ? '#contact' : '/#contact';
+  const tickerItems = [
+    t('headerTicker.trust'),
+    t('headerTicker.offer1'),
+    t('headerTicker.offer2'),
+    t('headerTicker.offer3'),
+    t('headerTicker.offer4'),
+  ];
 
   useEffect(() => {
     let rafId = 0;
@@ -82,6 +91,26 @@ export function Header() {
     };
   }, [isMobileOpen]);
 
+  /** Expose real header height for sticky sections + scroll math (ticker + nav + padding). */
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el || typeof document === 'undefined') return;
+
+    const publish = () => {
+      const h = Math.ceil(el.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--site-header-height', `${h}px`);
+    };
+
+    publish();
+    const ro = new ResizeObserver(publish);
+    ro.observe(el);
+    window.addEventListener('resize', publish, { passive: true });
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', publish);
+    };
+  }, []);
+
   const scrollTo = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       if (!href.startsWith('#')) return;
@@ -95,53 +124,82 @@ export function Header() {
 
   return (
     <>
+      <style>{`
+        @keyframes trustTicker {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .trust-ticker-track {
+          animation: trustTicker 24s linear infinite;
+        }
+      `}</style>
       <motion.header
+        ref={headerRef}
+        data-site-header
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isScrolled
-            ? 'bg-[rgba(5,5,10,0.8)] backdrop-blur-[20px] border-b border-white/[0.06] shadow-[0_1px_3px_rgba(0,0,0,0.3)]'
-            : 'bg-transparent border-b border-transparent'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 px-3 md:px-4 pt-3 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto">
+          <div
+            className={`rounded-2xl border transition-all duration-500 ${
+              isScrolled
+                ? 'bg-background/95 backdrop-blur-[24px] border-border shadow-[0_10px_34px_rgba(15,23,42,0.12)]'
+                : 'bg-background/78 backdrop-blur-[18px] border-border/70 shadow-[0_6px_24px_rgba(15,23,42,0.08)]'
+            }`}
+          >
+            <div className="h-8 rounded-t-2xl border-b border-[#3B82F6]/30 bg-gradient-to-r from-[#1E3A8A] via-[#2563EB] to-[#0EA5E9] overflow-hidden">
+              <div className="trust-ticker-track flex w-max h-full items-center">
+                {[...tickerItems, ...tickerItems].map((item, i) => (
+                  <span
+                    key={`${item}-${i}`}
+                    className="h-full inline-flex items-center px-6 text-[11px] font-semibold tracking-wide text-white/95 whitespace-nowrap"
+                  >
+                    ✦ {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="px-4 md:px-6">
+              <div className="flex items-center justify-between h-[68px]">
 
             {/* Logo */}
-            <motion.div
+                <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link
                 href="/"
-                className="flex items-center gap-2 select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm"
+                className="flex items-center gap-2.5 select-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background rounded-md"
               >
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0 shadow-[0_6px_18px_rgba(59,130,246,0.35)]">
                   <span className="text-white font-bold text-sm">⚡</span>
                 </div>
-                <span className="text-[20px] font-bold text-white tracking-tight whitespace-nowrap">AI Solution</span>
+                <div className="leading-tight">
+                  <span className="block text-[19px] font-extrabold text-foreground tracking-tight whitespace-nowrap">AI Solution</span>
+                </div>
               </Link>
-            </motion.div>
+                </motion.div>
 
             {/* Desktop nav */}
-            <nav className="hidden md:flex items-center gap-8">
+                <nav className="hidden md:flex items-center gap-5">
               {/* Solutions dropdown (mega-menu) */}
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div
+                  <div
                   ref={productsRef}
                   className="relative"
                   onMouseEnter={() => setIsProductsOpen(true)}
                   onMouseLeave={() => setIsProductsOpen(false)}
                 >
                   <button
-                    className={`group relative flex items-center gap-1 text-sm font-medium transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm ${
-                      isProductPage ? 'text-white' : 'text-[#64748B] hover:text-white'
+                    className={`group relative flex items-center gap-1 text-[13px] font-semibold transition-colors duration-300 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background rounded-md ${
+                      isProductPage ? 'text-foreground' : 'text-[#64748B] hover:text-foreground'
                     }`}
                     aria-haspopup="true"
                     aria-expanded={isProductsOpen}
@@ -164,17 +222,17 @@ export function Header() {
                         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                         className="absolute top-full left-0 mt-2 w-[480px] rounded-2xl p-4 z-[60]"
                         style={{
-                          background: 'rgba(13, 13, 26, 0.97)',
+                          background: 'rgba(255, 255, 255, 0.97)',
                           backdropFilter: 'blur(20px)',
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
-                          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+                          border: '1px solid rgba(15, 23, 42, 0.1)',
+                          boxShadow: '0 8px 32px rgba(15, 23, 42, 0.1)',
                         }}
                         role="menu"
                       >
                         <div className="grid grid-cols-2 gap-4">
                           {/* Products column */}
                           <div>
-                            <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-2 px-2">Продукты</p>
+                            <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-2 px-2">{t('headerDropdown.productsTitle')}</p>
                             {productLinks.map((product) => {
                               const isActive = pathname === product.href;
                               return (
@@ -182,20 +240,20 @@ export function Header() {
                                   key={product.href}
                                   href={product.href}
                                   onClick={() => {
-                                    track('nav_click_product', { product: product.label, location: 'header_dropdown' });
+                                    track('nav_click_product', { product: product.href, location: 'header_dropdown' });
                                     setIsProductsOpen(false);
                                   }}
                                   role="menuitem"
                                   className={`flex items-start gap-3 px-2 py-2.5 rounded-xl transition-all duration-150 group ${
-                                    isActive ? 'bg-[#3B82F6]/10' : 'hover:bg-white/5'
+                                    isActive ? 'bg-[#3B82F6]/10' : 'hover:bg-muted'
                                   }`}
                                 >
                                   <product.icon className={`w-4 h-4 mt-0.5 shrink-0 transition-colors ${isActive ? 'text-[#3B82F6]' : 'text-[#64748B] group-hover:text-[#3B82F6]'}`} />
                                   <div>
-                                    <p className={`text-sm font-medium transition-colors ${isActive ? 'text-[#3B82F6]' : 'text-[#94A3B8] group-hover:text-white'}`}>
-                                      {product.label}
+                                    <p className={`text-sm font-medium transition-colors ${isActive ? 'text-[#3B82F6]' : 'text-foreground-secondary group-hover:text-foreground'}`}>
+                                      {t(product.labelKey)}
                                     </p>
-                                    <p className="text-xs text-[#475569]">{product.desc}</p>
+                                    <p className="text-xs text-[#475569]">{t(product.descKey)}</p>
                                   </div>
                                 </Link>
                               );
@@ -204,21 +262,21 @@ export function Header() {
 
                           {/* Industries column */}
                           <div>
-                            <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-2 px-2">Отрасли</p>
+                            <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-2 px-2">{t('headerDropdown.industriesTitle')}</p>
                             {industryLinks.map((industry) => (
                               <Link
-                                key={industry.label}
+                                key={industry.href}
                                 href={industry.href}
                                 onClick={() => setIsProductsOpen(false)}
                                 role="menuitem"
-                                className="flex items-start gap-3 px-2 py-2.5 rounded-xl hover:bg-white/5 transition-all duration-150 group"
+                                className="flex items-start gap-3 px-2 py-2.5 rounded-xl hover:bg-muted transition-all duration-150 group"
                               >
                                 <industry.icon className="w-4 h-4 mt-0.5 shrink-0 text-[#64748B] group-hover:text-[#3B82F6] transition-colors" />
                                 <div>
-                                  <p className="text-sm font-medium text-[#94A3B8] group-hover:text-white transition-colors">
-                                    {industry.label}
+                                  <p className="text-sm font-medium text-foreground-secondary group-hover:text-foreground transition-colors">
+                                    {t(industry.labelKey)}
                                   </p>
-                                  <p className="text-xs text-[#475569]">{industry.desc}</p>
+                                  <p className="text-xs text-[#475569]">{t(industry.descKey)}</p>
                                 </div>
                               </Link>
                             ))}
@@ -230,15 +288,15 @@ export function Header() {
                   {isProductsOpen && (
                     <div className="absolute top-full left-0 h-3 w-[480px]" aria-hidden="true" />
                   )}
-                </div>
-              </motion.div>
+                  </div>
+                </motion.div>
 
               {/* Other nav links */}
-              {otherNavLinks.map((link, i) => {
+                {otherNavLinks.map((link, i) => {
                 const isInternal = link.href.startsWith('/');
                 const isActive = 'active' in link && link.active;
-                const cls = `group relative text-sm font-medium transition-colors duration-300 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A] rounded-sm ${
-                  isActive ? 'text-white' : 'text-[#64748B] hover:text-white'
+                const cls = `group relative text-[13px] font-semibold transition-colors duration-300 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background rounded-md ${
+                  isActive ? 'text-foreground' : 'text-[#64748B] hover:text-foreground'
                 }`;
                 return (
                   <motion.div
@@ -265,58 +323,60 @@ export function Header() {
                     )}
                   </motion.div>
                 );
-              })}
-            </nav>
+                })}
+                </nav>
 
             {/* Desktop right side */}
-            <motion.div
+                <motion.div
               className="hidden md:flex items-center gap-3"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             >
-              <LanguageSwitcher />
-              <a
+                  <LanguageSwitcher />
+                  <a
                 href="https://t.me/aisolution_uz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex items-center gap-1.5 px-4 py-2.5 text-[14px] font-medium rounded-lg border border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all duration-200 whitespace-nowrap"
+                className="hidden md:flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-semibold rounded-xl border border-[#3B82F6]/70 text-[#2563EB] hover:bg-[#3B82F6] hover:text-white transition-all duration-200 whitespace-nowrap"
               >
                 <Send className="w-3.5 h-3.5" />
-                Telegram
+                {t('nav.telegram')}
               </a>
-              <a
+                  <a
                 href={ctaHref}
                 onClick={(e) => scrollTo(e, ctaHref)}
-                className="relative inline-flex items-center gap-1.5 px-6 py-2.5 text-[14px] font-semibold rounded-lg overflow-hidden transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A]"
+                className="relative inline-flex items-center gap-1.5 px-6 py-2.5 text-[13px] font-semibold rounded-xl overflow-hidden transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background"
               >
                 <span
-                  className="absolute inset-0 rounded-lg p-[1px] bg-gradient-to-r from-[#3B82F6] to-[#06B6D4]"
+                  className="absolute inset-0 rounded-xl p-[1px] bg-gradient-to-r from-[#3B82F6] to-[#06B6D4]"
                   style={{
                     WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                     WebkitMaskComposite: 'xor',
                     maskComposite: 'exclude',
                   }}
                 />
-                <span className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative text-gradient group-hover:!text-white group-hover:bg-none group-hover:[-webkit-text-fill-color:white] transition-all duration-300">
                   {t('nav.startProject')}
                 </span>
-                <ArrowRight className="relative w-3.5 h-3.5 text-[#3B82F6] group-hover:text-white transition-colors duration-300" />
+                <ArrowRight className="relative w-3.5 h-3.5 text-[#3B82F6] group-hover:text-foreground transition-colors duration-300" />
               </a>
-            </motion.div>
+                </motion.div>
 
             {/* Mobile hamburger */}
-            <div className="flex items-center gap-2 md:hidden">
+                <div className="flex items-center gap-2 md:hidden">
               <LanguageSwitcher />
               <button
-                className="p-2 -mr-2 rounded-md text-white hover:bg-white/10 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A]"
+                className="p-2 -mr-2 rounded-md text-foreground hover:bg-muted transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background"
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
                 aria-label={isMobileOpen ? 'Close navigation' : 'Open navigation'}
                 aria-expanded={isMobileOpen}
               >
                 {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -330,17 +390,17 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-[#05050A] overflow-y-auto"
+            className="fixed inset-0 z-50 bg-background overflow-y-auto"
           >
-            <div className="flex items-center justify-between h-16 px-6 border-b border-white/[0.06]">
+            <div className="flex items-center justify-between h-16 px-6 border-b border-border">
               <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileOpen(false)}>
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-sm">⚡</span>
                 </div>
-                <span className="text-[20px] font-bold text-white tracking-tight whitespace-nowrap">AI Solution</span>
+                <span className="text-[20px] font-bold text-foreground tracking-tight whitespace-nowrap">AI Solution</span>
               </Link>
               <button
-                className="p-2 -mr-2 rounded-md text-white hover:bg-white/10 transition-colors duration-150 focus:outline-none"
+                className="p-2 -mr-2 rounded-md text-foreground hover:bg-muted transition-colors duration-150 focus:outline-none"
                 onClick={() => setIsMobileOpen(false)}
                 aria-label="Close navigation"
               >
@@ -358,7 +418,7 @@ export function Header() {
                 <button
                   onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
                   className={`w-full flex items-center justify-between py-3 text-[18px] font-medium transition-colors focus:outline-none ${
-                    isProductPage ? 'text-white' : 'text-[#94A3B8] hover:text-white'
+                    isProductPage ? 'text-foreground' : 'text-[#94A3B8] hover:text-foreground'
                   }`}
                 >
                   {t('nav.solutions')}
@@ -376,8 +436,8 @@ export function Header() {
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="mb-3 rounded-xl p-2" style={{ background: 'rgba(255,255,255,0.04)' }}>
-                        <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] px-2 py-1.5">Продукты</p>
+                      <div className="mb-3 rounded-xl p-2 bg-muted">
+                        <p className="text-xs font-semibold uppercase tracking-widest text-[#64748B] px-2 py-1.5">{t('headerDropdown.productsTitle')}</p>
                         {productLinks.map((product) => {
                           const isActive = pathname === product.href;
                           return (
@@ -386,13 +446,13 @@ export function Header() {
                               href={product.href}
                               onClick={() => setIsMobileOpen(false)}
                               className={`flex items-start gap-3 px-3 py-2.5 rounded-lg transition-colors ${
-                                isActive ? 'text-[#3B82F6]' : 'text-[#94A3B8] hover:text-white'
+                                isActive ? 'text-[#3B82F6]' : 'text-[#94A3B8] hover:text-foreground'
                               }`}
                             >
                               <product.icon className="w-4 h-4 shrink-0 mt-0.5" />
                               <div>
-                                <p className="text-[15px] font-medium">{product.label}</p>
-                                <p className="text-xs text-[#475569]">{product.desc}</p>
+                                <p className="text-[15px] font-medium">{t(product.labelKey)}</p>
+                                <p className="text-xs text-[#475569]">{t(product.descKey)}</p>
                               </div>
                             </Link>
                           );
@@ -419,7 +479,7 @@ export function Header() {
                         href={link.href}
                         onClick={() => setIsMobileOpen(false)}
                         className={`block py-3 text-[18px] font-medium transition-colors rounded-sm ${
-                          isActive ? 'text-white' : 'text-[#94A3B8] hover:text-white'
+                          isActive ? 'text-foreground' : 'text-[#94A3B8] hover:text-foreground'
                         }`}
                       >
                         {link.label}
@@ -431,7 +491,7 @@ export function Header() {
                           scrollTo(e, link.href);
                           if (link.href.startsWith('#')) setIsMobileOpen(false);
                         }}
-                        className="block py-3 text-[18px] font-medium text-[#94A3B8] hover:text-white transition-colors rounded-sm"
+                        className="block py-3 text-[18px] font-medium text-[#94A3B8] hover:text-foreground transition-colors rounded-sm"
                       >
                         {link.label}
                       </a>

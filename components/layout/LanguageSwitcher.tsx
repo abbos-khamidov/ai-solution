@@ -50,7 +50,7 @@ export function LanguageSwitcher() {
     <div ref={dropdownRef} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-medium text-[#64748B] hover:text-white rounded-lg hover:bg-white/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#05050A]"
+        className="inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-medium text-[#64748B] hover:text-foreground rounded-lg hover:bg-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-background"
         aria-label="Select language"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
@@ -68,10 +68,10 @@ export function LanguageSwitcher() {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="absolute right-0 top-full mt-2 w-44 rounded-lg p-2 z-[60]"
             style={{
-              background: 'rgba(13, 13, 26, 0.95)',
+              background: 'rgba(255, 255, 255, 0.97)',
               backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+              border: '1px solid rgba(15, 23, 42, 0.1)',
+              boxShadow: '0 8px 32px rgba(15, 23, 42, 0.1)',
             }}
             role="listbox"
             aria-label="Select language"
@@ -87,7 +87,7 @@ export function LanguageSwitcher() {
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-[13px] font-medium transition-colors duration-150 ${
                     isSelected
                       ? 'text-[#3B82F6] bg-[#3B82F6]/10'
-                      : 'text-[#94A3B8] hover:bg-white/5 hover:text-white'
+                      : 'text-[#94A3B8] hover:bg-muted hover:text-foreground'
                   }`}
                 >
                   <span className="text-base leading-none">{lang.flag}</span>

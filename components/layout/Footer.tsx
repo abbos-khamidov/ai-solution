@@ -4,35 +4,36 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Mail, Phone, Send, MessageCircle, Instagram, Linkedin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const CONTACT_EMAIL = 'info@aisolution.uz';
 const CONTACT_PHONE = '+998 77 061 22 00';
 const CONTACT_PHONES = ['+998 77 061 22 00', '+998 95 000 00 65', '+998 93 949 20 00'];
 const CONTACT_TG = '@aisolution_uz';
-const CONTACT_ADDRESS = 'ул. Богибустан 186, Ташкент';
 
 const productLinks = [
-  { label: 'Customer Service Bot',  href: '/products/customer-service' },
-  { label: 'Management Assistant',  href: '/products/management-assistant' },
-  { label: 'Corporate AI (RAG)',     href: '/products/corporate-ai' },
-  { label: 'AI-аналитика',          href: '/products/ai-analytics' },
-];
-
-const companyLinks = [
-  { label: 'О нас',   href: '/about' },
-  { label: 'Блог',    href: '/blog' },
-  { label: 'Кейсы',   href: '/cases' },
-];
+  { labelKey: 'headerDropdown.productLabels.cs', href: '/products/customer-service' },
+  { labelKey: 'headerDropdown.productLabels.ma', href: '/products/management-assistant' },
+  { labelKey: 'headerDropdown.productLabels.rag', href: '/products/corporate-ai' },
+  { labelKey: 'headerDropdown.productLabels.analytics', href: '/products/ai-analytics' },
+] as const;
 
 const colHeadClass = 'text-xs font-semibold uppercase tracking-widest text-[#64748B] mb-4';
-const linkClass = 'text-sm text-[#94A3B8] hover:text-white transition-colors duration-200';
+const linkClass = 'text-sm text-foreground-secondary hover:text-foreground transition-colors duration-200';
 
 export function Footer() {
+  const { t } = useTranslation();
   const [showContacts, setShowContacts] = useState(false);
+
+  const companyLinks = [
+    { label: t('footer.about'), href: '/about' },
+    { label: t('footer.blog'), href: '/blog' },
+    { label: t('nav.cases'), href: '/cases' },
+  ];
 
   return (
     <>
-      <footer className="relative" style={{ background: '#05050A' }}>
+      <footer className="relative bg-background">
         <div className="h-px bg-gradient-to-r from-transparent via-[#3B82F6]/30 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
@@ -44,18 +45,16 @@ export function Footer() {
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center">
                   <span className="text-white font-bold text-xs tracking-tight">AI</span>
                 </div>
-                <span className="font-bold text-lg tracking-tight text-[#F8FAFC]">AI Solution</span>
+                <span className="font-bold text-lg tracking-tight text-foreground">AI Solution</span>
               </div>
-              <p className="text-sm text-[#64748B] leading-relaxed mb-5">
-                Автоматизация продаж и клиентского сервиса через AI. Работаем с бизнесом в Узбекистане и СНГ.
-              </p>
+              <p className="text-sm text-[#64748B] leading-relaxed mb-5">{t('footer.description')}</p>
               <div className="flex items-center gap-2">
                 <a
                   href="https://t.me/aisolution_uz"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Telegram"
-                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] text-[#64748B] hover:text-white transition-all duration-200"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-muted text-foreground-muted hover:bg-muted/80 hover:text-foreground transition-all duration-200"
                 >
                   <MessageCircle className="w-4 h-4" />
                 </a>
@@ -64,7 +63,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] text-[#64748B] hover:text-white transition-all duration-200"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-muted text-foreground-muted hover:bg-muted/80 hover:text-foreground transition-all duration-200"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -73,7 +72,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="w-9 h-9 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] text-[#64748B] hover:text-white transition-all duration-200"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-muted text-foreground-muted hover:bg-muted/80 hover:text-foreground transition-all duration-200"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -82,11 +81,13 @@ export function Footer() {
 
             {/* Column 2: Products */}
             <div>
-              <h4 className={colHeadClass}>Продукты</h4>
+              <h4 className={colHeadClass}>{t('footer.products')}</h4>
               <ul className="space-y-2.5">
                 {productLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className={linkClass}>{link.label}</Link>
+                    <Link href={link.href} className={linkClass}>
+                      {t(link.labelKey)}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -94,7 +95,7 @@ export function Footer() {
 
             {/* Column 3: Company */}
             <div>
-              <h4 className={colHeadClass}>Компания</h4>
+              <h4 className={colHeadClass}>{t('footer.company')}</h4>
               <ul className="space-y-2.5">
                 {companyLinks.map((link) => (
                   <li key={link.href}>
@@ -106,7 +107,7 @@ export function Footer() {
                     onClick={() => setShowContacts(true)}
                     className={`${linkClass} text-left`}
                   >
-                    Контакты
+                    {t('footer.contactsOpen')}
                   </button>
                 </li>
               </ul>
@@ -114,24 +115,24 @@ export function Footer() {
 
             {/* Column 4: Contacts */}
             <div>
-              <h4 className={colHeadClass}>Контакты</h4>
+              <h4 className={colHeadClass}>{t('footer.contacts')}</h4>
               <ul className="space-y-2.5 text-sm text-[#94A3B8]">
                 <li>
-                  <a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`} className="hover:text-white transition-colors">
+                  <a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`} className="hover:text-foreground transition-colors">
                     {CONTACT_PHONE}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-white transition-colors">
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-foreground transition-colors">
                     {CONTACT_EMAIL}
                   </a>
                 </li>
                 <li>
-                  <a href="https://t.me/aisolution_uz" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a href="https://t.me/aisolution_uz" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                     {CONTACT_TG}
                   </a>
                 </li>
-                <li>{CONTACT_ADDRESS}</li>
+                <li>{t('footer.address')}</li>
               </ul>
             </div>
           </div>
@@ -144,15 +145,15 @@ export function Footer() {
             <p className="text-xs text-[#475569]">&copy; 2026 AI Solution</p>
             <div className="flex items-center gap-4">
               <a href="/privacy" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
-                Политика конфиденциальности
+                {t('footer.privacy')}
               </a>
               <span className="text-[#334155]">·</span>
               <Link href="/security" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
-                Условия работы
+                {t('footer.terms')}
               </Link>
               <span className="text-[#334155]">·</span>
               <a href="/offer" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
-                Договор оферты
+                {t('footer.offer')}
               </a>
             </div>
           </div>
@@ -191,13 +192,13 @@ export function Footer() {
               >
                 <button
                   onClick={() => setShowContacts(false)}
-                  className="absolute top-4 right-4 p-1.5 rounded-lg text-[#64748B] hover:text-white hover:bg-white/10 transition-colors"
+                  className="absolute top-4 right-4 p-1.5 rounded-lg text-[#64748B] hover:text-foreground hover:bg-muted transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
 
-                <h3 className="text-xl font-bold text-[#F8FAFC] mb-1">Свяжитесь с нами</h3>
-                <p className="text-sm text-[#64748B] mb-5">Позвоните, напишите в Telegram или на почту</p>
+                <h3 className="text-xl font-bold text-foreground mb-1">{t('footer.contactUsTitle')}</h3>
+                <p className="text-sm text-[#64748B] mb-5">{t('footer.contactUsSubtitle')}</p>
 
                 <div
                   className="rounded-xl p-4 space-y-2.5 mb-3"
@@ -207,13 +208,13 @@ export function Footer() {
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
                       <Phone className="w-3.5 h-3.5 text-white" />
                     </div>
-                    <span className="text-xs text-[#64748B] font-medium uppercase tracking-wider">Телефоны</span>
+                    <span className="text-xs text-[#64748B] font-medium uppercase tracking-wider">{t('footer.phonesLabel')}</span>
                   </div>
                   {CONTACT_PHONES.map((phone) => (
                     <a
                       key={phone}
                       href={`tel:${phone.replace(/\s/g, '')}`}
-                      className="block text-[#F8FAFC] font-medium text-[15px] hover:text-[#93C5FD] transition-colors pl-11"
+                      className="block text-foreground font-medium text-[15px] hover:text-[#93C5FD] transition-colors pl-11"
                     >
                       {phone}
                     </a>
@@ -231,7 +232,7 @@ export function Footer() {
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
                       <Send className="w-3.5 h-3.5 text-white" />
                     </div>
-                    <span className="text-[#F8FAFC] font-medium text-[15px]">{CONTACT_TG}</span>
+                    <span className="text-foreground font-medium text-[15px]">{CONTACT_TG}</span>
                   </a>
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
@@ -241,7 +242,7 @@ export function Footer() {
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#06B6D4] flex items-center justify-center flex-shrink-0">
                       <Mail className="w-3.5 h-3.5 text-white" />
                     </div>
-                    <span className="text-[#F8FAFC] font-medium text-[15px]">{CONTACT_EMAIL}</span>
+                    <span className="text-foreground font-medium text-[15px]">{CONTACT_EMAIL}</span>
                   </a>
                 </div>
               </div>

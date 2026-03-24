@@ -37,7 +37,7 @@ export default function ChatgptDlyaBiznesaUzbekistanPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">ChatGPT для бизнеса в Узбекистане</p>
@@ -53,21 +53,21 @@ export default function ChatgptDlyaBiznesaUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Зачем бизнесу свой ChatGPT</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Зачем бизнесу свой ChatGPT</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             Свой ChatGPT для компании решает несколько задач. Первая — общение с клиентами в контексте вашего продукта: цены, условия, услуги, доставка. Вторая — квалификация лидов и передача горячих менеджерам с контекстом. Третья — внутреннее использование: поиск по документам, ответы на вопросы сотрудников из базы знаний (регламенты, инструкции, контракты). Всё это возможно при обучении модели на ваших данных или подключении RAG (retrieval-augmented generation): модель дополняет ответы информацией из вашей базы документов. Данные при этом могут оставаться на вашей инфраструктуре.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Варианты внедрения в Узбекистане</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Варианты внедрения в Узбекистане</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             Лёгкий вариант — чатбот для мессенджеров и сайта, обученный на ваших FAQ и сценариях продаж. Клиенты получают ответы в духе ChatGPT, но в контексте вашей компании. Средний — тот же бот плюс интеграция с CRM и аналитикой. Продвинутый — корпоративная база знаний (RAG): сотрудники и при необходимости клиенты задают вопросы по вашим документам, ИИ находит релевантные фрагменты и формирует ответ. В AI Solution мы реализуем все три уровня: от быстрого запуска бота до развёртывания RAG на ваших серверах при необходимости.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Стоимость и сроки</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Чатбот с возможностями LLM для клиентов — от $1 000 за запуск + от $500/мес. Корпоративная база знаний (RAG) — от $8 000. Интеграция с мессенджерами, CRM и кастомная настройка — по смете после аудита. Срок запуска бота — 5–7 рабочих дней, RAG — от 2–4 недель.
           </p>
@@ -78,7 +78,7 @@ export default function ChatgptDlyaBiznesaUzbekistanPage() {
           <div className="space-y-4">
             {faqItems.map(({ q, a }) => (
               <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
                 <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
               </details>
             ))}
@@ -94,7 +94,7 @@ export default function ChatgptDlyaBiznesaUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li><Link href="/ai-bot-tashkent" className="text-[#93C5FD] hover:underline">AI-бот для бизнеса в Ташкенте</Link></li>
             <li><Link href="/products/corporate-ai" className="text-[#93C5FD] hover:underline">Corporate AI (RAG) — база знаний компании</Link></li>

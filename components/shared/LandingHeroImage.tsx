@@ -20,7 +20,7 @@ export function LandingHeroImage({ src, alt, title }: Props) {
         sizes="(max-width: 768px) 100vw, 800px"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#05050A] to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
     </div>
   );
 }

@@ -1,99 +1,71 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollReveal } from '@/components/animations/ScrollReveal';
-import { PricingCards, PricingPlan } from '@/components/shared/PricingCards';
+import { PricingCards, PricingBillingMode, PricingPlan } from '@/components/shared/PricingCards';
 
-const plans: PricingPlan[] = [
-  {
-    name: 'Starter',
-    setupPrice: '$390',
-    monthlyPrice: '$150 / мес',
-    description: 'Быстрый тест AI для малого бизнеса',
-    problem: 'Теряете заявки в нерабочее время',
-    result: 'AI отвечает 24/7, вы не теряете ни одного лида',
-    roi: {
-      label: 'Окупается за 1–2 месяца',
-      detail: 'Заменяет ночную смену оператора',
-    },
-    highlighted: false,
-    features: [
-      'AI-бот в Telegram',
-      '1 сценарий общения',
-      'До 500 диалогов / мес',
-      'Квалификация лидов Cold / Warm / Hot',
-      'Уведомления менеджеру о горячих лидах',
-      'Запуск за 1–2 дня',
-    ],
-    whenNeeded: [
-      'Отвечаете клиентам вручную',
-      'Много одинаковых вопросов каждый день',
-      'Заявки теряются в нерабочее время',
-    ],
-    ctaText: 'Попробовать за $390',
-  },
-  {
-    name: 'Growth',
-    badge: 'Популярный',
-    setupPrice: '$2 900',
-    monthlyPrice: '$900 / мес',
-    description: 'Рост продаж через AI-автоматизацию',
-    problem: 'Менеджеры не справляются с потоком, заявки теряются',
-    result: 'Рост заявок на 30–70%, полная воронка под контролем',
-    roi: {
-      label: 'Увеличивает заявки на 30–70%',
-      detail: 'Средний чек внедрения $4 200 · окупается за 2–4 месяца',
-    },
-    highlighted: true,
-    features: [
-      'Telegram + Instagram + WhatsApp',
-      'До 3 000 диалогов / мес',
-      'Интеграция с CRM (Bitrix24, amoCRM)',
-      'AI-аналитика и дашборд руководителя',
-      'Антифрод и фильтрация спама',
-      'Приоритетная поддержка 24/7',
-      'Настройка за 3–5 дней',
-    ],
-    whenNeeded: [
-      'Есть менеджеры, но заявки теряются',
-      'Клиенты ждут ответа слишком долго',
-      'Нет аналитики по лидам и воронке',
-    ],
-    ctaText: 'Обсудить внедрение',
-  },
-  {
-    name: 'Enterprise',
-    setupPrice: 'от $7 500',
-    monthlyPrice: 'от $2 500 / мес',
-    description: 'AI-система управления для среднего и крупного бизнеса',
-    problem: 'Нет прозрачности: данные в разных системах, решения принимаются вслепую',
-    result: 'Единый AI-контроль бизнеса, экономия 1–3 зарплат сотрудников',
-    roi: {
-      label: 'Экономит 1–3 зарплаты сотрудников',
-      detail: 'Заменяет ручную аналитику, контроль задач и отчётность',
-    },
-    highlighted: false,
-    features: [
-      'Все каналы + API-интеграции',
-      'AI-аналитика, KPI-дашборды, финансы',
-      'Корпоративная база знаний (RAG)',
-      'Контроль задач и дедлайнов команды',
-      'Еженедельные отчёты руководителю',
-      'White-label и On-premise',
-      'Выделенный менеджер + SLA',
-    ],
-    whenNeeded: [
-      'Есть команда, но нет прозрачности',
-      'Решения принимаются без данных',
-      'Нужно контролировать продажи и процессы',
-    ],
-    ctaText: 'Запросить расчёт',
-  },
-];
+const PLAN_KEYS = ['starter', 'growth', 'enterprise'] as const;
 
 export function SimplePricingSection() {
+  const { t } = useTranslation();
+  const [billingMode, setBillingMode] = useState<PricingBillingMode>('subscription');
+
+  const plans: PricingPlan[] = useMemo(() => {
+    return PLAN_KEYS.map((key) => {
+      const badgeRaw = t(`homeSimplePricing.plans.${key}.badge`);
+      const features = t(`homeSimplePricing.plans.${key}.features`, { returnObjects: true }) as string[];
+      const whenNeeded = t(`homeSimplePricing.plans.${key}.whenNeeded`, { returnObjects: true }) as string[];
+
+      return {
+        name: t(`homeSimplePricing.plans.${key}.name`),
+        badge: badgeRaw.trim() ? badgeRaw : undefined,
+        setupPrice: t(`homeSimplePricing.plans.${key}.setupSub`),
+        monthlyPrice: t(`homeSimplePricing.plans.${key}.monthlySub`),
+        oneTime: {
+          totalPrice: t(`homeSimplePricing.plans.${key}.onceTotal`),
+          subline: t(`homeSimplePricing.plans.${key}.onceNote`),
+        },
+        description: t(`homeSimplePricing.plans.${key}.description`),
+        problem: t(`homeSimplePricing.plans.${key}.problem`),
+        result: t(`homeSimplePricing.plans.${key}.result`),
+        roi: {
+          label: t(`homeSimplePricing.plans.${key}.roiLabel`),
+          detail: t(`homeSimplePricing.plans.${key}.roiDetail`),
+        },
+        highlighted: key === 'growth',
+        features: Array.isArray(features) ? features : [],
+        whenNeeded: Array.isArray(whenNeeded) ? whenNeeded : [],
+        ctaText:
+          billingMode === 'subscription'
+            ? t(`homeSimplePricing.plans.${key}.ctaSub`)
+            : t(`homeSimplePricing.plans.${key}.ctaOnce`),
+      };
+    });
+  }, [t, billingMode]);
+
+  const cardLabels = useMemo(
+    () =>
+      billingMode === 'subscription'
+        ? {
+            primaryRow: t('homeSimplePricing.labels.setupSub'),
+            secondaryRow: t('homeSimplePricing.labels.monthlySub'),
+            problem: t('homeSimplePricing.labels.problem'),
+            result: t('homeSimplePricing.labels.result'),
+            whenNeeded: t('homeSimplePricing.labels.whenNeeded'),
+          }
+        : {
+            primaryRow: t('homeSimplePricing.labels.projectOnce'),
+            secondaryRow: t('homeSimplePricing.labels.afterOnce'),
+            problem: t('homeSimplePricing.labels.problem'),
+            result: t('homeSimplePricing.labels.result'),
+            whenNeeded: t('homeSimplePricing.labels.whenNeeded'),
+          },
+    [t, billingMode]
+  );
+
   return (
-    <section className="relative py-12 md:py-14 overflow-hidden" id="pricing" style={{ background: '#0D0D1A' }}>
+    <section className="relative py-12 md:py-14 overflow-hidden bg-background-secondary" id="pricing">
       <div className="absolute inset-0" aria-hidden="true">
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
@@ -106,17 +78,58 @@ export function SimplePricingSection() {
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         <ScrollReveal duration={0.3}>
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F8FAFC] mb-4">
-              Инвестиция в рост, а не расход на IT
+          <div className="text-center mb-8 md:mb-10">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              {t('homeSimplePricing.title')}
             </h2>
-            <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">
-              Каждый тариф окупается за счёт роста продаж или экономии на персонале
-            </p>
+            <p className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto">{t('homeSimplePricing.subtitle')}</p>
           </div>
         </ScrollReveal>
 
-        <PricingCards plans={plans} defaultCtaHref="#contact" />
+        <ScrollReveal duration={0.35} delay={0.05}>
+          <div className="flex flex-col items-center gap-4 mb-10 md:mb-12">
+            <p className="text-sm md:text-base font-medium text-foreground text-center max-w-xl">
+              {t('homeSimplePricing.toggleHint')}
+            </p>
+            <div
+              role="group"
+              aria-label={t('homeSimplePricing.toggleGroupLabel')}
+              className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-2xl bg-slate-100/90 border border-slate-200/90 shadow-sm"
+            >
+              <button
+                type="button"
+                aria-pressed={billingMode === 'subscription'}
+                onClick={() => setBillingMode('subscription')}
+                className={`relative px-4 md:px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                  billingMode === 'subscription'
+                    ? 'bg-white text-foreground shadow-md shadow-slate-200/80 ring-1 ring-slate-200/80'
+                    : 'text-[#64748B] hover:text-foreground'
+                }`}
+              >
+                {t('homeSimplePricing.withSubscription')}
+              </button>
+              <button
+                type="button"
+                aria-pressed={billingMode === 'onetime'}
+                onClick={() => setBillingMode('onetime')}
+                className={`relative px-4 md:px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                  billingMode === 'onetime'
+                    ? 'bg-white text-foreground shadow-md shadow-slate-200/80 ring-1 ring-slate-200/80'
+                    : 'text-[#64748B] hover:text-foreground'
+                }`}
+              >
+                {t('homeSimplePricing.withoutSubscription')}
+              </button>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        <PricingCards
+          plans={plans}
+          billingMode={billingMode}
+          cardLabels={cardLabels}
+          defaultCtaHref="#contact"
+        />
 
         <ScrollReveal duration={0.3} delay={0.4}>
           <div className="mt-12 text-center max-w-2xl mx-auto">
@@ -127,7 +140,7 @@ export function SimplePricingSection() {
                 border: '1px solid rgba(59, 130, 246, 0.15)',
               }}
             >
-              Точную стоимость считаем после бесплатного 60-минутного аудита — цена зависит от каналов, сценариев и интеграций. Аудит ни к чему не обязывает.
+              {t('homeSimplePricing.footnote')}
             </div>
           </div>
         </ScrollReveal>

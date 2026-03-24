@@ -3,7 +3,18 @@ const nextConfig = {
     reactStrictMode: true,
     trailingSlash: true,
     async redirects() {
-        return [{ source: '/privacy', destination: '/confidential/', permanent: false }];
+        return [
+            { source: '/privacy', destination: '/confidential/', permanent: false },
+            // Отрасли: старые URL из меню → актуальные лендинги
+            { source: '/industries/medicine', destination: '/ii-dlya-klinik-tashkent/', permanent: true },
+            { source: '/industries/medicine/', destination: '/ii-dlya-klinik-tashkent/', permanent: true },
+            { source: '/industries/education', destination: '/ii-dlya-obrazovaniya-tashkent/', permanent: true },
+            { source: '/industries/education/', destination: '/ii-dlya-obrazovaniya-tashkent/', permanent: true },
+            { source: '/industries/horeca', destination: '/ii-dlya-restoranov-tashkent/', permanent: true },
+            { source: '/industries/horeca/', destination: '/ii-dlya-restoranov-tashkent/', permanent: true },
+            { source: '/industries/retail', destination: '/ii-dlya-internet-magazina/', permanent: true },
+            { source: '/industries/retail/', destination: '/ii-dlya-internet-magazina/', permanent: true },
+        ];
     },
     async headers() {
         return [

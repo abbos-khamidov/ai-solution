@@ -52,12 +52,15 @@ const config: Config = {
         "3xl": "1.5rem",
       },
       boxShadow: {
-        card: "0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2)",
-        "card-hover": "0 4px 16px rgba(59, 130, 246, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3)",
-        glass: "0 8px 32px rgba(0, 0, 0, 0.4)",
-        glow: "0 0 30px rgba(59, 130, 246, 0.15), 0 0 60px rgba(6, 182, 212, 0.1)",
-        "glow-strong": "0 0 40px rgba(59, 130, 246, 0.25), 0 0 80px rgba(6, 182, 212, 0.15)",
-        subtle: "0 1px 2px rgba(0, 0, 0, 0.3)",
+        card: "0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.06)",
+        "card-hover": "0 4px 16px rgba(59, 130, 246, 0.12), 0 8px 24px rgba(15, 23, 42, 0.08)",
+        glass: "0 8px 32px rgba(15, 23, 42, 0.08)",
+        glow: "0 0 30px rgba(59, 130, 246, 0.18), 0 0 60px rgba(6, 182, 212, 0.12)",
+        "glow-strong": "0 0 40px rgba(59, 130, 246, 0.22), 0 0 80px rgba(6, 182, 212, 0.14)",
+        subtle: "0 1px 2px rgba(15, 23, 42, 0.06)",
+      },
+      ringOffsetColor: {
+        background: "var(--background)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],

@@ -9,7 +9,11 @@
     "startProject": "Loyihani boshlash",
     "home": "Bosh sahifa",
     "products": "Mahsulotlar",
-    "discuss": "Muhokama qilish"
+    "discuss": "Muhokama qilish",
+    "pricing": "Tariflar",
+    "cases": "Keyslar",
+    "softwareDev": "Dasturiy ta'minot",
+    "telegram": "Telegram"
   },
   "heroNew": {
     "titleLine1": "Biznes avtomatlashtirish",
@@ -22,6 +26,101 @@
       "nonstop": "Dam olishsiz",
       "conversion": "Ko'proq konversiya",
       "clients": "Mijozlar"
+    }
+  },
+  "heroAww": {
+    "badge": "B2B savdo uchun AI",
+    "title": "Savdo o'sishi uchun AI-bot va CRM avtomatlashtirish",
+    "subtitle": "B2B uchun birinchi xabardan bitimgacha bo'lgan jarayonni yopadigan tizimni joriy qilamiz: 30 soniyada javob, lead saralash va CRMga uzatish.",
+    "primaryCta": "Konsultatsiya olish",
+    "secondaryCta": "Qanday ishlaydi",
+    "microline": "Tez start · Aniq natija",
+    "chatCaption": "AI birinchi dialogni qanday olib borishini ko'ring",
+    "sellPhrases": {
+      "p1": "Savdo va qo'llab-quvvatlashga AI-bot joriy qilamiz",
+      "p2": "CRM integratsiya va funnel avtomatlashtirish",
+      "p3": "Leadlarni tezroq bitimga o'tkazamiz"
+    },
+    "stats": {
+      "speedValue": "30 soniya",
+      "speedLabel": "birinchi javob",
+      "replyValue": "24/7",
+      "replyLabel": "dam olishsiz",
+      "roiValue": "+30%",
+      "roiLabel": "leadlar",
+      "launchValue": "10 kun",
+      "launchLabel": "ishga tushirishgacha"
+    }
+  },
+  "benchmark": {
+    "badge": "Toshkent bozori tahlili",
+    "stepsNavAria": "Solishtirish bosqichlari",
+    "title": "Nega AI Solution kuchliroq: taqdimot va joriy etish",
+    "subtitle": "O'zbekistondagi top digital va AI amaliyoti — dizayn va konversiya bir modelda.",
+    "header": {
+      "criteria": "Mezon",
+      "market": "Bozorda odatda",
+      "aisolution": "AI Solution yondashuvi"
+    },
+    "rows": {
+      "clarity": {
+        "label": "5 soniyada qiymat",
+        "market": "Raqamsiz, noaniq matn",
+        "ours": "UTP + KPI + keyingi qadam"
+      },
+      "proof": {
+        "label": "Natija isboti",
+        "market": "Tuzumsiz fikrlar",
+        "ours": "Case, metrika, stsenariy"
+      },
+      "speed": {
+        "label": "Birinchi aloqa",
+        "market": "Forma va kutish",
+        "ours": "CTA va chatda tez javob"
+      },
+      "integration": {
+        "label": "Integratsiya va o'sish",
+        "market": "Roadmapsiz",
+        "ours": "CRM, kanal, API va o'sish rejasi"
+      }
+    }
+  },
+  "solutionMap": {
+    "title": "AI-assistent qanday ishlashini ko'ring",
+    "subtitle": "Bitta lid birinchi aloqa nuqtasidan CRMgacha yo'qotishsiz o'tadi.",
+    "mapLabel": "Signal map",
+    "cardLabel": "Faol bosqich",
+    "marketLabel": "Bozorda odatda",
+    "oursLabel": "AI Solution yondashuvi",
+    "steps": {
+      "s1": {
+        "node": "Lid chatga yozadi",
+        "label": "Birinchi aloqa",
+        "market": "Javob kechikadi, lid soviydi",
+        "ours": "AI 30 soniyada javob beradi va so'rovni yozadi",
+        "kpi": "Javob: 30 soniyagacha"
+      },
+      "s2": {
+        "node": "AI saralaydi",
+        "label": "Kvalifikatsiya",
+        "market": "Segment va prioritet yo'q",
+        "ours": "Cold / Warm / Hot status va intent bir necha soniyada",
+        "kpi": "Skoring: 3-5 soniya"
+      },
+      "s3": {
+        "node": "Menejerga signal",
+        "label": "Savdoga uzatish",
+        "market": "Dialoglarni qo'lda tekshirish kerak",
+        "ours": "Hot lid va kontekst darhol menejerga boradi",
+        "kpi": "Alert: darhol"
+      },
+      "s4": {
+        "node": "CRMga karta",
+        "label": "Tizimdagi bitim",
+        "market": "Ma'lumotlar kanallar orasida yo'qoladi",
+        "ours": "CRM karta, teglar va next stepni qabul qiladi",
+        "kpi": "Konversiya: x3 gacha"
+      }
     }
   },
   "pricing": {
@@ -118,6 +217,112 @@
     "subtitle": "Vazifalaringizga paketni tanlang. Yashirin to'lovlar yo'q.",
     "auditNote": "Aniq narx bepul 60 daqiqalik auditdan keyin — ssenariylar, kanallar va integratsiyalar soniga bog'liq."
   },
+  "homeSimplePricing": {
+    "title": "O'sishga investitsiya, IT xarajatiga emas",
+    "subtitle": "Ikki format: kiritishdan keyin obuna yoki bir martalik loyiha — oylik to'lovsiz.",
+    "toggleGroupLabel": "To'lov formati",
+    "toggleHint": "Formatni tanlang: joriy qilgach oylik obuna yoki obunasiz bir martalik loyiha.",
+    "withSubscription": "Obuna bilan",
+    "withoutSubscription": "Obunasiz",
+    "labels": {
+      "setupSub": "Joriy qilish",
+      "monthlySub": "Oylik obuna",
+      "projectOnce": "Kalit topshiriq loyihasi",
+      "afterOnce": "Ishga tushgach",
+      "problem": "Muammo:",
+      "result": "Natija:",
+      "whenNeeded": "Qachon kerak"
+    },
+    "footnote": "Aniq narxni bepul konsultatsiyadan keyin hisoblaymiz — u kanallar, ssenariylar va integratsiyalarga bog'liq. Bu sizni hech narsaga majbur qilmaydi.",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "badge": "",
+        "description": "Kichik biznes uchun tez AI piloti",
+        "setupSub": "$349",
+        "monthlySub": "$139 / oy",
+        "onceTotal": "$2 190",
+        "onceNote": "Oylik to'lovsiz · 30 kun qo'llab-quvvatlash kiritilgan",
+        "problem": "Ishdan tashqari vaqtda arizalar yo'qoladi",
+        "result": "AI 24/7 javob beradi, issiq lidlarni menejerga uzatadi",
+        "roiLabel": "1–2 oyda o'zini oqlaydi",
+        "roiDetail": "Tungi smenadan arzonroq",
+        "features": [
+          "Telegramda AI-bot",
+          "1 ta muloqot ssenariysi",
+          "Oyiga 500 gacha dialog",
+          "Cold / Warm / Hot kvalifikatsiyasi",
+          "Issiq lidlarga menejer uchun bildirishnoma",
+          "1–2 kun ichida ishga tushirish"
+        ],
+        "whenNeeded": [
+          "Mijozlarga qo'lda javob berasiz",
+          "Har kuni bir xil savollar ko'p",
+          "Tushlik va tunda arizalar yo'qoladi"
+        ],
+        "ctaSub": "$349 dan boshlash",
+        "ctaOnce": "$2 190 dan kalit topshiriq"
+      },
+      "growth": {
+        "name": "Growth",
+        "badge": "Mashhur",
+        "description": "AI va bir nechta kanal orqali savdo o'sishi",
+        "setupSub": "$2 750",
+        "monthlySub": "$820 / oy",
+        "onceTotal": "$9 900",
+        "onceNote": "Obunasiz · jamoaga topshiriq va hujjatlar",
+        "problem": "Ariza oqimi menejerlarning kuchidan ortiq",
+        "result": "Xuddi shu jamoa bilan arizalarga +70% gacha",
+        "roiLabel": "Arizaga konversiya +30–70%",
+        "roiDetail": "3 kanalda odatdagi effekt · 2–4 oyda o'zini oqlash",
+        "features": [
+          "Telegram + Instagram + WhatsApp",
+          "Oyiga 3 000 gacha dialog",
+          "CRM integratsiyasi (Bitrix24, amoCRM)",
+          "AI-analitika va boshqaruv paneli",
+          "Antifrod va spam filtri",
+          "Ustuvor qo'llab-quvvatlash",
+          "3–5 kun ichida joriy qilish"
+        ],
+        "whenNeeded": [
+          "Bir nechta aloqa kanallari bor",
+          "Skvoznoy voronka va CRM kerak",
+          "Lidlar bo'yicha analitika kerak"
+        ],
+        "ctaSub": "Obuna bilan muhokama",
+        "ctaOnce": "$9 900 kalit topshiriq loyihasi"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "badge": "",
+        "description": "O'rta va yirik biznes uchun AI-platforma",
+        "setupSub": "$7 900 dan",
+        "monthlySub": "$2 350 / oy dan",
+        "onceTotal": "$24 500 dan",
+        "onceNote": "Barqaror oylik to'lovsiz · hajm shartnomada",
+        "problem": "Ma'lumotlar turli tizimlarda, yagona rasm yo'q",
+        "result": "Yagona AI-nazorat: bilimlar, jarayonlar, hisobotlar",
+        "roiLabel": "1–3 shtat birligidan yutuq",
+        "roiDetail": "Qo'lda analitika va operatsiyadan kamroq",
+        "features": [
+          "Barcha kanallar + API integratsiyalari",
+          "AI-analitika, KPI, moliya",
+          "Korporativ bilim bazasi (RAG)",
+          "Vazifa va muddatlarni nazorat qilish",
+          "Rahbar uchun hisobotlar",
+          "White-label va on-premise",
+          "Ajratilgan menejer va SLA"
+        ],
+        "whenNeeded": [
+          "NDA ostida xavfsizlik muhim",
+          "Bir nechta bo'lim va murakkab ssenariylar",
+          "O'zingizda joylashtirish yoki white-label kerak"
+        ],
+        "ctaSub": "Obunani so'rash",
+        "ctaOnce": "Kalit topshiriqni so'rash"
+      }
+    }
+  },
   "productPages": {
     "auditNote": "Aniq narxni bepul 60 daqiqalik audit o'tkazgandan keyin hisoblaymiz — narx stsenariylar, kanallar va integratsiyalar soniga qarab belgilanadi.",
     "pricingSubtitle": "Biznesingiz hajmiga mos paketni tanlang",
@@ -125,9 +330,12 @@
       "heroTitle": "AI mijozlarga 30 soniyada javob beradi — menejerlar uxlab yotganda",
       "heroSubtitle": "AI yordamchini Telegram, Instagram va WhatsAppga ulaymiz. Lidlarni kvalifikatsiya qiladi, spamni filtrlaydi, issiq mijozlarni menejerga uzatadi.",
       "heroCta": "Customer Service Bot ni muhokama qilish",
-      "stat1Value": "30 soniya", "stat1Label": "javob tezligi",
-      "stat2Value": "3 kanal", "stat2Label": "bir vaqtda",
-      "stat3Label": "dam olish kunlarisiz", "stat4Label": "kvalifikatsiya",
+      "stat1Value": "30 soniya",
+      "stat1Label": "javob tezligi",
+      "stat2Value": "3 kanal",
+      "stat2Label": "bir vaqtda",
+      "stat3Label": "dam olish kunlarisiz",
+      "stat4Label": "kvalifikatsiya",
       "featuresTitle": "AI yordamchi nima qila oladi",
       "f1Title": "Bir vaqtda uchta kanalda javob beradi",
       "f1Desc": "Telegram, Instagram Direct, WhatsApp. Bitta yordamchi — barcha kanallar. Mijoz o'zi uchun qulay joyda yozadi.",
@@ -184,8 +392,10 @@
       "heroCta": "Corporate AI ni muhokama qilish",
       "howItWorksTitle": "Bu qanday ishlaydi",
       "ragNote": "Oddiy ChatGPT dan farqli — Corporate AI javoblarni o'ylab topmaydi. Agar ma'lumot hujjatlaringizda bo'lmasa, shundayligini aytadi.",
-      "step1": "Sizning hujjatlaringiz", "step2": "Indeksatsiya",
-      "step3": "AI ma'lumotlaringizda qidiradi", "step4": "Aniq javob",
+      "step1": "Sizning hujjatlaringiz",
+      "step2": "Indeksatsiya",
+      "step3": "AI ma'lumotlaringizda qidiradi",
+      "step4": "Aniq javob",
       "featuresTitle": "Tizim imkoniyatlari",
       "f1Title": "Xodimlar uchun bilim bazasi",
       "f1Desc": "HR siyosatlari, reglamentlar, mahsulot bo'yicha ko'rsatmalar. Yangi xodim savol beradi — AI tajribali hamkasb kabi javob beradi.",
@@ -226,7 +436,22 @@
     "successTitle": "So'rov qabul qilindi!",
     "successMessage": "30 daqiqa ichida bog'lanamiz.",
     "noSpam": "Spam yo'q. Faqat ish.",
-    "telegramText": "Yoki to'g'ridan-to'g'ri Telegramda yozing:"
+    "telegramText": "Yoki to'g'ridan-to'g'ri Telegramda yozing:",
+    "homeTitle": "48 soat ichida boshlang",
+    "homeSubtitle": "Kontakt qoldiring — bepul audit o'tkazamiz va AI vazifalaringizni qanday yopishini ko'rsatamiz",
+    "businessLabel": "Biznes sohasi",
+    "businessPlaceholder": "Biznes sohasi (klinika, do'kon, o'quv markazi...)",
+    "submitAudit": "Bepul audit olish →",
+    "formDisclaimer": "Spam yo'q. Majburiyat yo'q. Faqat ish.",
+    "parallelNote": "Joriy jarayonlar bilan parallel ravishda joriy etiladi — biznes to'xtamaydi.",
+    "contactsBtn": "Kontaktlar",
+    "errorSubmit": "So'rov yuborilmadi. Qaytadan urining yoki Telegram orqali bog'laning.",
+    "trust0": "Ish boshlanishidan oldin NDA — boshlashdan oldin maxfiylik shartnomasi",
+    "trust1": "Ma'lumotlar sizning serveringizda — on-premise, ma'lumotlar infratuzilmangizdan chiqmaydi",
+    "trust2": "O'zbekiston qonunlariga muvofiq rasmiy shartnoma — 50% oldindan + 50% topshirgach",
+    "trust3": "30 daqiqa ichida javob — ish vaqtida Telegram yoki email orqali",
+    "modalSubtitle": "Qo'ng'iroq qiling, Telegram yoki email yozing",
+    "phonesHeading": "Telefonlar"
   },
   "footer": {
     "tagline": "Toshkentda biznes avtomatlashtirish. O'zbekistonda sun'iy intellekt joriy etish. 30 soniyada javob.",
@@ -243,7 +468,131 @@
     "rights": "Barcha huquqlar himoyalangan.",
     "contactUsTitle": "Biz bilan bog'laning",
     "contactUsSubtitle": "Istalgan raqamga qo'ng'iroq qiling",
-    "orTelegram": "Yoki Telegramda:"
+    "orTelegram": "Yoki Telegramda:",
+    "description": "AI orqali savdo va mijozlarga xizmatni avtomatlashtiramiz. O'zbekiston va MDH bo'yicha biznes bilan ishlaymiz.",
+    "address": "Bog'ibuston ko'chasi 186, Toshkent",
+    "privacy": "Maxfiylik siyosati",
+    "terms": "Ishlash shartlari",
+    "offer": "Ommaviy oferta shartnomasi",
+    "contactsOpen": "Kontaktlar",
+    "phonesLabel": "Telefonlar"
+  },
+  "homePage": {
+    "popularAria": "Mashhur yechimlar",
+    "popularTitle": "Mashhur yechimlar",
+    "telegramBanner": "Telegramda kuzating — keyslar, AI va avtomatlashtirish sharhlari",
+    "telegramCta": "Kanalga o'tish",
+    "popularLinks": [
+      {
+        "href": "/telegram-bot-dlya-biznesa/",
+        "label": "Biznes uchun Telegram-bot"
+      },
+      {
+        "href": "/ai-bot-tashkent/",
+        "label": "Toshkentda AI-bot"
+      },
+      {
+        "href": "/avtomatizaciya-prodazh-tashkent/",
+        "label": "Savdoni avtomatlashtirish"
+      },
+      {
+        "href": "/crm-integraciya-tashkent/",
+        "label": "CRM integratsiyasi"
+      },
+      {
+        "href": "/ii-chatbot-tashkent/",
+        "label": "Toshkentda AI chatbot"
+      },
+      {
+        "href": "/biznes-avtomatizaciya-uzbekistan/",
+        "label": "O'zbekistonda avtomatlashtirish"
+      }
+    ]
+  },
+  "problemLive": {
+    "eyebrow": "hozir",
+    "title": "Siz bu sahifani o'qiyotganingizda...",
+    "lostLabel": "o'tkazib yuborilgan arizalarda yo'qotish",
+    "formula": "hisob: kuniga 30 lid × o'rtacha chek $300 × 30% yo'qotish",
+    "reset": "Qayta boshlash",
+    "pain0": "Menejer 4 soatda javob beradi — mijoz allaqachon raqibda",
+    "pain1": "Tunda va dam olishda arizalar yo'qoladi — hech kim javob bermaydi",
+    "pain2": "Takrorlanuvchi savollar ish vaqtining 60% ini oladi",
+    "m0value": "4 soat",
+    "m0label": "mijoz menejer javobini kutadi",
+    "m1value": "30%",
+    "m1label": "lidlarning qismi uxlab yotganda raqibga ketadi",
+    "m2value": "$0",
+    "m2label": "tungi smenada savdo bo'limi daromad qiladi"
+  },
+  "roiCalculator": {
+    "title": "Aniq hisoblang — raqamlaringizni kiriting",
+    "subtitle": "Kalkulyator aynan sizning biznesingizdagi yo'qotishlarni ko'rsatadi",
+    "sliderLeads": "Ishdan tashqari vaqtda yo'qotilgan lidlar / oy",
+    "sliderCheck": "Bitimning o'rtacha cheki ($)",
+    "sliderManagers": "Takrorlanuvchi savollar bo'yicha menejerlar (kishi)",
+    "lossRevenue": "Oyiga yo'qotilgan daromad",
+    "lossFormula": "{{leads}} lid × {{check}} × 30%",
+    "lossManagers": "Menejerlarning rutina xarajatlari",
+    "managersFormula": "{{managers}} kishi × $400/oy",
+    "totalLoss": "Oyiga jami yo'qotish",
+    "recommended": "Biznesingiz uchun tavsiya:",
+    "launch": "ishga tushirish",
+    "paybackTitle": "Sizning hajmingizda o'zini qaytarish",
+    "paybackOne": "1 kun",
+    "paybackFew": "{{days}} kun",
+    "paybackMany": "{{days}} kun",
+    "ctaAudit": "Bepul audit olish",
+    "planWhy": {
+      "starter": "1–2 kun ichida ishga tushirish · oyiga 500 gacha dialog · Telegram-bot + lid saralash",
+      "growth": "3 gacha kanal, CRM integratsiyasi, oyiga 3 000 gacha dialog",
+      "enterprise": "Barcha kanallar, CRM/ERP, RAG bilim bazasi, KPI panel va ajratilgan menejer"
+    },
+    "planSetup": {
+      "starter": "$390",
+      "growth": "$2 900",
+      "enterprise": "$7 500 dan"
+    },
+    "planMonthly": {
+      "starter": "$150/oy",
+      "growth": "$900/oy",
+      "enterprise": "$2 500/oy dan"
+    }
+  },
+  "headerDropdown": {
+    "productsTitle": "Mahsulotlar",
+    "industriesTitle": "Sohalar",
+    "productLabels": {
+      "cs": "Mijozlarga xizmat boti",
+      "ma": "Boshqaruv yordamchisi",
+      "rag": "Korporativ AI (RAG)",
+      "analytics": "AI tahlil"
+    },
+    "productDesc": {
+      "cs": "Mijozlarga qo'llab-quvvatlash 24/7",
+      "ma": "Menejment avtomatlashtirish",
+      "rag": "Korporativ bilim bazasi",
+      "analytics": "Tahlil va hisobotlar"
+    },
+    "industryDesc": {
+      "medicine": "Klinikalar, dorixonalar, tibbiyot markazlari",
+      "edu": "Maktablar, kurslar, universitetlar",
+      "horeca": "Restoranlar, mehmonxonalar, kafelar",
+      "retail": "Do'konlar, onlayn savdo"
+    },
+    "industryLabels": {
+      "medicine": "Tibbiyot",
+      "edu": "Ta'lim",
+      "horeca": "HoReCa",
+      "retail": "Chakana savdo"
+    }
+  },
+  "pricingCard": {
+    "setup": "Ishga tushirish",
+    "monthly": "Oylik",
+    "problem": "Muammo:",
+    "result": "Natija:",
+    "whenNeeded": "Qachon kerak"
   },
   "hero": {
     "badge": "Menejerlar akkauntida AI — yo'qotilgan lidsiz",
@@ -394,9 +743,24 @@
   "scroll": "Pastga",
   "valueProp": {
     "title": "Biz hal qiladigan muammo",
-    "problem": { "title": "So'rovlar yo'qolmoqda", "description": "Menejerlarning sekin javoblari — o'rtacha javob 2-4 soat. Lidlarning 30% raqobatchilarga ketadi.", "stat": "30%", "statLabel": "yo'qotish" },
-    "solution": { "title": "SI bir zumda javob beradi", "description": "30 soniyada avtomatik javoblar. 24/7 mavjudlik, CRM integratsiyasi.", "stat": "30 soniya", "statLabel": "javob" },
-    "result": { "title": "Konversiya 3 barobar o'sadi", "description": "Ko'proq yopilgan bitimlar, yuqori mijoz mamnuniyati, rutinani avtomatlashtirish.", "stat": "3x", "statLabel": "o'sish" }
+    "problem": {
+      "title": "So'rovlar yo'qolmoqda",
+      "description": "Menejerlarning sekin javoblari — o'rtacha javob 2-4 soat. Lidlarning 30% raqobatchilarga ketadi.",
+      "stat": "30%",
+      "statLabel": "yo'qotish"
+    },
+    "solution": {
+      "title": "SI bir zumda javob beradi",
+      "description": "30 soniyada avtomatik javoblar. 24/7 mavjudlik, CRM integratsiyasi.",
+      "stat": "30 soniya",
+      "statLabel": "javob"
+    },
+    "result": {
+      "title": "Konversiya 3 barobar o'sadi",
+      "description": "Ko'proq yopilgan bitimlar, yuqori mijoz mamnuniyati, rutinani avtomatlashtirish.",
+      "stat": "3x",
+      "statLabel": "o'sish"
+    }
   },
   "servicesGrid": {
     "title": "Bizning yechimlar",
@@ -406,33 +770,316 @@
     "deploymentPrice": "+ $300 joylashtirish",
     "poweredBy": "Telethon va LLM Fine-tuning",
     "items": [
-      { "title": "AI-Sales Agent", "description": "Telegram userbotlar, lidalarni qayta tiklash, 24/7 saralash. Integratsiyalangan baza va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/ai-managers", "poweredBy": true },
-      { "title": "AI-Business Assistant", "description": "Ichki bilim bazalari va o'qitilgan FAQ modellari. Integratsiyalangan baza va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/ai-assistant" },
-      { "title": "Smart Booking System", "description": "Uchrashuvlar, kalendar sinxronizatsiyasi. DB integratsiya va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/telegram-bots" },
-      { "title": "Lidlar analitikasi paneli", "description": "Real vaqtda KPI va lid baholash (Cold/Warm/Hot). Integratsiyalangan baza va maxsus admin panel.", "price": "$99/oy dan", "href": "/services/analytics" },
-      { "title": "Maxsus dasturiy ta'minot ishlab chiqish", "description": "Premium MVP va murakkab bot mantiqlari. Integratsiyalangan baza va maxsus admin panel.", "price": "$5,000 MVP", "href": "/services/software-development" }
+      {
+        "title": "AI-Sales Agent",
+        "description": "Telegram userbotlar, lidalarni qayta tiklash, 24/7 saralash. Integratsiyalangan baza va maxsus admin panel.",
+        "price": "$99/oy dan",
+        "href": "/services/ai-managers",
+        "poweredBy": true
+      },
+      {
+        "title": "AI-Business Assistant",
+        "description": "Ichki bilim bazalari va o'qitilgan FAQ modellari. Integratsiyalangan baza va maxsus admin panel.",
+        "price": "$99/oy dan",
+        "href": "/services/ai-assistant"
+      },
+      {
+        "title": "Smart Booking System",
+        "description": "Uchrashuvlar, kalendar sinxronizatsiyasi. DB integratsiya va maxsus admin panel.",
+        "price": "$99/oy dan",
+        "href": "/services/telegram-bots"
+      },
+      {
+        "title": "Lidlar analitikasi paneli",
+        "description": "Real vaqtda KPI va lid baholash (Cold/Warm/Hot). Integratsiyalangan baza va maxsus admin panel.",
+        "price": "$99/oy dan",
+        "href": "/services/analytics"
+      },
+      {
+        "title": "Maxsus dasturiy ta'minot ishlab chiqish",
+        "description": "Premium MVP va murakkab bot mantiqlari. Integratsiyalangan baza va maxsus admin panel.",
+        "price": "$5,000 MVP",
+        "href": "/services/software-development"
+      }
     ]
   },
   "leadQualificationShowcase": {
     "title": "SI mijozlaringizni qanday ko'radi",
     "subtitle": "Bazani real vaqtda avtomatik segmentatsiya",
-    "cold": { "label": "Sovuq", "message": "Salom, narxi qancha?", "action": "Narxlar yuborildi", "status": "Yuborishlar bazasida" },
-    "warm": { "label": "Iliq", "message": "Uy ipotekada bormi? Qanday shartlar?", "action": "Bank shartlari bo'yicha javob", "status": "Kontent bilan isitilmoqda" },
-    "hot": { "label": "Issiq", "message": "Ertaga 10:00 da ko'rishga tayyorman. Bron uchun qayerga to'layman?", "action": "Menejerga darhol push", "status": "SHOSHLI — ISHGA", "notification": "Menejerga bildirishnoma" },
+    "cold": {
+      "label": "Sovuq",
+      "message": "Salom, narxi qancha?",
+      "action": "Narxlar yuborildi",
+      "status": "Yuborishlar bazasida"
+    },
+    "warm": {
+      "label": "Iliq",
+      "message": "Uy ipotekada bormi? Qanday shartlar?",
+      "action": "Bank shartlari bo'yicha javob",
+      "status": "Kontent bilan isitilmoqda"
+    },
+    "hot": {
+      "label": "Issiq",
+      "message": "Ertaga 10:00 da ko'rishga tayyorman. Bron uchun qayerga to'layman?",
+      "action": "Menejerga darhol push",
+      "status": "SHOSHLI — ISHGA",
+      "notification": "Menejerga bildirishnoma"
+    },
     "footnote": "Lidalarni real vaqtda saralash interfeysi namunasi"
   },
   "socialProof": {
     "stats": [
-      { "value": "500+", "label": "Amalga oshirilgan loyihalar" },
-      { "value": "99.9%", "label": "SLA kafolat" },
-      { "value": "15+", "label": "Haftasiga tejalgan soat" },
-      { "value": "24/7", "label": "Mijoz qo'llab-quvvatlash" }
+      {
+        "value": "500+",
+        "label": "Amalga oshirilgan loyihalar"
+      },
+      {
+        "value": "99.9%",
+        "label": "SLA kafolat"
+      },
+      {
+        "value": "15+",
+        "label": "Haftasiga tejalgan soat"
+      },
+      {
+        "value": "24/7",
+        "label": "Mijoz qo'llab-quvvatlash"
+      }
     ],
     "quote": "SI-menejer joriy etish konversiyamizni 2 oyda 18% dan 47% ga oshirdi. Birinchi oyda o'zini oqladi.",
     "quoteName": "Aleksey Petrov",
     "quoteCompany": "Retail Group",
     "quoteRole": "CEO",
-    "quoteInitials": "AP"
+    "quoteInitials": "AP",
+    "homeMap": {
+      "title": "AI Solution kimga allaqachon yordam beradi",
+      "subtitle": "Miqyosni va kartadagi nuqtani tanlang — noldan chizilgan chiziq effektga yo‘lni ko‘rsatadi: chapda ta’sir, pastda MVP muddati.",
+      "segmentSmall": "Kichik biznes",
+      "segmentMid": "O‘rta biznes",
+      "segmentLarge": "Yirik biznes",
+      "axisTopLeft": "Yuqori ta’sir",
+      "axisTopRight": "Tez joriy etish",
+      "axisLeft": "Daromadga ta’sir",
+      "axisBottom": "Joriy etish tezligi",
+      "originLabel": "0 · start",
+      "impactLabel": "Ta’sir",
+      "mvpLabel": "MVP muddati",
+      "activeCase": "Faol keys",
+      "ctaPanel": "Segmentim bo‘yicha tahlil olish",
+      "ctaPrimary": "O‘z loyiham bo‘yicha konsultatsiya",
+      "ctaSecondary": "Tariflarni solishtirish",
+      "ctaFooter": "AI Solution arizalarni qanday oshirishi yoki xarajatlarni qanday kamaytirishini aynan sizda ko‘rsatamiz.",
+      "footerNote": "AI Solution turli miqyosdagi bizneslarga joriy etiladi — mahalliy kompaniyadan tarmoq tashkilotlarigacha."
+    },
+    "testimonialsBlock": {
+      "title": "Mijozlar nima deydi",
+      "casesLabel": "Segmentlar bo'yicha keyslar",
+      "items": [
+        {
+          "role": "Direktor, gul biznesi",
+          "company": "FloraNet",
+          "initial": "D",
+          "text": "Oldin tunda arizalar yo'qolardi. Endi bot 30 soniyada javob beradi, mijoz narxni oladi va o'zi yoziladi. Daromad sezilarli o'sdi.",
+          "impact": "+28% arizalar",
+          "period": "45 kun ichida",
+          "gradient": "from-[#F472B6] to-[#EC4899]"
+        },
+        {
+          "role": "O'quv markazi rahbari",
+          "company": "SmartEdu",
+          "initial": "R",
+          "text": "Administrator bir xil savollarga 4 soat sarflamaydi. Bot javob beradi, saralaydi va tayyor mijozni uzatadi.",
+          "impact": "-4 soat/kun rutina",
+          "period": "birinchi haftadan",
+          "gradient": "from-[#38BDF8] to-[#06B6D4]"
+        },
+        {
+          "role": "Operatsion direktor, klinika",
+          "company": "MediPlus",
+          "initial": "O",
+          "text": "Qabulga yozilish bot orqali — bemorlar mamnun, shifokorlar chalg'imaydi. 2 haftada joriy qildik.",
+          "impact": "+32% onlayn yozilish",
+          "period": "2 hafta ichida",
+          "gradient": "from-[#34D399] to-[#10B981]"
+        },
+        {
+          "role": "Egasi, IT-kompaniya",
+          "company": "NexusSoft",
+          "initial": "V",
+          "text": "Lidlar endi allaqachon saralangan holda keladi. Menejerlar xuddi shu vaqtda ko'proq bitim yopadi.",
+          "impact": "+19% yopish",
+          "period": "1 chorakda",
+          "gradient": "from-[#3B82F6] to-[#6366F1]"
+        },
+        {
+          "role": "Savdo bo'yicha direktor, ulgurji savdo",
+          "company": "TradeHub",
+          "initial": "D",
+          "text": "Botlar katta kompaniyalar uchun deb o'ylardim. Yo'q ekan. Birinchi oyda o'zini qopardi.",
+          "impact": "ROI < 30 kun",
+          "period": "birinchi oy",
+          "gradient": "from-[#A78BFA] to-[#8B5CF6]"
+        }
+      ]
+    },
+    "segmentData": {
+      "small": [
+        {
+          "title": "Gul do'konlari",
+          "problem": "tunda arizalar yo'qolmaydi",
+          "effect": "menejer yollamasdan ko'proq savdo",
+          "color": "#F472B6",
+          "plotX": 20,
+          "plotY": 72,
+          "impactPercent": "+18–25%",
+          "mvpWeeks": "10–14 kun"
+        },
+        {
+          "title": "O'quv markazlari",
+          "problem": "tez-tez beriladigan savollarga javob",
+          "effect": "administrator xat yozishga soat sarflamaydi",
+          "color": "#38BDF8",
+          "plotX": 38,
+          "plotY": 50,
+          "impactPercent": "+15–22%",
+          "mvpWeeks": "14–21 kun"
+        },
+        {
+          "title": "Klinikalar",
+          "problem": "qabul va vizitni ko'chirish",
+          "effect": "kamroq bemor o'tkazib yuboriladi",
+          "color": "#34D399",
+          "plotX": 56,
+          "plotY": 36,
+          "impactPercent": "+25–35%",
+          "mvpWeeks": "7–12 kun"
+        },
+        {
+          "title": "Agentliklar va xizmatlar",
+          "problem": "tez javob va saralash",
+          "effect": "arizani yopish ehtimoli yuqori",
+          "color": "#A78BFA",
+          "plotX": 32,
+          "plotY": 64,
+          "impactPercent": "+12–20%",
+          "mvpWeeks": "14–18 kun"
+        },
+        {
+          "title": "Onlayn-do'konlar",
+          "problem": "kanallarda darhol javob",
+          "effect": "kamroq tashlab ketilgan buyurtma",
+          "color": "#FB923C",
+          "plotX": 48,
+          "plotY": 68,
+          "impactPercent": "+16–24%",
+          "mvpWeeks": "10–16 kun"
+        }
+      ],
+      "mid": [
+        {
+          "title": "Savdo bo'limi",
+          "problem": "lidlar taqsimlanadi, eslab qolinish unutilmaydi",
+          "effect": "bitim konversiyasi o'sadi",
+          "color": "#3B82F6",
+          "plotX": 70,
+          "plotY": 30,
+          "impactPercent": "+30–45%",
+          "mvpWeeks": "21–30 kun"
+        },
+        {
+          "title": "O'quv markazlari (tarmoq)",
+          "problem": "yagona ssenariy va nazorat",
+          "effect": "filiallarda kamroq tartibsizlik",
+          "color": "#38BDF8",
+          "plotX": 50,
+          "plotY": 40,
+          "impactPercent": "+20–30%",
+          "mvpWeeks": "30–45 kun"
+        },
+        {
+          "title": "To'qimachilik va opt",
+          "problem": "arizalar avtomatik yig'iladi",
+          "effect": "menejerlar faqat tayyor mijoz bilan ishlaydi",
+          "color": "#F59E0B",
+          "plotX": 36,
+          "plotY": 58,
+          "impactPercent": "+22–35%",
+          "mvpWeeks": "18–28 kun"
+        },
+        {
+          "title": "Servis kompaniyalari",
+          "problem": "kanallarda tartib va tahlil",
+          "effect": "pul qayerdan kelishi aniq",
+          "color": "#64748B",
+          "plotX": 26,
+          "plotY": 46,
+          "impactPercent": "+18–28%",
+          "mvpWeeks": "21–35 kun"
+        },
+        {
+          "title": "Konsalting",
+          "problem": "lidlar saralanadi",
+          "effect": "menejerlar noto'g'ri mijozga vaqt sarflamaydi",
+          "color": "#A78BFA",
+          "plotX": 58,
+          "plotY": 62,
+          "impactPercent": "+20–32%",
+          "mvpWeeks": "14–24 kun"
+        }
+      ],
+      "large": [
+        {
+          "title": "Rahbariyat",
+          "problem": "savdo va jarayonlardagi tor joylarni ko'radi",
+          "effect": "qarorlar ma'lumot asosida",
+          "color": "#06B6D4",
+          "plotX": 80,
+          "plotY": 26,
+          "impactPercent": "+35–55%",
+          "mvpWeeks": "45–60 kun"
+        },
+        {
+          "title": "Call-markaz / adminlar",
+          "problem": "yuk va qo'llab-quvvatlash xarajatini kamaytiradi",
+          "effect": "kadrlarda tejash",
+          "color": "#F472B6",
+          "plotX": 62,
+          "plotY": 38,
+          "impactPercent": "+25–40%",
+          "mvpWeeks": "30–45 kun"
+        },
+        {
+          "title": "Ishlab chiqarish / distribyutsiya",
+          "problem": "arizalar CRM/ERPga ketadi",
+          "effect": "shaffoflik va SLA nazorati",
+          "color": "#64748B",
+          "plotX": 44,
+          "plotY": 50,
+          "impactPercent": "+20–35%",
+          "mvpWeeks": "45–90 kun"
+        },
+        {
+          "title": "Korporativ bilimlar",
+          "problem": "xodimlar javobni darhol topadi",
+          "effect": "qarorlar tezroq, xatolar kamroq",
+          "color": "#34D399",
+          "plotX": 76,
+          "plotY": 46,
+          "impactPercent": "+30–50%",
+          "mvpWeeks": "60–90 kun"
+        },
+        {
+          "title": "Klinika tarmoqlari / filiallar",
+          "problem": "yagona aloqa standarti",
+          "effect": "sifat nazorati va filiallar bo'yicha tahlil",
+          "color": "#38BDF8",
+          "plotX": 56,
+          "plotY": 64,
+          "impactPercent": "+28–42%",
+          "mvpWeeks": "45–75 kun"
+        }
+      ]
+    }
   },
   "services": {
     "aiManagers": {
@@ -475,43 +1122,316 @@
         ]
       },
       "detail": {
-        "hero": { "breadcrumbHome": "Bosh sahifa", "breadcrumbServices": "Xizmatlar", "breadcrumbCurrent": "SI-menejerlar", "back": "Barcha yechimlarga", "title": "Telegram, WhatsApp, Instagram uchun SI-menejerlar", "subtitle": "Sun'iy intellekt yordamida mijozlarga xizmat ko'rsatishni avtomatlashtiring. Soniyalarda javoblar, CRM integratsiyasi, konversiyani 3 barobar oshirish.", "cta": "Loyihani boshlash", "trustClients": "500+ mijozlar", "trustUptime": "99.9% ishlash vaqti", "trustSupport": "24/7 qo'llab-quvvatlash" },
-        "features": { "title": "Imkoniyatlar va afzalliklar", "items": [
-            { "title": "24/7 avtojavoblar", "description": "Sun'iy intellekt mijozlar savollarini tahlil qiladi va bir zumda aniq javoblar beradi.", "benefits": ["Menejerlar yukini kamaytirish", "So'rovlarni tezroq ishlash", "Dam olish kunlarisiz ishlaydi"] },
-            { "title": "Bilimlar bazasi", "description": "SI sizning hujjatlaringiz, FAQ va dialog tarixidan maksimal aniqlik uchun o'rganadi.", "benefits": ["Bazani avtomatik yangilash", "Kontekst bo'yicha qidirish", "Javoblarni ustuvorlash"] },
-            { "title": "Kontekstli suhbatlar", "description": "Bot suhbat kontekstini eslab qoladi va mijoz bilan tabiiy suhbat yuritadi.", "benefits": ["Oldingi murojaat xotirasi", "Shaxsiylashtirilgan javoblar", "Tabiiy til bilan muloqot"] },
-            { "title": "So'rovlarni uzatish", "description": "Murakkab savollarni to'liq kontekst bilan tirik menejerlarga avtomatik yo'naltirish.", "benefits": ["Aqlli yo'naltirish", "Menejerga kontekst uzatish", "Shoshilinchlik bo'yicha ustuvorlash"] },
-            { "title": "CRM integratsiyasi", "description": "AmoCRM, Bitrix24, HubSpot va boshqa tizimlar bilan to'liq sinxronizatsiya.", "benefits": ["Avtomatik bitim yaratish", "Holatlarni yangilash", "Mijozlarni segmentlash"] },
-            { "title": "Suhbat tahlili", "description": "Xizmat sifati, mijoz mamnuniyati va samaradorlik bo'yicha batafsil hisobotlar.", "benefits": ["Real vaqtdagi boshqaruv paneli", "Hisobotlarni eksport", "KPI kuzatish"] },
-            { "title": "Ko'p kanallilik", "description": "Barcha messenjerlar uchun yagona SI-menejer markazlashtirilgan boshqaruv bilan.", "benefits": ["Telegram, WhatsApp, Instagram", "Yagona boshqaruv paneli", "Kross-kanal tarix"] },
-            { "title": "Ma'lumotlar xavfsizligi", "description": "Barcha ma'lumotlar shifrlangan, xalqaro xavfsizlik standartlariga mos.", "benefits": ["AES-256 shifrlash", "GDPR muvofiqligi", "SOC 2 sertifikatsiya"] }
-          ] },
-        "howItWorks": { "title": "Joriy etish jarayoni", "steps": [
-            { "title": "Konsultatsiya va tahlil", "description": "Biznesingiz, mijozlarga xizmat jarayonlari va avtomatlashtirish maqsadlarini o'rganamiz.", "duration": "30-60 daqiqa" },
-            { "title": "Strategiya va dizayn", "description": "SI-menejer arxitekturasi, dialog stsenariylari, integratsiyalarni ishlab chiqamiz.", "duration": "3-5 kun" },
-            { "title": "Modelni o'qitish", "description": "Modelni sizning ma'lumotlaringiz, FAQ, bilimlar bazasi, dialog namunalarida o'qitamiz.", "duration": "1-2 hafta" },
-            { "title": "Integratsiya va sozlash", "description": "Telegram, WhatsApp, Instagram, CRM tizimlariga ulaymiz, sinaymiz.", "duration": "3-7 kun" },
-            { "title": "Sinov ishga tushirish", "description": "Cheklangan versiyani ishga tushiramiz, fikr-mulohazalar yig'amiz, tuzatamiz.", "duration": "1-2 hafta" },
-            { "title": "To'liq ishga tushirish", "description": "Tizimni to'liq ishga tushiramiz, samaradorlikni kuzatamiz va doimiy optimallashtirib boramiz.", "duration": "Davomiy" }
-          ] },
-        "pricing": { "title": "Tarif rejalari", "subtitle": "Biznesingizga mos rejani tanlang", "monthly": "Oylik", "annual": "Yillik", "annualDiscount": "Yillik to'lovda 20% chegirma", "perMonth": "/oy", "choosePlan": "Tanlash", "contactUs": "Bog'lanish", "popular": "Mashhur",
-          "basic": { "name": "Basic", "price": "$1,500", "priceAnnual": "$1,200", "features": ["1,000 foydalanuvchigacha", "5,000 xabar/oy", "Oddiy Q&A javoblar", "1 messenjer", "Asosiy tahlil", "Email qo'llab-quvvatlash", "1 oy bepul yangilanishlar", "Jamoa o'qitish — 2 soat"] },
-          "advanced": { "name": "Advanced", "price": "$5,000", "priceAnnual": "$4,000", "features": ["10,000 foydalanuvchigacha", "50,000 xabar/oy", "SI kontekstli javoblar", "3 messenjer: Telegram, WhatsApp, Instagram", "CRM integratsiyasi", "To'liq tahlil va hisobotlar", "Ustuvor qo'llab-quvvatlash 24/7", "6 oy yangilanishlar", "O'qitish — 8 soat", "Maxsus stsenariylar"] },
-          "enterprise": { "name": "Enterprise", "price": "Maxsus", "priceAnnual": "Maxsus", "priceNote": "Biz bilan bog'laning", "features": ["Cheksiz foydalanuvchilar", "Cheksiz xabarlar", "To'liq NLP sozlash", "Barcha messenjerlar", "Shaxsiy loyiha menejeri", "White-label ixtiyoriy", "SLA kafolatlari 99.9%", "Abadiy bepul yangilanishlar", "Cheksiz o'qitish", "Lokal serverda joylashtirish"] } },
-        "caseStudies": { "title": "Keyslar va natijalar",
-          "case1": { "client": "E-commerce Retail", "industry": "E-commerce", "challengeTitle": "Muammo", "challenge": "Instagram Directdan lidlarning past konversiyasi — 15% so'rovlar sekin javoblar tufayli yo'qolgan. O'rtacha javob 2-4 soat.", "solutionTitle": "Yechim", "solution": "Instagram uchun SI-menejer joriy etdik, AmoCRM bilan integratsiyadik, 500 dialog asosida o'qitdik.", "resultsTitle": "Natijalar", "metrics": [ { "value": 42, "suffix": "%", "label": "Lid konversiyasi", "change": "+27% o'sish" }, { "value": 30, "suffix": " sek", "label": "Javob vaqti", "change": "2-4 soat edi" }, { "value": 3, "suffix": "x", "label": "ROI o'sishi", "change": "3 oyda" }, { "value": 92, "suffix": "%", "label": "CSAT mamnuniyat", "change": "+18% o'sish" } ] },
-          "case2": { "client": "SaaS B2B Company", "industry": "B2B SaaS", "challengeTitle": "Muammo", "challenge": "5 kishilik jamoa so'rovlar hajmini uddalay olmadi. O'rtacha javob — 6 soat. 30% lid yo'qotish.", "solutionTitle": "Yechim", "solution": "Telegram va WhatsApp uchun SI-menejerni joylashtirdik, HubSpot CRM bilan integratsiyadik.", "resultsTitle": "Natijalar", "metrics": [ { "value": 78, "suffix": "%", "label": "Avtomatizatsiya", "change": "menejerlarsiz" }, { "value": 45, "suffix": " sek", "label": "Javob vaqti", "change": "6 soat edi" }, { "value": 60, "suffix": "%", "label": "Xarajat kamaytirish", "change": "qo'llab-quvvatlashda" }, { "value": 95, "suffix": "%", "label": "NPS", "change": "+25 ball" } ] } },
-        "faq": { "title": "Ko'p beriladigan savollar", "items": [
-            { "question": "SI-menejer joriy etish qancha turadi?", "answer": "Bazaviy reja uchun oyiga $1,500 dan Enterprise maxsus yechimlarigacha. Narx xabarlar hajmi va sozlash darajasiga bog'liq." },
-            { "question": "Joriy etish muddatlari qanday?", "answer": "Asosiy sozlash uchun 2 haftadan to'liq sozlash uchun 6-8 haftagacha." },
-            { "question": "Jamoamizga texnik tajriba kerakmi?", "answer": "Yo'q, barcha texnik vazifalarni biz bajaramiz." },
-            { "question": "Qaysi messenjerlar qo'llab-quvvatlanadi?", "answer": "Telegram, WhatsApp Business, Instagram Direct. Boshqa platformalar so'rov bo'yicha." },
-            { "question": "Ma'lumotlar xavfsizligi qanday?", "answer": "Barcha ma'lumotlar AES-256 bilan shifrlangan. GDPR, SOC 2 muvofiqligi mavjud." },
-            { "question": "Rejani o'zgartirish mumkinmi?", "answer": "Ha, istalgan vaqtda upgrade yoki downgrade. Proporsional qayta hisoblash." },
-            { "question": "Qanday qo'llab-quvvatlash?", "answer": "Barcha rejalarda email qo'llab-quvvatlash bor. Advanced va Enterprise rejalarida 24/7 chat, Enterprise rejada esa shaxsiy loyiha menejeri mavjud." },
-            { "question": "Sinov davri bormi?", "answer": "Ha, Advanced rejada 14 kun bepul. Kredit kartasiz, to'liq funksional." }
-          ] },
-        "cta": { "title": "Mijozlarga xizmatni avtomatlashtirishga tayyormisiz?", "subtitle": "Bepul konsultatsiyaga yozilib, shaxsiy joriy etish rejasini oling", "form": { "name": "Ismingiz", "email": "Email", "phone": "Telefon", "message": "Loyihangiz haqida", "submit": "So'rov yuborish", "submitting": "Yuborilmoqda..." }, "trustClients": "500+ mamnun mijozlar", "trustQuality": "Sifat kafolati", "trustFree": "Bepul konsultatsiya" }
+        "hero": {
+          "breadcrumbHome": "Bosh sahifa",
+          "breadcrumbServices": "Xizmatlar",
+          "breadcrumbCurrent": "SI-menejerlar",
+          "back": "Barcha yechimlarga",
+          "title": "Telegram, WhatsApp, Instagram uchun SI-menejerlar",
+          "subtitle": "Sun'iy intellekt yordamida mijozlarga xizmat ko'rsatishni avtomatlashtiring. Soniyalarda javoblar, CRM integratsiyasi, konversiyani 3 barobar oshirish.",
+          "cta": "Loyihani boshlash",
+          "trustClients": "500+ mijozlar",
+          "trustUptime": "99.9% ishlash vaqti",
+          "trustSupport": "24/7 qo'llab-quvvatlash"
+        },
+        "features": {
+          "title": "Imkoniyatlar va afzalliklar",
+          "items": [
+            {
+              "title": "24/7 avtojavoblar",
+              "description": "Sun'iy intellekt mijozlar savollarini tahlil qiladi va bir zumda aniq javoblar beradi.",
+              "benefits": [
+                "Menejerlar yukini kamaytirish",
+                "So'rovlarni tezroq ishlash",
+                "Dam olish kunlarisiz ishlaydi"
+              ]
+            },
+            {
+              "title": "Bilimlar bazasi",
+              "description": "SI sizning hujjatlaringiz, FAQ va dialog tarixidan maksimal aniqlik uchun o'rganadi.",
+              "benefits": [
+                "Bazani avtomatik yangilash",
+                "Kontekst bo'yicha qidirish",
+                "Javoblarni ustuvorlash"
+              ]
+            },
+            {
+              "title": "Kontekstli suhbatlar",
+              "description": "Bot suhbat kontekstini eslab qoladi va mijoz bilan tabiiy suhbat yuritadi.",
+              "benefits": [
+                "Oldingi murojaat xotirasi",
+                "Shaxsiylashtirilgan javoblar",
+                "Tabiiy til bilan muloqot"
+              ]
+            },
+            {
+              "title": "So'rovlarni uzatish",
+              "description": "Murakkab savollarni to'liq kontekst bilan tirik menejerlarga avtomatik yo'naltirish.",
+              "benefits": [
+                "Aqlli yo'naltirish",
+                "Menejerga kontekst uzatish",
+                "Shoshilinchlik bo'yicha ustuvorlash"
+              ]
+            },
+            {
+              "title": "CRM integratsiyasi",
+              "description": "AmoCRM, Bitrix24, HubSpot va boshqa tizimlar bilan to'liq sinxronizatsiya.",
+              "benefits": [
+                "Avtomatik bitim yaratish",
+                "Holatlarni yangilash",
+                "Mijozlarni segmentlash"
+              ]
+            },
+            {
+              "title": "Suhbat tahlili",
+              "description": "Xizmat sifati, mijoz mamnuniyati va samaradorlik bo'yicha batafsil hisobotlar.",
+              "benefits": [
+                "Real vaqtdagi boshqaruv paneli",
+                "Hisobotlarni eksport",
+                "KPI kuzatish"
+              ]
+            },
+            {
+              "title": "Ko'p kanallilik",
+              "description": "Barcha messenjerlar uchun yagona SI-menejer markazlashtirilgan boshqaruv bilan.",
+              "benefits": [
+                "Telegram, WhatsApp, Instagram",
+                "Yagona boshqaruv paneli",
+                "Kross-kanal tarix"
+              ]
+            },
+            {
+              "title": "Ma'lumotlar xavfsizligi",
+              "description": "Barcha ma'lumotlar shifrlangan, xalqaro xavfsizlik standartlariga mos.",
+              "benefits": [
+                "AES-256 shifrlash",
+                "GDPR muvofiqligi",
+                "SOC 2 sertifikatsiya"
+              ]
+            }
+          ]
+        },
+        "howItWorks": {
+          "title": "Joriy etish jarayoni",
+          "steps": [
+            {
+              "title": "Konsultatsiya va tahlil",
+              "description": "Biznesingiz, mijozlarga xizmat jarayonlari va avtomatlashtirish maqsadlarini o'rganamiz.",
+              "duration": "30-60 daqiqa"
+            },
+            {
+              "title": "Strategiya va dizayn",
+              "description": "SI-menejer arxitekturasi, dialog stsenariylari, integratsiyalarni ishlab chiqamiz.",
+              "duration": "3-5 kun"
+            },
+            {
+              "title": "Modelni o'qitish",
+              "description": "Modelni sizning ma'lumotlaringiz, FAQ, bilimlar bazasi, dialog namunalarida o'qitamiz.",
+              "duration": "1-2 hafta"
+            },
+            {
+              "title": "Integratsiya va sozlash",
+              "description": "Telegram, WhatsApp, Instagram, CRM tizimlariga ulaymiz, sinaymiz.",
+              "duration": "3-7 kun"
+            },
+            {
+              "title": "Sinov ishga tushirish",
+              "description": "Cheklangan versiyani ishga tushiramiz, fikr-mulohazalar yig'amiz, tuzatamiz.",
+              "duration": "1-2 hafta"
+            },
+            {
+              "title": "To'liq ishga tushirish",
+              "description": "Tizimni to'liq ishga tushiramiz, samaradorlikni kuzatamiz va doimiy optimallashtirib boramiz.",
+              "duration": "Davomiy"
+            }
+          ]
+        },
+        "pricing": {
+          "title": "Tarif rejalari",
+          "subtitle": "Biznesingizga mos rejani tanlang",
+          "monthly": "Oylik",
+          "annual": "Yillik",
+          "annualDiscount": "Yillik to'lovda 20% chegirma",
+          "perMonth": "/oy",
+          "choosePlan": "Tanlash",
+          "contactUs": "Bog'lanish",
+          "popular": "Mashhur",
+          "basic": {
+            "name": "Basic",
+            "price": "$1,500",
+            "priceAnnual": "$1,200",
+            "features": [
+              "1,000 foydalanuvchigacha",
+              "5,000 xabar/oy",
+              "Oddiy Q&A javoblar",
+              "1 messenjer",
+              "Asosiy tahlil",
+              "Email qo'llab-quvvatlash",
+              "1 oy bepul yangilanishlar",
+              "Jamoa o'qitish — 2 soat"
+            ]
+          },
+          "advanced": {
+            "name": "Advanced",
+            "price": "$5,000",
+            "priceAnnual": "$4,000",
+            "features": [
+              "10,000 foydalanuvchigacha",
+              "50,000 xabar/oy",
+              "SI kontekstli javoblar",
+              "3 messenjer: Telegram, WhatsApp, Instagram",
+              "CRM integratsiyasi",
+              "To'liq tahlil va hisobotlar",
+              "Ustuvor qo'llab-quvvatlash 24/7",
+              "6 oy yangilanishlar",
+              "O'qitish — 8 soat",
+              "Maxsus stsenariylar"
+            ]
+          },
+          "enterprise": {
+            "name": "Enterprise",
+            "price": "Maxsus",
+            "priceAnnual": "Maxsus",
+            "priceNote": "Biz bilan bog'laning",
+            "features": [
+              "Cheksiz foydalanuvchilar",
+              "Cheksiz xabarlar",
+              "To'liq NLP sozlash",
+              "Barcha messenjerlar",
+              "Shaxsiy loyiha menejeri",
+              "White-label ixtiyoriy",
+              "SLA kafolatlari 99.9%",
+              "Abadiy bepul yangilanishlar",
+              "Cheksiz o'qitish",
+              "Lokal serverda joylashtirish"
+            ]
+          }
+        },
+        "caseStudies": {
+          "title": "Keyslar va natijalar",
+          "case1": {
+            "client": "E-commerce Retail",
+            "industry": "E-commerce",
+            "challengeTitle": "Muammo",
+            "challenge": "Instagram Directdan lidlarning past konversiyasi — 15% so'rovlar sekin javoblar tufayli yo'qolgan. O'rtacha javob 2-4 soat.",
+            "solutionTitle": "Yechim",
+            "solution": "Instagram uchun SI-menejer joriy etdik, AmoCRM bilan integratsiyadik, 500 dialog asosida o'qitdik.",
+            "resultsTitle": "Natijalar",
+            "metrics": [
+              {
+                "value": 42,
+                "suffix": "%",
+                "label": "Lid konversiyasi",
+                "change": "+27% o'sish"
+              },
+              {
+                "value": 30,
+                "suffix": " sek",
+                "label": "Javob vaqti",
+                "change": "2-4 soat edi"
+              },
+              {
+                "value": 3,
+                "suffix": "x",
+                "label": "ROI o'sishi",
+                "change": "3 oyda"
+              },
+              {
+                "value": 92,
+                "suffix": "%",
+                "label": "CSAT mamnuniyat",
+                "change": "+18% o'sish"
+              }
+            ]
+          },
+          "case2": {
+            "client": "SaaS B2B Company",
+            "industry": "B2B SaaS",
+            "challengeTitle": "Muammo",
+            "challenge": "5 kishilik jamoa so'rovlar hajmini uddalay olmadi. O'rtacha javob — 6 soat. 30% lid yo'qotish.",
+            "solutionTitle": "Yechim",
+            "solution": "Telegram va WhatsApp uchun SI-menejerni joylashtirdik, HubSpot CRM bilan integratsiyadik.",
+            "resultsTitle": "Natijalar",
+            "metrics": [
+              {
+                "value": 78,
+                "suffix": "%",
+                "label": "Avtomatizatsiya",
+                "change": "menejerlarsiz"
+              },
+              {
+                "value": 45,
+                "suffix": " sek",
+                "label": "Javob vaqti",
+                "change": "6 soat edi"
+              },
+              {
+                "value": 60,
+                "suffix": "%",
+                "label": "Xarajat kamaytirish",
+                "change": "qo'llab-quvvatlashda"
+              },
+              {
+                "value": 95,
+                "suffix": "%",
+                "label": "NPS",
+                "change": "+25 ball"
+              }
+            ]
+          }
+        },
+        "faq": {
+          "title": "Ko'p beriladigan savollar",
+          "items": [
+            {
+              "question": "SI-menejer joriy etish qancha turadi?",
+              "answer": "Bazaviy reja uchun oyiga $1,500 dan Enterprise maxsus yechimlarigacha. Narx xabarlar hajmi va sozlash darajasiga bog'liq."
+            },
+            {
+              "question": "Joriy etish muddatlari qanday?",
+              "answer": "Asosiy sozlash uchun 2 haftadan to'liq sozlash uchun 6-8 haftagacha."
+            },
+            {
+              "question": "Jamoamizga texnik tajriba kerakmi?",
+              "answer": "Yo'q, barcha texnik vazifalarni biz bajaramiz."
+            },
+            {
+              "question": "Qaysi messenjerlar qo'llab-quvvatlanadi?",
+              "answer": "Telegram, WhatsApp Business, Instagram Direct. Boshqa platformalar so'rov bo'yicha."
+            },
+            {
+              "question": "Ma'lumotlar xavfsizligi qanday?",
+              "answer": "Barcha ma'lumotlar AES-256 bilan shifrlangan. GDPR, SOC 2 muvofiqligi mavjud."
+            },
+            {
+              "question": "Rejani o'zgartirish mumkinmi?",
+              "answer": "Ha, istalgan vaqtda upgrade yoki downgrade. Proporsional qayta hisoblash."
+            },
+            {
+              "question": "Qanday qo'llab-quvvatlash?",
+              "answer": "Barcha rejalarda email qo'llab-quvvatlash bor. Advanced va Enterprise rejalarida 24/7 chat, Enterprise rejada esa shaxsiy loyiha menejeri mavjud."
+            },
+            {
+              "question": "Sinov davri bormi?",
+              "answer": "Ha, Advanced rejada 14 kun bepul. Kredit kartasiz, to'liq funksional."
+            }
+          ]
+        },
+        "cta": {
+          "title": "Mijozlarga xizmatni avtomatlashtirishga tayyormisiz?",
+          "subtitle": "Bepul konsultatsiyaga yozilib, shaxsiy joriy etish rejasini oling",
+          "form": {
+            "name": "Ismingiz",
+            "email": "Email",
+            "phone": "Telefon",
+            "message": "Loyihangiz haqida",
+            "submit": "So'rov yuborish",
+            "submitting": "Yuborilmoqda..."
+          },
+          "trustClients": "500+ mamnun mijozlar",
+          "trustQuality": "Sifat kafolati",
+          "trustFree": "Bepul konsultatsiya"
+        }
       }
     },
     "aiAssistant": {
@@ -597,16 +1517,35 @@
       "title": "Nima uchun Telegram botlar biznes uchun katta o'sish omili",
       "subtitle": "Sotuvlar, qo'llab-quvvatlash, marketingni bitta vosita bilan avtomatlashtiring",
       "benefits": [
-        { "label": "24/7 lid generatsiyasi" },
-        { "label": "O'rnatilgan to'lov ishlash" },
-        { "label": "Kunlik qo'llab-quvvatlash" },
-        { "label": "Marketing tarqatmalar" },
-        { "label": "Xodimlar uchun avtomatlashtirish" }
+        {
+          "label": "24/7 lid generatsiyasi"
+        },
+        {
+          "label": "O'rnatilgan to'lov ishlash"
+        },
+        {
+          "label": "Kunlik qo'llab-quvvatlash"
+        },
+        {
+          "label": "Marketing tarqatmalar"
+        },
+        {
+          "label": "Xodimlar uchun avtomatlashtirish"
+        }
       ],
       "stats": [
-        { "value": "800M+", "label": "Telegram foydalanuvchilari" },
-        { "value": "65%", "label": "Ochilish darajasi vs 20% email" },
-        { "value": "90%", "label": "Call-markazga nisbatan tejash" }
+        {
+          "value": "800M+",
+          "label": "Telegram foydalanuvchilari"
+        },
+        {
+          "value": "65%",
+          "label": "Ochilish darajasi vs 20% email"
+        },
+        {
+          "value": "90%",
+          "label": "Call-markazga nisbatan tejash"
+        }
       ],
       "useCases": [
         {
@@ -658,5 +1597,12 @@
       },
       "learnMore": "Telegram botlar haqida batafsil"
     }
+  },
+  "headerTicker": {
+    "trust": "Nega bizga ishonishadi: 120+ B2B kompaniya",
+    "offer1": "Savdo va support uchun 24/7 AI-botlar joriy qilamiz",
+    "offer2": "CRM, lead jarayoni va voronkani avtomatlashtiramiz",
+    "offer3": "Bitrix24, amoCRM, 1C va API integratsiyalarini qilamiz",
+    "offer4": "KPI, hisobot va SLA bilan boshqariladigan o‘sishni quramiz"
   }
 }

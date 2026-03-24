@@ -37,7 +37,7 @@ export default function SravnenieAiResheniiUzbekistanPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
-      <main className="min-h-screen bg-[#05050A] text-white pt-28 pb-16">
+      <main className="min-h-screen bg-background text-foreground pb-16">
         <section className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Сравнение AI-решений</p>
@@ -53,35 +53,35 @@ export default function SravnenieAiResheniiUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Customer Service Bot — для приёма заявок и продаж</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Customer Service Bot — для приёма заявок и продаж</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             ИИ-бот в Telegram, Instagram и WhatsApp: отвечает клиентам за 30 секунд 24/7, квалифицирует лидов Cold/Warm/Hot и передаёт горячих менеджерам с контекстом. Подходит компаниям, у которых основной поток заявок идёт через мессенджеры и сайт. Ориентир: от $1 000 за запуск + от $500/мес. Подробнее — на странице <Link href="/products/customer-service" className="text-[#93C5FD] hover:underline">Customer Service Bot</Link>.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Management Assistant — для руководства и контроля</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Management Assistant — для руководства и контроля</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             ИИ-ассистент для руководителя: сводки по команде, KPI, финансовый трекер, еженедельные отчёты — часто в одном окне в Telegram. Подходит собственникам и топ-менеджерам, которые хотят видеть картину по бизнесу без ручной сводки от менеджеров. Ориентир: от $3 000 за запуск + от $1 200/мес. Подробнее — <Link href="/products/management-assistant" className="text-[#93C5FD] hover:underline">Management Assistant</Link>.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Corporate AI (RAG) — база знаний компании</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Corporate AI (RAG) — база знаний компании</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             Корпоративная база знаний с ИИ: документы компании индексируются, сотрудники получают ответы из своей базы за секунды. По сути — свой ChatGPT на данных компании. Подходит организациям с большим объёмом внутренней документации и регламентов. Ориентир: от $8 000. Подробнее — <Link href="/products/corporate-ai" className="text-[#93C5FD] hover:underline">Corporate AI</Link>.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">AI-аналитика и дашборды</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">AI-аналитика и дашборды</h2>
           <p className="text-[#94A3B8] leading-relaxed mb-4">
             Дашборды KPI в реальном времени, отчёты по продажам и маркетингу, алерты при просадках, AI-рекомендации. Интеграция с 1С, Bitrix24, рекламными кабинетами. Подходит тем, кому нужна единая картина по метрикам без ручного сбора. Ориентир: от $1 900 за запуск. Подробнее — <Link href="/products/ai-analytics" className="text-[#93C5FD] hover:underline">AI-аналитика</Link>.
           </p>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#F8FAFC] mb-4">Как выбрать под свою задачу</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как выбрать под свою задачу</h2>
           <p className="text-[#94A3B8] leading-relaxed">
             Если главная боль — потеря заявок и долгий ответ клиенту: стартуйте с Customer Service Bot (или бота в одном канале). Если нужен контроль по команде и финансам — смотрите Management Assistant. Если сотрудники тратят часы на поиск по документам — Corporate AI. Если нужна аналитика и отчётность из разных систем — AI-аналитика. Часто комбинируют: бот для клиентов + дашборд или ассистент для руководителя. Мы проводим бесплатный аудит и предлагаем вариант под ваши цели и бюджет — можно оставить заявку на сайте или написать в Telegram @aisolution_uz.
           </p>
@@ -92,7 +92,7 @@ export default function SravnenieAiResheniiUzbekistanPage() {
           <div className="space-y-4">
             {faqItems.map(({ q, a }) => (
               <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-[#F8FAFC] font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
                 <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
               </details>
             ))}
@@ -108,7 +108,7 @@ export default function SravnenieAiResheniiUzbekistanPage() {
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-xl font-bold text-[#F8FAFC] mb-4">Читайте также</h2>
+          <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
             <li><Link href="/ai-dlya-biznesa" className="text-[#93C5FD] hover:underline">AI для бизнеса в Ташкенте и Узбекистане</Link></li>
             <li><Link href="/tseny-na-chatboty-tashkent" className="text-[#93C5FD] hover:underline">Стоимость чатбота для бизнеса в Ташкенте</Link></li>

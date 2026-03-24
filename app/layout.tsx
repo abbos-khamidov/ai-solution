@@ -88,7 +88,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body suppressHydrationWarning className={`${inter.className} bg-[#05050A] text-[#F8FAFC]`}>
+      <body suppressHydrationWarning className={`${inter.className} bg-background text-foreground antialiased`}>
         <I18nProvider>
           {children}
           <Toaster richColors position="top-center" />
