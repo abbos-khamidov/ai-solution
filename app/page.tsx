@@ -17,7 +17,7 @@ const breadcrumbSchema = {
 export const metadata: Metadata = {
   title: 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта',
   description:
-    'AI Solution (aisolution.uz) — автоматизация бизнеса в Ташкенте и Узбекистане. Внедрение искусственного интеллекта: Telegram-боты, бот-менеджер, AI-аналитика, личный ассистент ИИ. Ответ клиентам за 30 секунд 24/7. Бесплатный аудит.',
+    'Внедряем AI-автоматизацию в Ташкенте и Узбекистане: больше заявок, ответ клиенту за 30 секунд, меньше рутины. Бесплатная консультация →',
   keywords: [
     // Brand variations
     'aisolution',
@@ -53,7 +53,11 @@ export const metadata: Metadata = {
     'Toshkentda biznes avtomatlashtirish',
   ],
   alternates: {
-    canonical: SITE_URL,
+    canonical: 'https://aisolution.uz/',
+    languages: {
+      ru: 'https://aisolution.uz/',
+      'x-default': 'https://aisolution.uz/',
+    },
   },
   openGraph: {
     title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ в Узбекистане',

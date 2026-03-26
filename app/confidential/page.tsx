@@ -6,7 +6,11 @@ export const metadata: Metadata = {
   title: 'Политика конфиденциальности',
   description: 'Политика конфиденциальности и обработки персональных данных AI Solution.',
   alternates: {
-    canonical: 'https://aisolution.uz/confidential',
+    canonical: 'https://aisolution.uz/confidential/',
+    languages: {
+      ru: 'https://aisolution.uz/confidential/',
+      'x-default': 'https://aisolution.uz/confidential/',
+    },
   },
 };
 

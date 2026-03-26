@@ -5,7 +5,7 @@ import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/software-development';
 const TITLE = 'Разработка ПО и веб-приложений под ключ';
-const DESC = 'Разработка программного обеспечения, сайтов и мобильных приложений в Ташкенте. React, Next.js, Flutter, iOS, Android. AI-интеграции, от $5 000. Сроки 4-8 недель.';
+const DESC = 'Разработка ПО в Ташкенте и Узбекистане: запускаем веб и мобильные продукты быстрее, с AI-интеграциями и измеримым ROI. Узнать стоимость →';
 
 export const metadata: Metadata = {
   title: TITLE,

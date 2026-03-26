@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   publisher: 'AI Solution',
   formatDetection: { telephone: true, email: true, address: false },
   alternates: {
-    canonical: SITE_URL,
-    languages: { ru: 'https://aisolution.uz/', uz: 'https://aisolution.uz/', 'x-default': 'https://aisolution.uz/' },
+    canonical: 'https://aisolution.uz/',
+    languages: { ru: 'https://aisolution.uz/', 'x-default': 'https://aisolution.uz/' },
   },
   openGraph: {
     title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ',

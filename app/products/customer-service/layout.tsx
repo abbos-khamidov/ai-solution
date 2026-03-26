@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
 export const metadata: Metadata = {
   title: 'Customer Service Bot — AI чат-бот для Telegram, Instagram, WhatsApp | Узбекистан',
-  description: 'AI чат-бот для бизнеса в Узбекистане: отвечает клиентам за 30 секунд в Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot, антифрод, 24/7. От $1 000. Ташкент.',
+  description: 'Customer Service Bot для Ташкента и Узбекистана: отвечает 24/7, ускоряет лиды до сделки и снижает нагрузку на команду. Узнать стоимость →',
   keywords: [
     'AI чат-бот для бизнеса Узбекистан',
     'автоответчик в Telegram Instagram WhatsApp',

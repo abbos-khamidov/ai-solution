@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     'внедрение искусственного интеллекта Узбекистан',
   ],
   alternates: {
-    canonical: buildCanonical('/telegram-bot-dlya-biznesa/'),
-    languages: { ru: buildCanonical('/telegram-bot-dlya-biznesa/'), uz: buildCanonical('/telegram-bot-dlya-biznesa/'), en: buildCanonical('/telegram-bot-dlya-biznesa/'), 'x-default': buildCanonical('/telegram-bot-dlya-biznesa/') },
+    canonical: buildCanonical('/services/telegram-bots/'),
+    languages: { ru: buildCanonical('/services/telegram-bots/'), 'x-default': buildCanonical('/services/telegram-bots/') },
   },
   openGraph: {
     title: TITLE,

@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
 export const metadata: Metadata = {
   title: 'Management Assistant — AI-помощник для управления бизнесом | Ташкент',
-  description: 'AI-ассистент для контроля бизнеса: команда, KPI, финансовый трекер, еженедельные отчёты в Telegram. Автоматизация управления для собственника. От $3 000. Ташкент, Узбекистан.',
+  description: 'Management Assistant для Ташкента и Узбекистана: контроль KPI, задач и финансов в одном окне, решения быстрее каждый день. Узнать стоимость →',
   keywords: [
     'корпоративный AI ассистент Ташкент',
     'AI менеджер по продажам',

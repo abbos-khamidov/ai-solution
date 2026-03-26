@@ -26,7 +26,11 @@ export const metadata: Metadata = {
     'AI Solution официальный',
   ],
   alternates: {
-    canonical: SITE_URL,
+    canonical: 'https://aisolution.uz/brand/',
+    languages: {
+      ru: 'https://aisolution.uz/brand/',
+      'x-default': 'https://aisolution.uz/brand/',
+    },
   },
   openGraph: {
     title: 'AI Solution — официальный сайт aisolution.uz',

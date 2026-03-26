@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 
 export const metadata: Metadata = {
   title: 'Corporate AI (RAG) — Корпоративная база знаний с AI | Ташкент',
-  description: 'Корпоративный AI-ассистент на базе RAG: база знаний компании, интеграция с 1С/Bitrix24/amoCRM, on-premise. Создать ChatGPT для своей компании. От $8 000. Ташкент, Узбекистан.',
+  description: 'Corporate AI (RAG) для Ташкента и Узбекистана: единая база знаний, быстрые ответы сотрудникам и защита данных компании. Бесплатная консультация →',
   keywords: [
     'создать ChatGPT для своей компании',
     'корпоративный AI ассистент Ташкент',

@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     'AI automation Uzbekistan',
   ],
   alternates: {
-    canonical: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'),
-    languages: { ru: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'), uz: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'), en: buildCanonical('/biznes-avtomatizaciya-uzbekistan/'), 'x-default': buildCanonical('/biznes-avtomatizaciya-uzbekistan/') },
+    canonical: buildCanonical('/ii-avtomatizaciya/'),
+    languages: { ru: buildCanonical('/ii-avtomatizaciya/'), 'x-default': buildCanonical('/ii-avtomatizaciya/') },
   },
   openGraph: {
     title: TITLE,

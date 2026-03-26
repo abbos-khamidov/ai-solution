@@ -29,8 +29,6 @@ export function createAlternates(canonicalInput: string) {
     canonical: normalized,
     languages: {
       ru: normalized,
-      uz: normalized,
-      en: normalized,
       'x-default': normalized,
     },
   };
