@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { I18nProvider } from '@/components/providers/I18nProvider';
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'AI Solution', url: SITE_URL }],
   creator: 'AI Solution',
   publisher: 'AI Solution',
-  formatDetection: { telephone: true, email: true, address: false },
+  formatDetection: { telephone: false, email: false, address: false },
   alternates: {
     canonical: 'https://aisolution.uz/',
     languages: { ru: 'https://aisolution.uz/', 'x-default': 'https://aisolution.uz/' },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     locale: 'ru_RU',
     alternateLocale: ['uz_UZ'],
     siteName: 'AI Solution',
-    url: SITE_URL,
+    url: 'https://aisolution.uz',
     images: [{ url: 'https://aisolution.uz/og-image.png', width: 1200, height: 630, alt: 'AI Solution' }],
   },
   twitter: {
@@ -67,6 +67,11 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -75,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning className={`scroll-smooth ${inter.variable}`}>
       <head>
+        <meta name="format-detection" content="telephone=no" />
         <JsonLd />
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
         <script
