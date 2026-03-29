@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/crm-integraciya-tashkent';
@@ -36,6 +37,12 @@ const faqSchema = {
 export default function CrmIntegraciyaTashkentPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: TITLE, url: `${SLUG}/` },
+        ]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Header />
       <main className="min-h-screen bg-background text-foreground pb-16">

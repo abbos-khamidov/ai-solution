@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 import { I18nProvider } from '@/components/providers/I18nProvider';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { createAlternates, SITE_URL } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({
@@ -12,7 +13,6 @@ const inter = Inter({
 });
 
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
 const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION;
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-MZ0CD3QZZ9';
@@ -29,10 +29,7 @@ export const metadata: Metadata = {
   creator: 'AI Solution',
   publisher: 'AI Solution',
   formatDetection: { telephone: false, email: false, address: false },
-  alternates: {
-    canonical: 'https://aisolution.uz/',
-    languages: { ru: 'https://aisolution.uz/', 'x-default': 'https://aisolution.uz/' },
-  },
+  alternates: createAlternates(SITE_URL),
   openGraph: {
     title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ',
     description: 'Внедряем AI-ботов для Telegram, Instagram и WhatsApp в Ташкенте. Бот отвечает за 30 секунд, квалифицирует лиды и передаёт горячих менеджеру. Внедрение за 10 дней. Бесплатный аудит.',
@@ -40,7 +37,7 @@ export const metadata: Metadata = {
     locale: 'ru_RU',
     alternateLocale: ['uz_UZ'],
     siteName: 'AI Solution',
-    url: 'https://aisolution.uz',
+    url: `${SITE_URL.replace(/\/$/, '')}/`,
     images: [{ url: 'https://aisolution.uz/og-image.png', width: 1200, height: 630, alt: 'AI Solution' }],
   },
   twitter: {

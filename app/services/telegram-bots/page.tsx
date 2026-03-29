@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import TelegramBotsContent from './content';
-import { buildCanonical, DEFAULT_TWITTER_IMAGE } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { createAlternates, DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 
-const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/telegram-bots';
 const TITLE = 'Разработка Telegram ботов для бизнеса в Ташкенте';
 const DESC = 'Создаём Telegram-боты для бизнеса в Ташкенте и Узбекистане: автоматизация продаж, поддержка клиентов 24/7, интеграция с CRM, приём платежей. От $1 500. Бесплатный аудит.';
@@ -26,14 +26,11 @@ export const metadata: Metadata = {
     'Telegram бот Ташкент',
     'внедрение искусственного интеллекта Узбекистан',
   ],
-  alternates: {
-    canonical: buildCanonical('/services/telegram-bots/'),
-    languages: { ru: buildCanonical('/services/telegram-bots/'), 'x-default': buildCanonical('/services/telegram-bots/') },
-  },
+  alternates: createAlternates(`${SITE_URL}${SLUG}`),
   openGraph: {
     title: TITLE,
     description: DESC,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL.replace(/\/$/, '')}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     siteName: 'AI Solution',
@@ -63,6 +60,13 @@ const faqSchema = {
 export default function TelegramBotsPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Услуги', url: '/services/' },
+          { name: 'Разработка Telegram ботов для бизнеса', url: `${SLUG}/` },
+        ]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <TelegramBotsContent />
       <section className="bg-gray-50 py-10 px-4 md:px-6">

@@ -5,19 +5,12 @@ import { Hero } from '@/components/sections/Hero';
 import { FaqSchema } from '@/components/seo/FaqSchema';
 import { RoiCalculator } from '@/components/sections/RoiCalculator';
 import { HomePageExtras } from '@/components/home/HomePageExtras';
-
-const SITE_URL = 'https://aisolution.uz';
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [{ '@type': 'ListItem', position: 1, name: 'AI Solution', item: SITE_URL }],
-};
+import { createAlternates, SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта',
+  title: 'ИИ-ассистент для бизнеса в Узбекистане — ответ за 30 сек',
   description:
-    'Внедряем AI-автоматизацию в Ташкенте и Узбекистане: больше заявок, ответ клиенту за 30 секунд, меньше рутины. Бесплатная консультация →',
+    'ИИ-ассистент и AI-боты для компаний в Ташкенте и Узбекистане: ответ за 30 сек, лиды Cold/Warm/Hot, Telegram и WhatsApp. Запуск от 10 дней — бесплатный аудит.',
   keywords: [
     // Brand variations
     'aisolution',
@@ -51,19 +44,16 @@ export const metadata: Metadata = {
     'ИИ бот Самарканд Фергана Андижан',
     "sun'iy intellekt Toshkent",
     'Toshkentda biznes avtomatlashtirish',
+    'ии ассистент для бизнеса',
+    'ai бизнес помощник',
+    'создание ии ассистента для бизнеса',
   ],
-  alternates: {
-    canonical: 'https://aisolution.uz/',
-    languages: {
-      ru: 'https://aisolution.uz/',
-      'x-default': 'https://aisolution.uz/',
-    },
-  },
+  alternates: createAlternates(SITE_URL),
   openGraph: {
-    title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ в Узбекистане',
+    title: 'ИИ-ассистент для бизнеса в Узбекистане — ответ за 30 сек',
     description:
-      'Внедрение искусственного интеллекта в Ташкенте. Автоматизация бизнеса: Telegram-боты, бот-менеджер, аналитика. Ответ за 30 сек 24/7.',
-    url: SITE_URL,
+      'ИИ-ассистент и AI-боты для компаний в Ташкенте и Узбекистане: ответ за 30 сек, лиды Cold/Warm/Hot, Telegram и WhatsApp. Запуск от 10 дней — бесплатный аудит.',
+    url: `${SITE_URL.replace(/\/$/, '')}/`,
     type: 'website',
     locale: 'ru_RU',
     siteName: 'AI Solution',
@@ -71,8 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Автоматизация бизнеса в Ташкенте — ИИ для компаний Узбекистана',
-    description: 'Внедрение искусственного интеллекта в Ташкенте и Узбекистане. Автоматизация, Telegram-боты, аналитика.',
+    title: 'ИИ-ассистент для бизнеса в Узбекистане — ответ за 30 сек',
+    description:
+      'ИИ-ассистент и AI-боты для компаний в Ташкенте и Узбекистане: ответ за 30 сек, лиды Cold/Warm/Hot. Запуск от 10 дней — бесплатный аудит.',
     images: [{ url: '/og-image.png' }],
   },
 };
@@ -105,7 +96,6 @@ const Footer = dynamic(() =>
 export default function HomePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <FaqSchema />
       <Header />
       <main className="pt-0">

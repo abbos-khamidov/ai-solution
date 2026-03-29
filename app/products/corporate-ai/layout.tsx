@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { ProductJsonLd } from '@/components/seo/ProductJsonLd';
 import { createAlternates } from '@/lib/seo';
 
@@ -52,6 +53,13 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Продукты', url: '/products/' },
+          { name: 'Corporate AI (RAG)', url: '/products/corporate-ai/' },
+        ]}
+      />
       <ProductJsonLd product="corporate-ai" />
       {children}
     </>

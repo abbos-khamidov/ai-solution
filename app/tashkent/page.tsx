@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { CasePreviewCard } from '@/components/sections/CasePreviewCard';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/tashkent';
@@ -100,15 +101,6 @@ const faqSchema = {
   })),
 };
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: 'AI в Ташкенте', item: `${SITE_URL}${SLUG}` },
-  ],
-};
-
 const localServiceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -124,8 +116,13 @@ const localServiceSchema = {
 export default function TashkentLocalPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: TITLE, url: `${SLUG}/` },
+        ]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localServiceSchema) }} />
       <Header />
       <main className="min-h-screen bg-background text-foreground pb-16">

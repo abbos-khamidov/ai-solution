@@ -1,11 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { SITE_URL } from '@/lib/seo';
 import { useTranslation } from 'react-i18next';
 import { normalizeLanguage } from '@/lib/i18n';
 
 const posts = [
+  { slug: 'otdel-prodazh-na-ii', title: 'Отдел продаж без менеджеров: реально ли это и как выглядит на практике', description: 'Отдел продаж на ИИ: автоматизация отдела продаж Узбекистан, ии вместо менеджеров, стек и роли. Автоматические продажи Ташкент — честно про окупаемость.', date: '2026-03-29' },
+  { slug: 'pochemu-chat-bot-ne-rabotaet', title: 'Чат-бот не работает: 5 причин и чем ИИ-агент лучше', description: 'Почему чат бот не работает, чат бот vs ии агент, плохой чат бот на сайте. Умный бот для бизнеса Узбекистан и ии агент вместо бота.', date: '2026-03-29' },
+  { slug: 'ii-menedzher-vs-crm', title: 'CRM есть, продажи не растут: чем ИИ-менеджер полезнее CRM', description: 'ИИ менеджер для бизнеса, crm vs ии агент, автоматизация продаж Узбекистан и CRM Ташкент — как не терять лиды.', date: '2026-03-29' },
+  { slug: 'ii-agent-dlya-nayma-sotrudnikov', title: 'ИИ-агент для найма: как закрывать вакансии за 3 дня без HR', description: 'ИИ агент для найма, автоматизация найма узбекистан: подбор персонала бот, HR автоматизация в Ташкенте и бот для собеседований.', date: '2026-03-29' },
+  { slug: 'ii-analitik-vs-shtatnyy-analitik', title: 'ИИ-аналитик vs штатный аналитик: что дешевле и эффективнее в Узбекистане', description: 'Сравнение по скорости, стоимости и точности: ии аналитик для бизнеса, автоматизация аналитики и штатный аналитик данных в Ташкенте.', date: '2026-03-29' },
   { slug: 'kvalifikaciya-lidov-ai', title: 'Автоматическая квалификация лидов с помощью AI — система Cold/Warm/Hot', description: 'Как AI автоматически квалифицирует лидов по системе Cold/Warm/Hot и увеличивает конверсию продаж.', date: '2026-03-15' },
   { slug: 'llm-bot-manager-telegram', title: 'LLM и бот-менеджер в Telegram — что это и зачем бизнесу в 2025', description: 'LLM — это мозг вашего бот-менеджера в Telegram. Как LLM-боты заменяют менеджеров и автоматизируют продажи.', date: '2026-03-15' },
   { slug: 'analitika-dlya-kompaniy-tashkent', title: 'Аналитика для компаний на базе ИИ — Ташкент 2025', description: 'Как настроить аналитику для компании в Ташкенте с помощью ИИ: дашборды, KPI, отчёты в реальном времени.', date: '2026-03-15' },
@@ -61,7 +67,7 @@ export default function BlogIndexPage() {
       itemListElement: posts.map((post, i) => ({
         '@type': 'ListItem',
         position: i + 1,
-        url: `${SITE_URL}/blog/${post.slug}`,
+        url: `${SITE_URL}/blog/${post.slug}/`,
         name: post.title,
       })),
     },
@@ -69,6 +75,12 @@ export default function BlogIndexPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: copy.title, url: '/blog/' },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema) }}

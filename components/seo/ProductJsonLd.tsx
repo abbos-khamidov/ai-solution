@@ -8,15 +8,10 @@ const products = {
   'customer-service': {
     name: 'Customer Service Bot',
     description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Отвечает клиентам за 30 секунд, квалифицирует лидов Cold/Warm/Hot, фильтрует спам и мошенников, работает 24/7 без выходных.',
-    url: `${SITE_URL}/products/customer-service`,
+    url: `${SITE_URL}/products/customer-service/`,
     image: `${SITE_URL}/og-image.png`,
     lowPrice: '1000',
     highPrice: '6000',
-    breadcrumbs: [
-      { name: 'Главная', url: SITE_URL },
-      { name: 'Продукты', url: `${SITE_URL}/#solutions` },
-      { name: 'Customer Service Bot', url: `${SITE_URL}/products/customer-service` },
-    ],
     faq: [
       {
         q: 'Какие мессенджеры поддерживает Customer Service Bot?',
@@ -35,15 +30,10 @@ const products = {
   'management-assistant': {
     name: 'Management Assistant',
     description: 'AI-ассистент для управления бизнесом: контроль команды, KPI и дедлайны, финансовый трекер приход/расход, еженедельные отчёты собственнику в Telegram.',
-    url: `${SITE_URL}/products/management-assistant`,
+    url: `${SITE_URL}/products/management-assistant/`,
     image: `${SITE_URL}/og-image.png`,
     lowPrice: '3000',
     highPrice: '20000',
-    breadcrumbs: [
-      { name: 'Главная', url: SITE_URL },
-      { name: 'Продукты', url: `${SITE_URL}/#solutions` },
-      { name: 'Management Assistant', url: `${SITE_URL}/products/management-assistant` },
-    ],
     faq: [
       {
         q: 'Что контролирует Management Assistant?',
@@ -62,15 +52,10 @@ const products = {
   'corporate-ai': {
     name: 'Corporate AI (RAG)',
     description: 'Корпоративная база знаний с AI: загружаете документы компании — регламенты, прайсы, инструкции. AI отвечает точно по вашим данным. Интеграция с 1С, Bitrix24, amoCRM. On-premise вариант.',
-    url: `${SITE_URL}/products/corporate-ai`,
+    url: `${SITE_URL}/products/corporate-ai/`,
     image: `${SITE_URL}/og-image.png`,
     lowPrice: '8000',
     highPrice: '20000',
-    breadcrumbs: [
-      { name: 'Главная', url: SITE_URL },
-      { name: 'Продукты', url: `${SITE_URL}/#solutions` },
-      { name: 'Corporate AI (RAG)', url: `${SITE_URL}/products/corporate-ai` },
-    ],
     faq: [
       {
         q: 'Что такое Corporate AI (RAG)?',
@@ -127,17 +112,6 @@ export function ProductJsonLd({ product }: ProductJsonLdProps) {
     },
   };
 
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: p.breadcrumbs.map((crumb, idx) => ({
-      '@type': 'ListItem',
-      position: idx + 1,
-      name: crumb.name,
-      item: crumb.url,
-    })),
-  };
-
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -153,10 +127,6 @@ export function ProductJsonLd({ product }: ProductJsonLdProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"

@@ -1,58 +1,44 @@
 'use client';
 
-import { useEffect } from 'react';
-
+/**
+ * Срабатывает при ошибке в корневом layout (error.tsx её не перехватывает).
+ * Обязательны собственные <html> и <body>.
+ */
 export default function GlobalError({
-  error,
+  error: _error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      console.error('Global application error:', error);
-    }
-  }, [error]);
-
   return (
     <html lang="ru">
-      <body style={{ margin: 0, background: '#F8FAFC', color: '#0F172A', fontFamily: 'system-ui, sans-serif' }}>
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-          <div style={{ maxWidth: 400, width: '100%', padding: 32, textAlign: 'center', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 16, background: 'rgba(255,255,255,0.02)' }}>
-            <h1 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: 8 }}>Что-то пошло не так</h1>
-            <p style={{ color: '#94A3B8', fontSize: 14, marginBottom: 24 }}>
-              Произошла ошибка. Обновите страницу или вернитесь на главную.
+      <body style={{ margin: 0, minHeight: '100vh', background: '#0f172a', color: '#f8fafc', fontFamily: 'system-ui, sans-serif' }}>
+        <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
+          <div style={{ maxWidth: 400, textAlign: 'center' }}>
+            <h1 style={{ fontSize: '1.25rem', marginBottom: 8 }}>Критическая ошибка</h1>
+            <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginBottom: 24 }}>
+              Не удалось отобразить страницу. Попробуйте снова или откройте главную.
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
-              <button
-                onClick={reset}
-                style={{
-                  padding: '12px 20px',
-                  borderRadius: 12,
-                  background: 'linear-gradient(to right, #3B82F6, #06B6D4)',
-                  color: 'white',
-                  fontWeight: 600,
-                  border: 'none',
-                  cursor: 'pointer',
-                }}
-              >
-                Попробовать снова
-              </button>
-              <a
-                href="/"
-                style={{
-                  padding: '12px 20px',
-                  borderRadius: 12,
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#0F172A',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                }}
-              >
-                На главную
-              </a>
-            </div>
+            <button
+              type="button"
+              onClick={reset}
+              style={{
+                padding: '12px 20px',
+                borderRadius: 12,
+                border: 'none',
+                background: 'linear-gradient(90deg, #3b82f6, #06b6d4)',
+                color: '#fff',
+                fontWeight: 600,
+                cursor: 'pointer',
+                marginRight: 12,
+              }}
+            >
+              Повторить
+            </button>
+            <a href="/" style={{ color: '#60a5fa', fontSize: '0.875rem' }}>
+              На главную
+            </a>
           </div>
         </div>
       </body>

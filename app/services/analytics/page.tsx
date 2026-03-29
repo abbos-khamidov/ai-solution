@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import AnalyticsContent from './content';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
@@ -59,6 +60,13 @@ const faqSchema = {
 export default function AnalyticsPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Услуги', url: '/services/' },
+          { name: TITLE, url: `${SLUG}/` },
+        ]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <AnalyticsContent />
     </>

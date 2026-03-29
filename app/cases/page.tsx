@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/cases';
@@ -53,6 +54,12 @@ const cases = [
 export default function CasesIndexPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Кейсы', url: '/cases/' },
+        ]}
+      />
       <Header />
       <main className="min-h-screen bg-background text-foreground pb-16">
         <div className="max-w-5xl mx-auto px-4 md:px-6">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
@@ -62,6 +63,13 @@ const articleSchema = {
 export default function Page() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Блог', url: '/blog/' },
+          { name: TITLE, url: `/blog/llm-bot-manager-telegram/` },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}

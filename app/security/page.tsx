@@ -3,11 +3,14 @@ import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Shield, Server, FileText, CreditCard, Layers, CheckCircle } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { SITE_URL, createAlternates } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Безопасность данных и условия работы | AI Solution',
   description:
     'NDA до старта, on-premise вариант, официальный договор по законам РУз. Предоплата 50% + постоплата. Условия работы с AI Solution в Ташкенте.',
+  alternates: createAlternates(`${SITE_URL}/security`),
 };
 
 const SECTIONS = [
@@ -46,6 +49,12 @@ const SECTIONS = [
 export default function SecurityPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Безопасность данных и условия работы', url: '/security/' },
+        ]}
+      />
       <Header />
       <main className="min-h-screen bg-background text-foreground pb-16">
         <div className="max-w-3xl mx-auto px-4 md:px-6">

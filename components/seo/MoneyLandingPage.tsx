@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { SITE_URL } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 
 type LinkItem = {
   href: string;
@@ -30,14 +31,6 @@ export type MoneyLandingConfig = {
 function buildSchemas(config: MoneyLandingConfig) {
   const slugNorm = config.slug.replace(/^\//, '').replace(/\/?$/, '') + '/';
   const pageUrl = `${SITE_URL.replace(/\/$/, '')}/${slugNorm}`;
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: config.pageTitle, item: pageUrl },
-    ],
-  };
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -64,15 +57,21 @@ function buildSchemas(config: MoneyLandingConfig) {
     })),
   };
 
-  return { breadcrumbSchema, serviceSchema, faqSchema };
+  return { serviceSchema, faqSchema, slugNorm, pageUrl };
 }
 
 export function MoneyLandingPage({ config }: { config: MoneyLandingConfig }) {
-  const { breadcrumbSchema, serviceSchema, faqSchema } = buildSchemas(config);
+  const { serviceSchema, faqSchema, slugNorm } = buildSchemas(config);
+  const pathForCrumb = `/${slugNorm}`;
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: config.pageTitle, url: pathForCrumb },
+        ]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 

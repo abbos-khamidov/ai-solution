@@ -2,9 +2,9 @@ export const SEO_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolut
 export const SITE_URL = SEO_SITE_URL;
 
 export const LANGUAGE_ALTERNATES = {
-  'ru-UZ': `${SEO_SITE_URL}/`,
-  'uz-UZ': `${SEO_SITE_URL}/`,
-  'x-default': SEO_SITE_URL,
+  'ru-UZ': `${SEO_SITE_URL.replace(/\/$/, '')}/`,
+  'uz-UZ': `${SEO_SITE_URL.replace(/\/$/, '')}/`,
+  'x-default': `${SEO_SITE_URL.replace(/\/$/, '')}/`,
 } as const;
 
 export const DEFAULT_TWITTER_IMAGE = '/og-image.png';

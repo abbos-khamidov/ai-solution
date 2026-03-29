@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    /** Явно: все страницы — с `/` в конце URL; в паре с middleware + createAlternates снижает дубли в GSC. */
     trailingSlash: true,
     async redirects() {
         return [
-            { source: '/privacy', destination: '/confidential/', permanent: false },
+            { source: '/privacy', destination: '/confidential/', permanent: true },
+            { source: '/privacy/', destination: '/confidential/', permanent: true },
             // Отрасли: старые URL из меню → актуальные лендинги
             { source: '/industries/medicine', destination: '/ii-dlya-klinik-tashkent/', permanent: true },
             { source: '/industries/medicine/', destination: '/ii-dlya-klinik-tashkent/', permanent: true },

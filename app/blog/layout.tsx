@@ -1,7 +1,6 @@
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import type { Metadata } from 'next';
-import { BlogBreadcrumbJsonLd } from '@/components/seo/BlogBreadcrumbJsonLd';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -41,7 +40,6 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <Header />
-      <BlogBreadcrumbJsonLd />
       {children}
       <Footer />
     </>

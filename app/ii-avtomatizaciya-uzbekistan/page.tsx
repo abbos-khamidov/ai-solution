@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { buildCanonical, DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
+import { createAlternates, DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ii-avtomatizaciya-uzbekistan';
@@ -18,14 +18,11 @@ export const metadata: Metadata = {
     'автоматизация продаж Ташкент',
     'искусственный интеллект для компаний Узбекистан',
   ],
-  alternates: {
-    canonical: buildCanonical('/ii-avtomatizaciya-uzbekistan/'),
-    languages: { ru: buildCanonical('/ii-avtomatizaciya-uzbekistan/'), 'x-default': buildCanonical('/ii-avtomatizaciya-uzbekistan/') },
-  },
+  alternates: createAlternates(`${SITE_URL}${SLUG}`),
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL.replace(/\/$/, '')}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     alternateLocale: ['uz_UZ'],

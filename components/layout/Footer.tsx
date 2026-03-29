@@ -144,7 +144,7 @@ export function Footer() {
           >
             <p className="text-xs text-[#475569]">&copy; 2026 AI Solution</p>
             <div className="flex items-center gap-4">
-              <a href="/privacy" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
+              <a href="/confidential/" className="text-xs text-[#475569] hover:text-[#94A3B8] transition-colors">
                 {t('footer.privacy')}
               </a>
               <span className="text-[#334155]">·</span>

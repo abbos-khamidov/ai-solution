@@ -2,35 +2,40 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 /**
- * Redirect all pages to canonical URL with trailing slash (301).
- * Static files, _next, and API routes are not redirected.
+ * 301 на канонический URL со слэшем для любых совпавших маршрутов (включая все страницы приложения).
+ * Исключения: `/`, `/_next/*`, `/api/*`, файлы с расширением и часть статики из matcher.
  */
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  try {
+    const { pathname } = request.nextUrl;
 
-  // Root: no change
-  if (pathname === '/') {
+    // Root: no change
+    if (pathname === '/') {
+      return NextResponse.next();
+    }
+
+    // Already has trailing slash
+    if (pathname.endsWith('/')) {
+      return NextResponse.next();
+    }
+
+    // Don't add trailing slash to internal Next.js paths or API
+    if (pathname.startsWith('/_next') || pathname.startsWith('/api')) {
+      return NextResponse.next();
+    }
+
+    // Don't add trailing slash to paths that look like static files (extension)
+    if (/\.[a-z0-9]+$/i.test(pathname)) {
+      return NextResponse.next();
+    }
+
+    const url = request.nextUrl.clone();
+    url.pathname = pathname + '/';
+    return NextResponse.redirect(url, 301);
+  } catch (err) {
+    console.error('[middleware]', err);
     return NextResponse.next();
   }
-
-  // Already has trailing slash
-  if (pathname.endsWith('/')) {
-    return NextResponse.next();
-  }
-
-  // Don't add trailing slash to internal Next.js paths or API
-  if (pathname.startsWith('/_next') || pathname.startsWith('/api')) {
-    return NextResponse.next();
-  }
-
-  // Don't add trailing slash to paths that look like static files (extension)
-  if (/\.[a-z0-9]+$/i.test(pathname)) {
-    return NextResponse.next();
-  }
-
-  const url = request.nextUrl.clone();
-  url.pathname = pathname + '/';
-  return NextResponse.redirect(url, 301);
 }
 
 export const config = {

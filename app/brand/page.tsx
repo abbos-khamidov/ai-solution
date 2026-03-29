@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-
-const SITE_URL = 'https://aisolution.uz';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { createAlternates, SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'AI Solution — официальный сайт aisolution.uz',
@@ -25,18 +25,12 @@ export const metadata: Metadata = {
     'официальный сайт AI Solution',
     'AI Solution официальный',
   ],
-  alternates: {
-    canonical: 'https://aisolution.uz/brand/',
-    languages: {
-      ru: 'https://aisolution.uz/brand/',
-      'x-default': 'https://aisolution.uz/brand/',
-    },
-  },
+  alternates: createAlternates(`${SITE_URL}/brand`),
   openGraph: {
     title: 'AI Solution — официальный сайт aisolution.uz',
     description:
       'AI Solution (AISolution) — компания по автоматизации бизнеса в Ташкенте, Узбекистан. Официальный сайт: aisolution.uz',
-    url: `${SITE_URL}/brand`,
+    url: `${SITE_URL.replace(/\/$/, '')}/brand/`,
     type: 'website',
     siteName: 'AI Solution',
   },
@@ -45,6 +39,12 @@ export const metadata: Metadata = {
 export default function BrandPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Бренд и официальные данные', url: '/brand/' },
+        ]}
+      />
       <Header />
       <main className="bg-background min-h-screen px-4 md:px-6 pb-16">
         <div className="max-w-3xl mx-auto">

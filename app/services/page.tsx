@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 const SLUG = '/services';
 const TITLE = 'Автоматизация бизнеса в Ташкенте — услуги внедрения ИИ';
@@ -76,6 +77,12 @@ export const metadata: Metadata = {
 export default function ServicesIndexPage() {
   return (
     <div className="min-h-screen bg-background pb-16 text-foreground">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Услуги', url: '/services/' },
+        ]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <section className="max-w-5xl mx-auto px-6">
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">Услуги внедрения ИИ</h1>

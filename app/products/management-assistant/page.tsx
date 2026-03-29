@@ -112,19 +112,8 @@ export default function ManagementAssistantPage() {
     },
   ], [t]);
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'Что такое Management Assistant?', acceptedAnswer: { '@type': 'Answer', text: 'ИИ-ассистент для руководителя: сводки по команде, KPI, финансы, контроль задач в одном окне (часто в Telegram). Экономит 1–3 зарплаты на ручной аналитике.' } },
-      { '@type': 'Question', name: 'Сколько стоит Management Assistant?', acceptedAnswer: { '@type': 'Answer', text: 'От $3 000 за запуск + от $1 200/мес. Enterprise — от $7 500 за запуск. Смета после бесплатного аудита.' } },
-      { '@type': 'Question', name: 'С чем интегрируется?', acceptedAnswer: { '@type': 'Answer', text: '1С, ERP, CRM, рекламные кабинеты, мессенджеры. Данные стекаются в единый дашборд и отчёты.' } },
-    ],
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <main>
       {/* Hero */}
       <section className="relative min-h-[80vh] pb-16 flex items-center overflow-hidden bg-background">

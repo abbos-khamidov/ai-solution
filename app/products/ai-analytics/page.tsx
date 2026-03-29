@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ChevronRight, Filter, Table2, TrendingUp } from 'lucide-react';
 import { AnalyticsDemoForm } from '@/components/sections/AnalyticsDemoForm';
 import { AnalyticsHeroCta } from '@/components/sections/AnalyticsHeroCta';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
 
 const SLUG = '/products/ai-analytics';
@@ -253,16 +254,6 @@ const faqSchema = {
   })),
 };
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Главная', item: SITE_URL },
-    { '@type': 'ListItem', position: 2, name: 'Продукты', item: `${SITE_URL}/products` },
-    { '@type': 'ListItem', position: 3, name: 'AI-аналитика', item: `${SITE_URL}${SLUG}` },
-  ],
-};
-
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
@@ -290,9 +281,15 @@ export const metadata: Metadata = {
 export default function AiAnalyticsProductPage() {
   return (
     <main className="min-h-screen bg-background text-foreground pb-16">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Продукты', url: '/products/' },
+          { name: 'AI-аналитика', url: `${SLUG}/` },
+        ]}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <section className="max-w-6xl mx-auto px-4 md:px-6">
         <nav className="flex items-center gap-1.5 text-sm text-[#64748B] mb-8">

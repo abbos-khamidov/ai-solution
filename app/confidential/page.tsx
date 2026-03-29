@@ -1,22 +1,24 @@
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import type { Metadata } from 'next';
+import { createAlternates, SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Политика конфиденциальности',
   description: 'Политика конфиденциальности и обработки персональных данных AI Solution.',
-  alternates: {
-    canonical: 'https://aisolution.uz/confidential/',
-    languages: {
-      ru: 'https://aisolution.uz/confidential/',
-      'x-default': 'https://aisolution.uz/confidential/',
-    },
-  },
+  alternates: createAlternates(`${SITE_URL}/confidential`),
 };
 
 export default function ConfidentialPage() {
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Главная', url: '/' },
+          { name: 'Политика конфиденциальности', url: '/confidential/' },
+        ]}
+      />
       <Header />
       <main className="min-h-screen bg-[var(--background)]">
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20">

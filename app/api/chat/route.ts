@@ -29,11 +29,13 @@ export async function POST(req: NextRequest) {
     // Notify on first user message (new conversation)
     const userMessages = messages.filter((m) => m.role === 'user');
     if (userMessages.length === 1) {
-      sendTelegram(fmtChatMessage({
-        source: 'widget',
-        userMessage: userMessages[0].content,
-        historyLen: 0,
-      }));
+      void sendTelegram(
+        fmtChatMessage({
+          source: 'widget',
+          userMessage: userMessages[0].content,
+          historyLen: 0,
+        })
+      ).catch((e) => console.error('[chat] Telegram notify:', e));
     }
 
     const openai = new OpenAI({ apiKey });
