@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import AIAssistantContent from './content';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { DEFAULT_TWITTER_IMAGE, createAlternates } from '@/lib/seo';
+import { DEFAULT_TWITTER_IMAGE } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = '/services/ai-assistant';
-const TITLE = 'Личный ассистент ИИ для бизнеса';
-const DESC = 'Личный ассистент ИИ для руководителей и команд в Ташкенте. ChatGPT обученный на данных вашей компании. Экономит 15 часов в неделю. LLM решения для бизнеса Узбекистана.';
+const TITLE = 'ИИ-ассистент для бизнеса в Узбекистане — Ответ за 30 сек, 24/7 | AI Solution';
+const DESC =
+  'ИИ-ассистент отвечает клиентам за 30 секунд, квалифицирует лиды и передаёт в CRM. Работает в Telegram, WhatsApp, Instagram. Запуск за 10 дней в Ташкенте.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -26,11 +27,11 @@ export const metadata: Metadata = {
     'искусственный интеллект для бизнеса Ташкент',
     'автоматизация в Ташкенте',
   ],
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/services/ai-assistant/' },
   openGraph: {
     title: TITLE,
     description: DESC,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     siteName: 'AI Solution',

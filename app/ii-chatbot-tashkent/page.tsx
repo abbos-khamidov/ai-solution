@@ -3,23 +3,23 @@ import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
+import { DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 
 const SLUG = '/ii-chatbot-tashkent';
-const TITLE = 'ИИ чатбот для бизнеса в Ташкенте — автоответы 24/7';
+const TITLE = 'ИИ чат-бот для бизнеса в Ташкенте — Создание и внедрение | AI Solution';
 const DESCRIPTION =
-  'Внедрение ИИ чатбота для бизнеса в Ташкенте. Отвечает за 30 секунд, квалифицирует лиды, работает 24/7. Кейсы, цены, бесплатный аудит.';
+  'Разрабатываем ИИ чат-боты для бизнеса в Ташкенте: отвечают за 30 сек, продают 24/7, интегрируются с Bitrix24 и amoCRM. Запуск от 10 дней.';
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords:
     'ии чатбот ташкент, chatbot для бизнеса узбекистан, ии бот ташкент, автоответы бизнес ташкент, чатбот для бизнеса ташкент',
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/ii-chatbot-tashkent/' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     siteName: 'AI Solution',

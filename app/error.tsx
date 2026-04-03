@@ -3,6 +3,10 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 
+/**
+ * App Router error boundary (Client Component). notFound() здесь не использовать:
+ * это отдаёт 404 и скрывает реальную ошибку. Для SEO: noindex и отдельный title.
+ */
 export default function Error({
   error,
   reset,
@@ -14,6 +18,28 @@ export default function Error({
     if (typeof window !== 'undefined') {
       console.error('Application error:', error);
     }
+  }, [error]);
+
+  useEffect(() => {
+    const existing = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    const created = !existing;
+    const meta = existing ?? document.createElement('meta');
+    const prevRobots = existing?.getAttribute('content');
+    if (created) {
+      meta.name = 'robots';
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', 'noindex, nofollow');
+    const prevTitle = document.title;
+    document.title = 'Ошибка | AI Solution';
+    return () => {
+      if (created) {
+        meta.remove();
+      } else {
+        meta.setAttribute('content', prevRobots ?? 'index, follow');
+      }
+      document.title = prevTitle;
+    };
   }, [error]);
 
   const message = error?.message || '';
@@ -32,6 +58,7 @@ export default function Error({
         )}
         <div className="flex flex-wrap justify-center gap-3">
           <button
+            type="button"
             onClick={reset}
             className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold hover:opacity-90 transition-opacity"
           >

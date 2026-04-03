@@ -17,39 +17,77 @@ const GOOGLE_SITE_VERIFICATION =
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION;
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-MZ0CD3QZZ9';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: 'AI-боты для бизнеса в Ташкенте — Автоматизация продаж | AI Solution',
-    template: '%s | AI Solution',
+const alternates = createAlternates(SITE_URL);
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE_URL.replace(/\/$/, '')}/#organization`,
+  name: 'AI Solution',
+  alternateName: ['AISolution', 'aisolution.uz', 'Ай Солюшн'],
+  url: 'https://aisolution.uz',
+  logo: 'https://aisolution.uz/logo.png',
+  description:
+    'Компания по автоматизации бизнеса с помощью искусственного интеллекта в Ташкенте, Узбекистан',
+  telephone: '+998939492000',
+  email: 'info@aisolution.uz',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'ул. Богибустон, 186',
+    addressLocality: 'Ташкент',
+    addressRegion: 'Ташкентская область',
+    addressCountry: 'UZ',
   },
-  description: 'Внедряем AI-ботов для Telegram, Instagram и WhatsApp в Ташкенте. Бот отвечает за 30 секунд, квалифицирует лиды и передаёт горячих менеджеру. Внедрение за 10 дней. Бесплатный аудит.',
-  keywords: 'AI боты Ташкент, автоматизация бизнеса Узбекистан, чат-бот CRM, AI Solution',
+  areaServed: ['UZ', 'KZ', 'KG', 'TJ'],
+  sameAs: [
+    'https://t.me/aisolution_uz',
+    'https://instagram.com/aisolution_uz',
+    'https://linkedin.com/company/aisolution-uz',
+  ],
+  foundingDate: '2024',
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: '10' },
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://aisolution.uz'),
+  title: {
+    default: 'ИИ-автоматизация для бизнеса в Узбекистане | AI Solution',
+    template: '%s | AI Solution — ИИ-автоматизация бизнеса',
+  },
+  description:
+    'AI Solution — внедряем искусственный интеллект для автоматизации продаж, клиентского сервиса и бизнес-процессов в Ташкенте и Узбекистане. Ответ за 30 сек, запуск от 10 дней.',
+  keywords: [
+    'ии автоматизация',
+    'автоматизация бизнеса ташкент',
+    'ии ассистент для бизнеса',
+    'ai боты узбекистан',
+    'внедрение ии',
+  ],
   authors: [{ name: 'AI Solution', url: SITE_URL }],
   creator: 'AI Solution',
   publisher: 'AI Solution',
   formatDetection: { telephone: false, email: false, address: false },
-  alternates: createAlternates(SITE_URL),
+  alternates: {
+    canonical: 'https://aisolution.uz',
+    languages: alternates.languages,
+  },
   openGraph: {
-    title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ',
-    description: 'Внедряем AI-ботов для Telegram, Instagram и WhatsApp в Ташкенте. Бот отвечает за 30 секунд, квалифицирует лиды и передаёт горячих менеджеру. Внедрение за 10 дней. Бесплатный аудит.',
     type: 'website',
-    locale: 'ru_RU',
-    alternateLocale: ['uz_UZ'],
+    locale: 'ru_UZ',
+    url: 'https://aisolution.uz',
     siteName: 'AI Solution',
-    url: `${SITE_URL.replace(/\/$/, '')}/`,
+    title: 'ИИ-автоматизация для бизнеса в Узбекистане | AI Solution',
+    description: 'Внедряем ИИ-ботов для продаж и поддержки 24/7. 120+ B2B компаний. Ташкент, Узбекистан.',
+    alternateLocale: ['uz_UZ'],
     images: [{ url: 'https://aisolution.uz/og-image.png', width: 1200, height: 630, alt: 'AI Solution' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Автоматизация бизнеса в Ташкенте — внедрение ИИ в Узбекистане',
-    description: 'Внедрение искусственного интеллекта в Ташкенте. Автоматизация бизнеса, Telegram-боты, аналитика. Ответ за 30 сек 24/7.',
+    title: 'ИИ-автоматизация для бизнеса в Узбекистане | AI Solution',
+    description:
+      'Внедряем ИИ-ботов для продаж и поддержки 24/7. 120+ B2B компаний. Ташкент, Узбекистан.',
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 },
-  },
+  robots: { index: true, follow: true },
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
   },
@@ -92,6 +130,10 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className={`${inter.className} bg-background text-foreground antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <I18nProvider>
           {children}
           <Toaster richColors position="top-center" />

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { createAlternates, DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
+import { DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ii-avtomatizaciya-uzbekistan';
-const TITLE = 'ИИ автоматизация в Узбекистане — решения для бизнеса';
+const TITLE = 'ИИ-автоматизация в Узбекистане — Внедрение искусственного интеллекта | AI Solution';
 const DESCRIPTION =
-  'ИИ автоматизация в Узбекистане для компаний: чат-боты, AI-менеджеры, аналитика, корпоративные ассистенты. Внедрение в Ташкенте и по всему Узбекистану.';
+  'Внедряем ИИ в бизнес-процессы: автоматизация продаж, найма, аналитики и клиентского сервиса. Кейсы из Узбекистана, Казахстана. Консультация бесплатно.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'автоматизация продаж Ташкент',
     'искусственный интеллект для компаний Узбекистан',
   ],
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/ii-avtomatizaciya-uzbekistan/' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

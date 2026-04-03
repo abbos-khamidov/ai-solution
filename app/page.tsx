@@ -5,12 +5,12 @@ import { Hero } from '@/components/sections/Hero';
 import { FaqSchema } from '@/components/seo/FaqSchema';
 import { RoiCalculator } from '@/components/sections/RoiCalculator';
 import { HomePageExtras } from '@/components/home/HomePageExtras';
-import { createAlternates, SITE_URL } from '@/lib/seo';
+import { SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'ИИ-ассистент для бизнеса в Узбекистане — ответ за 30 сек',
+  title: 'Автоматизация бизнеса с ИИ в Узбекистане — Ответ за 30 сек | AI Solution',
   description:
-    'ИИ-ассистент и AI-боты для компаний в Ташкенте и Узбекистане: ответ за 30 сек, лиды Cold/Warm/Hot, Telegram и WhatsApp. Запуск от 10 дней — бесплатный аудит.',
+    'Внедряем ИИ-ботов для продаж, поддержки и автоматизации бизнес-процессов. 120+ B2B компаний в Ташкенте и СНГ. Запуск от 10 дней — бесплатное тестирование.',
   keywords: [
     // Brand variations
     'aisolution',
@@ -48,11 +48,11 @@ export const metadata: Metadata = {
     'ai бизнес помощник',
     'создание ии ассистента для бизнеса',
   ],
-  alternates: createAlternates(SITE_URL),
+  alternates: { canonical: 'https://aisolution.uz/' },
   openGraph: {
-    title: 'ИИ-ассистент для бизнеса в Узбекистане — ответ за 30 сек',
+    title: 'Автоматизация бизнеса с ИИ в Узбекистане — Ответ за 30 сек | AI Solution',
     description:
-      'ИИ-ассистент и AI-боты для компаний в Ташкенте и Узбекистане: ответ за 30 сек, лиды Cold/Warm/Hot, Telegram и WhatsApp. Запуск от 10 дней — бесплатный аудит.',
+      'Внедряем ИИ-ботов для продаж, поддержки и автоматизации бизнес-процессов. 120+ B2B компаний в Ташкенте и СНГ. Запуск от 10 дней — бесплатное тестирование.',
     url: `${SITE_URL.replace(/\/$/, '')}/`,
     type: 'website',
     locale: 'ru_RU',
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ИИ-ассистент для бизнеса в Узбекистане — ответ за 30 сек',
+    title: 'Автоматизация бизнеса с ИИ в Узбекистане — Ответ за 30 сек | AI Solution',
     description:
-      'ИИ-ассистент и AI-боты для компаний в Ташкенте и Узбекистане: ответ за 30 сек, лиды Cold/Warm/Hot. Запуск от 10 дней — бесплатный аудит.',
+      'Внедряем ИИ-ботов для продаж, поддержки и автоматизации бизнес-процессов. 120+ B2B компаний в Ташкенте и СНГ. Запуск от 10 дней — бесплатное тестирование.',
     images: [{ url: '/og-image.png' }],
   },
 };

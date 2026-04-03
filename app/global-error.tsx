@@ -13,6 +13,10 @@ export default function GlobalError({
 }) {
   return (
     <html lang="ru">
+      <head>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Ошибка | AI Solution</title>
+      </head>
       <body style={{ margin: 0, minHeight: '100vh', background: '#0f172a', color: '#f8fafc', fontFamily: 'system-ui, sans-serif' }}>
         <div style={{ display: 'flex', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <div style={{ maxWidth: 400, textAlign: 'center' }}>

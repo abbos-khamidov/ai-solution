@@ -4,12 +4,12 @@ import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { CasePreviewCard } from '@/components/sections/CasePreviewCard';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
+import { DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 
 const SLUG = '/tashkent';
-const TITLE = 'Автоматизация бизнеса в Ташкенте — внедрение искусственного интеллекта';
+const TITLE = 'ИИ-автоматизация для бизнеса в Ташкенте — Запуск за 10 дней | AI Solution';
 const DESCRIPTION =
-  'Автоматизация бизнеса в Ташкенте: внедрение искусственного интеллекта, бот-менеджер продаж, ассистент руководителя, аудит-бот. ИИ в Ташкенте — кейсы Studify.uz и Marsit.uz.';
+  'Внедряем ИИ-решения для бизнеса в Ташкенте: чат-боты, ИИ-менеджеры, автоматизация CRM. 120+ проектов. Бесплатная консультация и тест-период.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -29,11 +29,11 @@ export const metadata: Metadata = {
     'Toshkentda biznes avtomatlashtirish',
     "sun'iy intellekt Toshkent",
   ],
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/tashkent/' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     alternateLocale: ['uz_UZ'],
