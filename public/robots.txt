@@ -1,0 +1,17 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /confidential/
+Disallow: /security/
+Disallow: /admin/
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /confidential/
+Disallow: /security/
+Disallow: /admin/
+
+Sitemap: https://aisolution.uz/sitemap.xml

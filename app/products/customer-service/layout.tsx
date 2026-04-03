@@ -1,66 +1,58 @@
 import type { Metadata } from 'next';
-import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { ProductJsonLd } from '@/components/seo/ProductJsonLd';
-import { createAlternates } from '@/lib/seo';
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://aisolution.uz';
+import { BreadcrumbSchema } from '@/components/schemas/BreadcrumbSchema';
+import { FAQSchema } from '@/components/schemas/FAQSchema';
 
 export const metadata: Metadata = {
-  title: 'Customer Service Bot — AI чат-бот для Telegram, Instagram, WhatsApp | Узбекистан',
-  description: 'Customer Service Bot для Ташкента и Узбекистана: отвечает 24/7, ускоряет лиды до сделки и снижает нагрузку на команду. Узнать стоимость →',
-  keywords: [
-    'AI чат-бот для бизнеса Узбекистан',
-    'автоответчик в Telegram Instagram WhatsApp',
-    'квалификация лидов автоматически',
-    'чат-бот для интернет-магазина Узбекистан',
-    'AI ассистент для Instagram WhatsApp',
-    'автоматизация продаж Telegram бот',
-    'AI менеджер по продажам',
-    'чат-бот для бизнеса Ташкент',
-    'умный чат-бот для сайта',
-    'customer service bot',
-    'AI chatbot Toshkent',
-    'mijozlarga avtomatik javob berish',
-    'AI yordamchi Telegram Instagram',
-  ],
-  alternates: createAlternates(`${SITE_URL}/products/customer-service`),
-  openGraph: {
-    title: 'Customer Service Bot — AI отвечает клиентам за 30 секунд',
-    description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Квалификация лидов Cold/Warm/Hot, антифрод, работает 24/7. От $1 000. Бизнес Узбекистан.',
-    type: 'website',
-    locale: 'ru_RU',
-    alternateLocale: ['uz_UZ'],
-    siteName: 'AI Solution',
-    url: `${SITE_URL}/products/customer-service`,
-    images: [{
-      url: '/og-image.png',
-      width: 1200,
-      height: 630,
-      alt: 'Customer Service Bot — AI чат-бот для Telegram, Instagram, WhatsApp',
-    }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Customer Service Bot — AI за 30 секунд',
-    description: 'AI чат-бот для Telegram, Instagram, WhatsApp. Квалификация лидов, антифрод, 24/7. От $1 000.',
-    images: [{
-      url: '/og-image.png',
-      alt: 'Customer Service Bot — AI чат-бот для бизнеса в Узбекистане',
-    }],
-  },
+  title: 'ИИ-ассистент для бизнеса в Узбекистане — Ответ за 30 сек, 24/7 | AI Solution',
+  description:
+    'ИИ-ассистент отвечает клиентам за 30 секунд, квалифицирует лиды и передаёт в CRM. Работает в Telegram, WhatsApp, Instagram. Запуск за 10 дней в Ташкенте.',
+  alternates: { canonical: 'https://aisolution.uz/products/customer-service/' },
 };
+
+const faqItems = [
+  {
+    question: 'Что такое ИИ-ассистент для бизнеса?',
+    answer:
+      'ИИ-ассистент — это программа на основе искусственного интеллекта, которая автоматически отвечает клиентам, квалифицирует лиды и передаёт данные в CRM. Работает 24/7 в Telegram, WhatsApp и Instagram.',
+  },
+  {
+    question: 'Сколько времени занимает запуск ИИ-ассистента?',
+    answer:
+      'Запуск ИИ-ассистента занимает от 10 рабочих дней. Включает настройку, обучение на данных вашей компании и интеграцию с вашими системами.',
+  },
+  {
+    question: 'С какими системами интегрируется ИИ-ассистент?',
+    answer:
+      'ИИ-ассистент интегрируется с Bitrix24, amoCRM, 1С, Google Sheets и любыми системами через API. Поддерживает Telegram, WhatsApp, Instagram Direct.',
+  },
+  {
+    question: 'Сколько стоит ИИ-ассистент для бизнеса?',
+    answer:
+      'Стоимость зависит от сложности задач и интеграций. Бесплатное тестирование доступно для всех новых клиентов. Свяжитесь с нами для расчёта стоимости.',
+  },
+  {
+    question: 'Работает ли ИИ-ассистент на узбекском языке?',
+    answer:
+      'Да, ИИ-ассистент AI Solution работает на русском, узбекском и английском языках. Можно настроить автоопределение языка клиента.',
+  },
+  {
+    question: 'Что происходит если ИИ не знает ответа?',
+    answer:
+      'Если ИИ-ассистент не может ответить на вопрос, он автоматически переводит клиента на живого менеджера или сохраняет запрос для последующей обработки.',
+  },
+];
+
+const breadcrumbItems = [
+  { name: 'Главная', url: 'https://aisolution.uz/' },
+  { name: 'Продукты', url: 'https://aisolution.uz/products/' },
+  { name: 'ИИ-ассистент для бизнеса', url: 'https://aisolution.uz/products/customer-service/' },
+];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: 'Главная', url: '/' },
-          { name: 'Продукты', url: '/products/' },
-          { name: 'Customer Service Bot', url: '/products/customer-service/' },
-        ]}
-      />
-      <ProductJsonLd product="customer-service" />
+      <FAQSchema items={faqItems} />
+      <BreadcrumbSchema items={breadcrumbItems} />
       {children}
     </>
   );

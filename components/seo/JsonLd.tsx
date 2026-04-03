@@ -13,7 +13,7 @@ const localBusinessSchema = {
   email: 'info@aisolution.uz',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'ул. Богибустан, 186',
+    streetAddress: 'ул. Богибустон, 186',
     addressLocality: 'Ташкент',
     addressRegion: 'Ташкентская область',
     postalCode: '100000',
@@ -75,60 +75,6 @@ const localBusinessSchema = {
   ],
 };
 
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': `${SITE_URL}/#organization`,
-  name: 'AI Solution',
-  alternateName: ['AISolution', 'AI-Solution', 'aisolution.uz', 'АИ Солюшн', 'Ай Солюшн'],
-  url: SITE_URL,
-  logo: {
-    '@type': 'ImageObject',
-    url: `${SITE_URL}/logo.png`,
-    width: 512,
-    height: 512,
-  },
-  description: 'AI автоматизация бизнеса в Узбекистане. Telegram боты, Instagram боты, корпоративные AI системы.',
-  foundingDate: '2025',
-  foundingLocation: {
-    '@type': 'Place',
-    name: 'Tashkent, Uzbekistan',
-  },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'ул. Богибустан, 186',
-    addressLocality: 'Ташкент',
-    addressRegion: 'Ташкентская область',
-    postalCode: '100000',
-    addressCountry: 'UZ',
-  },
-  areaServed: [
-    { '@type': 'Country', name: 'Uzbekistan' },
-    { '@type': 'Country', name: 'Kazakhstan' },
-    { '@type': 'Country', name: 'Kyrgyzstan' },
-    { '@type': 'Country', name: 'Tajikistan' },
-    { '@type': 'Country', name: 'Russia' },
-  ],
-  contactPoint: [
-    {
-      '@type': 'ContactPoint',
-      email: 'info@aisolution.uz',
-      contactType: 'customer support',
-      availableLanguage: ['Russian', 'Uzbek'],
-    },
-  ],
-  sameAs: [
-    'https://t.me/aisolution_uz',
-    'https://www.instagram.com/aisolution_uz/',
-    'https://www.linkedin.com/company/aisolution-uz',
-  ],
-  knowsAbout: [
-    'AI Chatbot', 'Sales Automation', 'Lead Qualification',
-    'Telegram Bot', 'WhatsApp Business', 'Instagram Automation',
-    'CRM Integration', 'RAG Systems', 'Business Intelligence',
-  ],
-};
-
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -137,7 +83,7 @@ const websiteSchema = {
   alternateName: 'AISolution Uzbekistan',
   url: SITE_URL,
   inLanguage: ['ru', 'uz'],
-  publisher: { '@id': `${SITE_URL}/#organization` },
+  publisher: { '@id': `${SITE_URL.replace(/\/$/, '')}/#organization` },
   potentialAction: {
     '@type': 'SearchAction',
     target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/?q={search_term_string}` },
@@ -151,10 +97,6 @@ export function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <script
         type="application/ld+json"

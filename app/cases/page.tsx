@@ -4,22 +4,22 @@ import { ChevronRight, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
+import { DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 
 const SLUG = '/cases';
-const TITLE = 'Кейсы внедрения AI — AI Solution';
+const TITLE = 'Кейсы внедрения ИИ — Реальные результаты клиентов | AI Solution';
 const DESCRIPTION =
-  'Реальные проекты: автоматизация лидов, AI-боты в Telegram, квалификация заявок и рост конверсии для бизнеса в Узбекистане.';
+  'Реальные кейсы автоматизации бизнеса с помощью ИИ: рост продаж, снижение нагрузки на операторов, автоматическая квалификация лидов. Цифры и скриншоты.';
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: ['кейсы AI Solution', 'внедрение AI Ташкент', 'кейс telegram бот бизнес', 'автоматизация лидов узбекистан'],
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/cases/' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     siteName: 'AI Solution',

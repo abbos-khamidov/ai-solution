@@ -4,23 +4,23 @@ import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { LandingHeroImage } from '@/components/shared/LandingHeroImage';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
+import { DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 
 const SLUG = '/telegram-bot-dlya-biznesa';
-const TITLE = 'Telegram-бот для бизнеса — автоматизация продаж';
+const TITLE = 'Telegram бот для продаж и поддержки 24/7 в Ташкенте | AI Solution — от 10 дней';
 const DESCRIPTION =
-  'Разработка Telegram-бота для бизнеса в Узбекистане: приём заявок, квалификация лидов, автоответы 24/7. Цены, кейсы, бесплатный аудит.';
+  'Умный Telegram бот для бизнеса: принимает заявки, отвечает на вопросы, квалифицирует лиды. Интеграция с CRM и amoCRM. 120+ проектов в Узбекистане.';
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords:
     'телеграм бот для бизнеса узбекистан, telegram бот ташкент, бот для продаж телеграм, автоматизация телеграм узбекистан',
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/telegram-bot-dlya-biznesa/' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     siteName: 'AI Solution',

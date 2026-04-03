@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
+import { DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 import { MoneyLandingPage, type MoneyLandingConfig } from '@/components/seo/MoneyLandingPage';
 
 const SLUG = '/ai-bot-tashkent';
-const TITLE = 'ИИ бот в Ташкенте для бизнеса — внедрение и запуск';
+const TITLE = 'AI бот для бизнеса в Ташкенте — Создание под ключ | AI Solution';
 const DESCRIPTION =
-  'ИИ бот в Ташкенте для автоматизации продаж и поддержки: Telegram, Instagram, WhatsApp. Внедрение под бизнес в Узбекистане, квалификация лидов Cold/Warm/Hot.';
+  'Создаём AI ботов для бизнеса в Ташкенте: боты для продаж, поддержки, найма. Работают в Telegram и WhatsApp. Интеграция с CRM. Запуск от 10 дней.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -18,11 +18,11 @@ export const metadata: Metadata = {
     'внедрение ИИ бота Ташкент',
     'автоматизация заявок Узбекистан',
   ],
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/ai-bot-tashkent/' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: `${SITE_URL}${SLUG}`,
+    url: `${SITE_URL}${SLUG}/`,
     type: 'website',
     locale: 'ru_RU',
     alternateLocale: ['uz_UZ'],

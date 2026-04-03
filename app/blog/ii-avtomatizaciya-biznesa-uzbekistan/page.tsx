@@ -2,13 +2,12 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { createAlternates } from '@/lib/seo';
 
 const SITE_URL = 'https://aisolution.uz';
 const SLUG = 'ii-avtomatizaciya-biznesa-uzbekistan';
-const TITLE = 'ИИ автоматизация бизнеса в Узбекистане — полное руководство 2025';
+const TITLE = 'ИИ-автоматизация бизнеса в Узбекистане: полный гайд 2026 | AI Solution';
 const DESCRIPTION =
-  'Что такое ИИ автоматизация бизнеса и как внедрить её в Ташкенте. Реальные примеры, стоимость, сроки. Автоматизация продаж, операций, клиентского сервиса с помощью искусственного интеллекта.';
+  'Как автоматизировать бизнес с помощью ИИ в Узбекистане: инструменты, кейсы, ROI. Пошаговый гайд от команды AI Solution с реальными примерами из практики.';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -25,11 +24,11 @@ export const metadata: Metadata = {
     'AI для автоматизации Узбекистан',
     'бизнес автоматизация Ташкент 2025',
   ],
-  alternates: createAlternates(`${SITE_URL}/blog/${SLUG}`),
+  alternates: { canonical: 'https://aisolution.uz/blog/ii-avtomatizaciya-biznesa-uzbekistan/' },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: `${SITE_URL}/blog/${SLUG}`,
+    url: `${SITE_URL}/blog/${SLUG}/`,
     type: 'article',
     locale: 'ru_RU',
     siteName: 'AI Solution',

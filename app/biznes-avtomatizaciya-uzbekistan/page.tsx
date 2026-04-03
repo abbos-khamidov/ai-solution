@@ -2,144 +2,228 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
-import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
-import { DEFAULT_TWITTER_IMAGE, SITE_URL, createAlternates } from '@/lib/seo';
+import { BreadcrumbSchema } from '@/components/schemas/BreadcrumbSchema';
+import { FAQSchema } from '@/components/schemas/FAQSchema';
+import { DEFAULT_TWITTER_IMAGE, SITE_URL } from '@/lib/seo';
 
 const SLUG = '/biznes-avtomatizaciya-uzbekistan';
-const TITLE = 'Автоматизация бизнеса в Узбекистане';
+const TITLE = 'Автоматизация бизнеса в Узбекистане — ИИ-решения под ключ | AI Solution';
 const DESCRIPTION =
-  'Автоматизация бизнеса в Узбекистане: ИИ-боты, квалификация лидов, CRM, аналитика. Ташкент и регионы. Кейсы, цены, бесплатный аудит.';
+  'Автоматизируем продажи, поддержку и бизнес-процессы с помощью ИИ. 120+ B2B компаний в Ташкенте и СНГ. Запуск от 10 дней. Бесплатный тест.';
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  keywords: 'бизнес автоматизация узбекистан, автоматизация бизнеса ташкент, ии автоматизация узбекистан, внедрение ии бизнес узбекистан',
-  alternates: createAlternates(`${SITE_URL}${SLUG}`),
-  openGraph: { title: TITLE, description: DESCRIPTION, url: `${SITE_URL}${SLUG}`, type: 'website', locale: 'ru_RU', siteName: 'AI Solution', images: [{ url: DEFAULT_TWITTER_IMAGE }] },
-  twitter: { card: 'summary_large_image', title: TITLE, description: DESCRIPTION, images: [{ url: DEFAULT_TWITTER_IMAGE }] },
+  keywords:
+    'бизнес автоматизация узбекистан, автоматизация бизнеса ташкент, ии автоматизация узбекистан, внедрение ии бизнес узбекистан',
+  alternates: { canonical: 'https://aisolution.uz/biznes-avtomatizaciya-uzbekistan/' },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}${SLUG}/`,
+    type: 'website',
+    locale: 'ru_RU',
+    siteName: 'AI Solution',
+    images: [{ url: DEFAULT_TWITTER_IMAGE }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [{ url: DEFAULT_TWITTER_IMAGE }],
+  },
   robots: { index: true, follow: true },
 };
 
-const faqItems = [
-  { q: 'Что входит в автоматизацию бизнеса в Узбекистане?', a: 'ИИ-боты для приёма заявок и квалификации лидов в Telegram, Instagram, WhatsApp; интеграция с CRM; при необходимости — дашборды и аналитика. Объём зависит от задач: от одного канала до полного контура продаж и отчётности.' },
-  { q: 'Сколько стоит автоматизация под ключ?', a: 'От $1 000 за запуск бота (один-два канала) + от $500/мес. С CRM, аналитикой и несколькими каналами — от $2 000 за запуск + от $700/мес. Точная смета после бесплатного аудита.' },
-  { q: 'Работаете ли только в Ташкенте?', a: 'Офис в Ташкенте. Внедряем автоматизацию для компаний по всему Узбекистану (Самарканд, Фергана, Андижан, Наманган, Бухара и др.), а также в Казахстане, Кыргызстане и Таджикистане — в том числе удалённо.' },
-  { q: 'За сколько запускается?', a: 'Базовый бот-менеджер — 5–7 рабочих дней. Полный цикл с CRM и аналитикой — 2–3 недели. Крупные проекты — по этапам.' },
-  { q: 'Работает ли бот на узбекском языке?', a: 'Да. Настраиваем бота на русском, узбекском и английском языках. Один бот может вести диалог сразу на нескольких языках — определяет язык клиента автоматически.' },
-  { q: 'Можно ли подключить к Instagram и WhatsApp?', a: 'Да. Один AI-движок работает в Telegram, Instagram Direct и WhatsApp одновременно. Клиент может написать в любом канале — бот отвечает с сохранением контекста.' },
-  { q: 'Что если клиент задаст нестандартный вопрос?', a: 'AI отвечает на основе базы знаний о вашем бизнесе. Если вопрос за пределами базы — бот вежливо переключает на менеджера и передаёт контекст разговора.' },
+const breadcrumbItems = [
+  { name: 'Главная', url: 'https://aisolution.uz/' },
+  { name: 'Автоматизация бизнеса в Узбекистане', url: 'https://aisolution.uz/biznes-avtomatizaciya-uzbekistan/' },
 ];
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqItems.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
-};
+const faqItems = [
+  {
+    question: 'Сколько стоит автоматизация бизнеса с ИИ?',
+    answer:
+      'Стоимость зависит от задач. Простые боты — от $300. Комплексные ИИ-системы — от $1000. Все проекты начинаются с бесплатной консультации.',
+  },
+  {
+    question: 'Для каких бизнесов подходит ИИ-автоматизация?',
+    answer:
+      'Для любого B2B и B2C бизнеса с потоком входящих запросов: торговля, логистика, образование, медицина, недвижимость, рестораны, юридические услуги.',
+  },
+  {
+    question: 'Нужны ли технические знания для работы с ИИ-системой?',
+    answer:
+      'Нет. Мы настраиваем всё под ключ и обучаем команду. Управление через простой интерфейс без программирования.',
+  },
+  {
+    question: 'Работает ли ИИ с узбекским языком?',
+    answer:
+      'Да, наши решения работают на русском, узбекском и английском языках с автоматическим определением языка клиента.',
+  },
+];
+
+const stats = [
+  { value: '120+', label: 'B2B компаний' },
+  { value: '30 сек', label: 'время ответа ИИ' },
+  { value: '10 дней', label: 'запуск проекта' },
+  { value: '24/7', label: 'работает без выходных' },
+];
+
+const services = [
+  { title: 'ИИ-бот для клиентского сервиса', href: '/products/customer-service/' },
+  { title: 'ИИ-менеджер по продажам', href: '/services/ai-managers/' },
+  { title: 'Telegram боты для бизнеса', href: '/telegram-bot-dlya-biznesa/' },
+  { title: 'WhatsApp боты', href: '/whatsapp-bot-dlya-biznesa/' },
+  { title: 'Корпоративный AI (RAG)', href: '/products/corporate-ai/' },
+  { title: 'Аналитика с ИИ', href: '/products/ai-analytics/' },
+];
+
+const steps = [
+  { title: 'Бесплатная консультация', text: 'Разбираем задачи бизнеса' },
+  { title: 'Разработка', text: 'Создаём ИИ-решение под ваши процессы' },
+  { title: 'Интеграция', text: 'Подключаем к CRM, мессенджерам, 1С' },
+  { title: 'Запуск и поддержка', text: 'Сопровождаем после старта' },
+];
+
+const ctaClass =
+  'inline-flex items-center justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold hover:opacity-90 transition-opacity';
 
 export default function BiznesAvtomatizaciyaUzbekistanPage() {
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: 'Главная', url: '/' },
-          { name: TITLE, url: `${SLUG}/` },
-        ]}
-      />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <FAQSchema items={faqItems} />
       <Header />
       <main className="min-h-screen bg-background text-foreground pb-16">
-        <section className="max-w-6xl mx-auto px-4 md:px-6">
+        <section className="max-w-6xl mx-auto px-4 md:px-6 pt-6">
           <div className="rounded-2xl p-8 md:p-10 border border-white/10 bg-white/[0.02]">
             <p className="text-sm text-[#93C5FD] mb-3">Автоматизация бизнеса в Узбекистане</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">Бизнес-автоматизация в Узбекистане — AI-боты для продаж и поддержки клиентов</h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+              Автоматизация бизнеса в Узбекистане с помощью ИИ
+            </h1>
             <p className="mt-4 text-[#94A3B8] max-w-3xl text-base md:text-lg leading-relaxed">
-              Компании в Узбекистане получают заявки из мессенджеров, с сайта и из рекламы. Ручная обработка создаёт задержки, потери в нерабочее время и разрозненную воронку. Автоматизация бизнеса с помощью ИИ объединяет каналы: бот отвечает за 30 секунд 24/7, квалифицирует лидов и передаёт горячих менеджерам с контекстом. При необходимости подключаем CRM, дашборды и отчёты — единая картина по продажам и лидам. Мы внедряем такие решения в Ташкенте и по всему Узбекистану: от малого бизнеса до отделов продаж с десятками менеджеров.
+              Внедряем искусственный интеллект в продажи, клиентский сервис и внутренние процессы. 120+ компаний уже
+              работают с нами.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3 text-sm">
-              <span className="px-3 py-1 rounded-full border border-[#3B82F6]/40 text-[#93C5FD]">Узбекистан</span>
-              <span className="px-3 py-1 rounded-full border border-white/15 text-[#CBD5E1]">Под ключ</span>
-            </div>
+            <Link href="/#contact" className={`mt-8 ${ctaClass}`}>
+              Начать проект →
+            </Link>
           </div>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Для каких задач подходит автоматизация</h2>
-          <ul className="space-y-3 text-[#94A3B8] mb-6">
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Приём заявок 24/7</strong> — бот отвечает клиентам в нерабочее время, ночью и в выходные. В Узбекистане клиенты пишут после 22:00 — без бота эти заявки теряются.</li>
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Квалификация лидов</strong> — система Cold/Warm/Hot автоматически определяет готовность к покупке. Менеджер получает только горячих с контекстом диалога.</li>
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Ответы на частые вопросы</strong> — цены, сроки, условия, наличие. Бот отвечает мгновенно на 80% типовых запросов без участия менеджера.</li>
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Интеграция с CRM</strong> — лиды из Telegram, Instagram, WhatsApp попадают в Bitrix24 или amoCRM автоматически, с тегами и историей переписки.</li>
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span><strong>Уведомления команде</strong> — горячий лид → мгновенный алерт менеджеру с кратким резюме: кто, что хочет, какой бюджет.</li>
-          </ul>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-center"
+              >
+                <p className="text-2xl md:text-3xl font-bold text-[#93C5FD]">{s.value}</p>
+                <p className="mt-2 text-sm text-[#94A3B8]">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Из чего складывается автоматизация</h2>
-          <p className="text-[#94A3B8] leading-relaxed mb-4">
-            Первый уровень — ИИ-бот в одном или нескольких каналах (Telegram, Instagram, WhatsApp, сайт): приём заявок, ответы на FAQ, квалификация лидов Cold/Warm/Hot и передача горячих менеджерам. Второй — интеграция с CRM: лиды и диалоги в Bitrix24, amoCRM, 1С, уведомления в привычной системе. Третий — аналитика и отчётность: дашборды по лидам, конверсии, источникам; при необходимости управленческие сводки для руководства. Для бизнеса в Узбекистане мы подбираем контур под ваш масштаб: можно начать с одного канала и бота, затем добавить CRM и отчёты без потери накопленных данных.
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-14">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Что мы автоматизируем</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {services.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:border-[#3B82F6]/40 hover:bg-white/[0.04] transition-colors"
+              >
+                <span className="text-foreground font-semibold group-hover:text-[#93C5FD] transition-colors">
+                  {item.title}
+                </span>
+                <span className="mt-2 block text-sm text-[#64748B]">Подробнее →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-14">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">Как мы работаем</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {steps.map((step, i) => (
+              <div
+                key={step.title}
+                className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#3B82F6]/20 text-[#93C5FD] font-bold">
+                  {i + 1}
+                </span>
+                <div>
+                  <p className="font-semibold text-foreground">{step.title}</p>
+                  <p className="mt-1 text-sm text-[#94A3B8] leading-relaxed">{step.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-14">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Кейсы автоматизации</h2>
+          <p className="text-[#94A3B8] mb-4 max-w-3xl">
+            Реальные проекты: рост продаж, квалификация лидов и автоматизация коммуникаций для B2B в Узбекистане и СНГ.
           </p>
+          <Link href="/cases/" className="text-[#93C5FD] font-semibold hover:underline">
+            Смотреть все кейсы →
+          </Link>
         </section>
 
-        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Что получает бизнес после внедрения</h2>
-          <ul className="space-y-3 text-[#94A3B8]">
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Ответ клиенту за 30 секунд 24/7 — меньше потерь лидов.</li>
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Единая воронка по каналам и квалификация лидов.</li>
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Интеграция с CRM — лиды и контекст в одной системе.</li>
-            <li className="flex gap-2"><span className="text-[#3B82F6]">•</span>Прозрачная аналитика и при необходимости сводки для руководства.</li>
-          </ul>
-        </section>
-
-        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Кейсы в Узбекистане</h2>
-          <p className="text-[#94A3B8] leading-relaxed mb-4">
-            Образовательная платформа Studify.uz и IT-компания Marsit.uz внедрили ИИ-автоматизацию лидов в Ташкенте. В обоих случаях время первого ответа сократилось до 30 секунд, воронка стала прозрачной, доля качественных заявок выросла. Подробнее — в кейсах <Link href="/cases/studify-ai-automation" className="text-[#93C5FD] hover:underline">Studify.uz</Link> и <Link href="/cases/marsit-lead-automation" className="text-[#93C5FD] hover:underline">Marsit.uz</Link>.
-          </p>
-        </section>
-
-        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Как проходит внедрение</h2>
-          <ol className="space-y-3 text-[#94A3B8] list-decimal list-inside">
-            <li><strong>Аудит и постановка задачи (день 1–2)</strong> — разбираем вашу воронку, определяем узкие места, составляем техзадание на сценарии бота.</li>
-            <li><strong>Разработка сценариев (день 3–7)</strong> — пишем диалоги, настраиваем квалификационные вопросы, прописываем логику Cold/Warm/Hot.</li>
-            <li><strong>Интеграция и тестирование (день 8–12)</strong> — подключаем к вашему Telegram/Instagram/WhatsApp, настраиваем CRM-интеграцию, тестируем 50+ сценариев.</li>
-            <li><strong>Запуск и поддержка</strong> — запускаем в продакшн, первые 2 недели мониторим, дорабатываем по результатам. Затем — ежемесячная поддержка.</li>
-          </ol>
-        </section>
-
-        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Стоимость и сроки</h2>
-          <p className="text-[#94A3B8] leading-relaxed">
-            Запуск автоматизации: от $1 000 (бот в 1–2 каналах) + от $500/мес. С CRM и аналитикой — от $2 000 за запуск + от $700/мес. Срок базового запуска — 5–7 рабочих дней, полный цикл — 2–3 недели. Оценка под ваши задачи — после бесплатного аудита.
-          </p>
-        </section>
-
-        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Частые вопросы</h2>
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-14">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
-            {faqItems.map(({ q, a }) => (
-              <details key={q} className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors">
-                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">{q}<span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">+</span></summary>
-                <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{a}</p>
+            {faqItems.map(({ question, answer }) => (
+              <details
+                key={question}
+                className="group rounded-xl border border-white/10 bg-white/[0.02] open:bg-white/[0.04] transition-colors"
+              >
+                <summary className="cursor-pointer p-5 text-foreground font-semibold list-none flex items-center justify-between gap-4">
+                  {question}
+                  <span className="shrink-0 text-[#64748B] group-open:rotate-45 transition-transform text-xl leading-none">
+                    +
+                  </span>
+                </summary>
+                <p className="px-5 pb-5 text-[#94A3B8] leading-relaxed">{answer}</p>
               </details>
             ))}
           </div>
         </section>
 
-        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
-          <div className="rounded-2xl p-7 border border-[#3B82F6]/30 bg-[#3B82F6]/10">
-            <h2 className="text-2xl md:text-3xl font-bold">Получить бесплатный аудит</h2>
-            <p className="mt-3 text-[#CFE2FF] max-w-3xl">Опишите процессы продаж и каналы заявок — предложим план автоматизации и ориентир по бюджету.</p>
-            <Link href="/#contact" className="mt-5 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-[#3B82F6] to-[#06B6D4] text-white font-semibold">Обсудить проект</Link>
+        <section className="max-w-6xl mx-auto px-4 md:px-6 mt-14">
+          <div className="rounded-2xl p-8 md:p-10 border border-[#3B82F6]/30 bg-[#3B82F6]/10">
+            <h2 className="text-2xl md:text-3xl font-bold">Готовы автоматизировать бизнес?</h2>
+            <p className="mt-3 text-[#CFE2FF] max-w-3xl">
+              Расскажите о своей задаче — предложим решение и посчитаем стоимость бесплатно.
+            </p>
+            <Link href="/#contact" className={`mt-6 ${ctaClass}`}>
+              Получить консультацию →
+            </Link>
           </div>
         </section>
 
         <section className="max-w-6xl mx-auto px-4 md:px-6 mt-12">
           <h2 className="text-xl font-bold text-foreground mb-4">Читайте также</h2>
           <ul className="space-y-2 text-[#94A3B8]">
-            <li><Link href="/tashkent" className="text-[#93C5FD] hover:underline">Автоматизация бизнеса в Ташкенте</Link></li>
-            <li><Link href="/ii-avtomatizaciya-uzbekistan" className="text-[#93C5FD] hover:underline">ИИ автоматизация в Узбекистане</Link></li>
-            <li><Link href="/sravnenie-ai-reshenii-uzbekistan" className="text-[#93C5FD] hover:underline">Сравнение AI-решений для бизнеса в Узбекистане</Link></li>
+            <li>
+              <Link href="/tashkent" className="text-[#93C5FD] hover:underline">
+                Автоматизация бизнеса в Ташкенте
+              </Link>
+            </li>
+            <li>
+              <Link href="/ii-avtomatizaciya-uzbekistan" className="text-[#93C5FD] hover:underline">
+                ИИ автоматизация в Узбекистане
+              </Link>
+            </li>
+            <li>
+              <Link href="/sravnenie-ai-reshenii-uzbekistan" className="text-[#93C5FD] hover:underline">
+                Сравнение AI-решений для бизнеса в Узбекистане
+              </Link>
+            </li>
           </ul>
         </section>
       </main>
